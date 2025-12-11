@@ -1,7 +1,14 @@
 import type { Metadata } from 'next';
 import PageLayout from '@/components/PageLayout';
 import { WhyChooseUsSection, TechnologySection, FinalCTASection } from '@/components/sections';
-import { stats } from '@/lib/constants';
+import { Factory, Package, Award, Users } from 'lucide-react';
+
+const stats = [
+  { value: '20+', label: 'ปีประสบการณ์', icon: Factory },
+  { value: '50,000+', label: 'ออเดอร์สำเร็จ', icon: Package },
+  { value: '4.9', label: 'คะแนนรีวิว', icon: Award },
+  { value: '500+', label: 'ลูกค้าองค์กร', icon: Users },
+];
 
 export const metadata: Metadata = {
   title: 'เกี่ยวกับเรา',

@@ -5,7 +5,20 @@ import {
   Phone, Mail, MapPin, Facebook, 
   MessageCircle, Clock, ChevronRight 
 } from 'lucide-react';
-import { siteConfig, footerServices, footerQuickLinks } from '@/lib/constants';
+import { siteConfig } from '@/config/site';
+
+const footerServices = [
+  'พิมพ์เสื้อ DTG',
+  'พิมพ์เสื้อ DTF',
+  'Screen Print',
+  'ปักชื่อ-โลโก้',
+  'เสื้อโปโล',
+  'Hoodie & Jacket',
+];
+
+const footerQuickLinks = [
+  { name: 'หน้าแรก', href: '/' },
+];
 
 interface FooterProps {
   className?: string;
@@ -63,13 +76,10 @@ export default function Footer({ className = '' }: FooterProps) {
             <ul className="space-y-3">
               {footerServices.map((service) => (
                 <li key={service}>
-                  <Link 
-                    href="/services"
-                    className="flex items-center gap-2 text-slate-300 hover:text-ci-yellow transition-colors group"
-                  >
-                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <span className="flex items-center gap-2 text-slate-300">
+                    <ChevronRight className="w-4 h-4" />
                     <span>{service}</span>
-                  </Link>
+                  </span>
                 </li>
               ))}
             </ul>
@@ -135,18 +145,9 @@ export default function Footer({ className = '' }: FooterProps) {
             <p>
               © {currentYear} <span className="text-ci-yellow font-medium">{siteConfig.name}</span> สงวนลิขสิทธิ์
             </p>
-            <div className="flex items-center gap-6">
-              <Link href="/privacy" className="hover:text-ci-yellow transition-colors">
-                นโยบายความเป็นส่วนตัว
-              </Link>
-              <Link href="/terms" className="hover:text-ci-yellow transition-colors">
-                เงื่อนไขการใช้งาน
-              </Link>
-            </div>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

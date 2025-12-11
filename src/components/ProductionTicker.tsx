@@ -1,7 +1,21 @@
 'use client';
 
 import { Package, CheckCircle2 } from 'lucide-react';
-import { recentOrders } from '@/lib/constants';
+
+interface RecentOrder {
+  customer: string;
+  quantity: string;
+  type: string;
+  time: string;
+}
+
+const recentOrders: RecentOrder[] = [
+  { customer: 'บริษัท ABC', quantity: '500 ตัว', type: 'เสื้อโปโล', time: '2 นาทีที่แล้ว' },
+  { customer: 'ร้าน XYZ', quantity: '200 ตัว', type: 'เสื้อยืด', time: '5 นาทีที่แล้ว' },
+  { customer: 'โรงเรียน DEF', quantity: '300 ตัว', type: 'เสื้อรุ่น', time: '10 นาทีที่แล้ว' },
+  { customer: 'คุณสมชาย', quantity: '50 ตัว', type: 'Hoodie', time: '15 นาทีที่แล้ว' },
+  { customer: 'ห้าง GHI', quantity: '1,000 ตัว', type: 'เสื้อพนักงาน', time: '20 นาทีที่แล้ว' },
+];
 
 interface ProductionTickerProps {
   className?: string;
@@ -49,4 +63,3 @@ export default function ProductionTicker({ className = '' }: ProductionTickerPro
     </div>
   );
 }
-

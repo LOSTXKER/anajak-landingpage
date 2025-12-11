@@ -1,7 +1,7 @@
 'use client';
 
 import { Phone, MessageCircle, Sparkles, ArrowRight } from 'lucide-react';
-import { siteConfig } from '@/lib/constants';
+import { siteConfig } from '@/config/site';
 
 interface FinalCTASectionProps {
   className?: string;

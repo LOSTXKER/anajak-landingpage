@@ -1,8 +1,42 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
-import { testimonials, trustBadges } from '@/lib/constants';
+import { Star, Quote, ChevronLeft, ChevronRight, ShieldCheck, Truck, Clock, BadgeCheck } from 'lucide-react';
+
+interface Testimonial {
+  name: string;
+  role: string;
+  text: string;
+  rating: number;
+}
+
+const testimonials: Testimonial[] = [
+  {
+    name: 'คุณสมชาย ใจดี',
+    role: 'ผู้จัดการ HR บริษัท ABC',
+    text: 'ใช้บริการมา 5 ปี คุณภาพดีมาก ส่งตรงเวลาทุกครั้ง พนักงานประทับใจในคุณภาพเสื้อ ราคาก็เหมาะสม จะใช้บริการต่อไปแน่นอน',
+    rating: 5,
+  },
+  {
+    name: 'คุณสมหญิง วิทยา',
+    role: 'เจ้าของร้าน TeeShop',
+    text: 'เป็นซัพพลายเออร์หลักของเรา สินค้าคุณภาพดี ราคาแข่งขันได้ ส่งไว บริการดี ลูกค้าชอบมาก ขายดีทุกรุ่น',
+    rating: 5,
+  },
+  {
+    name: 'อ.วิชัย ศรีสุข',
+    role: 'อาจารย์โรงเรียนมัธยม',
+    text: 'สั่งเสื้อรุ่นนักเรียน 300 ตัว คุณภาพเกินราคา เด็กๆ ชอบมาก ครูและผู้ปกครองพอใจ ปีหน้าจะสั่งอีกแน่นอน',
+    rating: 5,
+  },
+];
+
+const trustBadges = [
+  { icon: ShieldCheck, text: 'รับประกันคุณภาพ 100%' },
+  { icon: Truck, text: 'จัดส่งฟรีทั่วไทย' },
+  { icon: Clock, text: 'ส่งตรงเวลา ทุกครั้ง' },
+  { icon: BadgeCheck, text: 'มาตรฐาน ISO' },
+];
 
 interface TestimonialsSectionProps {
   className?: string;
@@ -12,7 +46,6 @@ export default function TestimonialsSection({ className = '' }: TestimonialsSect
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
 
-  // Auto-rotate testimonials
   useEffect(() => {
     if (!isAutoPlaying) return;
     const interval = setInterval(() => {

@@ -1,6 +1,13 @@
 'use client';
 
-import { valuePropositions } from '@/lib/constants';
+import { Factory, BadgeCheck, Truck, ShieldCheck } from 'lucide-react';
+
+const valuePropositions = [
+  { icon: Factory, text: 'โรงงานผลิตเอง' },
+  { icon: BadgeCheck, text: 'มาตรฐาน ISO' },
+  { icon: Truck, text: 'ส่งทั่วไทย' },
+  { icon: ShieldCheck, text: 'รับประกันคุณภาพ' },
+];
 
 interface ValuePropositionStripProps {
   className?: string;

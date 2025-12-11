@@ -4,15 +4,22 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
-import { siteConfig, mainNavigation, homeNavigation, type NavItem } from '@/lib/constants';
+import { siteConfig } from '@/config/site';
+
+interface NavItem {
+  name: string;
+  href: string;
+}
+
+const mainNavigation: NavItem[] = [
+  { name: 'หน้าแรก', href: '/' },
+];
+
+const homeNavigation: NavItem[] = [
+  { name: 'หน้าแรก', href: '#home' },
+];
 
 interface HeaderProps {
-  /**
-   * Navigation mode:
-   * - 'page': Use page links (e.g., /services) - for multi-page sites
-   * - 'hash': Use hash links (e.g., #services) - for single-page/landing
-   * - 'auto': Automatically detect based on current path
-   */
   navMode?: 'page' | 'hash' | 'auto';
 }
 
@@ -21,12 +28,10 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 
-  // Determine which navigation to use
   const isHomePage = pathname === '/';
   const navigation: NavItem[] = 
     navMode === 'hash' ? homeNavigation :
     navMode === 'page' ? mainNavigation :
-    // Auto mode: use hash on homepage, page links elsewhere
     isHomePage ? homeNavigation : mainNavigation;
 
   useEffect(() => {
@@ -37,7 +42,6 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close mobile menu when route changes
   useEffect(() => {
     setIsMobileMenuOpen(false);
   }, [pathname]);
@@ -96,7 +100,6 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
           <div className="hidden lg:flex items-center gap-1">
             {navigation.map((item) => {
               const isActive = isActiveLink(item.href);
-              // Use Link for page links, a tag for hash links
               const isHashLink = item.href.startsWith('#');
               
               if (isHashLink) {
@@ -195,4 +198,3 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
     </header>
   );
 }
-
