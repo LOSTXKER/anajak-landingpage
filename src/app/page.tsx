@@ -10,7 +10,6 @@ import {
   PortfolioSection,
   TestimonialsSection,
   FAQSection,
-  ContactSection,
   FinalCTASection,
 } from '@/components/sections';
 
@@ -46,9 +45,6 @@ export default function HomePage() {
 
       {/* FAQ Section */}
       <FAQSection />
-
-      {/* Contact Section */}
-      <ContactSection />
 
       {/* Final CTA Section */}
       <FinalCTASection />

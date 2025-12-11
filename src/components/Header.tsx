@@ -129,10 +129,10 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link href="/contact" className="btn-primary">
+            <a href={siteConfig.phoneHref} className="btn-primary">
               <Phone className="w-4 h-4" />
-              ติดต่อเรา
-            </Link>
+              โทรเลย
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -184,10 +184,10 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
                   </Link>
                 );
               })}
-              <Link href="/contact" className="btn-primary mt-2">
+              <a href={siteConfig.phoneHref} className="btn-primary mt-2">
                 <Phone className="w-4 h-4" />
-                ติดต่อเรา
-              </Link>
+                โทรเลย
+              </a>
             </div>
           </div>
         )}

@@ -7,7 +7,6 @@ export { default as WhyChooseUsSection } from './WhyChooseUsSection';
 export { default as PortfolioSection } from './PortfolioSection';
 export { default as TestimonialsSection } from './TestimonialsSection';
 export { default as FAQSection } from './FAQSection';
-export { default as ContactSection } from './ContactSection';
 export { default as FinalCTASection } from './FinalCTASection';
 export { default as UseCaseSection } from './UseCaseSection';
 export { default as ClientLogosSection } from './ClientLogosSection';

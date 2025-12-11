@@ -41,21 +41,11 @@ export interface NavItem {
 
 export const mainNavigation: NavItem[] = [
   { name: 'หน้าแรก', href: '/' },
-  { name: 'บริการของเรา', href: '/services' },
-  { name: 'เทคโนโลยี', href: '/technology' },
-  { name: 'ผลงาน', href: '/portfolio' },
-  { name: 'เกี่ยวกับเรา', href: '/about' },
-  { name: 'ติดต่อเรา', href: '/contact' },
 ];
 
 // For single-page scrolling (homepage only)
 export const homeNavigation: NavItem[] = [
   { name: 'หน้าแรก', href: '#home' },
-  { name: 'บริการของเรา', href: '#services' },
-  { name: 'เทคโนโลยี', href: '#technology' },
-  { name: 'ผลงาน', href: '#portfolio' },
-  { name: 'เกี่ยวกับเรา', href: '#about' },
-  { name: 'ติดต่อเรา', href: '#contact' },
 ];
 
 // ===========================================
