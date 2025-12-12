@@ -9,7 +9,7 @@ interface FinalCTASectionProps {
 
 export default function FinalCTASection({ className = '' }: FinalCTASectionProps) {
   return (
-    <section className={`relative py-24 overflow-hidden ${className}`}>
+    <section id="contact" className={`relative py-24 overflow-hidden ${className}`}>
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-ci-blue via-ci-blueDark to-slate-900" />
       

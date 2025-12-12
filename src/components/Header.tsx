@@ -3,20 +3,35 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
 interface NavItem {
   name: string;
   href: string;
+  children?: NavItem[];
 }
+
+const servicesSubmenu: NavItem[] = [
+  { name: 'บริการสกรีน', href: '/services/printing' },
+  { name: 'ทำแพทเทิร์น', href: '/services/pattern' },
+  { name: 'เนื้อผ้าหลากหลาย', href: '/services/fabric' },
+];
 
 const mainNavigation: NavItem[] = [
   { name: 'หน้าแรก', href: '/' },
+  { name: 'บริการของเรา', href: '/services', children: servicesSubmenu },
+  { name: 'เทคโนโลยี', href: '/technology' },
+  { name: 'ผลงาน', href: '/portfolio' },
+  { name: 'เกี่ยวกับเรา', href: '/about' },
 ];
 
 const homeNavigation: NavItem[] = [
   { name: 'หน้าแรก', href: '#home' },
+  { name: 'บริการของเรา', href: '/services', children: servicesSubmenu },
+  { name: 'เทคโนโลยี', href: '#technology' },
+  { name: 'ผลงาน', href: '#portfolio' },
+  { name: 'เกี่ยวกับเรา', href: '#about' },
 ];
 
 interface HeaderProps {
@@ -26,6 +41,7 @@ interface HeaderProps {
 export default function Header({ navMode = 'auto' }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
   const isHomePage = pathname === '/';
@@ -101,6 +117,60 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
             {navigation.map((item) => {
               const isActive = isActiveLink(item.href);
               const isHashLink = item.href.startsWith('#');
+              const hasChildren = item.children && item.children.length > 0;
+              
+              // Dropdown menu - check this FIRST before isHashLink
+              if (hasChildren) {
+                return (
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => setOpenDropdown(item.name)}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    {isHashLink ? (
+                      <a
+                        href={item.href}
+                        className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all ${
+                          isActive 
+                            ? 'text-ci-blue bg-blue-50' 
+                            : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        className={`flex items-center gap-1 px-4 py-2 rounded-lg font-medium transition-all ${
+                          isActive 
+                            ? 'text-ci-blue bg-blue-50' 
+                            : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                      </Link>
+                    )}
+                    
+                    {/* Dropdown Content */}
+                    {openDropdown === item.name && (
+                      <div className="absolute top-full left-0 mt-1 w-56 bg-white rounded-xl shadow-xl border border-slate-100 py-2 animate-fade-in-down">
+                        {item.children!.map((child) => (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            className="block px-4 py-2.5 text-slate-700 hover:text-ci-blue hover:bg-blue-50 transition-all"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
               
               if (isHashLink) {
                 return (
@@ -158,6 +228,37 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
             <div className="flex flex-col gap-2">
               {navigation.map((item) => {
                 const isHashLink = item.href.startsWith('#');
+                const hasChildren = item.children && item.children.length > 0;
+                const isOpen = openDropdown === item.name;
+                
+                // With submenu - check this FIRST
+                if (hasChildren) {
+                  return (
+                    <div key={item.name}>
+                      <button
+                        onClick={() => setOpenDropdown(isOpen ? null : item.name)}
+                        className="w-full flex items-center justify-between px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
+                      >
+                        {item.name}
+                        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                      </button>
+                      {isOpen && (
+                        <div className="ml-4 mt-1 flex flex-col gap-1">
+                          {item.children!.map((child) => (
+                            <Link
+                              key={child.name}
+                              href={child.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="px-4 py-2 text-sm text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
+                            >
+                              {child.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
                 
                 if (isHashLink) {
                   return (

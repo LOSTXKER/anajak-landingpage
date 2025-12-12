@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowRight, Star, ImageIcon } from 'lucide-react';
 
 interface ServicesSectionProps {
@@ -198,13 +199,13 @@ export default function ServicesSection({ className = '', showCTA = true }: Serv
         {/* CTA */}
         {showCTA && (
           <div className="text-center mt-12">
-            <a 
-              href="#contact" 
+            <Link 
+              href="/services" 
               className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
             >
-              ปรึกษาฟรี ไม่มีค่าใช้จ่าย
+              ดูบริการทั้งหมด
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </Link>
           </div>
         )}
       </div>
