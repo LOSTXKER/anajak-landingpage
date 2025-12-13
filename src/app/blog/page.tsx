@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
@@ -89,11 +90,13 @@ const categories = [
 ];
 
 export default function BlogPage() {
+  // Set page title
+  useEffect(() => {
+    document.title = 'บทความและคู่มือ | อนาจักร ที-เชิ้ต';
+  }, []);
+
   return (
-    <PageLayout
-      title="บทความและคู่มือ | อนาจักร ที-เชิ้ต"
-      description="บทความ คู่มือ และเคล็ดลับเกี่ยวกับการสกรีนเสื้อ เทคนิคต่างๆ การเลือกผ้า และการดูแลรักษา จากทีมผู้เชี่ยวชาญของเรา"
-    >
+    <PageLayout>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

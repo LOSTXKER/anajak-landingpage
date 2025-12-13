@@ -273,12 +273,12 @@ export default function FabricComparisonPage() {
   }, [openDropdown]);
 
   // Group products by category for dropdown
-  const productGroups: Record<string, Array<ProductId & { product: Product }>> = {};
+  const productGroups: Record<string, string[]> = {};
   Object.entries(allProducts).forEach(([id, product]) => {
     if (!productGroups[product.category]) {
       productGroups[product.category] = [];
     }
-    productGroups[product.category].push({ ...id, product } as any);
+    productGroups[product.category].push(id);
   });
 
   const handleProductChange = (index: number, newProductId: ProductId) => {
@@ -293,7 +293,7 @@ export default function FabricComparisonPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white overflow-hidden">
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white overflow-hidden">
         {/* Decorative Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-ci-blue/10 rounded-full blur-3xl" />
@@ -505,16 +505,17 @@ export default function FabricComparisonPage() {
                 <span className="bg-gradient-to-r from-ci-blue to-blue-600 text-transparent bg-clip-text">งานสกรีน</span>?
               </h2>
               <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto mb-8 leading-relaxed">
-                เปรียบเทียบความแตกต่างระหว่างงานสกรีน 2 เทคโนโลยียอดนิยม{' '}
-                <span className="font-bold text-ci-blue">DTF</span> และ{' '}
-                <span className="font-bold text-slate-900">DTG</span>{' '}
+                เปรียบเทียบความแตกต่างระหว่างงานสกรีน 3 เทคนิคยอดนิยม{' '}
+                <span className="font-bold text-ci-blue">DTF</span>,{' '}
+                <span className="font-bold text-slate-900">DTG</span> และ{' '}
+                <span className="font-bold text-purple-600">Silk Screen</span>{' '}
                 เพื่อให้คุณได้งานที่สวยตรงใจที่สุด
               </p>
               <Link
                 href="/dtf-vs-dtg"
                 className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-ci-blue via-blue-600 to-ci-blue bg-size-200 bg-pos-0 hover:bg-pos-100 text-white font-bold rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all duration-300"
               >
-                เปรียบเทียบ DTF vs DTG
+                เปรียบเทียบเทคนิคสกรีน
                 <ArrowRight className="w-5 h-5" />
               </Link>
             </div>

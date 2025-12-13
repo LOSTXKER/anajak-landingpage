@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
@@ -250,11 +251,13 @@ export default function ProductsPage() {
     window.location.href = '/compare-fabrics';
   };
 
+  // Set page title
+  useEffect(() => {
+    document.title = 'สินค้าของเรา | อนาจักร ที-เชิ้ต';
+  }, []);
+
   return (
-    <PageLayout
-      title="สินค้าของเรา | อนาจักร ที-เชิ้ต"
-      description="เสื้อเปล่าคุณภาพดี และเนื้อผ้าดิบสำหรับตัดเสื้อ หลากหลายสี หลากหลายไซส์ พร้อมส่ง"
-    >
+    <PageLayout>
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">

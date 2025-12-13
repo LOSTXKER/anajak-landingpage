@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
@@ -144,11 +145,13 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
     { id: 'comparison', title: 'DTF vs DTG' },
   ];
 
+  // Set page title and description
+  useEffect(() => {
+    document.title = `${article.title} | อนาจักร ที-เชิ้ต`;
+  }, [article.title]);
+
   return (
-    <PageLayout
-      title={`${article.title} | อนาจักร ที-เชิ้ต`}
-      description={article.excerpt}
-    >
+    <PageLayout>
       {/* Breadcrumb */}
       <section className="pt-24 pb-8 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-4 md:px-6">
