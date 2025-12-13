@@ -21,16 +21,20 @@ const servicesSubmenu: NavItem[] = [
 const mainNavigation: NavItem[] = [
   { name: 'หน้าแรก', href: '/' },
   { name: 'บริการของเรา', href: '/services', children: servicesSubmenu },
-  { name: 'เทคโนโลยี', href: '/technology' },
-  { name: 'ผลงาน', href: '/portfolio' },
+  { name: 'สินค้า', href: '/products' },
+  { name: 'เทียบสินค้า', href: '/compare-fabrics' },
+  { name: 'เปรียบเทียบเทคนิค', href: '/dtf-vs-dtg' },
+  { name: 'บทความ', href: '/blog' },
   { name: 'เกี่ยวกับเรา', href: '/about' },
 ];
 
 const homeNavigation: NavItem[] = [
   { name: 'หน้าแรก', href: '#home' },
   { name: 'บริการของเรา', href: '/services', children: servicesSubmenu },
-  { name: 'เทคโนโลยี', href: '#technology' },
-  { name: 'ผลงาน', href: '#portfolio' },
+  { name: 'สินค้า', href: '/products' },
+  { name: 'เทียบสินค้า', href: '/compare-fabrics' },
+  { name: 'เปรียบเทียบเทคนิค', href: '/dtf-vs-dtg' },
+  { name: 'บทความ', href: '/blog' },
   { name: 'เกี่ยวกับเรา', href: '#about' },
 ];
 
