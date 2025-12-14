@@ -131,7 +131,7 @@ export default function BlogPage() {
       </section>
 
       {/* Categories Filter */}
-      <section className="py-8 bg-white border-b border-slate-200 sticky top-20 z-10">
+      <section className="py-8 bg-white border-b border-slate-200">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
             {categories.map((category) => (
