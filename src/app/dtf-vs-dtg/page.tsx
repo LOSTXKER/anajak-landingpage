@@ -49,18 +49,18 @@ export default function DTFvsDTGPage() {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-ci-blue/10 to-slate-500/10 backdrop-blur-md shadow-lg border border-ci-blue/30 text-sm font-semibold mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-ci-blue/10 to-slate-500/10 backdrop-blur-md shadow-lg border border-ci-blue/30 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">
               <span className="bg-gradient-to-r from-ci-blue to-slate-700 bg-clip-text text-transparent">เปรียบเทียบเทคโนโลยี • Comparison Guide</span>
             </div>
 
-            <h1 className="font-heading text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight mb-4 animate-fade-in-up delay-100">
+            <h1 className="font-heading text-3xl md:text-4xl lg:text-6xl font-bold tracking-tight mb-4 opacity-0 animate-fade-in-up delay-100">
               <span className="text-ci-blue">DTF</span> vs <span className="text-slate-700">DTG</span> vs <span className="text-slate-600">Silk Screen</span>
             </h1>
-            <p className="text-xl md:text-3xl font-bold text-slate-900 mt-2 mb-6 animate-fade-in-up delay-150">เลือกเทคนิคที่ใช่สำหรับคุณ</p>
-            <p className="text-lg md:text-xl text-slate-700 leading-relaxed animate-fade-in-up delay-200 max-w-3xl mx-auto font-medium">
+            <p className="text-xl md:text-3xl font-bold text-slate-900 mt-2 mb-6 opacity-0 animate-fade-in-up delay-200">เลือกเทคนิคที่ใช่สำหรับคุณ</p>
+            <p className="text-lg md:text-xl text-slate-700 leading-relaxed opacity-0 animate-fade-in-up delay-300 max-w-3xl mx-auto font-medium">
               เจาะลึกทุกความแตกต่างระหว่าง 3 เทคนิคสกรีน เพื่อค้นพบเทคโนโลยีที่ตอบโจทย์โปรเจกต์ของคุณได้อย่างสมบูรณ์แบบที่สุด
             </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-4 animate-fade-in-up delay-300">
+            <div className="mt-10 flex flex-wrap justify-center gap-4 opacity-0 animate-fade-in-up delay-400">
               <a 
                 href="#comparison" 
                 className="btn-primary"

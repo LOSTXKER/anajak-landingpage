@@ -127,7 +127,7 @@ export default function WhyChooseUsSection({ className = '' }: WhyChooseUsSectio
               <p className="text-slate-500 text-sm">ปรึกษาฟรี! ไม่มีค่าใช้จ่าย</p>
             </div>
             <a 
-              href="#contact" 
+              href="/contact" 
               className="group inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-xl font-bold hover:shadow-lg transition-all"
             >
               ติดต่อเราเลย

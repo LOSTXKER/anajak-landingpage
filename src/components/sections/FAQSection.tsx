@@ -81,7 +81,7 @@ export default function FAQSection({ className = '', items = faqs }: FAQSectionP
 
         <div className="text-center mt-12">
           <p className="text-slate-500 mb-4">ยังมีคำถามอื่นอีก?</p>
-          <a href="#contact" className="btn-secondary inline-flex">
+          <a href="/contact" className="btn-secondary inline-flex">
             <MessageCircle className="w-5 h-5" />
             ติดต่อทีมงาน
           </a>

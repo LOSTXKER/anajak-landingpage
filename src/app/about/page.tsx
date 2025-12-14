@@ -50,7 +50,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               {/* Title */}
-              <div className="mb-8">
+              <div className="mb-8 opacity-0 animate-fade-in-up">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 rounded-full mb-4">
                   <span className="text-sm font-semibold text-ci-blue">Our Story</span>
                 </div>
@@ -62,7 +62,7 @@ export default function AboutPage() {
                 <div className="w-16 h-1 bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-full" />
               </div>
 
-              <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+              <div className="space-y-6 text-lg text-slate-600 leading-relaxed opacity-0 animate-fade-in-up delay-200">
                 <p>
                   Anajak T-Shirt ไม่ได้เริ่มต้นจากการเป็นแค่ "โรงงาน" แต่เกิดจาก{' '}
                   <strong className="font-semibold text-slate-900">"แพชชั่น"</strong>{' '}
@@ -78,7 +78,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative opacity-0 animate-fade-in-up delay-300">
               <div className="absolute -inset-4 bg-gradient-to-r from-ci-blue/20 to-ci-yellow/20 rounded-3xl blur-2xl animate-pulse" />
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
                 <Image

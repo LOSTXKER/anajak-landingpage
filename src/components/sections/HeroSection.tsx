@@ -54,7 +54,7 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
           {/* Left - Content */}
           <div className="text-left">
             {/* Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/50 text-sm font-semibold mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/50 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
@@ -66,7 +66,7 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
             </div>
 
             {/* Headline */}
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up delay-100">
               <span className="block text-slate-900 mb-2">โรงงานผลิตเสื้อยืด</span>
               <span className="relative inline-block">
                 <span className="gradient-text">คุณภาพระดับพรีเมียม</span>
@@ -91,16 +91,16 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg md:text-xl text-slate-600 mb-6 leading-relaxed animate-fade-in-up delay-200">
+            <p className="text-lg md:text-xl text-slate-600 mb-6 leading-relaxed opacity-0 animate-fade-in-up delay-200">
               รับผลิตเสื้อยืด เสื้อโปโล Hoodie ด้วยเทคโนโลยี
               <span className="inline-flex items-center gap-2 mx-2 px-3 py-1 bg-slate-100 rounded-lg font-bold text-slate-800">
                 <Zap className="w-4 h-4 text-ci-yellow" />
-                DTG, DTF, Screen Print
+                DTG, DTF, Silk Screen
               </span>
             </p>
 
             {/* Checkmarks */}
-            <div className="flex flex-wrap gap-4 mb-8 animate-fade-in-up delay-200">
+            <div className="flex flex-wrap gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
                 <CheckCircle className="w-4 h-4 text-ci-blue" /> ส่งตรงจากโรงงาน
               </span>
@@ -113,9 +113,9 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300">
+            <div className="flex flex-col sm:flex-row gap-4 opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="#contact" 
+                href="/contact" 
                 className="group relative px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
@@ -126,7 +126,7 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
                 </span>
               </a>
               <a 
-                href="#services" 
+                href="/services" 
                 className="group px-8 py-4 bg-white text-slate-700 border-2 border-slate-200 rounded-2xl font-bold text-lg hover:border-ci-blue hover:text-ci-blue hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Package className="w-5 h-5 group-hover:rotate-12 transition-transform" />
@@ -135,7 +135,7 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 animate-fade-in-up delay-400">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 opacity-0 animate-fade-in-up delay-500">
               <div className="text-center sm:text-left">
                 <div className="text-2xl md:text-3xl font-bold text-slate-900">5+</div>
                 <div className="text-sm text-slate-600">ปีประสบการณ์</div>
@@ -156,7 +156,7 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
           </div>
 
           {/* Right - Image */}
-          <div className="relative animate-fade-in-up delay-200">
+          <div className="relative opacity-0 animate-fade-in-up delay-300">
             {/* Main Image */}
             <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
               <HeroImage />

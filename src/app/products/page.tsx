@@ -264,20 +264,20 @@ export default function ProductsPage() {
 
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 text-ci-blue rounded-full text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 text-ci-blue rounded-full text-sm font-semibold mb-6 opacity-0 animate-fade-in-up">
               <ShoppingBag className="w-4 h-4" />
               สินค้าของเรา
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 opacity-0 animate-fade-in-up delay-100">
               <span className="text-ci-blue">เสื้อเปล่า</span> และ<br />
               <span className="text-slate-700">เนื้อผ้าคุณภาพ</span>
             </h1>
-            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto opacity-0 animate-fade-in-up delay-200">
               เลือกซื้อเสื้อเปล่าพร้อมสกรีน หรือเนื้อผ้าดิบสำหรับตัดเสื้อ หลากหลายชนิด หลากหลายสี
             </p>
 
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto mb-8">
+            <div className="max-w-2xl mx-auto mb-8 opacity-0 animate-fade-in-up delay-300">
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input
@@ -291,7 +291,7 @@ export default function ProductsPage() {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="flex flex-wrap items-center justify-center gap-4 opacity-0 animate-fade-in-up delay-400">
               <button
                 onClick={handleDownloadCatalog}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 border-2 border-slate-200 font-semibold rounded-xl hover:border-ci-blue hover:text-ci-blue transition-all"
@@ -501,12 +501,12 @@ function ProductCard({ product }: { product: Product }) {
 
   return (
     <div
-      className="card overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+      className="card overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full flex flex-col"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Product Image */}
-      <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden">
+      <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden flex-shrink-0">
         {product.image ? (
           <Image
             src={product.image}
@@ -553,7 +553,7 @@ function ProductCard({ product }: { product: Product }) {
       </div>
 
       {/* Product Info */}
-      <div className="p-5">
+      <div className="p-5 flex flex-col flex-grow">
         {/* Category & Title */}
         <div className="mb-4">
           <span className="inline-block px-3 py-1 bg-ci-blue/10 text-ci-blue text-xs font-semibold rounded-full mb-3">
@@ -562,7 +562,7 @@ function ProductCard({ product }: { product: Product }) {
           <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-ci-blue transition-colors line-clamp-2">
             {product.name}
           </h3>
-          <p className="text-sm text-slate-600 leading-relaxed">
+          <p className="text-sm text-slate-600 leading-relaxed line-clamp-2">
             {product.description}
           </p>
         </div>
@@ -632,7 +632,7 @@ function ProductCard({ product }: { product: Product }) {
         )}
 
         {/* Price & Action */}
-        <div className="pt-4 border-t border-slate-200 flex items-end justify-between gap-4">
+        <div className="pt-4 mt-auto border-t border-slate-200 flex items-end justify-between gap-4">
           <div>
             {product.priceRange ? (
               <div>

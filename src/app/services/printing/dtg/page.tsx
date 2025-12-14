@@ -77,12 +77,12 @@ export default function DTGPage() {
 
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge with artistic icon */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 backdrop-blur-md shadow-lg border border-purple-200/50 text-sm font-semibold mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-purple-500/10 via-pink-500/10 to-blue-500/10 backdrop-blur-md shadow-lg border border-purple-200/50 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">
               <Palette className="w-4 h-4 text-purple-600" />
               <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">ศิลปะบนเสื้อผ้า • Artistic Printing</span>
             </div>
 
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up delay-100">
               <span className="block text-slate-900 mb-2">DTG</span>
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 bg-clip-text text-transparent">Direct to Garment</span>
@@ -105,13 +105,13 @@ export default function DTGPage() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed animate-fade-in-up delay-200 max-w-2xl mx-auto font-medium">
+            <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed opacity-0 animate-fade-in-up delay-200 max-w-2xl mx-auto font-medium">
               พิมพ์หมึกลงบนเนื้อผ้าโดยตรง <span className="text-purple-600 font-bold">ความละเอียดสูงสุด</span> 
               เหมือนพิมพ์ภาพถ่าย <span className="text-pink-600 font-bold">สีสันสดใส</span> ไล่เฉดสีได้อย่างสมบูรณ์แบบ 
               ไม่มีขั้นต่ำ สั่งได้ตั้งแต่ 1 ตัว
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
+            <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
               <span className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur rounded-full shadow-md border border-purple-100">
                 <Camera className="w-4 h-4 text-purple-600" />
                 <span className="text-slate-700 font-bold">ความละเอียดระดับภาพถ่าย</span>
@@ -126,9 +126,9 @@ export default function DTGPage() {
               </span>
             </div>
 
-            <div className="flex justify-center animate-fade-in-up delay-300">
+            <div className="flex justify-center opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="#contact" 
+                href="/contact" 
                 className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
@@ -139,7 +139,7 @@ export default function DTGPage() {
               </a>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 animate-fade-in-up delay-400">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 opacity-0 animate-fade-in-up delay-500">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-slate-900">1 ตัว</div>
                 <div className="text-sm text-slate-600">ขั้นต่ำ</div>
@@ -571,7 +571,7 @@ export default function DTGPage() {
               เพื่อให้ได้ราคาที่แม่นยำและยุติธรรมที่สุดสำหรับงานของคุณ 
               กรุณาส่งไฟล์ Artwork พร้อมแจ้งขนาดและจำนวนที่ต้องการมาให้เราประเมินราคา
             </p>
-            <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+            <a href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
               <Phone className="w-5 h-5" />
               ประเมินราคาเฉพาะลายของคุณ
             </a>

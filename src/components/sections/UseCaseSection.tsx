@@ -236,7 +236,7 @@ export default function UseCaseSection({ className = '' }: UseCaseSectionProps) 
 
                   {/* CTA */}
                   <a 
-                    href="#contact"
+                    href="/contact"
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-ci-blue text-white rounded-xl font-bold hover:bg-ci-blueDark transition-colors"
                   >
                     สั่งผลิตเลย
@@ -268,7 +268,7 @@ export default function UseCaseSection({ className = '' }: UseCaseSectionProps) 
 
         {/* Bottom text */}
         <p className="text-center text-slate-500 mt-10">
-          ไม่เห็นประเภทที่คุณต้องการ? <a href="#contact" className="text-ci-blue font-medium hover:underline">ติดต่อเราได้เลย</a> เราทำให้ได้ทุกแบบ
+          ไม่เห็นประเภทที่คุณต้องการ? <a href="/contact" className="text-ci-blue font-medium hover:underline">ติดต่อเราได้เลย</a> เราทำให้ได้ทุกแบบ
         </p>
       </div>
     </section>

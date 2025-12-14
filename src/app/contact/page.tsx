@@ -97,19 +97,19 @@ export default function ContactPage() {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 rounded-full mb-4 opacity-0 animate-fade-in-up">
               <Phone className="w-4 h-4 text-ci-blue" />
               <span className="text-sm font-semibold text-ci-blue">Contact Us</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 opacity-0 animate-fade-in-up delay-100">
               <span className="bg-gradient-to-r from-ci-blue to-ci-blueDark text-transparent bg-clip-text">
                 ติดต่อเรา
               </span>
             </h1>
-            <div className="w-16 h-1 bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-full mx-auto mb-6" />
+            <div className="w-16 h-1 bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-full mx-auto mb-6 opacity-0 animate-fade-in-up delay-200" />
             
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-lg text-slate-600 leading-relaxed opacity-0 animate-fade-in-up delay-300">
               เราพร้อมให้คำปรึกษาและประเมินราคาสำหรับโปรเจกต์ของคุณ<br className="hidden md:block" />
               เลือกช่องทางที่สะดวกที่สุดสำหรับคุณ หรือติดตามคอนเทนต์ดีๆ จากเราได้เลย!
             </p>

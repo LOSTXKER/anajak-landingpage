@@ -103,20 +103,20 @@ export default function BlogPage() {
 
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 text-ci-blue rounded-full text-sm font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 text-ci-blue rounded-full text-sm font-semibold mb-6 opacity-0 animate-fade-in-up">
               <BookOpen className="w-4 h-4" />
               บทความและคู่มือ
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 opacity-0 animate-fade-in-up delay-100">
               เรียนรู้ทุกสิ่งเกี่ยวกับ<br />
               <span className="text-ci-blue">การสกรีนเสื้อ</span>
             </h1>
-            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto opacity-0 animate-fade-in-up delay-200">
               บทความ คู่มือ และเคล็ดลับจากผู้เชี่ยวชาญ เพื่อช่วยให้คุณเลือกและดูแลงานสกรีนได้อย่างมืออาชีพ
             </p>
 
             {/* Search Bar */}
-            <div className="max-w-2xl mx-auto">
+            <div className="max-w-2xl mx-auto opacity-0 animate-fade-in-up delay-300">
               <div className="relative">
                 <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input

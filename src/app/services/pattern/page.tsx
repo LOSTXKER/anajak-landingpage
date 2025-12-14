@@ -113,12 +113,12 @@ export default function PatternServicePage() {
           </div>
 
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/50 text-sm font-semibold mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/50 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">
               <Scissors className="w-4 h-4 text-ci-blue" />
               <span className="text-slate-700">บริการหลัก</span>
             </div>
 
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up delay-100">
               <span className="block text-slate-900 mb-2">ทำแพทเทิร์น</span>
               <span className="relative inline-block">
                 <span className="gradient-text">ตัดเย็บตามแบบ</span>
@@ -141,12 +141,12 @@ export default function PatternServicePage() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed animate-fade-in-up delay-200 max-w-2xl mx-auto">
-              รับทำแพทเทิร์นและตัดเย็บเสื้อตามแบบที่คุณต้องการ 
+            <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed opacity-0 animate-fade-in-up delay-200 max-w-2xl mx-auto">
+              รับทำแพทเทิร์นและตัดเย็บเสื้อตามแบบที่คุณต้องการ
               ทั้งแบบมาตรฐานและแบบ Custom สำหรับแบรนด์ของคุณ
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
+            <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
                 <CheckCircle className="w-4 h-4 text-ci-blue" /> ทำแพทเทิร์นใหม่
               </span>
@@ -158,9 +158,9 @@ export default function PatternServicePage() {
               </span>
             </div>
 
-            <div className="flex justify-center animate-fade-in-up delay-300">
+            <div className="flex justify-center opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="#contact" 
+                href="/contact" 
                 className="group relative px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
@@ -171,7 +171,7 @@ export default function PatternServicePage() {
               </a>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 animate-fade-in-up delay-400">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 opacity-0 animate-fade-in-up delay-500">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-slate-900">10+</div>
                 <div className="text-sm text-slate-600">ปีประสบการณ์</div>
@@ -263,7 +263,7 @@ export default function PatternServicePage() {
                 </div>
 
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all w-fit"
                 >
                   สอบถามเพิ่มเติม

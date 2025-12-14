@@ -300,16 +300,16 @@ export default function FabricComparisonPage() {
         <div className="container mx-auto px-4 md:px-6 relative">
           <div className="text-center max-w-4xl mx-auto">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-ci-blue/10 to-blue-500/10 text-ci-blue rounded-full text-sm font-semibold mb-6 border border-ci-blue/20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-ci-blue/10 to-blue-500/10 text-ci-blue rounded-full text-sm font-semibold mb-6 border border-ci-blue/20 opacity-0 animate-fade-in-up">
               <Star className="w-4 h-4 fill-current" />
               เปรียบเทียบเนื้อผ้า
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 opacity-0 animate-fade-in-up delay-100">
               เนื้อผ้าแบบไหน<br />
               <span className="bg-gradient-to-r from-ci-blue to-blue-600 text-transparent bg-clip-text">ที่ใช่สำหรับคุณ?</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto opacity-0 animate-fade-in-up delay-200">
               เปรียบเทียบคุณสมบัติเด่นของผ้าแต่ละชนิด เพื่อให้คุณเลือกเสื้อที่ตอบโจทย์การใช้งานได้ดีที่สุด
             </p>
           </div>

@@ -116,7 +116,7 @@ export default function ServicesSection({ className = '', showCTA = true }: Serv
         <div className="grid lg:grid-cols-3 gap-4 mb-4">
           {/* Featured Card (spans 1 col, full height) */}
           <a
-            href="#contact"
+            href="/contact"
             className="group relative h-80 lg:h-auto lg:row-span-2 rounded-2xl overflow-hidden cursor-pointer"
           >
             <ServiceImage src={featuredService.image} alt={featuredService.title} />
@@ -144,7 +144,7 @@ export default function ServicesSection({ className = '', showCTA = true }: Serv
           {rightServices.map((service) => (
             <a
               key={service.id}
-              href="#contact"
+              href="/contact"
               className="group relative h-44 rounded-2xl overflow-hidden cursor-pointer"
             >
               <ServiceImage src={service.image} alt={service.title} />
@@ -177,7 +177,7 @@ export default function ServicesSection({ className = '', showCTA = true }: Serv
           {bottomServices.map((service) => (
             <a
               key={service.id}
-              href="#contact"
+              href="/contact"
               className="group relative h-48 rounded-2xl overflow-hidden cursor-pointer"
             >
               <ServiceImage src={service.image} alt={service.title} />

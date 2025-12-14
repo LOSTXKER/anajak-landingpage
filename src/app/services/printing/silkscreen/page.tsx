@@ -75,12 +75,12 @@ export default function SilkScreenPage() {
 
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge with factory icon */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-yellow-500/10 backdrop-blur-md shadow-lg border border-amber-200/50 text-sm font-semibold mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-yellow-500/10 backdrop-blur-md shadow-lg border border-amber-200/50 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">
               <TrendingDown className="w-4 h-4 text-amber-600" />
               <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent">มาตรฐานอุตสาหกรรม • Industrial Standard</span>
             </div>
 
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up delay-100">
               <span className="block text-slate-900 mb-2">Silk Screen</span>
               <span className="relative inline-block">
                 <span className="bg-gradient-to-r from-amber-600 via-orange-600 to-yellow-600 bg-clip-text text-transparent">สกรีนซิลค์</span>
@@ -103,13 +103,13 @@ export default function SilkScreenPage() {
               </span>
             </h1>
 
-            <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed animate-fade-in-up delay-200 max-w-2xl mx-auto font-medium">
+            <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed opacity-0 animate-fade-in-up delay-200 max-w-2xl mx-auto font-medium">
               เทคนิคดั้งเดิมมาตรฐานโลก <span className="text-amber-600 font-bold">ยิ่งสั่งเยอะ ยิ่งถูก</span> 
               สีสดชัดที่สุด ทนทานที่สุด เหมาะกับ<span className="text-orange-600 font-bold">งานจำนวนมาก</span> 
               ตั้งแต่ 50-1000+ ตัว ราคาโรงงาน
             </p>
 
-            <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
+            <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
               <span className="flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur rounded-full shadow-md border border-amber-100">
                 <TrendingDown className="w-4 h-4 text-amber-600" />
                 <span className="text-slate-700 font-bold">ยิ่งสั่งเยอะ ยิ่งถูก</span>
@@ -124,9 +124,9 @@ export default function SilkScreenPage() {
               </span>
             </div>
 
-            <div className="flex justify-center animate-fade-in-up delay-300">
+            <div className="flex justify-center opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="#contact" 
+                href="/contact" 
                 className="group relative px-8 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
@@ -137,7 +137,7 @@ export default function SilkScreenPage() {
               </a>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 animate-fade-in-up delay-400">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 opacity-0 animate-fade-in-up delay-500">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-slate-900">50 ตัว</div>
                 <div className="text-sm text-slate-600">ขั้นต่ำ</div>
@@ -511,7 +511,7 @@ export default function SilkScreenPage() {
                 เพื่อให้ได้ราคาที่แม่นยำที่สุด กรุณาแจ้ง: จำนวนที่ต้องการ, จำนวนสี, 
                 และขนาดลาย เราจะประเมินราคาให้ทันที
               </p>
-              <a href="#contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+              <a href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
                 <Phone className="w-5 h-5" />
                 ขอใบเสนอราคา
               </a>

@@ -143,13 +143,13 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/50 text-sm font-semibold mb-8 animate-fade-in-up">
+            <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/50 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">
               <Star className="w-4 h-4 fill-ci-yellow text-ci-yellow" />
               <span className="text-slate-700">บริการครบวงจร</span>
             </div>
 
             {/* Headline */}
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 animate-fade-in-up delay-100">
+            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up delay-100">
               <span className="block text-slate-900 mb-2">บริการของเรา</span>
               <span className="relative inline-block">
                 <span className="gradient-text">ครบจบในที่เดียว</span>
@@ -173,13 +173,13 @@ export default function ServicesPage() {
           </h1>
 
             {/* Subheadline */}
-            <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed animate-fade-in-up delay-200 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed opacity-0 animate-fade-in-up delay-200 max-w-2xl mx-auto">
               ออกแบบ ผลิต ถ่ายภาพ แพ็คส่ง — เราดูแลให้ครบทุกขั้นตอน
               ไม่ว่าจะเริ่มต้นจากศูนย์หรือมีแบบพร้อมแล้ว
             </p>
 
             {/* Checkmarks */}
-            <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
+            <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
                 <CheckCircle className="w-4 h-4 text-ci-blue" /> บริการครบวงจร
               </span>
@@ -192,9 +192,9 @@ export default function ServicesPage() {
             </div>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-300">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="#contact" 
+                href="/contact" 
                 className="group relative px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
@@ -214,7 +214,7 @@ export default function ServicesPage() {
             </div>
 
             {/* Stats */}
-            <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 animate-fade-in-up delay-400">
+            <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 opacity-0 animate-fade-in-up delay-500">
               <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold text-slate-900">6+</div>
                 <div className="text-sm text-slate-600">บริการครบวงจร</div>
@@ -386,7 +386,7 @@ export default function ServicesPage() {
           {/* CTA */}
           <div className="text-center mt-12">
             <a
-              href="#contact"
+              href="/contact"
               className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all"
             >
               สั่งซื้อเสื้อเปล่า
@@ -477,7 +477,7 @@ export default function ServicesPage() {
                 </div>
 
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all w-fit"
                 >
                   ติดต่อสอบถาม

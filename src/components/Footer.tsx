@@ -10,7 +10,7 @@ import { siteConfig } from '@/config/site';
 const footerServices = [
   { name: 'พิมพ์เสื้อ DTG', href: '/services/printing/dtg' },
   { name: 'พิมพ์เสื้อ DTF', href: '/services/printing/dtf' },
-  { name: 'Screen Print', href: '/services/printing/silkscreen' },
+  { name: 'Silk Screen', href: '/services/printing/silkscreen' },
   { name: 'ทำแพทเทิร์น', href: '/services/pattern' },
   { name: 'เนื้อผ้าหลากหลาย', href: '/services/fabric' },
 ];

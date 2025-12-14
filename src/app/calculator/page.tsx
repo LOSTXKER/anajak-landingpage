@@ -178,25 +178,25 @@ export default function CalculatorPage() {
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
           <div className="text-center max-w-3xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 rounded-full mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 rounded-full mb-4 opacity-0 animate-fade-in-up">
               <Calculator className="w-4 h-4 text-ci-blue" />
               <span className="text-sm font-semibold text-ci-blue">Price Calculator</span>
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 opacity-0 animate-fade-in-up delay-100">
               <span className="bg-gradient-to-r from-ci-blue to-ci-blueDark text-transparent bg-clip-text">
                 คำนวณราคา
               </span>
               <span className="text-slate-900">เสื้อพร้อมสกรีน</span>
             </h1>
-            <div className="w-16 h-1 bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-full mx-auto mb-6" />
+            <div className="w-16 h-1 bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-full mx-auto mb-6 opacity-0 animate-fade-in-up delay-200" />
             
-            <p className="text-lg text-slate-600 leading-relaxed">
+            <p className="text-lg text-slate-600 leading-relaxed opacity-0 animate-fade-in-up delay-300">
               ปรับเปลี่ยนตัวเลือกด้านล่างเพื่อดูราคาประเมินเบื้องต้นได้ทันที<br className="hidden md:block" />
               ยิ่งสั่งเยอะ ยิ่งคุ้ม! รับส่วนลดพิเศษเมื่อสั่งจำนวนมาก
             </p>
 
-            <div className="mt-4 inline-flex items-center gap-2 text-sm text-slate-500">
+            <div className="mt-4 inline-flex items-center gap-2 text-sm text-slate-500 opacity-0 animate-fade-in-up delay-400">
               <FileText className="w-4 h-4" />
               <span>ราคาอัปเดตล่าสุดเมื่อ: 1 กันยายน 2568</span>
             </div>

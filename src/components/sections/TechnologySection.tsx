@@ -198,7 +198,7 @@ export default function TechnologySection({ className = '' }: TechnologySectionP
         {/* Bottom CTA */}
         <div className="mt-10 text-center">
           <a
-            href="#contact"
+            href="/contact"
             className="group inline-flex items-center gap-2 text-ci-blueLight font-bold hover:text-white hover:gap-3 transition-all"
           >
             สอบถามเทคนิคที่เหมาะกับงานคุณ
