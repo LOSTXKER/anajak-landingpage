@@ -56,7 +56,7 @@ export default function DTGPage() {
   return (
     <PageLayout>
       {/* Hero Section - DTG Character: Creative, Colorful, Artistic */}
-      <section className="relative min-h-[70vh] pt-32 pb-20 overflow-hidden">
+      <section className="relative min-h-[70vh] pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
         {/* Colorful artistic background */}
         <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-yellow-50 to-blue-50" />
         <div className="absolute inset-0 bg-dot-pattern opacity-30" />
@@ -167,7 +167,7 @@ export default function DTGPage() {
       </section>
 
       {/* What is DTG */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

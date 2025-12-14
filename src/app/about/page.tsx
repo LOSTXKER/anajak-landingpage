@@ -45,7 +45,7 @@ export default function AboutPage() {
   return (
     <PageLayout>
       {/* Our Story Section */}
-      <section className="py-20 md:py-28 bg-slate-50">
+      <section className="py-12 md:py-16 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
@@ -213,7 +213,7 @@ export default function AboutPage() {
       </section>
 
       {/* Vision & Mission */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-br from-ci-blue via-ci-blueDark to-slate-900 text-white overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 bg-gradient-to-br from-ci-blue via-ci-blueDark to-slate-900 text-white overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl" />

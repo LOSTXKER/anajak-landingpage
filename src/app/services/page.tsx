@@ -119,6 +119,9 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
 export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
 
   // Handle hash navigation
   useEffect(() => {
@@ -143,10 +146,61 @@ export default function ServicesPage() {
     }
   };
 
+  // Mouse drag handlers
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    e.preventDefault(); // Prevent text selection
+    setIsDragging(true);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+    carouselRef.current.style.cursor = 'grabbing';
+  };
+
+  const handleMouseLeave = () => {
+    setIsDragging(false);
+    if (carouselRef.current) {
+      carouselRef.current.style.cursor = 'grab';
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (carouselRef.current) {
+      carouselRef.current.style.cursor = 'grab';
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !carouselRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 2; // Multiply by 2 for faster scroll
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  // Touch drag handlers
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!carouselRef.current) return;
+    setIsDragging(true);
+    setStartX(e.touches[0].pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !carouselRef.current) return;
+    const x = e.touches[0].pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX) * 2;
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] pt-32 pb-20 overflow-hidden">
+      <section className="relative min-h-[70vh] pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
         {/* Background - เหมือนหน้าแรก */}
         <div className="absolute inset-0 bg-animated-gradient" />
         <div className="absolute inset-0 bg-dot-pattern opacity-40" />
@@ -256,7 +310,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Main Services - Alternating Rows */}
-      <section id="main-services" className="py-24 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
+      <section id="main-services" className="py-12 md:py-16 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
         {/* Background - เหมือนหน้าแรก */}
         <div className="absolute top-20 right-10 w-72 h-72 bg-ci-yellow/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-ci-blue/10 rounded-full blur-3xl" />
@@ -384,10 +438,17 @@ export default function ServicesPage() {
           </div>
 
           {/* Carousel */}
-          <div 
+          <div
             ref={carouselRef}
-            className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide scroll-smooth -mx-4 px-4"
+            className="flex gap-6 overflow-x-auto pb-4 scrollbar-hide scroll-smooth -mx-4 px-4 cursor-grab active:cursor-grabbing select-none"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
           >
             {blankShirts.map((product) => (
               <div key={product.id} className="flex-shrink-0 w-64 md:w-72">

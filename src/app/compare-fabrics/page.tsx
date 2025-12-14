@@ -289,7 +289,7 @@ export default function FabricComparisonPage() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white overflow-hidden">
         {/* Decorative Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-ci-blue/10 rounded-full blur-3xl" />
@@ -491,7 +491,7 @@ export default function FabricComparisonPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 md:py-24 bg-gradient-to-br from-slate-50 via-blue-50/20 to-white overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 bg-gradient-to-br from-slate-50 via-blue-50/20 to-white overflow-hidden">
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-ci-blue/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />

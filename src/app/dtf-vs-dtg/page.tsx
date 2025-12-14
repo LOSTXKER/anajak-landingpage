@@ -36,7 +36,7 @@ export default function DTFvsDTGPage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] pt-32 pb-20 overflow-hidden">
+      <section className="relative min-h-[70vh] pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
         {/* Gradient background with blobs */}
         <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-slate-50 to-cyan-50" />
         <div className="absolute inset-0 bg-dot-pattern opacity-30" />
@@ -79,7 +79,7 @@ export default function DTFvsDTGPage() {
       </section>
       
       {/* Comparison Section */}
-      <section id="comparison" className="py-20 md:py-24 bg-slate-50">
+      <section id="comparison" className="py-12 md:py-16 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-4xl md:text-5xl font-bold text-slate-900">

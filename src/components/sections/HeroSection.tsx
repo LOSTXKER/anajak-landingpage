@@ -38,7 +38,7 @@ function HeroImage() {
 
 export default function HeroSection({ className = '' }: HeroSectionProps) {
   return (
-    <section id="home" className={`relative min-h-screen pt-28 pb-20 overflow-hidden ${className}`}>
+    <section id="home" className={`relative min-h-screen pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden ${className}`}>
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-animated-gradient" />
       <div className="absolute inset-0 bg-dot-pattern opacity-40" />

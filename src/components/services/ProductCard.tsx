@@ -1,8 +1,8 @@
 'use client';
 
 import { useState } from 'react';
-import { Star, Heart, ShoppingCart, Shirt } from 'lucide-react';
-import FallbackImage from './FallbackImage';
+import Image from 'next/image';
+import { Shirt, Layers, Award, Weight, Ruler, Target, Palette } from 'lucide-react';
 import type { Product } from '@/types';
 
 interface ProductCardProps {
@@ -10,115 +10,158 @@ interface ProductCardProps {
   showQuickAdd?: boolean;
 }
 
-export default function ProductCard({ product, showQuickAdd = true }: ProductCardProps) {
-  const [selectedColor, setSelectedColor] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
-
-  const discount = Math.round((1 - product.price / product.originalPrice) * 100);
+export default function ProductCard({ product }: ProductCardProps) {
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div className="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
-      {/* Image */}
-      <div className="relative h-72 bg-slate-100 overflow-hidden">
-        <FallbackImage 
-          src={product.image} 
-          alt={product.name}
-          fallbackIcon={Shirt}
-          fallbackClassName="bg-gradient-to-br from-slate-100 to-slate-200"
-          className="transition-transform duration-500 group-hover:scale-110"
-        />
-
-        {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-2">
-          {product.badge && (
-            <span className="px-3 py-1 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full shadow">
-              {product.badge}
-            </span>
+    <div
+      className="card overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full flex flex-col"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      {/* Product Image */}
+      <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden flex-shrink-0">
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            {product.category === 'tshirt' ? (
+              <Shirt className="w-20 h-20 text-slate-400" />
+            ) : (
+              <Layers className="w-20 h-20 text-slate-400" />
+            )}
+          </div>
+        )}
+        {/* Minimum Order Badge */}
+        <div className="absolute top-3 left-3">
+          {product.hasMinimumOrder === false ? (
+            <div className="px-3 py-1 bg-green-500 text-white text-xs font-semibold rounded-full shadow-lg">
+              ไม่มีขั้นต่ำ
+            </div>
+          ) : (
+            <div className="px-3 py-1 bg-slate-700 text-white text-xs font-semibold rounded-full shadow-lg">
+              มีขั้นต่ำ 10
+            </div>
           )}
-          <span className="px-3 py-1 bg-red-500 text-white text-xs font-bold rounded-full shadow">
-            -{discount}%
-          </span>
         </div>
-
-        {/* Like Button */}
-        <button
-          onClick={() => setIsLiked(!isLiked)}
-          className="absolute top-3 right-3 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
-        >
-          <Heart className={`w-5 h-5 ${isLiked ? 'fill-red-500 text-red-500' : 'text-slate-400'}`} />
-        </button>
-
-        {/* Quick Add */}
-        {showQuickAdd && (
-          <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-            <button className="w-full px-4 py-2.5 bg-white text-slate-900 font-bold rounded-xl hover:bg-ci-yellow transition-colors flex items-center justify-center gap-2">
-              <ShoppingCart className="w-4 h-4" />
-              เพิ่มลงตะกร้า
-            </button>
+        {!product.inStock && (
+          <div className="absolute inset-0 bg-slate-900/50 flex items-center justify-center">
+            <span className="px-4 py-2 bg-white text-slate-900 font-semibold rounded-lg">
+              สินค้าหมด
+            </span>
           </div>
         )}
       </div>
 
-      {/* Content */}
-      <div className="p-4">
-        {/* Rating */}
-        <div className="flex items-center gap-1 mb-2">
-          <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-          <span className="text-sm font-medium text-slate-900">{product.rating}</span>
-          <span className="text-sm text-slate-400">({product.reviews})</span>
+      {/* Product Info */}
+      <div className="p-4 flex flex-col flex-grow">
+        {/* Category & Title */}
+        <div className="mb-3">
+          <span className="inline-block px-2.5 py-0.5 bg-ci-blue/10 text-ci-blue text-xs font-semibold rounded-full mb-2">
+            {product.category === 'tshirt' ? 'เสื้อเปล่า' : 'เนื้อผ้า'}
+          </span>
+          <h3 className="text-lg font-bold text-slate-900 mb-1.5 group-hover:text-ci-blue transition-colors line-clamp-2">
+            {product.name}
+          </h3>
+          <p className="text-xs text-slate-600 leading-relaxed line-clamp-2 min-h-[2rem]">
+            {product.description}
+          </p>
         </div>
 
-        {/* Name */}
-        <h3 className="font-bold text-slate-900 mb-1 group-hover:text-ci-blue transition-colors line-clamp-2">
-          {product.name}
-        </h3>
-
-        {/* Weight */}
-        <p className="text-xs text-slate-500 mb-3">{product.weight}</p>
-
-        {/* Features */}
-        <div className="flex flex-wrap gap-1 mb-3">
-          {product.features.slice(0, 2).map((feature, idx) => (
-            <span key={idx} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded">
-              {feature}
+        {/* Specifications Box */}
+        <div className="bg-slate-50/70 rounded-lg p-3 mb-3 space-y-2 border border-slate-100 min-h-[156px]">
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-600 flex items-center gap-1.5">
+              <Award className="w-3 h-3 text-ci-blue/70" />
+              <span>เกรดผ้า</span>
             </span>
-          ))}
+            <span className="text-xs font-bold text-ci-blue">{product.grade || '-'}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-600 flex items-center gap-1.5">
+              <Shirt className="w-3 h-3 text-ci-blue/70" />
+              <span>ประเภทเสื้อผ้า</span>
+            </span>
+            <span className="text-xs font-bold text-slate-900">{product.material || '-'}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-600 flex items-center gap-1.5">
+              <Weight className="w-3 h-3 text-ci-blue/70" />
+              <span>เบอร์ผ้า</span>
+            </span>
+            <span className="text-xs font-bold text-slate-900">{product.weight || '-'}</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-600 flex items-center gap-1.5">
+              <Weight className="w-3 h-3 text-ci-blue/70" />
+              <span>ความหนา</span>
+            </span>
+            <span className="text-xs font-bold text-slate-900">-</span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-600 flex items-center gap-1.5">
+              <Ruler className="w-3 h-3 text-ci-blue/70" />
+              <span>ไซส์</span>
+            </span>
+            <span className="text-xs font-bold text-slate-900">
+              {product.sizes && product.sizes.length > 0 ? product.sizes.join(', ') : '-'}
+            </span>
+          </div>
+          <div className="flex items-center justify-between">
+            <span className="text-xs text-slate-600 flex items-center gap-1.5">
+              <Target className="w-3 h-3 text-ci-blue/70" />
+              <span>เหมาะสำหรับ</span>
+            </span>
+            <span className="text-xs font-bold text-slate-900">-</span>
+          </div>
         </div>
 
         {/* Colors */}
-        <div className="flex items-center gap-1.5 mb-3">
-          {product.colors.slice(0, 6).map((color, idx) => (
-            <button
-              key={idx}
-              onClick={() => setSelectedColor(idx)}
-              className={`w-6 h-6 rounded-full border-2 transition-all ${
-                selectedColor === idx
-                  ? 'border-ci-blue scale-110 shadow'
-                  : 'border-slate-200 hover:border-slate-400'
-              }`}
-              style={{ backgroundColor: color }}
-            />
-          ))}
-          {product.colors.length > 6 && (
-            <span className="text-xs text-slate-500">+{product.colors.length - 6}</span>
-          )}
-        </div>
-
-        {/* Sizes */}
-        <div className="flex items-center gap-1 mb-4">
-          {product.sizes.map((size) => (
-            <span key={size} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-xs rounded font-medium">
-              {size}
-            </span>
-          ))}
-        </div>
-
-        {/* Price */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-baseline gap-2">
-            <span className="text-2xl font-bold text-ci-blue">฿{product.price}</span>
-            <span className="text-sm text-slate-400 line-through">฿{product.originalPrice}</span>
+        {product.colors && product.colors.length > 0 && (
+          <div className="mb-3">
+            <div className="flex items-center gap-1.5 mb-2">
+              <Palette className="w-3 h-3 text-slate-400" />
+              <p className="text-xs font-semibold text-slate-700">สีที่เลือกได้</p>
+            </div>
+            <div className="flex flex-wrap gap-1.5">
+              {product.colors.slice(0, 6).map((color, idx) => (
+                <div
+                  key={idx}
+                  className="w-7 h-7 rounded-full bg-slate-300 border-2 border-slate-300 hover:border-ci-blue hover:scale-105 transition-all cursor-pointer"
+                  title={color}
+                />
+              ))}
+            </div>
           </div>
+        )}
+
+        {/* Price & Action */}
+        <div className="pt-4 mt-auto border-t border-slate-200 flex items-end justify-between gap-4">
+          <div>
+            {product.priceRange ? (
+              <div>
+                <p className="text-xs text-slate-500 mb-1">ราคา/หลา</p>
+                <p className="text-3xl font-bold text-ci-blue">
+                  ฿{product.priceRange.min}
+                </p>
+              </div>
+            ) : (
+              <div>
+                <p className="text-xs text-slate-500 mb-1">ราคาเริ่มต้น</p>
+                <p className="text-3xl font-bold text-ci-blue">
+                  ฿{product.price}
+                </p>
+              </div>
+            )}
+          </div>
+          <button className="px-5 py-2.5 bg-gradient-to-r from-ci-blue to-blue-600 text-white rounded-xl hover:shadow-xl hover:scale-105 transition-all text-sm font-bold whitespace-nowrap">
+            รายละเอียด
+          </button>
         </div>
       </div>
     </div>

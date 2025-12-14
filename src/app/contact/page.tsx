@@ -89,7 +89,7 @@ export default function ContactPage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative py-20 md:py-28 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 bg-gradient-to-b from-slate-50 to-white overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-ci-blue/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-ci-yellow/10 rounded-full blur-3xl" />

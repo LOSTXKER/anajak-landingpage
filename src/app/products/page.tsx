@@ -256,7 +256,7 @@ export default function ProductsPage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
+      <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-ci-blue/5 rounded-full blur-3xl" />
           <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-ci-yellow/5 rounded-full blur-3xl" />

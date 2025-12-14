@@ -56,7 +56,7 @@ export default function DTFPage() {
   return (
     <PageLayout>
       {/* Hero Section - DTF Character: Strong, Durable, Flexible */}
-      <section className="relative min-h-[70vh] pt-32 pb-20 overflow-hidden">
+      <section className="relative min-h-[70vh] pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
         {/* Strong & Durable background */}
         <div className="absolute inset-0 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50" />
         <div className="absolute inset-0 bg-dot-pattern opacity-30" />
@@ -166,7 +166,7 @@ export default function DTFPage() {
       </section>
 
       {/* What is DTF */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

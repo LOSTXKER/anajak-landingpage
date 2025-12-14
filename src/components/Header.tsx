@@ -96,140 +96,140 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
 
   return (
     <>
-      <header 
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled 
-            ? 'glass-effect shadow-md' 
-            : 'bg-white/95 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none'
-        }`}
-      >
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'glass-effect shadow-md' 
+          : 'bg-white/95 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none'
+      }`}
+    >
         {/* Top Bar - Contact Info */}
-        {!isScrolled && (
+      {!isScrolled && (
           <div className="bg-slate-900 text-white py-2 text-sm">
-            <div className="container mx-auto px-4 md:px-6">
+          <div className="container mx-auto px-4 md:px-6">
               <div className="flex flex-wrap items-center justify-between gap-2 md:gap-4">
                 <div className="flex flex-wrap items-center gap-3 md:gap-6 text-xs md:text-sm">
-                  <a href={siteConfig.phoneHref} className="flex items-center gap-1 hover:text-ci-yellow transition-colors">
+                <a href={siteConfig.phoneHref} className="flex items-center gap-1 hover:text-ci-yellow transition-colors">
                     <Phone className="w-3 h-3 md:w-3.5 md:h-3.5" />
-                    <span>{siteConfig.phone}</span>
-                  </a>
-                  <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-1 hover:text-ci-yellow transition-colors">
+                  <span>{siteConfig.phone}</span>
+                </a>
+                <a href={`mailto:${siteConfig.email}`} className="flex items-center gap-1 hover:text-ci-yellow transition-colors">
                     <Mail className="w-3 h-3 md:w-3.5 md:h-3.5" />
                     <span className="hidden sm:inline">{siteConfig.email}</span>
-                  </a>
-                </div>
+                </a>
+              </div>
                 <div className="flex items-center gap-1 text-slate-300 text-xs md:text-sm">
                   <MapPin className="w-3 h-3 md:w-3.5 md:h-3.5" />
-                  <span>{siteConfig.address.short}</span>
-                </div>
+                <span>{siteConfig.address.short}</span>
               </div>
             </div>
           </div>
-        )}
+        </div>
+      )}
 
-        {/* Main Navigation */}
-        <nav className="container mx-auto px-4 md:px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group">
-              <div className="w-10 h-10 bg-gradient-to-br from-ci-blue to-ci-blueDark rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform">
-                A
-              </div>
-              <div>
-                <div className="font-bold text-lg leading-tight text-slate-900">{siteConfig.name}</div>
-                <div className="text-xs text-slate-500">{siteConfig.nameEn}</div>
-              </div>
-            </Link>
+      {/* Main Navigation */}
+      <nav className="container mx-auto px-4 md:px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link href="/" className="flex items-center gap-2 group">
+            <div className="w-10 h-10 bg-gradient-to-br from-ci-blue to-ci-blueDark rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform">
+              A
+            </div>
+            <div>
+              <div className="font-bold text-lg leading-tight text-slate-900">{siteConfig.name}</div>
+              <div className="text-xs text-slate-500">{siteConfig.nameEn}</div>
+            </div>
+          </Link>
 
-            {/* Desktop Navigation */}
+          {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-0.5">
-              {navigation.map((item) => {
-                const isActive = isActiveLink(item.href);
-                const isHashLink = item.href.startsWith('#');
-                const hasChildren = item.children && item.children.length > 0;
-                
-                // Dropdown menu - check this FIRST before isHashLink
-                if (hasChildren) {
-                  return (
-                    <div
-                      key={item.name}
-                      className="relative"
-                      onMouseEnter={() => setOpenDropdown(item.name)}
-                      onMouseLeave={() => setOpenDropdown(null)}
-                    >
-                      {isHashLink ? (
-                        <a
-                          href={item.href}
+            {navigation.map((item) => {
+              const isActive = isActiveLink(item.href);
+              const isHashLink = item.href.startsWith('#');
+              const hasChildren = item.children && item.children.length > 0;
+              
+              // Dropdown menu - check this FIRST before isHashLink
+              if (hasChildren) {
+                return (
+                  <div
+                    key={item.name}
+                    className="relative"
+                    onMouseEnter={() => setOpenDropdown(item.name)}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    {isHashLink ? (
+                      <a
+                        href={item.href}
                           className={`flex items-center gap-1 px-3 py-2 rounded-lg font-medium transition-all ${
-                            isActive 
-                              ? 'text-ci-blue bg-blue-50' 
-                              : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
-                          }`}
-                        >
-                          {item.name}
-                          <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
-                        </a>
-                      ) : (
-                        <Link
-                          href={item.href}
+                          isActive 
+                            ? 'text-ci-blue bg-blue-50' 
+                            : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                      </a>
+                    ) : (
+                      <Link
+                        href={item.href}
                           className={`flex items-center gap-1 px-3 py-2 rounded-lg font-medium transition-all ${
-                            isActive 
-                              ? 'text-ci-blue bg-blue-50' 
-                              : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
-                          }`}
-                        >
-                          {item.name}
-                          <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
-                        </Link>
-                      )}
-                      
-                      {/* Dropdown Content */}
-                      {openDropdown === item.name && (
+                          isActive 
+                            ? 'text-ci-blue bg-blue-50' 
+                            : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
+                        }`}
+                      >
+                        {item.name}
+                        <ChevronDown className={`w-4 h-4 transition-transform ${openDropdown === item.name ? 'rotate-180' : ''}`} />
+                      </Link>
+                    )}
+                    
+                    {/* Dropdown Content */}
+                    {openDropdown === item.name && (
                         <div className="absolute top-full left-0 -mt-1 pt-3 w-56">
                           <div className="bg-white rounded-xl shadow-xl border border-slate-100 py-2 animate-fade-in-down">
-                            {item.children!.map((child) => (
-                              <Link
-                                key={child.name}
-                                href={child.href}
-                                className="block px-4 py-2.5 text-slate-700 hover:text-ci-blue hover:bg-blue-50 transition-all"
-                              >
-                                {child.name}
-                              </Link>
-                            ))}
+                        {item.children!.map((child) => (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            className="block px-4 py-2.5 text-slate-700 hover:text-ci-blue hover:bg-blue-50 transition-all"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
                           </div>
-                        </div>
-                      )}
-                    </div>
-                  );
-                }
-                
-                if (isHashLink) {
-                  return (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      className="px-3 py-2 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
-                    >
-                      {item.name}
-                    </a>
-                  );
-                }
-                
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+              
+              if (isHashLink) {
                 return (
-                  <Link
+                  <a
                     key={item.name}
                     href={item.href}
-                    className={`px-3 py-2 rounded-lg font-medium transition-all ${
-                      isActive 
-                        ? 'text-ci-blue bg-blue-50' 
-                        : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
-                    }`}
+                      className="px-3 py-2 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 );
-              })}
-            </div>
+              }
+              
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                    className={`px-3 py-2 rounded-lg font-medium transition-all ${
+                    isActive 
+                      ? 'text-ci-blue bg-blue-50' 
+                      : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+          </div>
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-2 ml-1">
@@ -239,103 +239,103 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
             </a>
           </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="lg:hidden p-2 text-slate-700 hover:text-ci-blue transition-colors relative z-[60]"
-              aria-label="Toggle menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
-            </button>
-          </div>
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <X className="w-6 h-6" />
+            ) : (
+              <Menu className="w-6 h-6" />
+            )}
+          </button>
+        </div>
         </nav>
       </header>
 
       {/* Mobile Menu Backdrop - Outside header for proper z-index */}
-      {isMobileMenuOpen && (
-        <div
+        {isMobileMenuOpen && (
+          <div
           className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-[55]"
-          onClick={() => setIsMobileMenuOpen(false)}
+            onClick={() => setIsMobileMenuOpen(false)}
           style={{ top: isScrolled ? '72px' : '104px' }}
-        />
-      )}
+          />
+        )}
 
       {/* Mobile Menu - Outside header for proper z-index */}
-      <div 
+        <div 
         className={`lg:hidden fixed inset-x-0 bg-white shadow-2xl z-[56] overflow-y-auto ${
           isMobileMenuOpen ? 'block' : 'hidden'
-        }`}
+          }`}
         style={{ top: isScrolled ? '72px' : '104px', bottom: 0 }}
-      >
-        <div className="p-6 space-y-2">
-          {/* Navigation Links */}
-          {navigation.map((item) => {
-            const isHashLink = item.href.startsWith('#');
-            const hasChildren = item.children && item.children.length > 0;
-            const isOpen = openDropdown === item.name;
-            
-            // With submenu - check this FIRST
-            if (hasChildren) {
-              return (
-                <div key={item.name}>
-                  <button
-                    onClick={() => setOpenDropdown(isOpen ? null : item.name)}
-                    className="w-full flex items-center justify-between px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
-                  >
-                    <span>{item.name}</span>
-                    <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
-                  </button>
-                  <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
-                    <div className="ml-4 mt-1 space-y-1 py-2">
-                      {item.children!.map((child) => (
-                        <Link
-                          key={child.name}
-                          href={child.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="block px-4 py-2.5 text-sm text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
+        >
+          <div className="p-6 space-y-2">
+            {/* Navigation Links */}
+            {navigation.map((item) => {
+              const isHashLink = item.href.startsWith('#');
+              const hasChildren = item.children && item.children.length > 0;
+              const isOpen = openDropdown === item.name;
+              
+              // With submenu - check this FIRST
+              if (hasChildren) {
+                return (
+                  <div key={item.name}>
+                    <button
+                      onClick={() => setOpenDropdown(isOpen ? null : item.name)}
+                      className="w-full flex items-center justify-between px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <div className="ml-4 mt-1 space-y-1 py-2">
+                        {item.children!.map((child) => (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block px-4 py-2.5 text-sm text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
-            }
-            
-            if (isHashLink) {
+                );
+              }
+              
+              if (isHashLink) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="block px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
+                  >
+                    {item.name}
+                  </a>
+                );
+              }
+              
               return (
-                <a
+                <Link
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
+                  className={`block px-4 py-3 rounded-lg font-medium transition-all ${
+                    isActiveLink(item.href)
+                      ? 'text-ci-blue bg-blue-50'
+                      : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
+                  }`}
                 >
                   {item.name}
-                </a>
+                </Link>
               );
-            }
+            })}
             
-            return (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-4 py-3 rounded-lg font-medium transition-all ${
-                  isActiveLink(item.href)
-                    ? 'text-ci-blue bg-blue-50'
-                    : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
-                }`}
-              >
-                {item.name}
-              </Link>
-            );
-          })}
-          
             {/* CTA Button */}
             <div className="pt-4">
               <a href="/contact" className="btn-primary w-full justify-center">
@@ -343,8 +343,8 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
                 ขอใบเสนอราคา
               </a>
             </div>
+          </div>
         </div>
-      </div>
     </>
   );
 }

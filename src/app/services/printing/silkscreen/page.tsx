@@ -55,7 +55,7 @@ export default function SilkScreenPage() {
   return (
     <PageLayout>
       {/* Hero Section - Silkscreen Character: Industrial, Mass Production, Value */}
-      <section className="relative min-h-[70vh] pt-32 pb-20 overflow-hidden">
+      <section className="relative min-h-[70vh] pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
         {/* Industrial warm background */}
         <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50" />
         <div className="absolute inset-0 bg-dot-pattern opacity-30" />
@@ -165,7 +165,7 @@ export default function SilkScreenPage() {
       </section>
 
       {/* What is Silk Screen */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>

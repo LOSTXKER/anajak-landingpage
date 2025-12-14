@@ -97,7 +97,7 @@ export default function PatternServicePage() {
   return (
     <PageLayout>
       {/* Hero Section */}
-      <section className="relative min-h-[70vh] pt-32 pb-20 overflow-hidden">
+      <section className="relative min-h-[70vh] pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden">
         <div className="absolute inset-0 bg-animated-gradient" />
         <div className="absolute inset-0 bg-dot-pattern opacity-40" />
         <div className="absolute top-20 left-10 w-96 h-96 bg-ci-blue/10 rounded-full blur-3xl" />
@@ -199,7 +199,7 @@ export default function PatternServicePage() {
       </section>
 
       {/* Pattern Services */}
-      <section className="py-24 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
         <div className="absolute top-20 right-10 w-72 h-72 bg-ci-yellow/10 rounded-full blur-3xl" />
         <div className="absolute bottom-20 left-10 w-72 h-72 bg-ci-blue/10 rounded-full blur-3xl" />
 
