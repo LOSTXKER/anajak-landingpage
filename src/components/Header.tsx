@@ -64,7 +64,20 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
 
   useEffect(() => {
     setIsMobileMenuOpen(false);
+    setOpenDropdown(null);
   }, [pathname]);
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const isActiveLink = (href: string) => {
     if (href.startsWith('#')) return false;
@@ -78,9 +91,9 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
         isScrolled ? 'glass-effect shadow-md' : 'bg-transparent'
       }`}
     >
-      {/* Top Bar - Contact Info */}
+      {/* Top Bar - Contact Info (Hidden on mobile) */}
       {!isScrolled && (
-        <div className="bg-slate-900 text-white py-2 text-sm">
+        <div className="hidden md:block bg-slate-900 text-white py-2 text-sm">
           <div className="container mx-auto px-4 md:px-6">
             <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex flex-wrap items-center gap-4 md:gap-6">
@@ -226,79 +239,114 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
           </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Backdrop */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden mt-4 py-4 border-t border-slate-200">
-            <div className="flex flex-col gap-2">
-              {navigation.map((item) => {
-                const isHashLink = item.href.startsWith('#');
-                const hasChildren = item.children && item.children.length > 0;
-                const isOpen = openDropdown === item.name;
-                
-                // With submenu - check this FIRST
-                if (hasChildren) {
-                  return (
-                    <div key={item.name}>
-                      <button
-                        onClick={() => setOpenDropdown(isOpen ? null : item.name)}
-                        className="w-full flex items-center justify-between px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
-                      >
-                        {item.name}
-                        <ChevronDown className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-                      </button>
-                      {isOpen && (
-                        <div className="ml-4 mt-1 flex flex-col gap-1">
-                          {item.children!.map((child) => (
-                            <Link
-                              key={child.name}
-                              href={child.href}
-                              onClick={() => setIsMobileMenuOpen(false)}
-                              className="px-4 py-2 text-sm text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
-                            >
-                              {child.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  );
-                }
-                
-                if (isHashLink) {
-                  return (
-                    <a
-                      key={item.name}
-                      href={item.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
-                    >
-                      {item.name}
-                    </a>
-                  );
-                }
-                
+          <div 
+            className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 animate-fade-in"
+            onClick={() => setIsMobileMenuOpen(false)}
+            style={{ top: isScrolled ? '72px' : '108px' }}
+          />
+        )}
+
+        {/* Mobile Menu */}
+        <div 
+          className={`lg:hidden fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out overflow-y-auto ${
+            isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+          style={{ top: isScrolled ? '72px' : '108px' }}
+        >
+          <div className="p-6 space-y-2">
+            {/* Contact Info in Mobile Menu */}
+            <div className="pb-4 mb-4 border-b border-slate-200 space-y-2">
+              <a 
+                href={siteConfig.phoneHref} 
+                className="flex items-center gap-2 text-sm text-slate-600 hover:text-ci-blue transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                <span>{siteConfig.phone}</span>
+              </a>
+              <a 
+                href={`mailto:${siteConfig.email}`} 
+                className="flex items-center gap-2 text-sm text-slate-600 hover:text-ci-blue transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>{siteConfig.email}</span>
+              </a>
+            </div>
+
+            {/* Navigation Links */}
+            {navigation.map((item) => {
+              const isHashLink = item.href.startsWith('#');
+              const hasChildren = item.children && item.children.length > 0;
+              const isOpen = openDropdown === item.name;
+              
+              // With submenu - check this FIRST
+              if (hasChildren) {
                 return (
-                  <Link
+                  <div key={item.name}>
+                    <button
+                      onClick={() => setOpenDropdown(isOpen ? null : item.name)}
+                      className="w-full flex items-center justify-between px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
+                    >
+                      <span>{item.name}</span>
+                      <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                      <div className="ml-4 mt-1 space-y-1 py-2">
+                        {item.children!.map((child) => (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="block px-4 py-2.5 text-sm text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
+              
+              if (isHashLink) {
+                return (
+                  <a
                     key={item.name}
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className={`px-4 py-3 rounded-lg font-medium transition-all ${
-                      isActiveLink(item.href)
-                        ? 'text-ci-blue bg-blue-50'
-                        : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
-                    }`}
+                    className="block px-4 py-3 text-slate-700 hover:text-ci-blue hover:bg-blue-50 rounded-lg font-medium transition-all"
                   >
                     {item.name}
-                  </Link>
+                  </a>
                 );
-              })}
-              <a href={siteConfig.phoneHref} className="btn-primary mt-2">
+              }
+              
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`block px-4 py-3 rounded-lg font-medium transition-all ${
+                    isActiveLink(item.href)
+                      ? 'text-ci-blue bg-blue-50'
+                      : 'text-slate-700 hover:text-ci-blue hover:bg-blue-50'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              );
+            })}
+            
+            {/* CTA Button */}
+            <div className="pt-4">
+              <a href={siteConfig.phoneHref} className="btn-primary w-full justify-center">
                 <Phone className="w-4 h-4" />
                 โทรเลย
               </a>
             </div>
           </div>
-        )}
+        </div>
       </nav>
     </header>
   );

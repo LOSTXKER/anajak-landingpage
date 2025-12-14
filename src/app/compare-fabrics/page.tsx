@@ -323,7 +323,20 @@ export default function FabricComparisonPage() {
       {/* Comparison Table Section */}
       <section className="py-12 md:py-16 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-2xl">
+          {/* Mobile Scroll Hint */}
+          <div className="md:hidden mb-4 flex items-center justify-center gap-2 text-sm text-slate-600 bg-blue-50 px-4 py-3 rounded-lg border border-ci-blue/20">
+            <svg className="w-5 h-5 text-ci-blue animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            <span>เลื่อนซ้าย-ขวาเพื่อดูข้อมูล</span>
+            <svg className="w-5 h-5 text-ci-blue animate-bounce" fill="none" viewBox="0 0 24 12" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4-4m0 0l-4-4m4 4H3" />
+            </svg>
+          </div>
+          <div className="relative overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-2xl">
+            {/* Scroll Gradient Indicators */}
+            <div className="md:hidden absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
+            <div className="md:hidden absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
             <table className="w-full min-w-[800px] table-fixed">
               {/* Table Header */}
               <thead>
