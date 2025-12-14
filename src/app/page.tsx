@@ -7,6 +7,7 @@ import {
   ServicesSection,
   TechnologySection,
   WhyChooseUsSection,
+  CalculatorCTASection,
   PortfolioSection,
   TestimonialsSection,
   FAQSection,
@@ -36,6 +37,9 @@ export default function HomePage() {
 
       {/* Why Choose Us Section */}
       <WhyChooseUsSection />
+
+      {/* Calculator CTA Section */}
+      <CalculatorCTASection />
 
       {/* Portfolio Section */}
       <PortfolioSection />
