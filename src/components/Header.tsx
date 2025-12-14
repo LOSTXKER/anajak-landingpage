@@ -88,7 +88,9 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'glass-effect shadow-md' : 'bg-transparent'
+        isScrolled 
+          ? 'glass-effect shadow-md' 
+          : 'bg-white/95 md:bg-transparent backdrop-blur-sm md:backdrop-blur-none'
       }`}
     >
       {/* Top Bar - Contact Info (Hidden on mobile) */}
