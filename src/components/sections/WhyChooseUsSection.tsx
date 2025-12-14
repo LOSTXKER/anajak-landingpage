@@ -19,8 +19,8 @@ const reasons = [
   {
     icon: Clock,
     title: 'ผลิตไว ส่งทัน',
-    description: 'ผลิตเสร็จใน 3-5 วันทำการ ส่งด่วนได้ ทันทุกงาน Event',
-    highlight: '3-5 วัน',
+    description: 'ผลิตเสร็จใน 2-14 วันทำการ ส่งด่วนได้ ทันทุกงาน Event',
+    highlight: '2-14 วัน',
   },
   {
     icon: BadgeCheck,

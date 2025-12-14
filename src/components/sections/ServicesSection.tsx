@@ -17,6 +17,7 @@ const featuredService = {
   description: 'DTG, DTF, Silk Screen',
   image: '/images/services/printing.jpg',
   badge: 'บริการยอดนิยม',
+  link: '/services/printing',
 };
 
 // Right side services (2x2 grid)
@@ -27,12 +28,14 @@ const rightServices = [
     description: 'พร้อมส่ง หลากหลายแบบ',
     image: '/images/services/blank.jpg',
     badge: 'พร้อมส่ง',
+    link: '/products',
   },
   {
     id: 'photography',
     title: 'ถ่ายภาพสินค้า',
     description: 'Studio ในโรงงาน',
     image: '/images/services/photography.jpg',
+    link: '/services#additional-services',
   },
   {
     id: 'design',
@@ -40,12 +43,14 @@ const rightServices = [
     description: 'ทีมดีไซน์มืออาชีพ',
     image: '/images/services/design.jpg',
     badge: 'ฟรี!',
+    link: '/services#additional-services',
   },
   {
     id: 'pattern',
     title: 'ทำแพทเทิร์น',
     description: 'ตัดเย็บตามแบบ',
     image: '/images/services/pattern.jpg',
+    link: '/services/pattern',
   },
 ];
 
@@ -56,12 +61,14 @@ const bottomServices = [
     title: 'เนื้อผ้าหลากหลาย',
     description: '20+ ชนิดผ้า',
     image: '/images/services/fabric.jpg',
+    link: '/services/fabric',
   },
   {
     id: 'qc',
     title: 'QC & แพ็ค',
     description: 'ตรวจสอบทุกตัว',
     image: '/images/services/qc.jpg',
+    link: '/services#additional-services',
   },
 ];
 
@@ -116,7 +123,7 @@ export default function ServicesSection({ className = '', showCTA = true }: Serv
         <div className="grid lg:grid-cols-3 gap-4 mb-4">
           {/* Featured Card (spans 1 col, full height) */}
           <a
-            href="/contact"
+            href={featuredService.link}
             className="group relative h-80 lg:h-auto lg:row-span-2 rounded-2xl overflow-hidden cursor-pointer"
           >
             <ServiceImage src={featuredService.image} alt={featuredService.title} />
@@ -144,7 +151,7 @@ export default function ServicesSection({ className = '', showCTA = true }: Serv
           {rightServices.map((service) => (
             <a
               key={service.id}
-              href="/contact"
+              href={service.link}
               className="group relative h-44 rounded-2xl overflow-hidden cursor-pointer"
             >
               <ServiceImage src={service.image} alt={service.title} />
@@ -177,7 +184,7 @@ export default function ServicesSection({ className = '', showCTA = true }: Serv
           {bottomServices.map((service) => (
             <a
               key={service.id}
-              href="/contact"
+              href={service.link}
               className="group relative h-48 rounded-2xl overflow-hidden cursor-pointer"
             >
               <ServiceImage src={service.image} alt={service.title} />

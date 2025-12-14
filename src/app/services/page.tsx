@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
@@ -119,6 +119,19 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
 export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Handle hash navigation
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -397,7 +410,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Additional Services - Grid เหมือนหน้าแรก */}
-      <section className="py-24 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
+      <section id="additional-services" className="py-24 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden scroll-mt-20">
         <div className="absolute top-20 right-10 w-72 h-72 bg-ci-blue/10 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 md:px-6 relative">

@@ -149,7 +149,7 @@ export default function DTGPage() {
                 <div className="text-sm text-slate-600">เริ่มต้น/ตัว</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-slate-900">1-3 วัน</div>
+                <div className="text-3xl md:text-4xl font-bold text-slate-900">7-14 วัน</div>
                 <div className="text-sm text-slate-600">เวลาผลิต</div>
               </div>
             </div>
@@ -286,7 +286,7 @@ export default function DTGPage() {
                   <CheckCircle2 className="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" />
                   <div>
                     <strong className="text-slate-900">ผลิตเร็ว</strong>
-                    <p className="text-slate-600 text-sm">1-3 วันทำการ สำหรับงานปริมาณน้อย</p>
+                    <p className="text-slate-600 text-sm">7-14 วันทำการ สำหรับงานปริมาณน้อย</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -1047,7 +1047,7 @@ export default function DTGPage() {
               },
               {
                 q: 'ใช้เวลาผลิตนานแค่ไหน?',
-                a: '1-3 วันทำการสำหรับงานปริมาณน้อย ถ้าเป็นงานด่วนสามารถทำได้ใน 1 วัน (มีค่าบริการเพิ่ม)'
+                a: '7-14 วันทำการสำหรับงานปริมาณน้อย'
               }
             ].map((faq, idx) => (
               <details key={idx} className="group bg-white rounded-2xl border border-slate-100 shadow-lg overflow-hidden hover:shadow-xl transition-shadow">

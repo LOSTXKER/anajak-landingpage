@@ -148,7 +148,7 @@ export default function DTFPage() {
                 <div className="text-sm text-slate-600">เริ่มต้น/ตัว</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-slate-900">1-3 วัน</div>
+                <div className="text-3xl md:text-4xl font-bold text-slate-900">2-3 วัน</div>
                 <div className="text-sm text-slate-600">เวลาผลิต</div>
               </div>
             </div>
@@ -1023,7 +1023,7 @@ export default function DTFPage() {
               },
               {
                 q: 'ใช้เวลาผลิตนานแค่ไหน?',
-                a: '1-3 วันทำการสำหรับงานปริมาณน้อย ถ้าเป็นงานด่วนสามารถทำได้ใน 1 วัน (มีค่าบริการเพิ่ม)'
+                a: '2-3 วันทำการสำหรับงานปริมาณน้อย ถ้าเป็นงานด่วนสามารถทำได้ใน 1 วัน (มีค่าบริการเพิ่ม)'
               }
             ].map((faq, idx) => (
               <details key={idx} className="group bg-white rounded-2xl border border-slate-100 shadow-lg overflow-hidden hover:shadow-xl transition-shadow">

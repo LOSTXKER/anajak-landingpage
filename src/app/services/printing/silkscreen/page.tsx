@@ -147,7 +147,7 @@ export default function SilkScreenPage() {
                 <div className="text-sm text-slate-600">เริ่มต้น/ตัว</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-slate-900">3-5 วัน</div>
+                <div className="text-3xl md:text-4xl font-bold text-slate-900">7-14 วัน</div>
                 <div className="text-sm text-slate-600">เวลาผลิต</div>
               </div>
             </div>
@@ -284,7 +284,7 @@ export default function SilkScreenPage() {
                   <XCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                   <div>
                     <strong className="text-slate-900">ใช้เวลานานกว่า</strong>
-                    <p className="text-slate-600 text-sm">3-5 วันทำการ เพราะต้องทำฟิล์มก่อน</p>
+                    <p className="text-slate-600 text-sm">7-14 วันทำการ เพราะต้องทำฟิล์มก่อน</p>
                   </div>
                 </li>
               </ul>
@@ -984,7 +984,7 @@ export default function SilkScreenPage() {
               },
               {
                 q: 'ทำไมใช้เวลานานกว่าเทคนิคอื่น?',
-                a: 'เพราะต้องมีขั้นตอนการทำฟิล์มและอัดผ้าตาข่ายก่อน ซึ่งใช้เวลา 1-2 วัน หลังจากนั้นจึงจะสกรีนได้ ทั้งหมดรวมประมาณ 3-5 วันทำการ แต่คุณภาพและความคุ้มค่าที่ได้ก็มากกว่า'
+                a: 'เพราะต้องมีขั้นตอนการทำฟิล์มและอัดผ้าตาข่ายก่อน ซึ่งใช้เวลา 1-2 วัน หลังจากนั้นจึงจะสกรีนได้ ทั้งหมดรวมประมาณ 7-14 วันทำการ แต่คุณภาพและความคุ้มค่าที่ได้ก็มากกว่า'
               },
               {
                 q: 'สั่งซ้ำรอบ 2 ถูกกว่าไหม?',
