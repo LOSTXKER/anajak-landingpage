@@ -246,7 +246,7 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
           <div 
             className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-40 animate-fade-in"
             onClick={() => setIsMobileMenuOpen(false)}
-            style={{ top: isScrolled ? '72px' : '108px' }}
+            style={{ top: '72px' }}
           />
         )}
 
@@ -255,7 +255,7 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
           className={`lg:hidden fixed right-0 top-0 bottom-0 w-full max-w-sm bg-white shadow-2xl z-50 transform transition-transform duration-300 ease-out overflow-y-auto ${
             isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
           }`}
-          style={{ top: isScrolled ? '72px' : '108px' }}
+          style={{ top: '72px' }}
         >
           <div className="p-6 space-y-2">
             {/* Contact Info in Mobile Menu */}
