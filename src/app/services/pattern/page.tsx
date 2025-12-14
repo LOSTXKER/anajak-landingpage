@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Scissors,
   ArrowRight,
@@ -104,13 +105,10 @@ export default function PatternServicePage() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-ci-yellow/10 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          {/* Breadcrumb */}
-          <div className="text-center mb-8">
-            <Link href="/services" className="inline-flex items-center gap-2 text-slate-600 hover:text-ci-blue transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-              <span>กลับไปหน้าบริการ</span>
-            </Link>
-          </div>
+          <Breadcrumb
+            items={[{ label: 'บริการของเรา', href: '/services' }]}
+            currentPage="ทำแพทเทิร์น"
+          />
 
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/50 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">

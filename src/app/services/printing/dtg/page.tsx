@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Printer,
   ArrowRight,
@@ -67,13 +68,13 @@ export default function DTGPage() {
         <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-yellow-300/20 to-orange-300/20 rounded-full blur-3xl animate-float-slow" style={{animationDelay: '1s'}} />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          {/* Breadcrumb */}
-          <div className="text-center mb-8">
-            <Link href="/services/printing" className="inline-flex items-center gap-2 text-slate-600 hover:text-ci-blue transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-              <span>กลับไปบริการสกรีน</span>
-            </Link>
-          </div>
+          <Breadcrumb
+            items={[
+              { label: 'บริการของเรา', href: '/services' },
+              { label: 'บริการสกรีน', href: '/services/printing' }
+            ]}
+            currentPage="DTG (Direct to Garment)"
+          />
 
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge with artistic icon */}

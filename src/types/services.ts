@@ -47,6 +47,15 @@ export interface Product {
   rating: number;
   reviews: number;
   features: string[];
+  hasMinimumOrder?: boolean;
+  inStock?: boolean;
+  description?: string;
+  grade?: string;
+  material?: string;
+  priceRange?: {
+    min: number;
+    max: number;
+  };
 }
 
 // Feature card type

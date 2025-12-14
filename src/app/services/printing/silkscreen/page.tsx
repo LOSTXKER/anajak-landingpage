@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Printer,
   ArrowRight,
@@ -66,12 +67,13 @@ export default function SilkScreenPage() {
         <div className="absolute top-40 right-20 w-72 h-72 bg-gradient-to-br from-yellow-400/20 to-amber-400/20 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
-          <div className="text-center mb-8">
-            <Link href="/services/printing" className="inline-flex items-center gap-2 text-slate-600 hover:text-amber-600 transition-colors">
-              <ArrowLeft className="w-4 h-4" />
-              <span>กลับไปบริการสกรีน</span>
-            </Link>
-          </div>
+          <Breadcrumb
+            items={[
+              { label: 'บริการของเรา', href: '/services' },
+              { label: 'บริการสกรีน', href: '/services/printing' }
+            ]}
+            currentPage="Silk Screen"
+          />
 
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge with factory icon */}

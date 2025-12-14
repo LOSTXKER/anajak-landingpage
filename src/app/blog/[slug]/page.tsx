@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Calendar,
   Clock,
@@ -155,13 +156,10 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
       {/* Breadcrumb */}
       <section className="pt-24 pb-8 bg-slate-50 border-b border-slate-200">
         <div className="container mx-auto px-4 md:px-6">
-          <nav className="flex items-center gap-2 text-sm text-slate-600">
-            <Link href="/" className="hover:text-ci-blue transition-colors">หน้าแรก</Link>
-            <ChevronRight className="w-4 h-4" />
-            <Link href="/blog" className="hover:text-ci-blue transition-colors">บทความ</Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-slate-900 font-medium line-clamp-1">{article.title}</span>
-          </nav>
+          <Breadcrumb
+            items={[{ label: 'บทความ', href: '/blog' }]}
+            currentPage={article.title}
+          />
         </div>
       </section>
 

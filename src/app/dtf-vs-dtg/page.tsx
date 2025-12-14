@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Hand,
   Shirt,
@@ -47,6 +48,7 @@ export default function DTFvsDTGPage() {
         <div className="absolute top-40 right-20 w-64 h-64 bg-gradient-to-br from-slate-300/20 to-slate-400/20 rounded-full blur-3xl animate-float-slow" style={{animationDelay: '1s'}} />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <Breadcrumb currentPage="เปรียบเทียบ DTF vs DTG" />
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
             <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-gradient-to-r from-ci-blue/10 to-slate-500/10 backdrop-blur-md shadow-lg border border-ci-blue/30 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">

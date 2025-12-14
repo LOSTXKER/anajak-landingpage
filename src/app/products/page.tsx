@@ -6,6 +6,7 @@ import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import FAQ from '@/components/FAQ';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   ShoppingBag,
   Shirt,
@@ -263,6 +264,8 @@ export default function ProductsPage() {
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative">
+          <Breadcrumb currentPage="สินค้า" />
+          
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 text-ci-blue rounded-full text-sm font-semibold mb-6 opacity-0 animate-fade-in-up">
               <ShoppingBag className="w-4 h-4" />
@@ -500,11 +503,15 @@ function ProductCard({ product }: { product: Product }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
-    <div
-      className="card overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full flex flex-col"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+    <Link
+      href={`/products/${product.id}`}
+      className="block h-full"
     >
+      <div
+        className="card overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group h-full flex flex-col"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
       {/* Product Image */}
       <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden flex-shrink-0">
         {product.image ? (
@@ -645,11 +652,12 @@ function ProductCard({ product }: { product: Product }) {
               </div>
             )}
           </div>
-          <button className="px-5 py-2.5 bg-gradient-to-r from-ci-blue to-blue-600 text-white rounded-xl hover:shadow-xl hover:scale-105 transition-all text-sm font-bold whitespace-nowrap">
+          <span className="px-5 py-2.5 bg-gradient-to-r from-ci-blue to-blue-600 text-white rounded-xl hover:shadow-xl hover:scale-105 transition-all text-sm font-bold whitespace-nowrap inline-block">
             รายละเอียด
-          </button>
+          </span>
         </div>
       </div>
-    </div>
+      </div>
+    </Link>
   );
 }

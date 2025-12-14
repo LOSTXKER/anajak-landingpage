@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Calculator,
   ShoppingCart,
@@ -177,6 +178,8 @@ export default function CalculatorPage() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-ci-yellow/10 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <Breadcrumb currentPage="คำนวณราคา" />
+          
           <div className="text-center max-w-3xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 rounded-full mb-4 opacity-0 animate-fade-in-up">
               <Calculator className="w-4 h-4 text-ci-blue" />

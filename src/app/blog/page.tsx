@@ -6,6 +6,7 @@ import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import FAQ from '@/components/FAQ';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Calendar,
   Clock,
@@ -102,6 +103,8 @@ export default function BlogPage() {
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative">
+          <Breadcrumb currentPage="บทความ" />
+          
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 text-ci-blue rounded-full text-sm font-semibold mb-6 opacity-0 animate-fade-in-up">
               <BookOpen className="w-4 h-4" />

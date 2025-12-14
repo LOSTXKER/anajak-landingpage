@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Phone, 
   Mail, 
@@ -95,6 +96,8 @@ export default function ContactPage() {
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-ci-yellow/10 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <Breadcrumb currentPage="ติดต่อเรา" />
+          
           <div className="text-center max-w-3xl mx-auto">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 rounded-full mb-4 opacity-0 animate-fade-in-up">

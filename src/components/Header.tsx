@@ -13,9 +13,13 @@ interface NavItem {
 }
 
 const servicesSubmenu: NavItem[] = [
+  { name: 'บริการทั้งหมด', href: '/services' },
   { name: 'บริการสกรีน', href: '/services/printing' },
   { name: 'ทำแพทเทิร์น', href: '/services/pattern' },
   { name: 'เนื้อผ้าหลากหลาย', href: '/services/fabric' },
+  { name: 'ออกแบบกราฟิก', href: '/services#design' },
+  { name: 'ถ่ายภาพสินค้า', href: '/services#photography' },
+  { name: 'QC & แพ็ค', href: '/services#qc' },
 ];
 
 const compareSubmenu: NavItem[] = [

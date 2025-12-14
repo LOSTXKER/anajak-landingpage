@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import FAQ from '@/components/FAQ';
+import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Gem, 
   Handshake, 
@@ -45,8 +46,10 @@ export default function AboutPage() {
   return (
     <PageLayout>
       {/* Our Story Section */}
-      <section className="py-12 md:py-16 bg-slate-50">
+      <section className="pt-24 md:pt-32 pb-12 md:pb-16 bg-slate-50">
         <div className="container mx-auto px-4 md:px-6">
+          <Breadcrumb currentPage="เกี่ยวกับเรา" />
+          
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div>
               {/* Title */}

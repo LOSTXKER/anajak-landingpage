@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import Breadcrumb from '@/components/Breadcrumb';
 import { FinalCTASection } from '@/components/sections';
 import { 
   Star,
@@ -298,6 +299,8 @@ export default function FabricComparisonPage() {
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative">
+          <Breadcrumb currentPage="เปรียบเทียบเนื้อผ้า" />
+          
           <div className="text-center max-w-4xl mx-auto">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-ci-blue/10 to-blue-500/10 text-ci-blue rounded-full text-sm font-semibold mb-6 border border-ci-blue/20 opacity-0 animate-fade-in-up">

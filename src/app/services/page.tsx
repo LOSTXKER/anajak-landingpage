@@ -6,6 +6,7 @@ import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import FAQ from '@/components/FAQ';
+import Breadcrumb from '@/components/Breadcrumb';
 import { ProductCard } from '@/components/services';
 import { blankShirts } from '@/data/products';
 import { 
@@ -125,15 +126,37 @@ export default function ServicesPage() {
 
   // Handle hash navigation
   useEffect(() => {
-    const hash = window.location.hash;
-    if (hash) {
-      setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        // Check if hash matches additional service
+        const serviceId = hash.replace('#', '');
+        const serviceIndex = additionalServices.findIndex(s => s.id === serviceId);
+        
+        if (serviceIndex !== -1) {
+          // Switch to the matching tab
+          setActiveTab(serviceIndex);
+          
+          // Scroll to additional services section
+          setTimeout(() => {
+            const element = document.querySelector('#additional-services');
+            if (element) {
+              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 100);
         }
-      }, 100);
-    }
+      }
+    };
+
+    // Handle initial load
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener('hashchange', handleHashChange);
+    
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+    };
   }, []);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
@@ -208,6 +231,8 @@ export default function ServicesPage() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-ci-yellow/10 rounded-full blur-3xl" />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <Breadcrumb currentPage="บริการของเรา" />
+          
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
             <div className="inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/90 backdrop-blur-md shadow-lg border border-white/50 text-sm font-semibold mb-8 opacity-0 animate-fade-in-up">
