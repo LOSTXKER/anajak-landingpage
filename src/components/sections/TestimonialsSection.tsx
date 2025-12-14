@@ -35,7 +35,7 @@ const trustBadges = [
   { icon: ShieldCheck, text: 'รับประกันคุณภาพ 100%' },
   { icon: Truck, text: 'จัดส่งฟรีทั่วไทย' },
   { icon: Clock, text: 'ส่งตรงเวลา ทุกครั้ง' },
-  { icon: BadgeCheck, text: 'มาตรฐาน ISO' },
+  { icon: BadgeCheck, text: 'ตรวจสอบคุณภาพทุกชิ้น' },
 ];
 
 interface TestimonialsSectionProps {

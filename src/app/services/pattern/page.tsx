@@ -10,6 +10,7 @@ import {
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
+  CheckCircle,
   Shirt,
   Building2,
   Trophy,
@@ -147,13 +148,13 @@ export default function PatternServicePage() {
 
             <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ ทำแพทเทิร์นใหม่
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> ทำแพทเทิร์นใหม่
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ ปรับจากแบบเดิม
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> ปรับจากแบบเดิม
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ Grading ไซส์
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> Grading ไซส์
               </span>
             </div>
 

@@ -26,7 +26,7 @@ const articleData: { [key: string]: any } = {
     readTime: '8 นาที',
     imageUrl: '/images/blog/dtf-printing-guide.jpg', // Placeholder - แทนที่ด้วยรูปจริง
     author: {
-      name: 'ทีมงานอนาจักร ที-เชิ้ต',
+      name: 'ทีมงานอาณาจักร์ ที-เชิ้ด',
       role: 'ผู้เชี่ยวชาญด้านการสกรีน',
       avatar: '👨‍💼',
     },
@@ -147,7 +147,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
 
   // Set page title and description
   useEffect(() => {
-    document.title = `${article.title} | อนาจักร ที-เชิ้ต`;
+    document.title = `${article.title} | อาณาจักร์ ที-เชิ้ด`;
   }, [article.title]);
 
   return (
@@ -221,7 +221,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
                   />
                 </div>
               ) : (
-                <div className="relative aspect-[16/9] bg-gradient-to-br from-ci-blue/20 via-purple-500/10 to-blue-500/20 flex items-center justify-center">
+                <div className="relative aspect-[16/9] bg-gradient-to-br from-ci-blue/20 via-ci-yellow/10 to-blue-500/20 flex items-center justify-center">
                   <div className="text-center">
                     <BookOpen className="w-16 h-16 text-ci-blue/40 mx-auto mb-4" />
                     <p className="text-slate-500 text-sm">ภาพประกอบบทความ</p>
@@ -257,7 +257,7 @@ export default function BlogArticlePage({ params }: BlogArticlePageProps) {
                     ))}
                   </nav>
 
-                  <div className="mt-8 p-4 bg-gradient-to-br from-ci-blue/5 to-purple-500/5 rounded-xl border border-ci-blue/10">
+                  <div className="mt-8 p-4 bg-gradient-to-br from-ci-blue/5 to-ci-yellow/5 rounded-xl border border-ci-blue/10">
                     <p className="text-sm text-slate-700 mb-3">
                       <strong>ต้องการคำปรึกษา?</strong>
                     </p>

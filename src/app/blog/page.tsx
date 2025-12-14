@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import FAQ from '@/components/FAQ';
 import { 
   Calendar,
   Clock,
@@ -90,10 +91,6 @@ const categories = [
 ];
 
 export default function BlogPage() {
-  // Set page title
-  useEffect(() => {
-    document.title = 'บทความและคู่มือ | อนาจักร ที-เชิ้ต';
-  }, []);
 
   return (
     <PageLayout>
@@ -101,7 +98,7 @@ export default function BlogPage() {
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-ci-blue/5 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-ci-yellow/5 rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative">
@@ -172,7 +169,7 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="card overflow-hidden hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group"
                 >
-                  <div className="aspect-[16/9] bg-gradient-to-br from-ci-blue/20 to-purple-500/20 relative overflow-hidden">
+                  <div className="aspect-[16/9] bg-gradient-to-br from-ci-blue/20 to-ci-yellow/20 relative overflow-hidden">
                     <div className="absolute inset-0 flex items-center justify-center">
                       <BookOpen className="w-16 h-16 text-ci-blue/30" />
                     </div>

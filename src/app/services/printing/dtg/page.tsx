@@ -58,7 +58,7 @@ export default function DTGPage() {
       {/* Hero Section - DTG Character: Creative, Colorful, Artistic */}
       <section className="relative min-h-[70vh] pt-32 pb-20 overflow-hidden">
         {/* Colorful artistic background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50" />
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-yellow-50 to-blue-50" />
         <div className="absolute inset-0 bg-dot-pattern opacity-30" />
         
         {/* Multiple colorful blobs for artistic feel */}

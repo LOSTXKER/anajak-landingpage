@@ -258,10 +258,6 @@ export default function FabricComparisonPage() {
   const [comparedProducts, setComparedProducts] = useState<ProductId[]>(['oe', 'semi', 'comb']);
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
 
-  // Set page title
-  useEffect(() => {
-    document.title = 'เปรียบเทียบเนื้อผ้า - อนาจักร ที-เชิ้ต';
-  }, []);
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -297,7 +293,7 @@ export default function FabricComparisonPage() {
         {/* Decorative Blobs */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-ci-blue/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-ci-yellow/10 rounded-full blur-3xl" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-ci-blue/5 to-transparent rounded-full blur-3xl" />
         </div>
 
@@ -499,7 +495,7 @@ export default function FabricComparisonPage() {
         {/* Decorative Elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-ci-blue/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
-          <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute top-1/2 right-1/4 w-96 h-96 bg-ci-yellow/10 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative">
@@ -521,7 +517,7 @@ export default function FabricComparisonPage() {
                 เปรียบเทียบความแตกต่างระหว่างงานสกรีน 3 เทคนิคยอดนิยม{' '}
                 <span className="font-bold text-ci-blue">DTF</span>,{' '}
                 <span className="font-bold text-slate-900">DTG</span> และ{' '}
-                <span className="font-bold text-purple-600">Silk Screen</span>{' '}
+                <span className="font-bold text-ci-yellow">Silk Screen</span>{' '}
                 เพื่อให้คุณได้งานที่สวยตรงใจที่สุด
               </p>
               <Link

@@ -10,6 +10,7 @@ import {
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
+  CheckCircle,
   Users,
   Building2,
   ShoppingBag,
@@ -39,7 +40,7 @@ const printingMethods = [
       'ของขวัญส่วนตัว Custom',
       'เสื้อแบรนด์คุณภาพสูง'
     ],
-    bestFor: '🎨 งานละเอียด สีเยอะ',
+    bestFor: 'งานละเอียด สีเยอะ',
   },
   {
     id: 'dtf',
@@ -56,7 +57,7 @@ const printingMethods = [
       'เสื้อทีม กิจกรรม',
       'ยูนิฟอร์มพนักงาน'
     ],
-    bestFor: '🏆 ทนทาน คุ้มค่า',
+    bestFor: 'ทนทาน คุ้มค่า',
   },
   {
     id: 'silkscreen',
@@ -206,13 +207,13 @@ export default function PrintingServicePage() {
 
             <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ 3+ เทคนิคสกรีน
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> 3+ เทคนิคสกรีน
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ ไม่มีขั้นต่ำ
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> ไม่มีขั้นต่ำ
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ QC ทุกตัว
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> QC ทุกตัว
               </span>
             </div>
 

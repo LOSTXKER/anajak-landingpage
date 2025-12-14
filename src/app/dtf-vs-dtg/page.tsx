@@ -32,10 +32,6 @@ import {
 } from 'lucide-react';
 
 export default function DTFvsDTGPage() {
-  // Set page title
-  useEffect(() => {
-    document.title = 'เปรียบเทียบเทคนิคสกรีน: DTF vs DTG vs Silk Screen | อนาจักร ที-เชิ้ต';
-  }, []);
 
   return (
     <PageLayout>

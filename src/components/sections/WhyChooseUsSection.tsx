@@ -49,9 +49,9 @@ const reasons = [
 ];
 
 const stats = [
-  { value: '20+', label: 'ปีประสบการณ์' },
-  { value: '50,000+', label: 'ออเดอร์สำเร็จ' },
-  { value: '500+', label: 'ลูกค้าองค์กร' },
+  { value: '5+', label: 'ปีประสบการณ์' },
+  { value: '100K+', label: 'เสื้อที่ผลิต' },
+  { value: '300+', label: 'โปรเจกต์สำเร็จ' },
   { value: '4.9', label: 'คะแนนรีวิว', icon: Star },
 ];
 
@@ -74,7 +74,7 @@ export default function WhyChooseUsSection({ className = '' }: WhyChooseUsSectio
             <span className="gradient-text"> Anajak T-Shirt?</span>
           </h2>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
-            เราคือโรงงานผลิตเสื้อที่คุณวางใจได้ ด้วยประสบการณ์กว่า 20 ปี
+            เราคือโรงงานผลิตเสื้อที่คุณวางใจได้ ด้วยประสบการณ์กว่า 5 ปี
           </p>
         </div>
 

@@ -146,15 +146,15 @@ export default function PortfolioSection({ className = '' }: PortfolioSectionPro
           <div className="bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-2xl p-6 text-white">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
               <div>
-                <div className="text-2xl md:text-3xl font-bold mb-1">3,800+</div>
+                <div className="text-2xl md:text-3xl font-bold mb-1">300+</div>
                 <div className="text-white/70 text-sm">โปรเจคทั้งหมด</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl font-bold mb-1">500+</div>
-                <div className="text-white/70 text-sm">ลูกค้าองค์กร</div>
+                <div className="text-2xl md:text-3xl font-bold mb-1">5+</div>
+                <div className="text-white/70 text-sm">ปีประสบการณ์</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl font-bold mb-1">1M+</div>
+                <div className="text-2xl md:text-3xl font-bold mb-1">100K+</div>
                 <div className="text-white/70 text-sm">เสื้อที่ผลิต</div>
               </div>
               <div>

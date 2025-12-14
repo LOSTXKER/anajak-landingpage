@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import FAQ from '@/components/FAQ';
 import { ProductCard } from '@/components/services';
 import { blankShirts } from '@/data/products';
 import { 
@@ -17,6 +18,7 @@ import {
   Camera,
   PackageCheck,
   CheckCircle2,
+  CheckCircle,
   ImageIcon,
   Shirt,
   ChevronLeft,
@@ -179,13 +181,13 @@ export default function ServicesPage() {
             {/* Checkmarks */}
             <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ บริการครบวงจร
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> บริการครบวงจร
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ 20+ ชนิดผ้า
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> 20+ ชนิดผ้า
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ QC ทุกตัว
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> QC ทุกตัว
               </span>
             </div>
 
@@ -486,6 +488,29 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ 
+        title="คำถามที่พบบ่อยเกี่ยวกับบริการ"
+        items={[
+          {
+            question: "DTF, DTG และ Silk Screen แตกต่างกันอย่างไร?",
+            answer: "DTF เหมาะกับงานสีสดคมชัด, DTG เหมาะกับลายละเอียดสีเข้มกับผ้าสีอ่อน, Silk Screen เหมาะกับงานจำนวนมากที่มีสีไม่เกิน 4-5 สี สามารถดูรายละเอียดเพิ่มเติมได้ในหน้าเปรียบเทียบเทคนิค"
+          },
+          {
+            question: "รับสกรีนเสื้อตัวเดียวได้ไหม?",
+            answer: "ได้ครับ! เราไม่มีขั้นต่ำสำหรับ DTF และ DTG แต่ Silk Screen จะมีขั้นต่ำอยู่ที่ประมาณ 50-100 ตัว เนื่องจากต้องทำฟิล์มและต้นทุนการเตรียมงาน"
+          },
+          {
+            question: "ใช้เวลาผลิตนานแค่ไหน?",
+            answer: "โดยปกติ 7-14 วันทำการ ขึ้นอยู่กับจำนวนและความซับซ้อน หากต้องการด่วนสามารถขอ Rush Order ได้ (มีค่าใช้จ่ายเพิ่ม)"
+          },
+          {
+            question: "ต้องส่งไฟล์อะไรบ้าง?",
+            answer: "ส่งไฟล์ AI, PDF, PNG ความละเอียดสูง หรือ PSD ได้ หากไม่มีไฟล์ เรามีบริการออกแบบให้ด้วย"
+          }
+        ]}
+      />
 
       {/* CTA Section */}
       <FinalCTASection />

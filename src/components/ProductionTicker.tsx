@@ -63,3 +63,4 @@ export default function ProductionTicker({ className = '' }: ProductionTickerPro
     </div>
   );
 }
+

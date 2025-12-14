@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { 
-  Cpu, CheckCircle2, ArrowRight, Shield
+  Cpu, CheckCircle2, ArrowRight, Shield, Trophy, Sparkles, Printer, Palette, Scissors
 } from 'lucide-react';
 
 interface TechnologySectionProps {
@@ -18,7 +18,7 @@ const technologies = [
     description: 'เทคโนโลยีพิมพ์ดิจิตอลโดยตรงบนผ้า ความละเอียดสูง สีสันสดใส',
     features: ['ความละเอียด 1440 DPI', 'พิมพ์ได้ทุกสี ไม่จำกัด', 'เหมาะกับงานน้อย-กลาง'],
     image: '/images/tech/dtg.jpg',
-    icon: '🖨️',
+    Icon: Printer,
   },
   {
     id: 'dtf',
@@ -27,7 +27,7 @@ const technologies = [
     description: 'พิมพ์ลงฟิล์มแล้วรีดติดผ้า ทนทานสูง ใช้ได้กับผ้าทุกชนิด',
     features: ['ซักได้ 100+ ครั้ง', 'ใช้ได้ทุกเนื้อผ้า', 'สีไม่ซีด ไม่แตก'],
     image: '/images/tech/dtf.jpg',
-    icon: '✨',
+    Icon: Sparkles,
   },
   {
     id: 'silkscreen',
@@ -36,7 +36,7 @@ const technologies = [
     description: 'เทคนิคสกรีนดั้งเดิม เหมาะกับงานจำนวนมาก สีทึบสวย',
     features: ['ราคาดีเมื่อสั่งเยอะ', 'สีทึบสวยคมชัด', 'ทนทานมาก'],
     image: '/images/tech/silkscreen.jpg',
-    icon: '🎨',
+    Icon: Palette,
   },
   {
     id: 'embroidery',
@@ -45,7 +45,7 @@ const technologies = [
     description: 'งานปักคุณภาพสูงด้วยเครื่องปักคอมพิวเตอร์ ดูหรูหรา',
     features: ['ความคมชัดสูง', 'ดูพรีเมียม หรูหรา', 'ไม่ลอก ไม่ซีด ตลอดอายุใช้งาน'],
     image: '/images/tech/embroidery.jpg',
-    icon: '🧵',
+    Icon: Scissors,
   },
 ];
 
@@ -56,13 +56,13 @@ const qualityPoints = [
 ];
 
 // Image with fallback
-function TechImage({ src, alt, icon }: { src: string; alt: string; icon: string }) {
+function TechImage({ src, alt, IconComponent }: { src: string; alt: string; IconComponent: React.ComponentType<{ className?: string }> }) {
   const [hasError, setHasError] = useState(false);
   
   if (hasError) {
     return (
       <div className="absolute inset-0 bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
-        <span className="text-4xl">{icon}</span>
+        <IconComponent className="w-12 h-12 text-white" />
       </div>
     );
   }
@@ -116,7 +116,7 @@ export default function TechnologySection({ className = '' }: TechnologySectionP
             >
               {/* Image */}
               <div className="relative h-40 overflow-hidden">
-                <TechImage src={tech.image} alt={tech.name} icon={tech.icon} />
+                <TechImage src={tech.image} alt={tech.name} IconComponent={tech.Icon} />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
                 
                 {/* Name overlay */}
@@ -125,9 +125,9 @@ export default function TechnologySection({ className = '' }: TechnologySectionP
                   <p className="text-white/70 text-sm">{tech.tagline}</p>
                 </div>
 
-                {/* Emoji */}
-                <div className="absolute top-3 right-3 w-10 h-10 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center text-2xl">
-                  {tech.icon}
+                {/* Icon */}
+                <div className="absolute top-3 right-3 w-10 h-10 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center">
+                  <tech.Icon className="w-6 h-6 text-white" />
                 </div>
               </div>
 
@@ -186,7 +186,7 @@ export default function TechnologySection({ className = '' }: TechnologySectionP
                 <div className="w-40 h-40 rounded-full bg-white/10 flex items-center justify-center">
                   <div className="w-28 h-28 rounded-full bg-white/10 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-ci-yellow flex items-center justify-center shadow-xl">
-                      <span className="text-4xl">🏆</span>
+                      <Trophy className="w-10 h-10 text-white" />
                     </div>
                   </div>
                 </div>

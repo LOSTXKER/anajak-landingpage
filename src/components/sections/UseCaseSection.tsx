@@ -19,7 +19,7 @@ const useCases = [
     subtitle: 'เสื้อยูนิฟอร์มพนักงาน',
     description: 'สร้างความเป็นหนึ่งเดียวให้ทีมงาน เสริมภาพลักษณ์องค์กร',
     examples: ['เสื้อโปโลพนักงาน', 'เสื้อ Outing ประจำปี', 'เสื้อทีม HR, IT, Sales', 'เสื้อต้อนรับพนักงานใหม่'],
-    stats: '500+ องค์กรไว้วางใจ',
+    stats: '100+ องค์กรไว้วางใจ',
     images: ['/images/usecases/corporate-1.jpg', '/images/usecases/corporate-2.jpg', '/images/usecases/corporate-3.jpg'],
   },
   {
@@ -29,7 +29,7 @@ const useCases = [
     subtitle: 'เสื้อรุ่น เสื้อกิจกรรม',
     description: 'สร้างความทรงจำดีๆ ให้นักเรียน นักศึกษา',
     examples: ['เสื้อรุ่นจบการศึกษา', 'เสื้อกีฬาสี', 'เสื้อชมรม/ชุมนุม', 'เสื้อค่ายอาสา'],
-    stats: '500+ โรงเรียนเลือกใช้',
+    stats: '80+ โรงเรียนเลือกใช้',
     images: ['/images/usecases/school-1.jpg', '/images/usecases/school-2.jpg', '/images/usecases/school-3.jpg'],
   },
   {

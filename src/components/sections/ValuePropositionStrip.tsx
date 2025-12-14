@@ -4,7 +4,7 @@ import { Factory, BadgeCheck, Truck, ShieldCheck } from 'lucide-react';
 
 const valuePropositions = [
   { icon: Factory, text: 'โรงงานผลิตเอง' },
-  { icon: BadgeCheck, text: 'มาตรฐาน ISO' },
+  { icon: BadgeCheck, text: 'ควบคุมคุณภาพเข้มงวด' },
   { icon: Truck, text: 'ส่งทั่วไทย' },
   { icon: ShieldCheck, text: 'รับประกันคุณภาพ' },
 ];

@@ -1,23 +1,24 @@
 // Site Configuration
 export const siteConfig = {
-  name: 'อนาจักร ที-เชิ้ต',
+  name: 'อาณาจักร์ ที-เชิ้ด',
   nameEn: 'ANAJAK T-SHIRT',
+  legalName: 'ห้างหุ้นส่วนจำกัด อาณาจักร์ เอ็นเตอร์ไพรส์',
   domain: 'https://anajak-factory.com',
-  phone: '02-XXX-XXXX',
-  phoneHref: 'tel:+6612345678',
-  email: 'contact@anajak.com',
+  phone: '064-942-6651',
+  phoneHref: 'tel:+66649426651',
+  email: 'anajak_t-shirt@hotmail.com',
   lineId: '@anajak',
   lineUrl: 'https://line.me/@anajak',
-  facebookUrl: 'https://www.facebook.com/anajak',
+  facebookUrl: 'https://www.facebook.com/anajaktshirt',
   address: {
-    short: 'กรุงเทพมหานคร, ประเทศไทย',
-    full: '123 ถนนพระราม 4\nกรุงเทพมหานคร 10500',
-    street: '123 ถนนพระราม 4',
-    city: 'กรุงเทพมหานคร 10500'
+    short: 'เชียงใหม่, ประเทศไทย',
+    full: '39/12 ต.ป่าแดด อ.เมือง\nจ.เชียงใหม่ 50100',
+    street: '39/12 ต.ป่าแดด อ.เมือง',
+    city: 'จ.เชียงใหม่ 50100'
   },
   businessHours: {
-    weekdays: '08:00 - 18:00',
-    saturday: '08:00 - 16:00',
+    weekdays: '10:00 - 18:00',
+    saturday: '10:00 - 18:00',
     sunday: 'ปิดทำการ'
   }
 };

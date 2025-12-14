@@ -8,16 +8,27 @@ import {
 import { siteConfig } from '@/config/site';
 
 const footerServices = [
-  'พิมพ์เสื้อ DTG',
-  'พิมพ์เสื้อ DTF',
-  'Screen Print',
-  'ปักชื่อ-โลโก้',
-  'เสื้อโปโล',
-  'Hoodie & Jacket',
+  { name: 'พิมพ์เสื้อ DTG', href: '/services/printing/dtg' },
+  { name: 'พิมพ์เสื้อ DTF', href: '/services/printing/dtf' },
+  { name: 'Screen Print', href: '/services/printing/silkscreen' },
+  { name: 'ทำแพทเทิร์น', href: '/services/pattern' },
+  { name: 'เนื้อผ้าหลากหลาย', href: '/services/fabric' },
 ];
 
 const footerQuickLinks = [
   { name: 'หน้าแรก', href: '/' },
+  { name: 'บริการของเรา', href: '/services' },
+  { name: 'สินค้า', href: '/products' },
+  { name: 'ผลงาน', href: '/portfolio' },
+  { name: 'บทความ', href: '/blog' },
+  { name: 'เกี่ยวกับเรา', href: '/about' },
+  { name: 'ติดต่อเรา', href: '/contact' },
+];
+
+const footerTools = [
+  { name: 'คำนวณราคา', href: '/calculator' },
+  { name: 'เทียบเนื้อผ้า', href: '/compare-fabrics' },
+  { name: 'เทียบงานสกรีน', href: '/dtf-vs-dtg' },
 ];
 
 interface FooterProps {
@@ -31,7 +42,7 @@ export default function Footer({ className = '' }: FooterProps) {
     <footer className={`bg-slate-900 text-white ${className}`}>
       {/* Main Footer */}
       <div className="container mx-auto px-4 md:px-6 py-16">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Company Info */}
           <div>
             <Link href="/" className="flex items-center gap-2 mb-6">
@@ -45,7 +56,7 @@ export default function Footer({ className = '' }: FooterProps) {
             </Link>
             <p className="text-slate-300 mb-6 leading-relaxed">
               โรงงานผลิตเสื้อยืดและเสื้อผ้าคุณภาพสูง 
-              ด้วยประสบการณ์กว่า 20 ปี 
+              ด้วยประสบการณ์กว่า 5 ปี 
               มุ่งมั่นส่งมอบผลิตภัณฑ์คุณภาพเกรดพรีเมียม
             </p>
             <div className="flex items-center gap-4">
@@ -75,11 +86,14 @@ export default function Footer({ className = '' }: FooterProps) {
             <h3 className="font-bold text-lg mb-6 text-ci-yellow">บริการของเรา</h3>
             <ul className="space-y-3">
               {footerServices.map((service) => (
-                <li key={service}>
-                  <span className="flex items-center gap-2 text-slate-300">
-                    <ChevronRight className="w-4 h-4" />
-                    <span>{service}</span>
-                  </span>
+                <li key={service.name}>
+                  <Link 
+                    href={service.href}
+                    className="flex items-center gap-2 text-slate-300 hover:text-ci-yellow transition-colors group"
+                  >
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>{service.name}</span>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -97,6 +111,24 @@ export default function Footer({ className = '' }: FooterProps) {
                   >
                     <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     <span>{link.name}</span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Tools */}
+          <div>
+            <h3 className="font-bold text-lg mb-6 text-ci-yellow">เครื่องมือ</h3>
+            <ul className="space-y-3">
+              {footerTools.map((tool) => (
+                <li key={tool.name}>
+                  <Link 
+                    href={tool.href}
+                    className="flex items-center gap-2 text-slate-300 hover:text-ci-yellow transition-colors group"
+                  >
+                    <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    <span>{tool.name}</span>
                   </Link>
                 </li>
               ))}
@@ -151,3 +183,4 @@ export default function Footer({ className = '' }: FooterProps) {
     </footer>
   );
 }
+

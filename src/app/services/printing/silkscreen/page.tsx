@@ -317,9 +317,9 @@ export default function SilkScreenPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl border border-purple-100 shadow-lg p-6 hover:shadow-xl hover:-translate-y-1 transition-all">
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                <Trophy className="w-6 h-6 text-purple-600" />
+            <div className="bg-gradient-to-br from-amber-50 to-white rounded-2xl border border-amber-100 shadow-lg p-6 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                <Trophy className="w-6 h-6 text-amber-600" />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">เสื้อทีม สโมสร</h3>
               <p className="text-slate-600 text-sm">
@@ -1138,8 +1138,8 @@ export default function SilkScreenPage() {
 
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/15 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <CheckCircle2 className="w-6 h-6 text-purple-400" />
+                <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <CheckCircle2 className="w-6 h-6 text-amber-400" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white mb-2 text-lg">ใช้ฟอกขาวได้ (บางชนิด)</h3>
@@ -1203,8 +1203,9 @@ export default function SilkScreenPage() {
                   ซักได้แรง ใช้น้ำร้อน รีดได้ อบได้ ตากแดดได้ 
                   เหมาะกับงานที่ต้องการ<strong>ใช้งานหนัก</strong>และ<strong>ซักบ่อยมาก</strong>
                 </p>
-                <p className="text-white/60 text-sm">
-                  🏭 <strong>ข้อได้เปรียบ:</strong> ทนทานที่สุด ดูแลง่ายที่สุด และคุ้มค่าที่สุดสำหรับงานจำนวนมาก!
+                <p className="text-white/60 text-sm flex items-start gap-2">
+                  <Factory className="w-4 h-4 shrink-0 mt-0.5" />
+                  <span><strong>ข้อได้เปรียบ:</strong> ทนทานที่สุด ดูแลง่ายที่สุด และคุ้มค่าที่สุดสำหรับงานจำนวนมาก!</span>
                 </p>
               </div>
             </div>

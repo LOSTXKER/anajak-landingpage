@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Phone, Package, Zap, ImageIcon } from 'lucide-react';
+import { Phone, Package, Zap, ImageIcon, Factory, BadgeCheck, CheckCircle, Palette } from 'lucide-react';
 
 interface HeroSectionProps {
   className?: string;
@@ -59,8 +59,9 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-500"></span>
               </span>
+              <Factory className="w-4 h-4 text-ci-blue" />
               <span className="text-slate-700">
-                🏭 โรงงานชั้นนำ • ประสบการณ์กว่า <span className="font-bold text-ci-blue">20 ปี</span>
+                โรงงานชั้นนำ • ประสบการณ์กว่า <span className="font-bold text-ci-blue">5 ปี</span>
               </span>
             </div>
 
@@ -101,13 +102,13 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
             {/* Checkmarks */}
             <div className="flex flex-wrap gap-4 mb-8 animate-fade-in-up delay-200">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ ส่งตรงจากโรงงาน
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> ส่งตรงจากโรงงาน
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ ราคาโรงงานตรง
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> ราคาโรงงานตรง
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ คุณภาพการันตี
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> คุณภาพการันตี
               </span>
             </div>
 
@@ -136,16 +137,16 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
             {/* Stats */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-10 animate-fade-in-up delay-400">
               <div className="text-center sm:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-slate-900">20+</div>
+                <div className="text-2xl md:text-3xl font-bold text-slate-900">5+</div>
                 <div className="text-sm text-slate-600">ปีประสบการณ์</div>
               </div>
               <div className="text-center sm:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-slate-900">50K+</div>
-                <div className="text-sm text-slate-600">ออเดอร์สำเร็จ</div>
+                <div className="text-2xl md:text-3xl font-bold text-slate-900">100K+</div>
+                <div className="text-sm text-slate-600">เสื้อที่ผลิต</div>
               </div>
               <div className="text-center sm:text-left">
-                <div className="text-2xl md:text-3xl font-bold text-slate-900">500+</div>
-                <div className="text-sm text-slate-600">ลูกค้าองค์กร</div>
+                <div className="text-2xl md:text-3xl font-bold text-slate-900">300+</div>
+                <div className="text-sm text-slate-600">โปรเจกต์สำเร็จ</div>
               </div>
               <div className="text-center sm:text-left">
                 <div className="text-2xl md:text-3xl font-bold text-slate-900">4.9⭐</div>
@@ -165,27 +166,27 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
             {/* Floating badges on image */}
             <div className="absolute -top-4 -left-4 px-4 py-2 bg-white rounded-xl shadow-lg border border-slate-100 animate-float-slow">
               <div className="flex items-center gap-2">
-                <span className="text-2xl">🏆</span>
+                <BadgeCheck className="w-6 h-6 text-ci-blue" />
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">ISO Certified</div>
-                  <div className="text-xs text-slate-500">มาตรฐานสากล</div>
+                  <div className="font-bold text-slate-900 text-sm">คุณภาพมาตรฐาน</div>
+                  <div className="text-xs text-slate-500">ตรวจสอบทุกชิ้น</div>
                 </div>
               </div>
             </div>
 
             <div className="absolute -bottom-4 -right-4 px-4 py-2 bg-white rounded-xl shadow-lg border border-slate-100 animate-float-slow" style={{ animationDelay: '1s' }}>
               <div className="flex items-center gap-2">
-                <span className="text-2xl">⚡</span>
+                <Zap className="w-6 h-6 text-ci-yellow" />
                 <div>
                   <div className="font-bold text-slate-900 text-sm">ผลิตไว</div>
-                  <div className="text-xs text-slate-500">3-5 วันทำการ</div>
+                  <div className="text-xs text-slate-500">7-14 วันทำการ</div>
                 </div>
               </div>
             </div>
 
             <div className="absolute top-1/2 -right-4 px-4 py-2 bg-ci-yellow rounded-xl shadow-lg animate-float-slow" style={{ animationDelay: '2s' }}>
               <div className="flex items-center gap-2">
-                <span className="text-2xl">🎨</span>
+                <Palette className="w-6 h-6 text-white" />
                 <div>
                   <div className="font-bold text-slate-900 text-sm">ออกแบบฟรี!</div>
                 </div>

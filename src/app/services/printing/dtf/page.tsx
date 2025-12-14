@@ -363,9 +363,9 @@ export default function DTFPage() {
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-purple-50 to-white rounded-2xl border border-purple-100 shadow-lg p-6 hover:shadow-xl hover:-translate-y-1 transition-all">
-              <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4">
-                <Building2 className="w-6 h-6 text-purple-600" />
+            <div className="bg-gradient-to-br from-amber-50 to-white rounded-2xl border border-amber-100 shadow-lg p-6 hover:shadow-xl hover:-translate-y-1 transition-all">
+              <div className="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4">
+                <Building2 className="w-6 h-6 text-amber-600" />
               </div>
               <h3 className="font-bold text-slate-900 mb-2">ยูนิฟอร์มพนักงาน</h3>
               <p className="text-slate-600 text-sm">
@@ -1172,8 +1172,8 @@ export default function DTFPage() {
 
             <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl border border-white/10 hover:bg-white/15 transition-all">
               <div className="flex items-start gap-4">
-                <div className="w-12 h-12 bg-purple-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
-                  <XCircle className="w-6 h-6 text-purple-400" />
+                <div className="w-12 h-12 bg-amber-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <XCircle className="w-6 h-6 text-amber-400" />
                 </div>
                 <div>
                   <h3 className="font-bold text-white mb-2 text-lg">หลีกเลี่ยงฟอกขาว</h3>

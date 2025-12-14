@@ -10,10 +10,10 @@ const notoSansThai = Noto_Sans_Thai({
 export const metadata: Metadata = {
   metadataBase: new URL('https://anajak-factory.com'),
   title: {
-    default: 'อนาจักร ที-เชิ้ต | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
-    template: '%s | อนาจักร ที-เชิ้ต'
+    default: 'อาณาจักร์ ที-เชิ้ด | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
+    template: '%s | อาณาจักร์ ที-เชิ้ด'
   },
-  description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง มากกว่า 20 ปีประสบการณ์ ให้บริการพิมพ์เสื้อ DTG, DTF, Screen Print รับสั่งทำเสื้อยืด เสื้อโปโล Hoodie ปักชื่อ สกรีนโลโก้ ราคาโรงงานตรง สั่งขั้นต่ำ 1 ตัว ส่งทั่วไทย',
+  description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง ประสบการณ์กว่า 5 ปี ให้บริการพิมพ์เสื้อ DTG, DTF, Screen Print รับสั่งทำเสื้อยืด เสื้อโปโล Hoodie ปักชื่อ สกรีนโลโก้ ราคาโรงงานตรง สั่งขั้นต่ำ 1 ตัว ส่งทั่วไทย',
   keywords: [
     'โรงงานเสื้อยืด',
     'รับผลิตเสื้อยืด',
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     'รับทำเสื้อทีม',
     'เสื้อพนักงาน',
     'เสื้อโรงงาน',
-    'อนาจักร',
+    'อาณาจักร์',
     'Anajak T-Shirt'
   ],
   authors: [{ name: 'Anajak T-Shirt Factory' }],
@@ -46,22 +46,22 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'th_TH',
     url: 'https://anajak-factory.com',
-    siteName: 'อนาจักร ที-เชิ้ต',
-    title: 'อนาจักร ที-เชิ้ต | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
-    description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง มากกว่า 20 ปีประสบการณ์ ให้บริการพิมพ์เสื้อ DTG, DTF, Screen Print รับสั่งทำเสื้อยืด เสื้อโปโล Hoodie ราคาโรงงานตรง',
+    siteName: 'อาณาจักร์ ที-เชิ้ด',
+    title: 'อาณาจักร์ ที-เชิ้ด | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
+    description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง ประสบการณ์กว่า 5 ปี ให้บริการพิมพ์เสื้อ DTG, DTF, Screen Print รับสั่งทำเสื้อยืด เสื้อโปโล Hoodie ราคาโรงงานตรง',
     images: [
       {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'อนาจักร ที-เชิ้ต - โรงงานผลิตเสื้อยืดคุณภาพสูง',
+        alt: 'อาณาจักร์ ที-เชิ้ด - โรงงานผลิตเสื้อยืดคุณภาพสูง',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'อนาจักร ที-เชิ้ต | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
-    description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง มากกว่า 20 ปีประสบการณ์ ให้บริการพิมพ์เสื้อ DTG, DTF, Screen Print',
+    title: 'อาณาจักร์ ที-เชิ้ด | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
+    description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง ประสบการณ์กว่า 5 ปี ให้บริการพิมพ์เสื้อ DTG, DTF, Screen Print',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -101,11 +101,11 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "อนาจักร ที-เชิ้ต",
+              "name": "อาณาจักร์ ที-เชิ้ด",
               "alternateName": "Anajak T-Shirt Factory",
               "url": "https://anajak-factory.com",
               "logo": "https://anajak-factory.com/logo.png",
-              "description": "โรงงานผลิตเสื้อยืดคุณภาพสูง มากกว่า 20 ปีประสบการณ์",
+              "description": "โรงงานผลิตเสื้อยืดคุณภาพสูง ประสบการณ์กว่า 5 ปี",
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "TH",
@@ -131,7 +131,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "อนาจักร ที-เชิ้ต",
+              "name": "อาณาจักร์ ที-เชิ้ด",
               "@id": "https://anajak-factory.com",
               "url": "https://anajak-factory.com",
               "telephone": "+66-XX-XXX-XXXX",
@@ -174,5 +174,6 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 

@@ -5,11 +5,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
-import { 
+import {
   Layers,
   ArrowRight,
   ArrowLeft,
   CheckCircle2,
+  CheckCircle,
   Shirt,
   Trophy,
   Heart,
@@ -170,13 +171,13 @@ export default function FabricServicePage() {
 
             <div className="flex flex-wrap justify-center gap-4 mb-8 animate-fade-in-up delay-200">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ 20+ ชนิดผ้า
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> 20+ ชนิดผ้า
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ 50+ สี
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> 50+ สี
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                ✅ นำเข้าคุณภาพ
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> นำเข้าคุณภาพ
               </span>
             </div>
 

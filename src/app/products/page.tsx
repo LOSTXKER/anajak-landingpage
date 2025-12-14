@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
+import FAQ from '@/components/FAQ';
 import { 
   ShoppingBag,
   Shirt,
@@ -251,10 +252,6 @@ export default function ProductsPage() {
     window.location.href = '/compare-fabrics';
   };
 
-  // Set page title
-  useEffect(() => {
-    document.title = 'สินค้าของเรา | อนาจักร ที-เชิ้ต';
-  }, []);
 
   return (
     <PageLayout>
@@ -262,7 +259,7 @@ export default function ProductsPage() {
       <section className="relative pt-32 pb-20 bg-gradient-to-br from-slate-50 via-white to-blue-50">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute -top-40 -right-40 w-96 h-96 bg-ci-blue/5 rounded-full blur-3xl" />
-          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-purple-500/5 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-ci-yellow/5 rounded-full blur-3xl" />
         </div>
 
         <div className="container mx-auto px-4 md:px-6 relative">
@@ -460,6 +457,37 @@ export default function ProductsPage() {
           </div>
         </div>
       </section>
+
+      {/* FAQ Section */}
+      <FAQ 
+        title="คำถามที่พบบ่อยเกี่ยวกับสินค้า"
+        items={[
+          {
+            question: "แต่ละเนื้อผ้าเหมาะกับงานแบบไหน?",
+            answer: "Cotton Comb เหมาะกับแบรนด์พรีเมียม, Cotton Semi เหมาะกับเสื้อทีม/กิจกรรม, Dry-Tech เหมาะกับกีฬา/ออกกำลังกาย, Polo Pique เหมาะกับยูนิฟอร์มบริษัท, และ Fleece Hoodie เหมาะกับแบรนด์สตรีทแฟชั่น"
+          },
+          {
+            question: "สั่งขั้นต่ำกี่ตัว?",
+            answer: "เราไม่มีขั้นต่ำ! สามารถสั่งได้ตั้งแต่ 1 ตัวขึ้นไป แต่หากสั่งจำนวนมากจะได้ราคาที่ดีกว่า ติดต่อเราเพื่อสอบถามราคาพิเศษ"
+          },
+          {
+            question: "มีไซส์อะไรบ้าง?",
+            answer: "เรามีครบทุกไซส์ตั้งแต่ XS, S, M, L, XL, 2XL, 3XL, 4XL และรับทำไซส์พิเศษตามสั่งด้วย พร้อมตารางไซส์ที่ละเอียดให้ดูในหน้าสินค้าแต่ละรายการ"
+          },
+          {
+            question: "สามารถขอตัวอย่างผ้าได้ไหม?",
+            answer: "ได้ครับ! เราพร้อมส่งตัวอย่างผ้าให้ดูและจับสัมผัส (มีค่าใช้จ่ายเล็กน้อยสำหรับค่าจัดส่ง) หรือสามารถมาดูผ้าตัวอย่างที่โรงงานได้โดยตรง"
+          },
+          {
+            question: "เสื้อทนการซักหรือไม่?",
+            answer: "เสื้อของเรามีคุณภาพสูง ทนทานต่อการซัก ไม่หดง่าย ไม่เสียทรงหากดูแลตามคำแนะนำ แนะนำให้ซักด้วยมือหรือเครื่องซักผ้าโหมดอ่อน และตากให้แห้งในที่ร่ม"
+          },
+          {
+            question: "ราคารวมสกรีนแล้วหรือยัง?",
+            answer: "ราคาที่แสดงเป็นราคาเสื้อเปล่า ยังไม่รวมค่าสกรีน สามารถใช้เครื่องมือคำนวณราคาของเราเพื่อดูราคารวมสกรีนได้เลย หรือติดต่อเราเพื่อขอใบเสนอราคา"
+          }
+        ]}
+      />
 
       {/* Final CTA */}
       <FinalCTASection />
