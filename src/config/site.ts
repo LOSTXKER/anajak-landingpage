@@ -12,9 +12,11 @@ export const siteConfig = {
   facebookUrl: 'https://www.facebook.com/anajaktshirt',
   address: {
     short: 'เชียงใหม่, ประเทศไทย',
-    full: '39/12 ต.ป่าแดด อ.เมือง\nจ.เชียงใหม่ 50100',
+    full: '39/12 ต.ป่าแดด อ.เมือง จ.เชียงใหม่ 50100',
     street: '39/12 ต.ป่าแดด อ.เมือง',
-    city: 'จ.เชียงใหม่ 50100'
+    city: 'จ.เชียงใหม่ 50100',
+    district: 'ป่าแดด',
+    province: 'เชียงใหม่'
   },
   businessHours: {
     weekdays: '10:00 - 18:00',

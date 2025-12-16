@@ -107,9 +107,9 @@ export default function DTGPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed opacity-0 animate-fade-in-up delay-200 max-w-2xl mx-auto font-medium">
-              พิมพ์หมึกลงบนเนื้อผ้าโดยตรง <span className="text-purple-600 font-bold">ความละเอียดสูงสุด</span> 
+              พิมพ์เสื้อ DTG (Direct to Garment) พิมพ์หมึกลงบนเนื้อผ้าโดยตรง <span className="text-purple-600 font-bold">ความละเอียดสูงสุด</span> 
               เหมือนพิมพ์ภาพถ่าย <span className="text-pink-600 font-bold">สีสันสดใส</span> ไล่เฉดสีได้อย่างสมบูรณ์แบบ 
-              ไม่มีขั้นต่ำ สั่งได้ตั้งแต่ 1 ตัว
+              <span className="text-emerald-600 font-bold">สกรีนเสื้อไม่มีขั้นต่ำ สั่งได้ตั้งแต่ 1 ตัว ราคาเริ่มต้น 150฿</span>
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
@@ -177,16 +177,16 @@ export default function DTGPage() {
                 <span>DTG คืออะไร?</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                พิมพ์ลงบนผ้าโดยตรง<br />
+                สกรีน DTG พิมพ์ลงบนผ้าโดยตรง<br />
                 เหมือนพิมพ์เอกสาร
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                <strong>DTG (Direct to Garment)</strong> คือเทคโนโลยีการพิมพ์ที่ใช้เครื่องพิมพ์พิเศษ 
+                <strong>สกรีน DTG (Direct to Garment)</strong> คือเทคโนโลยีการพิมพ์เสื้อที่ใช้เครื่องพิมพ์พิเศษ 
                 พิมพ์หมึกลงบนเนื้อผ้าโดยตรง คล้ายกับการพิมพ์กระดาษ แต่ใช้หมึกพิเศษที่ออกแบบมาสำหรับผ้า
               </p>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                เหมาะสำหรับงานที่ต้องการ <strong>ความละเอียดสูง</strong> มี<strong>สีเยอะ</strong> 
-                หรือ<strong>สั่งจำนวนน้อย</strong> เพราะไม่มีค่าใช้จ่ายเริ่มต้น (ไม่ต้องทำฟิล์ม)
+                เหมาะสำหรับงานที่ต้องการ <strong>ความละเอียดสูง</strong> มี<strong>สีเยอะ ไม่จำกัดสี</strong> 
+                หรือ<strong>สกรีนเสื้อ 1 ตัว สั่งจำนวนน้อย ไม่มีขั้นต่ำ</strong> เพราะไม่มีค่าใช้จ่ายเริ่มต้น (ไม่ต้องทำฟิล์ม)
               </p>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">

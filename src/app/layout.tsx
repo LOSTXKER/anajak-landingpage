@@ -10,27 +10,45 @@ const notoSansThai = Noto_Sans_Thai({
 export const metadata: Metadata = {
   metadataBase: new URL('https://anajak-factory.com'),
   title: {
-    default: 'อาณาจักร์ ที-เชิ้ด | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
+    default: 'โรงงานสกรีนเสื้อเชียงใหม่ | Anajak T-Shirt รับสกรีนเสื้อ DTG/DTF ด่วน 1 วัน ไม่มีขั้นต่ำ',
     template: '%s | อาณาจักร์ ที-เชิ้ด'
   },
-  description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง ประสบการณ์กว่า 5 ปี ให้บริการพิมพ์เสื้อ DTG, DTF, Silk Screen รับสั่งทำเสื้อยืด เสื้อโปโล Hoodie ปักชื่อ สกรีนโลโก้ ราคาโรงงานตรง สั่งขั้นต่ำ 1 ตัว ส่งทั่วไทย',
+  description: 'ร้านสกรีนเสื้อเชียงใหม่ (ป่าแดด) โรงสกรีนมืออาชีพ รับสกรีนเสื้อ DTG DTF Silk Screen งานด่วน 1 วัน ไม่มีขั้นต่ำ สกรีนเสื้อ 1 ตัวก็ทำได้ ไม่จำกัดสี ราคาถูก คุณภาพสูง ติดต่อ 064-942-6651',
   keywords: [
+    // Location-based (สำคัญที่สุด)
+    'ร้านสกรีนเสื้อใกล้ฉัน',
+    'สกรีนเสื้อเชียงใหม่',
+    'โรงสกรีนเชียงใหม่',
+    'สกรีนเสื้อป่าแดด',
+    'โรงงานสกรีนเสื้อเชียงใหม่',
+    // Service-based (กลุ่มปิดการขาย)
+    'รับสกรีนเสื้อ',
+    'โรงสกรีน',
+    'สกรีนเสื้อไม่มีขั้นต่ำ',
+    'สกรีนเสื้อด่วน',
+    'สกรีนเสื้อ 1 ตัว',
+    'สกรีนเสื้อ 1 ตัว ราคา',
+    'งานด่วน 1 วัน',
+    // Technique-based (กลุ่มเทคนิค)
+    'สกรีน DTG',
+    'สกรีน DTF',
+    'พิมพ์เสื้อ DTG',
+    'รับสกรีนฟิล์ม DTF',
+    'สกรีนเสื้อระบบดิจิตอล',
+    'Silk Screen',
+    // Features
+    'ไม่จำกัดสี',
+    'ราคาถูก',
+    'คุณภาพสูง',
+    // General
     'โรงงานเสื้อยืด',
     'รับผลิตเสื้อยืด',
     'พิมพ์เสื้อ',
     'สกรีนเสื้อ',
-    'ปักเสื้อ',
     'เสื้อโปโล',
     'Hoodie',
-    'DTG',
-    'DTF',
-    'Silk Screen',
-    'โรงงานผ้า',
-    'ผลิตเสื้อ OEM',
-    'เสื้อยืดราคาส่ง',
     'รับทำเสื้อทีม',
     'เสื้อพนักงาน',
-    'เสื้อโรงงาน',
     'อาณาจักร์',
     'Anajak T-Shirt'
   ],
@@ -47,8 +65,8 @@ export const metadata: Metadata = {
     locale: 'th_TH',
     url: 'https://anajak-factory.com',
     siteName: 'อาณาจักร์ ที-เชิ้ด',
-    title: 'อาณาจักร์ ที-เชิ้ด | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
-    description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง ประสบการณ์กว่า 5 ปี ให้บริการพิมพ์เสื้อ DTG, DTF, Silk Screen รับสั่งทำเสื้อยืด เสื้อโปโล Hoodie ราคาโรงงานตรง',
+    title: 'โรงงานสกรีนเสื้อเชียงใหม่ | Anajak T-Shirt รับสกรีนเสื้อ DTG/DTF ด่วน ไม่มีขั้นต่ำ',
+    description: 'ร้านสกรีนเสื้อเชียงใหม่ (ป่าแดด) โรงสกรีนมืออาชีพ งานด่วน 1 วัน ไม่มีขั้นต่ำ สกรีน DTG DTF 1 ตัวก็ทำได้ ราคาถูก คุณภาพสูง',
     images: [
       {
         url: '/og-image.jpg',
@@ -60,8 +78,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'อาณาจักร์ ที-เชิ้ด | โรงงานผลิตเสื้อยืด พิมพ์ภาพ สกรีน คุณภาพสูง',
-    description: 'โรงงานผลิตเสื้อยืดคุณภาพสูง ประสบการณ์กว่า 5 ปี ให้บริการพิมพ์เสื้อ DTG, DTF, Silk Screen',
+    title: 'โรงงานสกรีนเสื้อเชียงใหม่ | Anajak T-Shirt รับสกรีนเสื้อ DTG/DTF ด่วน ไม่มีขั้นต่ำ',
+    description: 'ร้านสกรีนเสื้อเชียงใหม่ งานด่วน 1 วัน ไม่มีขั้นต่ำ สกรีน DTG DTF 1 ตัวก็ทำได้ ราคาถูก คุณภาพสูง',
     images: ['/og-image.jpg'],
   },
   robots: {
@@ -109,7 +127,10 @@ export default function RootLayout({
               "address": {
                 "@type": "PostalAddress",
                 "addressCountry": "TH",
-                "addressLocality": "กรุงเทพมหานคร"
+                "addressLocality": "เชียงใหม่",
+                "addressRegion": "เชียงใหม่",
+                "postalCode": "50100",
+                "streetAddress": "39/12 ต.ป่าแดด อ.เมือง"
               },
               "contactPoint": {
                 "@type": "ContactPoint",
@@ -143,8 +164,8 @@ export default function RootLayout({
               },
               "geo": {
                 "@type": "GeoCoordinates",
-                "latitude": "13.7563",
-                "longitude": "100.5018"
+                "latitude": "18.7559131",
+                "longitude": "98.9541258"
               },
               "openingHoursSpecification": {
                 "@type": "OpeningHoursSpecification",

@@ -61,15 +61,15 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
               </span>
               <Factory className="w-4 h-4 text-ci-blue" />
               <span className="text-slate-700">
-                โรงงานชั้นนำ • ประสบการณ์กว่า <span className="font-bold text-ci-blue">5 ปี</span>
+                โรงงานชั้นนำเชียงใหม่ • ประสบการณ์กว่า <span className="font-bold text-ci-blue">5 ปี</span>
               </span>
             </div>
 
             {/* Headline */}
             <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 opacity-0 animate-fade-in-up delay-100">
-              <span className="block text-slate-900 mb-2">โรงงานผลิตเสื้อยืด</span>
+              <span className="block text-slate-900 mb-2">โรงงานสกรีนเสื้อ</span>
               <span className="relative inline-block">
-                <span className="gradient-text">คุณภาพระดับพรีเมียม</span>
+                <span className="gradient-text">งานด่วน 1 วัน ไม่มีขั้นต่ำ</span>
                 {/* Animated underline */}
                 <svg className="absolute -bottom-2 left-0 w-full h-3" viewBox="0 0 300 12" fill="none" preserveAspectRatio="none">
                   <path 
@@ -92,23 +92,23 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-slate-600 mb-6 leading-relaxed opacity-0 animate-fade-in-up delay-200">
-              รับผลิตเสื้อยืด เสื้อโปโล Hoodie ด้วยเทคโนโลยี
-              <span className="inline-flex items-center gap-2 mx-2 px-3 py-1 bg-slate-100 rounded-lg font-bold text-slate-800">
+              โรงงานสกรีนเสื้อเชียงใหม่ DTG, DTF, Silk Screen ราคาถูก คุณภาพสูง
+              <span className="inline-flex items-center gap-2 mx-2 px-3 py-1 bg-gradient-to-r from-ci-yellow/20 to-amber-100 rounded-lg font-bold text-slate-900 border border-ci-yellow/30">
                 <Zap className="w-4 h-4 text-ci-yellow" />
-                DTG, DTF, Silk Screen
+                สกรีนเสื้อ 1 ตัวก็ทำได้ • ไม่จำกัดสี
               </span>
             </p>
 
             {/* Checkmarks */}
             <div className="flex flex-wrap gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                <CheckCircle className="w-4 h-4 text-ci-blue" /> ส่งตรงจากโรงงาน
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> สกรีนเสื้อไม่มีขั้นต่ำ
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                <CheckCircle className="w-4 h-4 text-ci-blue" /> ราคาโรงงานตรง
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> งานด่วนรับได้
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                <CheckCircle className="w-4 h-4 text-ci-blue" /> คุณภาพการันตี
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> จัดส่งทั่วประเทศ
               </span>
             </div>
 
@@ -184,11 +184,11 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
               </div>
             </div>
 
-            <div className="absolute top-1/2 -right-4 px-4 py-2 bg-ci-yellow rounded-xl shadow-lg animate-float-slow" style={{ animationDelay: '2s' }}>
+            <div className="absolute top-1/2 -right-4 px-4 py-2 bg-gradient-to-r from-emerald-500 to-green-500 rounded-xl shadow-lg animate-float-slow" style={{ animationDelay: '2s' }}>
               <div className="flex items-center gap-2">
-                <Palette className="w-6 h-6 text-white" />
+                <Package className="w-6 h-6 text-white" />
                 <div>
-                  <div className="font-bold text-slate-900 text-sm">ออกแบบฟรี!</div>
+                  <div className="font-bold text-white text-sm">จัดส่งทั่วไทย</div>
                 </div>
               </div>
             </div>

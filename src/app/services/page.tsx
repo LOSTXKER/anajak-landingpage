@@ -31,12 +31,12 @@ import {
 const mainServices = [
   {
     id: 'printing',
-    title: 'บริการสกรีน',
+    title: 'รับสกรีนเสื้อ',
     subtitle: 'DTG, DTF, Silk Screen',
-    description: 'เทคโนโลยีการพิมพ์หลากหลายรูปแบบ เลือกได้ตามความเหมาะสมของงาน ไม่ว่าจะงานละเอียดหรืองานจำนวนมาก',
+    description: 'รับสกรีนเสื้อครบวงจร เทคโนโลยีการพิมพ์หลากหลายรูปแบบ สกรีนเสื้อไม่มีขั้นต่ำ 1 ตัวก็ทำได้ ไม่ว่าจะงานละเอียดหรืองานจำนวนมาก งานด่วนรับได้',
     icon: Printer,
     image: '/images/services/printing.jpg',
-    features: ['DTG พิมพ์ลงผ้าโดยตรง', 'DTF สีสดทนทาน', 'Silk Screen งานจำนวนมาก', 'ไม่มีขั้นต่ำ'],
+    features: ['สกรีน DTG ความละเอียดสูง', 'สกรีน DTF ทนทาน', 'Silk Screen ราคาถูก', 'ไม่มีขั้นต่ำ 1 ตัวก็รับ'],
     link: '/services/printing',
   },
   {
@@ -266,20 +266,20 @@ export default function ServicesPage() {
 
             {/* Subheadline */}
             <p className="text-lg md:text-xl text-slate-600 mb-8 leading-relaxed opacity-0 animate-fade-in-up delay-200 max-w-2xl mx-auto">
-              ออกแบบ ผลิต ถ่ายภาพ แพ็คส่ง — เราดูแลให้ครบทุกขั้นตอน
-              ไม่ว่าจะเริ่มต้นจากศูนย์หรือมีแบบพร้อมแล้ว
+              โรงสกรีนมืออาชีพ รับสกรีนเสื้อครบวงจร ออกแบบ ผลิต ถ่ายภาพ แพ็คส่ง — เราดูแลให้ครบทุกขั้นตอน
+              ไม่ว่าจะเริ่มต้นจากศูนย์หรือมีแบบพร้อมแล้ว <strong className="text-ci-blue">สกรีนเสื้อไม่มีขั้นต่ำ งานด่วนรับได้</strong>
             </p>
 
             {/* Checkmarks */}
             <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                <CheckCircle className="w-4 h-4 text-ci-blue" /> บริการครบวงจร
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> สกรีนเสื้อไม่มีขั้นต่ำ
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                <CheckCircle className="w-4 h-4 text-ci-blue" /> 20+ ชนิดผ้า
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> งานด่วน 1-3 วัน
               </span>
               <span className="flex items-center gap-2 text-slate-700 font-medium">
-                <CheckCircle className="w-4 h-4 text-ci-blue" /> QC ทุกตัว
+                <CheckCircle className="w-4 h-4 text-ci-blue" /> ราคาถูก คุณภาพสูง
               </span>
             </div>
 

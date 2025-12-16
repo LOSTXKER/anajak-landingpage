@@ -19,18 +19,18 @@ import { siteConfig } from '@/config/site';
 const mainChannels = [
   {
     name: 'คุยกับเราผ่าน LINE',
-    description: 'ช่องทางที่เร็วที่สุดในการสอบถาม ส่งไฟล์ และประเมินราคา',
+    description: 'ช่องทางที่เร็วที่สุดในการสอบถาม ส่งไฟล์ และประเมินราคาสกรีนเสื้อ งานด่วนสอบถามได้เลย',
     icon: MessageCircle,
-    href: '#',
+    href: siteConfig.lineUrl,
     color: 'from-green-500 to-green-600',
     textColor: 'text-green-600',
     buttonText: 'แอดไลน์เลย'
   },
   {
     name: 'ทักแชท Facebook',
-    description: 'สอบถามข้อมูลเพิ่มเติม หรือติดตามข่าวสารและโปรโมชันของเรา',
+    description: 'สอบถามราคาสกรีนเสื้อ ข้อมูลเพิ่มเติม หรือติดตามข่าวสารและโปรโมชันของเรา',
     icon: Facebook,
-    href: '#',
+    href: siteConfig.facebookUrl,
     color: 'from-blue-600 to-blue-700',
     textColor: 'text-blue-600',
     buttonText: 'ส่งข้อความ'
@@ -80,7 +80,13 @@ const contactInfo = [
   {
     icon: Clock,
     title: 'เวลาทำการ',
-    content: 'จันทร์ - เสาร์: 10:00 - 18:00 น.',
+    content: 'จันทร์ - เสาร์: 10:00 - 18:00 น. (รับงานด่วน)',
+    href: null
+  },
+  {
+    icon: MapPin,
+    title: 'ที่อยู่',
+    content: '39/12 ป่าแดด เมืองเชียงใหม่ 50100',
     href: null
   }
 ];
@@ -113,8 +119,8 @@ export default function ContactPage() {
             <div className="w-16 h-1 bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-full mx-auto mb-6 opacity-0 animate-fade-in-up delay-200" />
             
             <p className="text-lg text-slate-600 leading-relaxed opacity-0 animate-fade-in-up delay-300">
-              เราพร้อมให้คำปรึกษาและประเมินราคาสำหรับโปรเจกต์ของคุณ<br className="hidden md:block" />
-              เลือกช่องทางที่สะดวกที่สุดสำหรับคุณ หรือติดตามคอนเทนต์ดีๆ จากเราได้เลย!
+              <strong className="text-ci-blue">โรงงานสกรีนเสื้อเชียงใหม่ (ป่าแดด)</strong> พร้อมให้คำปรึกษาและประเมินราคาฟรี<br className="hidden md:block" />
+              สกรีนเสื้อไม่มีขั้นต่ำ งานด่วนรับได้ เลือกช่องทางที่สะดวกที่สุดสำหรับคุณ!
             </p>
           </div>
         </div>

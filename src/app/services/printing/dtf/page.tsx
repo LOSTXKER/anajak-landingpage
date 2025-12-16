@@ -107,9 +107,9 @@ export default function DTFPage() {
             </h1>
 
             <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed opacity-0 animate-fade-in-up delay-200 max-w-2xl mx-auto font-medium">
-              พิมพ์ลงฟิล์มแล้วรีดลงผ้า <span className="text-emerald-600 font-bold">ทนทานกว่าการพิมพ์ตรง</span>
+              สกรีน DTF (Direct to Film) พิมพ์บนฟิล์มแล้วรีดลงผ้า <span className="text-emerald-600 font-bold">ทนทานกว่าการพิมพ์ตรง 2-3 เท่า</span>
               สีไม่จาง ไม่แตกร้าว <span className="text-teal-600 font-bold">ใช้ได้กับผ้าทุกชนิด</span>
-              แม้ผ้ายืด โพลี ซักได้เป็นพันครั้ง
+              แม้ผ้ายืด โพลี ซักได้เป็นพันครั้ง <span className="text-cyan-600 font-bold">ไม่มีขั้นต่ำ งานด่วน 2-3 วัน</span>
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
@@ -177,16 +177,16 @@ export default function DTFPage() {
                 <span>DTF คืออะไร?</span>
               </div>
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
-                พิมพ์บนฟิล์ม<br />
+                สกรีน DTF พิมพ์บนฟิล์ม<br />
                 แล้วรีดลงผ้า
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                <strong>DTF (Direct to Film)</strong> คือเทคนิคที่พิมพ์ลายลงบนฟิล์มพิเศษก่อน 
+                <strong>สกรีน DTF (Direct to Film)</strong> หรือ <strong>รับสกรีนฟิล์ม DTF</strong> คือเทคนิคที่พิมพ์ลายลงบนฟิล์มพิเศษก่อน 
                 จากนั้นโรยผงกาวและอบให้แห้ง แล้วนำมารีดด้วยความร้อนลงบนผ้า
               </p>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                 เทคนิคนี้ให้<strong>สีสดทนทาน</strong>กว่า DTG และ<strong>ใช้ได้กับผ้าทุกชนิด</strong> 
-                ทั้งฝ้าย โพลี และผ้ายืด จึงเป็นที่นิยมมากสำหรับเสื้อกีฬาและยูนิฟอร์ม
+                ทั้งฝ้าย โพลี และผ้ายืด จึงเป็นที่นิยมมากสำหรับเสื้อกีฬาและยูนิฟอร์ม <strong>สกรีนเสื้อไม่มีขั้นต่ำ 1 ตัวก็รับทำได้</strong>
               </p>
             </div>
             <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
