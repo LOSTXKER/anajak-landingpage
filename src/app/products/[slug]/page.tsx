@@ -124,7 +124,7 @@ export default function ProductDetailPage() {
           </nav>
 
           {/* Product Grid */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
             
             {/* Image Gallery */}
             <div className="lg:sticky lg:top-24">
@@ -197,7 +197,7 @@ export default function ProductDetailPage() {
                   คุณสมบัติและรายละเอียด
                 </h3>
                 <div className="bg-gradient-to-br from-slate-50 to-blue-50/30 rounded-xl p-4 border border-blue-100">
-                  <div className="grid grid-cols-2 gap-x-4 gap-y-2.5 text-xs">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2.5 text-xs">
                     <div className="flex items-center justify-between">
                       <span className="flex items-center gap-1.5 text-slate-600">
                         <Shirt className="w-3 h-3 text-ci-blue" />
@@ -298,7 +298,7 @@ export default function ProductDetailPage() {
                   <div className="w-1 h-4 bg-gradient-to-b from-ci-blue to-blue-600 rounded-full" />
                   เทคนิคสกรีนที่แนะนำ
                 </h3>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="relative overflow-hidden p-3 bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl flex items-center gap-3">
                     <div className="flex-shrink-0">
                       <Palette className="w-10 h-10 text-ci-blue" />
@@ -362,7 +362,7 @@ export default function ProductDetailPage() {
                   <span>ติดต่อเพื่อสั่งผลิต</span>
                 </Link>
                 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <a
                     href="#price-table"
                     className="group flex items-center justify-center gap-1.5 px-4 py-2.5 bg-white border-2 border-slate-200 text-slate-700 font-semibold rounded-xl hover:border-ci-blue hover:text-ci-blue transition-all text-sm"
@@ -741,4 +741,5 @@ export default function ProductDetailPage() {
     </PageLayout>
   );
 }
+
 

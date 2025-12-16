@@ -332,10 +332,10 @@ export default function FabricComparisonPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4-4m0 0l-4-4m4 4H3" />
             </svg>
           </div>
-          <div className="relative overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-2xl">
+          <div className="relative overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-2xl scroll-smooth">
             {/* Scroll Gradient Indicators */}
-            <div className="md:hidden absolute left-0 top-0 bottom-0 w-8 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
-            <div className="md:hidden absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+            <div className="lg:hidden absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-white via-white/80 to-transparent pointer-events-none z-10" />
+            <div className="lg:hidden absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-white via-white/80 to-transparent pointer-events-none z-10" />
             <table className="w-full min-w-[800px] table-fixed">
               {/* Table Header */}
               <thead>

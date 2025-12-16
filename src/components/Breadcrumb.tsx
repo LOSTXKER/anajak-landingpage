@@ -56,23 +56,24 @@ export default function Breadcrumb({ items, currentPage }: BreadcrumbProps) {
       {/* Breadcrumb Navigation */}
       <nav 
         aria-label="breadcrumb" 
-        className="flex items-center gap-2 text-sm text-slate-600 mb-6 md:mb-8"
+        className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm text-slate-600 mb-4 md:mb-6 overflow-x-auto pb-2 scrollbar-hide"
       >
         <Link 
           href="/" 
-          className="hover:text-ci-blue transition-colors flex items-center gap-1.5 group"
+          className="hover:text-ci-blue transition-colors flex items-center gap-1 sm:gap-1.5 group flex-shrink-0"
           aria-label="กลับไปหน้าหลัก"
         >
-          <Home className="w-4 h-4 group-hover:scale-110 transition-transform" />
-          <span>หน้าหลัก</span>
+          <Home className="w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:scale-110 transition-transform" />
+          <span className="hidden sm:inline">หน้าหลัก</span>
         </Link>
 
         {breadcrumbItems.map((item, index) => (
-          <div key={item.href} className="flex items-center gap-2">
-            <ChevronRight className="w-4 h-4 text-slate-400" />
+          <div key={item.href} className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400" />
             <Link
               href={item.href}
-              className="hover:text-ci-blue transition-colors hover:underline"
+              className="hover:text-ci-blue transition-colors hover:underline truncate max-w-[100px] sm:max-w-none"
+              title={item.label}
             >
               {item.label}
             </Link>
@@ -80,9 +81,13 @@ export default function Breadcrumb({ items, currentPage }: BreadcrumbProps) {
         ))}
 
         {currentPage && (
-          <div className="flex items-center gap-2">
-            <ChevronRight className="w-4 h-4 text-slate-400" />
-            <span className="text-slate-900 font-semibold" aria-current="page">
+          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+            <ChevronRight className="w-3 h-3 sm:w-4 sm:h-4 text-slate-400" />
+            <span 
+              className="text-slate-900 font-semibold truncate max-w-[120px] sm:max-w-[200px] md:max-w-none" 
+              aria-current="page"
+              title={currentPage}
+            >
               {currentPage}
             </span>
           </div>

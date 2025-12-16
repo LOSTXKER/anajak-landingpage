@@ -180,6 +180,38 @@
     display: none;
   }
 
+  /* Touch-friendly tap target */
+  .tap-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Safe area for mobile notches */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  /* Mobile-optimized text sizes */
+  .text-mobile-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-mobile-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-mobile-lg {
+    @apply text-lg sm:text-xl md:text-2xl;
+  }
+
+  /* Smooth scroll with padding */
+  .scroll-padding {
+    scroll-padding-top: 6rem;
+  }
+
   .text-balance {
     text-wrap: balance;
   }
