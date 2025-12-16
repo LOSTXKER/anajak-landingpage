@@ -5,6 +5,7 @@ import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
+import ScrollNav from '@/components/ScrollNav';
 import { 
   Hand,
   Shirt,
@@ -97,28 +98,7 @@ export default function DTFvsDTGPage() {
 
           {/* Comparison Grid Wrapper with Navigation */}
           <div className="relative">
-            {/* Navigation Buttons - Mobile Only */}
-            <button
-              onClick={() => {
-                const container = document.getElementById('comparison-table');
-                if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
-              }}
-              className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-r-xl p-3 backdrop-blur-sm"
-              aria-label="Scroll left"
-            >
-              <ChevronLeft className="w-6 h-6 text-slate-900" />
-            </button>
-            
-            <button
-              onClick={() => {
-                const container = document.getElementById('comparison-table');
-                if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
-              }}
-              className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-l-xl p-3 backdrop-blur-sm"
-              aria-label="Scroll right"
-            >
-              <ChevronRight className="w-6 h-6 text-slate-900" />
-            </button>
+            <ScrollNav scrollId="comparison-table" scrollAmount={350} />
 
             <div id="comparison-table" className="md:max-w-7xl md:mx-auto overflow-x-auto scrollbar-hide scroll-smooth">
               <div className="min-w-[800px] md:min-w-0 grid grid-cols-4 gap-0.5 bg-slate-200 shadow-2xl rounded-2xl overflow-hidden">
