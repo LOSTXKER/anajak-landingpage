@@ -377,8 +377,7 @@ export default function DTFvsDTGPage() {
             <span className="font-semibold">👈 ปัดดูความทนทาน 👉</span>
           </div>
           
-          {/* Desktop: Grid */}
-          <div className="hidden lg:grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
+          <div className="mobile-scroll-grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
             <div className="card p-8 lg:p-10">
               <h3 className="text-3xl font-bold mb-6 text-slate-900">DTF: ทนทานและยืดหยุ่น</h3>
               <ul className="list-none space-y-4 text-lg">
@@ -463,7 +462,13 @@ export default function DTFvsDTGPage() {
               ไฟล์งานบางประเภทอาจไม่เหมาะกับเทคนิคการพิมพ์บางชนิด การเลือกให้ถูกต้องจะทำให้งานออกมาสวยงามที่สุด
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
+          
+          {/* Mobile Scroll Hint */}
+          <div className="lg:hidden mt-8 mb-6 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-red-50 via-orange-50 to-red-50 px-5 py-3 rounded-xl border-2 border-red-200">
+            <span className="font-semibold">👈 ปัดดูข้อจำกัด 👉</span>
+          </div>
+          
+          <div className="mobile-scroll-grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
             <div className="card p-8 lg:p-10">
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-slate-900">
                 งานที่ไม่เหมาะกับ <span className="text-ci-blue">DTF</span>
@@ -847,7 +852,12 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {/* Mobile Scroll Hint */}
+          <div className="md:hidden mb-6 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-purple-50 via-blue-50 to-purple-50 px-5 py-3 rounded-xl border-2 border-purple-200">
+            <span className="font-semibold">👈 ปัดดูภาพงาน 👉</span>
+          </div>
+
+          <div className="mobile-scroll-grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* DTF Image */}
             <div className="card overflow-hidden">
               <div className="aspect-square bg-gradient-to-br from-ci-blue/10 to-ci-blue/5 flex items-center justify-center">
@@ -965,7 +975,12 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          {/* Mobile Scroll Hint */}
+          <div className="md:hidden mb-6 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-cyan-50 via-blue-50 to-cyan-50 px-5 py-3 rounded-xl border-2 border-cyan-200">
+            <span className="font-semibold">👈 ปัดดูวิธีดูแล 👉</span>
+          </div>
+
+          <div className="mobile-scroll-grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
             {/* DTF Care */}
             <div className="card p-8">
               <div className="flex items-center gap-3 mb-6">
@@ -1122,7 +1137,12 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+          {/* Mobile Scroll Hint */}
+          <div className="md:hidden mb-6 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-green-50 via-emerald-50 to-green-50 px-5 py-3 rounded-xl border-2 border-green-200">
+            <span className="font-semibold">👈 ปัดดูราคา 👉</span>
+          </div>
+
+          <div className="mobile-scroll-grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
             {/* DTF Pricing */}
             <div className="card p-8 border-2 border-ci-blue/20">
               <div className="flex items-center justify-between mb-6">
