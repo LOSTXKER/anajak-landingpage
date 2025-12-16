@@ -701,8 +701,8 @@ export default function DTFvsDTGPage() {
             </div>
             
             {/* Mobile: Horizontal Scroll */}
-            <div className="md:hidden relative">
-              <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+            <div className="md:hidden">
+              <div id="scenarios-scroll" className="overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth">
                 <div className="flex gap-4 pb-4" style={{width: 'max-content'}}>
                   {/* DTF Card */}
                   <div className="card p-6 snap-center" style={{width: '85vw', maxWidth: '400px'}}>
