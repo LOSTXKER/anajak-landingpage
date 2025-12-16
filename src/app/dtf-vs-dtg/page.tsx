@@ -377,7 +377,9 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
           
-          <div className="mobile-scroll-grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
+          <div className="relative mt-16 max-w-7xl mx-auto">
+            <ScrollNav scrollId="durability-scroll" scrollAmount={350} className="lg:hidden" />
+            <div id="durability-scroll" className="mobile-scroll-grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="card p-8 lg:p-10">
               <h3 className="text-3xl font-bold mb-6 text-slate-900">DTF: ทนทานและยืดหยุ่น</h3>
               <ul className="list-none space-y-4 text-lg">
@@ -446,6 +448,7 @@ export default function DTFvsDTGPage() {
                   </div>
                 </li>
               </ul>
+            </div>
             </div>
           </div>
         </div>

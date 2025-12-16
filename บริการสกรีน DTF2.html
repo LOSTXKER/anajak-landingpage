@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>บริการสกรีนเสื้อ DTF คมชัด สีสดบนผ้าทุกชนิด | Anajak T-Shirt</title>
+    <meta name="description" content="โรงงานสกรีนเสื้อ Anajak T-Shirt รับสกรีน DTF (Direct to Film) คุณภาพสูง สีสด คมชัดทุกรายละเอียด ติดทนนานบนผ้าทุกชนิด สั่งทำได้ ไม่มีขั้นต่ำ">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        /* === Base Styles === */
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            background-color: #f8fafc; /* เปลี่ยนเป็นสี off-white ที่สบายตาขึ้น */
+            color: #1e293b; /* Slate-800 */
+        }
+
+        /* === Typography === */
+        .section-title { 
+            font-size: 2.5rem; 
+            font-weight: 700; 
+            margin-bottom: 1rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.1em; 
+            position: relative; 
+            z-index: 10; 
+            color: #0f172a; /* Slate-900 */
+        }
+        .section-subtitle { 
+            font-size: 1.125rem; 
+            color: #475569; /* Slate-600 */
+            margin-bottom: 3rem; 
+            position: relative; 
+            z-index: 10; 
+        }
+        
+        /* === Gradient Text for Highlights (New Blue Theme) === */
+        .vibrant-gradient-text {
+            background: linear-gradient(45deg, #5e9ab6, #4a7c94, #3a6174);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* === Buttons === */
+        .btn-primary { 
+            background: #0f172a; /* Slate-900 */
+            color: #ffffff;
+            padding: 0.75rem 2rem; 
+            border-radius: 0.25rem; /* ทำให้ปุ่มดูโค้งมนเล็กน้อย */
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            transition: all 0.3s ease; 
+            border: 2px solid #0f172a; 
+            display: inline-block;
+            box-shadow: 0 4px 14px 0 rgb(0 0 0 / 10%);
+        }
+        .btn-primary:hover {
+            background: #4a7c94; /* New Blue */
+            border-color: #4a7c94; /* New Blue */
+        }
+
+        .btn-secondary { 
+            background-color: transparent; 
+            color: #0f172a; 
+            padding: 0.75rem 2rem; 
+            border-radius: 0.25rem;
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            transition: all 0.3s ease; 
+            border: 2px solid #0f172a; 
+            display: inline-block; 
+        }
+        .btn-secondary:hover { 
+            background-color: #0f172a; 
+            color: #ffffff; 
+        }
+
+        /* === Components === */
+        .feature-icon { 
+            background-color: #e2e8f0; /* Slate-200 */
+            border-radius: 50%; 
+            width: 60px; 
+            height: 60px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            margin: 0 auto 1rem; 
+        }
+        
+        .sleek-card {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0; /* Slate-200 */
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+        }
+        .sleek-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+            border-color: #5e9ab6; /* Lighter New Blue */
+        }
+
+        .bg-text {
+            position: absolute; 
+            z-index: 0; 
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: clamp(4rem, 20vw, 12rem); 
+            font-weight: 800; 
+            color: transparent;
+            opacity: 0.04; 
+            -webkit-text-stroke: 2px #9ca3af; /* Gray-400 */
+            white-space: nowrap; 
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== Header =========== -->
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-slate-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="service-hub-with-shirts.html" class="text-2xl font-bold text-slate-900">ANAJAK T-SHIRT</a>
+            <div class="hidden md:flex space-x-8 font-semibold items-center">
+                <a href="#dtf-service" class="text-slate-900 border-b-2 border-[#4a7c94] pb-1">บริการ DTF</a>
+                <a href="บริการสกรีน DTG3.html" class="text-gray-500 hover:text-slate-900 hover:border-b-2 hover:border-[#4a7c94] pb-1 transition-all">บริการ DTG</a>
+                <a href="#faq" class="text-gray-500 hover:text-slate-900 hover:border-b-2 hover:border-[#4a7c94] pb-1 transition-all">คำถามที่พบบ่อย</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- =========== Hero Section =========== -->
+        <section class="relative text-slate-800 overflow-hidden bg-white">
+            <div class="container mx-auto px-6 py-20 md:py-32 grid md:grid-cols-2 gap-8 items-center">
+                <div class="z-10 text-center md:text-left">
+                    <span class="text-sm font-bold uppercase tracking-widest vibrant-gradient-text">Direct to Film</span>
+                    <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 my-4"><span class="vibrant-gradient-text">สีสด คมชัด</span> บนทุกเนื้อผ้า</h1>
+                    <p class="text-lg md:text-xl text-slate-600 mb-8 max-w-lg mx-auto md:mx-0">เทคโนโลยีที่ตอบโจทย์ทุกความสร้างสรรค์ ทนทาน ยืดหยุ่น เหมาะสำหรับงานที่ต้องการความโดดเด่นและเหมือนจริง</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                        <a href="#dtf-pricing" class="btn-primary">ดูราคาและแพ็คเกจ</a>
+                        <a href="#dtf-process" class="btn-secondary">ขั้นตอนการผลิต</a>
+                    </div>
+                </div>
+                 <div class="relative h-64 md:h-auto"><img src="https://placehold.co/600x600/f1f5f9/1e293b?text=DTF+VIBRANT" alt="ตัวอย่างเสื้อสกรีน DTF สีสด คมชัด" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-auto md:w-[600px] shadow-2xl rounded-lg"></div>
+            </div>
+        </section>
+
+        <!-- =========== จุดเด่นของงานสกรีน DTF =========== -->
+        <section class="py-16 sm:py-24 relative overflow-hidden">
+             <div class="bg-text hidden md:block" aria-hidden="true">VIBRANT</div>
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto"><h2 class="section-title">จุดเด่นของงานสกรีน <span class="vibrant-gradient-text">DTF</span></h2><p class="section-subtitle">ข้อดีที่ทำให้งานสกรีน DTF เป็นที่นิยมและตอบโจทย์ธุรกิจยุคใหม่</p></div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                    <div class="text-center p-6 z-10"><div class="feature-icon"><i class="fas fa-layer-group text-2xl vibrant-gradient-text"></i></div><h3 class="text-xl font-bold mb-2 text-slate-900">สีสดบนทุกเนื้อผ้า</h3><p class="text-slate-600">ด้วยการพิมพ์สีขาวรองพื้น ทำให้สีจริงลอยเด่น ไม่ว่าจะเป็น Cotton, Polyester, Denim หรือแม้แต่หนัง</p></div>
+                    <div class="text-center p-6 z-10"><div class="feature-icon"><i class="fas fa-highlighter text-2xl vibrant-gradient-text"></i></div><h3 class="text-xl font-bold mb-2 text-slate-900">ลายเส้นคมกริบ</h3><p class="text-slate-600">เหมาะกับงานโลโก้ ตัวอักษร หรือลายกราฟิกที่ต้องการความคมชัดสูง เก็บครบทุกรายละเอียด</p></div>
+                    <div class="text-center p-6 z-10"><div class="feature-icon"><i class="fas fa-award text-2xl vibrant-gradient-text"></i></div><h3 class="text-xl font-bold mb-2 text-slate-900">ทนทานและยืดหยุ่น</h3><p class="text-slate-600">ลายสกรีนยึดเกาะดีเยี่ยม ทนต่อการซัก ไม่แตกลอกง่าย และยืดหยุ่นไปตามการเคลื่อนไหวของเนื้อผ้า</p></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- =========== หัวใจของความคมชัด: Epson PrecisionCore i3200 =========== -->
+        <section class="py-16 sm:py-24 bg-white relative overflow-hidden">
+            <div class="bg-text hidden md:block" aria-hidden="true">PRECISION</div>
+            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center z-10">
+                    <img src="https://placehold.co/500x400/e2e8f0/1e293b?text=Epson+i3200" alt="หัวพิมพ์ Epson PrecisionCore i3200" class="shadow-lg rounded-lg mx-auto hover:scale-105 transition-transform duration-300">
+                </div>
+                <div class="z-10">
+                    <span class="text-sm font-bold uppercase tracking-widest text-slate-500">TECHNOLOGY</span>
+                    <h2 class="section-title text-left !text-4xl"><span class="vibrant-gradient-text">หัวใจ</span>ของความคมชัด</h2>
+                    <p class="text-lg text-slate-800 font-semibold mb-4">Epson PrecisionCore i3200 Printhead</p>
+                    <p class="text-slate-600 mb-6">เราเลือกใช้เทคโนโลยีหัวพิมพ์ที่ดีที่สุด เพื่อให้งานสกรีนของคุณมีคุณภาพสูงสุด ด้วยหัวพิมพ์ Epson i3200 ที่สามารถควบคุมการหยดหมึกได้อย่างแม่นยำ ให้ทุกรายละเอียดคมชัด สดใส และสม่ำเสมอทั่วทั้งชิ้นงาน</p>
+                    <ul class="space-y-2 text-slate-800">
+                        <li class="flex items-center"><i class="fas fa-microchip vibrant-gradient-text mr-3"></i><span>ความละเอียดสูง คมชัดทุกพิกเซล</span></li>
+                        <li class="flex items-center"><i class="fas fa-tachometer-alt vibrant-gradient-text mr-3"></i><span>ความเร็วในการพิมพ์ที่เหนือกว่า</span></li>
+                        <li class="flex items-center"><i class="fas fa-palette vibrant-gradient-text mr-3"></i><span>การไล่เฉดสีที่เรียบเนียนสมจริง</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Video Showcase =========== -->
+        <section class="py-16 sm:py-24 bg-slate-50 relative overflow-hidden">
+            <div class="container mx-auto px-6 z-10 relative">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="section-title">ชมวิดีโอ<span class="vibrant-gradient-text">งานสกรีน DTF</span></h2>
+                    <p class="section-subtitle">เห็นภาพกระบวนการพิมพ์คุณภาพสูง ที่ทำให้ลายสกรีนของคุณมีชีวิตชีวา</p>
+                </div>
+                <div class="mt-12 max-w-4xl mx-auto shadow-2xl rounded-lg overflow-hidden border border-slate-200">
+                    <div class="aspect-w-16 aspect-h-9 bg-black">
+                        <!-- Replace with your actual video embed code -->
+                        <iframe 
+                            src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            class="w-full h-full"
+                        ></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== DTF เหมาะกับงานประเภทไหน? =========== -->
+        <section class="py-16 sm:py-24 relative overflow-hidden">
+             <div class="bg-text hidden md:block" aria-hidden="true">USE CASES</div>
+            <div class="container mx-auto px-6"><div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="z-10"><h2 class="section-title text-left">DTF เหมาะกับงานประเภทไหน?</h2><ul class="space-y-6 mt-8">
+                    <li class="flex items-start"><i class="fas fa-check-circle vibrant-gradient-text mt-1 mr-4"></i><div><h4 class="font-bold text-lg text-slate-900">เสื้อแบรนด์และ <span class="vibrant-gradient-text">Merchandise</span></h4><p class="text-slate-600">สร้างสินค้าที่โดดเด่นด้วยโลโก้และลายกราฟิกที่คมชัด สามารถผลิตซ้ำได้คุณภาพคงที่ เหมาะกับแฟชั่น Streetwear</p></div></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle vibrant-gradient-text mt-1 mr-4"></i><div><h4 class="font-bold text-lg text-slate-900">เสื้อทีมและเสื้อบริษัท</h4><p class="text-slate-600">สีโลโก้ตรงตาม CI องค์กร สกรีนได้บนเสื้อโปโล (Polyester) เสื้อช็อป หรือเสื้อยืด (Cotton) ไม่มีข้อจำกัด</p></div></li>
+                    <li class="flex items-start"><i class="fas fa-check-circle vibrant-gradient-text mt-1 mr-4"></i><div><h4 class="font-bold text-lg text-slate-900">สินค้าโปรโมชั่นและของที่ระลึก</h4><p class="text-slate-600">สกรีนได้บนสินค้าหลากหลายประเภท เช่น กระเป๋าผ้า, หมวก, หรือผ้ากันเปื้อน เพื่อสร้างเอกลักษณ์</p></div></li>
+                </ul></div>
+                <div class="z-10 grid grid-cols-2 gap-4"><img src="https://placehold.co/400x500/cbd5e1/1e293b?text=BRAND+MERCH" class="shadow-lg rounded-lg hover:scale-105 transition-transform duration-300"><img src="https://placehold.co/400x500/cbd5e1/1e293b?text=TEAM+UNIFORM" class="shadow-lg rounded-lg mt-8 hover:scale-105 transition-transform duration-300"></div>
+            </div></div>
+        </section>
+
+        <!-- =========== Why Choose Anajak T-Shirt? =========== -->
+        <section class="py-16 sm:py-24 bg-white relative overflow-hidden">
+            <div class="bg-text hidden md:block" aria-hidden="true">WHY US?</div>
+            <div class="container mx-auto px-6 z-10 relative">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="section-title">ทำไมต้องสกรีนกับเรา?</h2>
+                    <p class="section-subtitle">Anajak T-Shirt ไม่ได้เป็นแค่ร้านสกรีน แต่เราคือโรงงานผู้ผลิตที่ใส่ใจทุกรายละเอียด</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12 text-center">
+                    <div class="sleek-card p-8 rounded-lg">
+                        <div class="vibrant-gradient-text text-4xl mb-4"><i class="fas fa-industry"></i></div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-900">จากโรงงานโดยตรง</h3>
+                        <p class="text-slate-600 text-sm">ควบคุมการผลิตทุกขั้นตอน มั่นใจได้ในคุณภาพและราคาที่คุ้มค่า</p>
+                    </div>
+                    <div class="sleek-card p-8 rounded-lg">
+                        <div class="vibrant-gradient-text text-4xl mb-4"><i class="fas fa-check-double"></i></div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-900"><span class="vibrant-gradient-text">คุณภาพ</span>คือหัวใจ</h3>
+                        <p class="text-slate-600 text-sm">เราใช้เครื่องพิมพ์ Epson และวัสดุคุณภาพสูง เพื่องานที่คมชัดและทนทาน</p>
+                    </div>
+                    <div class="sleek-card p-8 rounded-lg">
+                        <div class="vibrant-gradient-text text-4xl mb-4"><i class="fas fa-headset"></i></div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-900">ให้คำปรึกษาอย่างมืออาชีพ</h3>
+                        <p class="text-slate-600 text-sm">พร้อมให้คำแนะนำเพื่อให้งานสกรีนของคุณออกมาดีที่สุด</p>
+                    </div>
+                    <div class="sleek-card p-8 rounded-lg">
+                        <div class="vibrant-gradient-text text-4xl mb-4"><i class="fas fa-shipping-fast"></i></div>
+                        <h3 class="font-bold text-lg mb-2 text-slate-900">รวดเร็ว ตรงต่อเวลา</h3>
+                        <p class="text-slate-600 text-sm">บริหารจัดการคิวงานอย่างเป็นระบบ ส่งมอบงานตรงตามกำหนด</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- =========== ขั้นตอนการผลิตของ DTF =========== -->
+        <section id="dtf-process" class="py-16 sm:py-24 relative overflow-hidden">
+            <div class="bg-text hidden md:block" aria-hidden="true">PRODUCTION</div>
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto"><h2 class="section-title">ขั้นตอนการผลิตของ <span class="vibrant-gradient-text">DTF</span></h2><p class="section-subtitle">เบื้องหลังความคมชัดและสีสันที่สดใสของงานสกรีน DTF</p></div>
+                
+                <div class="space-y-16 mt-16">
+                    <!-- Step 1 -->
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="z-10"><img src="https://placehold.co/600x400/e2e8f0/1e293b?text=1.+Printing+on+Film" alt="ขั้นตอนการพิมพ์ลงฟิล์ม" class="rounded-lg shadow-xl w-full"></div>
+                        <div class="z-10">
+                            <h3 class="text-2xl font-bold mb-3 text-slate-900"><span class="vibrant-gradient-text mr-2">01</span>พิมพ์ลงบนฟิล์ม</h3>
+                            <p class="text-slate-600">เครื่องพิมพ์จะพิมพ์ลายกราฟิก (CMYK) ลงบนแผ่นฟิล์ม PET ชนิดพิเศษก่อน จากนั้นจึงพิมพ์ทับด้วยหมึกสีขาวเพื่อเป็นชั้นรองพื้น ทำให้สีลอยเด่นและสามารถติดบนผ้าได้ทุกสี</p>
+                        </div>
+                    </div>
+                     <!-- Step 2 -->
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="z-10 md:order-2"><img src="https://placehold.co/600x400/e2e8f0/1e293b?text=2.+Applying+Powder" alt="ขั้นตอนการโรยผงกาว" class="rounded-lg shadow-xl w-full"></div>
+                        <div class="z-10 md:order-1">
+                            <h3 class="text-2xl font-bold mb-3 text-slate-900"><span class="vibrant-gradient-text mr-2">02</span>โรยผงกาวและอบ</h3>
+                            <p class="text-slate-600">ฟิล์มที่พิมพ์เสร็จจะถูกนำไปโรยด้วยผงกาวสำหรับยึดติด (Adhesive Powder) อย่างสม่ำเสมอ แล้วนำไปผ่านความร้อนเพื่อละลายผงกาวให้เคลือบอยู่บนหมึกพิมพ์ที่ยังเปียกอยู่</p>
+                        </div>
+                    </div>
+                     <!-- Step 3 -->
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="z-10"><img src="https://placehold.co/600x400/e2e8f0/1e293b?text=3.+Heat+Transfer" alt="ขั้นตอนการรีดร้อนลงเสื้อ" class="rounded-lg shadow-xl w-full"></div>
+                        <div class="z-10">
+                            <h3 class="text-2xl font-bold mb-3 text-slate-900"><span class="vibrant-gradient-text mr-2">03</span>รีดร้อนลงบนเสื้อ</h3>
+                            <p class="text-slate-600">นำฟิล์มที่เตรียมเสร็จแล้วมาวางบนตำแหน่งที่ต้องการบนเสื้อ แล้วใช้เครื่องรีดร้อน (Heat Press) กดทับด้วยอุณหภูมิและเวลาที่เหมาะสมเพื่อให้กาวละลายและยึดลายสกรีนติดกับเนื้อผ้า</p>
+                        </div>
+                    </div>
+                     <!-- Step 4 -->
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="z-10 md:order-2"><img src="https://placehold.co/600x400/e2e8f0/1e293b?text=4.+Peel+%26+Finish" alt="ขั้นตอนการลอกฟิล์มและตรวจสอบ" class="rounded-lg shadow-xl w-full"></div>
+                        <div class="z-10 md:order-1">
+                            <h3 class="text-2xl font-bold mb-3 text-slate-900"><span class="vibrant-gradient-text mr-2">04</span>ลอกฟิล์มและตรวจสอบ</h3>
+                            <p class="text-slate-600">เมื่อครบกำหนดเวลา จะนำเสื้อออกจากเครื่องและรอให้เย็นลงเล็กน้อย (Cold Peel) แล้วจึงลอกแผ่นฟิล์มออก เหลือเพียงลายสกรีนที่สวยงามติดอยู่บนเสื้อ จากนั้นทีมงานจะตรวจสอบคุณภาพก่อนจัดส่ง</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== ราคาบริการสกรีน DTF =========== -->
+        <section id="dtf-pricing" class="py-16 sm:py-24 bg-white relative overflow-hidden">
+            <div class="bg-text hidden md:block" aria-hidden="true">PRICING</div>
+            <div class="container mx-auto px-6"><div class="text-center max-w-3xl mx-auto"><h2 class="section-title"><span class="vibrant-gradient-text">ราคา</span>บริการสกรีน DTF</h2><p class="section-subtitle">ราคาโปร่งใส คุ้มค่า คุณภาพมาตรฐาน (ราคานี้ยังไม่รวมค่าเสื้อ)</p></div>
+            <div class="max-w-4xl mx-auto mt-12 sleek-card rounded-lg overflow-hidden z-10 relative">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-slate-900 text-white">
+                            <th class="p-4 uppercase font-semibold text-sm">ขนาดลาย</th>
+                            <th class="p-4 text-center uppercase font-semibold text-sm">1-10 ตัว</th>
+                            <th class="p-4 text-center uppercase font-semibold text-sm">11-50 ตัว</th>
+                            <th class="p-4 text-center uppercase font-semibold text-sm">51+ ตัว</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700">
+                        <tr class="border-t border-slate-200">
+                            <td class="p-4 font-medium">ไม่เกิน A5 (14x21cm)</td>
+                            <td class="p-4 text-center">100 บาท</td>
+                            <td class="p-4 text-center">90 บาท</td>
+                            <td class="p-4 text-center font-bold vibrant-gradient-text">ติดต่อสอบถาม</td>
+                        </tr>
+                        <tr class="bg-slate-50 border-t border-slate-200">
+                            <td class="p-4 font-medium">ไม่เกิน A4 (21x29cm)</td>
+                            <td class="p-4 text-center">150 บาท</td>
+                            <td class="p-4 text-center">130 บาท</td>
+                            <td class="p-4 text-center font-bold vibrant-gradient-text">ติดต่อสอบถาม</td>
+                        </tr>
+                        <tr class="border-t border-slate-200">
+                            <td class="p-4 font-medium">ไม่เกิน A3 (29x42cm)</td>
+                            <td class="p-4 text-center">250 บาท</td>
+                            <td class="p-4 text-center">220 บาท</td>
+                            <td class="p-4 text-center font-bold vibrant-gradient-text">ติดต่อสอบถาม</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="text-center mt-6 text-sm text-slate-500 z-10 relative"><p>สำหรับงานจำนวนมาก หรือขนาดพิเศษ กรุณาติดต่อเพื่อขอใบเสนอราคาเฉพาะ</p></div></div>
+        </section>
+        
+        <!-- =========== ผลงานสกรีน DTF และรีวิวจากลูกค้าจริง =========== -->
+        <section class="py-16 sm:py-24 relative overflow-hidden">
+            <div class="bg-text hidden md:block" aria-hidden="true">REVIEW</div>
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="section-title"><span class="vibrant-gradient-text">ผลงาน</span>และรีวิวจากลูกค้า</h2>
+                    <p class="section-subtitle">คุณภาพที่ลูกค้าของเราไว้วางใจและบอกต่อ</p>
+                </div>
+                <!-- Gallery -->
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12 z-10 relative">
+                    <div class="overflow-hidden rounded-lg shadow-md"><img src="https://placehold.co/600x600/f1f5f9/1e293b?text=Portfolio+1" alt="ผลงานสกรีน DTF 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"></div>
+                    <div class="overflow-hidden rounded-lg shadow-md"><img src="https://placehold.co/600x600/f1f5f9/1e293b?text=Portfolio+2" alt="ผลงานสกรีน DTF 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"></div>
+                    <div class="overflow-hidden rounded-lg shadow-md"><img src="https://placehold.co/600x600/f1f5f9/1e293b?text=Portfolio+3" alt="ผลงานสกรีน DTF 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"></div>
+                    <div class="overflow-hidden rounded-lg shadow-md"><img src="https://placehold.co/600x600/f1f5f9/1e293b?text=Portfolio+4" alt="ผลงานสกรีน DTF 4" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"></div>
+                    <div class="overflow-hidden rounded-lg shadow-md"><img src="https://placehold.co/600x600/f1f5f9/1e293b?text=Portfolio+5" alt="ผลงานสกรีน DTF 5" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"></div>
+                    <div class="overflow-hidden rounded-lg shadow-md"><img src="https://placehold.co/600x600/f1f5f9/1e293b?text=Portfolio+6" alt="ผลงานสกรีน DTF 6" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300"></div>
+                </div>
+                <!-- Reviews -->
+                <div class="grid md:grid-cols-2 gap-8 mt-16 max-w-5xl mx-auto z-10 relative">
+                    <div class="sleek-card p-8 rounded-lg">
+                        <div class="text-yellow-400 mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-slate-600 italic">"งานดีมากครับ สีสด คมชัดเหมือนในคอมเลย บริการก็รวดเร็ว ประทับใจครับ สั่งทำเสื้อแบรนด์ตัวเองที่นี่ตลอด"</p>
+                        <p class="font-bold mt-4 text-slate-900">- คุณเอก, เจ้าของแบรนด์เสื้อผ้า</p>
+                    </div>
+                    <div class="sleek-card p-8 rounded-lg">
+                        <div class="text-yellow-400 mb-2"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                        <p class="text-slate-600 italic">"สั่งทำเสื้อทีมไปแข่งกีฬา คุณภาพดีเกินคาดครับ ซักหลายครั้งแล้วลายยังติดทนเหมือนเดิม เพื่อนๆ ชอบกันทุกคน"</p>
+                        <p class="font-bold mt-4 text-slate-900">- คุณปลา, กัปตันทีมฟุตซอล</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Case Study: [Brand Name] =========== -->
+        <section class="py-16 sm:py-24 bg-white relative overflow-hidden">
+            <div class="bg-text hidden md:block" aria-hidden="true" style="opacity: 0.03;">CASE STUDY</div>
+            <div class="container mx-auto px-6 z-10 relative">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h2 class="section-title">Case Study: <span class="vibrant-gradient-text">Dynamic Runners</span></h2>
+                    <p class="section-subtitle">ชมตัวอย่างการผลิตเสื้อวิ่งสำหรับทีม "Dynamic Runners" ด้วยเทคนิค DTF</p>
+                </div>
+                <div class="mt-16 grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto sleek-card p-8 md:p-12 rounded-lg">
+                    <div class="z-10">
+                        <p class="font-bold text-lg text-slate-900">ลูกค้า: <span class="font-normal">ชมรมวิ่ง "Dynamic Runners"</span></p>
+                        <p class="font-bold text-lg text-slate-900 mt-2">โจทย์:</p>
+                        <p class="text-slate-600 mb-4">ต้องการสั่งทำเสื้อทีมสำหรับงานวิ่งมาราธอนประจำปี ตัวเสื้อเป็นผ้า Polyester ที่ระบายอากาศได้ดี แต่ต้องการให้โลโก้ทีมและชื่อผู้สนับสนุนมีสีสันสดใส คมชัด และที่สำคัญต้องทนทานต่อการซักและยืดหยุ่นไปกับเนื้อผ้า</p>
+                        
+                        <p class="font-bold text-lg text-slate-900 mt-2">ทางออก:</p>
+                        <p class="text-slate-600 mb-4">เทคนิค DTF คือคำตอบที่สมบูรณ์แบบ เพราะสามารถสกรีนบนผ้า Polyester ได้อย่างยอดเยี่ยม ให้สีที่สดและคมชัดตามไฟล์ต้นฉบับ และมีความยืดหยุ่นสูง ไม่แตกร้าวเมื่อผ้าถูกยืด ทำให้เหมาะกับเสื้อกีฬาอย่างยิ่ง</p>
+        
+                        <p class="font-bold text-lg text-slate-900 mt-2">ผลลัพธ์:</p>
+                        <p class="text-slate-600 mb-4">ทีม Dynamic Runners ได้รับเสื้อวิ่งที่สวยงามตรงตามแบบ โลโก้สีสดใสและคมกริบ นักวิ่งทุกคนประทับใจในความสบายของเสื้อที่ลายสกรีนไม่ทำให้รู้สึกระคายเคือง และทนทานแม้ผ่านการใช้งานหนัก</p>
+        
+                        <div class="border-l-4 border-slate-300 pl-4 italic mt-6">
+                            <p class="text-slate-700">"เสื้อสวยมากครับ สีสดกว่าที่คิดไว้เยอะเลย ใส่สบาย วิ่งแล้วไม่ร้อน ลายสกรีนก็ทนมาก ซักหลายรอบแล้วยังเหมือนใหม่เลยครับ ปีหน้าสั่งที่นี่อีกแน่นอน"</p>
+                            <p class="font-bold mt-4 text-slate-900">- คุณบอย, ประธานชมรม Dynamic Runners</p>
+                        </div>
+                    </div>
+                    <div class="z-10 grid grid-cols-2 gap-4">
+                        <img src="https://placehold.co/400x500/e2e8f0/1e293b?text=Runner+Jersey+1" class="shadow-lg rounded-lg hover:scale-105 transition-transform duration-300" alt="เสื้อวิ่งทีม Dynamic Runners ด้านหน้า">
+                        <img src="https://placehold.co/400x500/e2e8f0/1e293b?text=Runner+Jersey+2" class="shadow-lg rounded-lg mt-8 hover:scale-105 transition-transform duration-300" alt="เสื้อวิ่งทีม Dynamic Runners ด้านหลัง">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== คำถามที่พบบ่อย (FAQ) =========== -->
+        <section id="faq" class="py-16 sm:py-24 bg-white relative overflow-hidden">
+            <div class="bg-text hidden md:block" aria-hidden="true">FAQ</div>
+            <div class="container mx-auto px-6 max-w-4xl z-10 relative"><div class="text-center"><h2 class="section-title">คำถามที่พบบ่อย</h2></div><div class="mt-12 space-y-4">
+            <div class="sleek-card rounded-lg"><h3 class="font-semibold p-4 cursor-pointer flex justify-between items-center border-b border-slate-200 text-slate-900"><span>DTF สกรีนบนผ้าอะไรได้บ้าง?</span><i class="fas fa-plus text-slate-400 transition-transform duration-300"></i></h3><div class="p-4 text-slate-600 hidden">ตอบ: DTF มีความยืดหยุ่นสูงมาก สามารถสกรีนได้บนผ้าแทบทุกชนิดครับ ไม่ว่าจะเป็น Cotton, CVC, TC, Polyester, ผ้าใบ, ผ้ายีนส์, หนังเทียม ทำให้เหมาะกับทั้งเสื้อยืด เสื้อโปโล เสื้อกีฬา กระเป๋า และหมวก</div></div>
+            <div class="sleek-card rounded-lg"><h3 class="font-semibold p-4 cursor-pointer flex justify-between items-center border-b border-slate-200 text-slate-900"><span>ความทนทานของลายสกรีน DTF เป็นอย่างไร?</span><i class="fas fa-plus text-slate-400 transition-transform duration-300"></i></h3><div class="p-4 text-slate-600 hidden">ตอบ: ทนทานมากครับ ลายสกรีนผ่านการทดสอบซักมากกว่า 50 ครั้งโดยไม่แตกลอก หากดูแลรักษาอย่างถูกวิธี (กลับด้านในซัก, ไม่รีดทับลายโดยตรง) ลายสกรีนจะคงความสวยงามได้ยาวนาน</div></div>
+            <div class="sleek-card rounded-lg"><h3 class="font-semibold p-4 cursor-pointer flex justify-between items-center border-b border-slate-200 text-slate-900"><span>สัมผัสของงาน DTF เป็นอย่างไร?</span><i class="fas fa-plus text-slate-400 transition-transform duration-300"></i></h3><div class="p-4 text-slate-600 hidden">ตอบ: ผิวสัมผัสจะเรียบเนียน มีความยืดหยุ่นคล้ายยางบางๆ ตัวลายจะอยู่บนผิวผ้า ไม่ได้ซึมลงไปในเนื้อผ้าเหมือน DTG ครับ ทำให้สีมีความสดและลอยเด่นชัดเจน</div></div>
+        </div></div></section>
+        
+        <!-- =========== Final CTA =========== -->
+        <section class="py-16 sm:py-24 bg-slate-900 text-white relative overflow-hidden">
+            <div class="container mx-auto px-6 text-center z-10 relative">
+                <h2 class="text-4xl font-extrabold mb-4">Let's Create Something <span class="vibrant-gradient-text">Vibrant</span></h2>
+                <p class="text-lg text-slate-300 max-w-2xl mx-auto mb-8">ไม่ว่าจะเป็นเสื้อแบรนด์ เสื้อทีม หรือของขวัญชิ้นพิเศษ ให้ Anajak T-Shirt ช่วยทำให้ไอเดียของคุณเป็นจริง ติดต่อเราเพื่อรับคำปรึกษาฟรี!</p>
+                <a href="#" class="btn-primary !bg-[#4a7c94] !border-[#4a7c94] hover:!bg-white hover:!text-[#4a7c94]">
+                    ปรึกษาผู้เชี่ยวชาญฟรี
+                </a>
+            </div>
+        </section>
+
+        <!-- =========== ค้นหาเทคนิคสกรีนที่ใช่สำหรับคุณ =========== -->
+        <section class="py-16 sm:py-24 relative overflow-hidden">
+            <div class="container mx-auto px-6 text-center z-10 relative">
+            <h2 class="text-3xl font-bold mb-8 text-slate-900">ค้นหาเทคนิคที่ใช่สำหรับคุณ</h2>
+            <div class="flex flex-col md:flex-row gap-6 justify-center max-w-4xl mx-auto">
+                <div class="sleek-card p-8 flex-1 rounded-lg"><h3 class="text-2xl font-bold mb-3 text-slate-900">ต้องการงาน<span class="vibrant-gradient-text">พรีเมียม</span>?</h3><p class="text-slate-600 mb-6">หากคุณมองหางานสกรีนที่ให้สัมผัสนุ่ม ลายซึมลงเนื้อผ้า ใส่สบาย</p><a href="บริการสกรีน DTG3.html" class="btn-secondary">เรียนรู้เกี่ยวกับ DTG</a></div>
+                <div class="sleek-card p-8 flex-1 rounded-lg"><h3 class="text-2xl font-bold mb-3 text-slate-900">ยังไม่แน่ใจ?</h3><p class="text-slate-600 mb-6">ดูตารางเปรียบเทียบคุณสมบัติระหว่าง DTF และ DTG แบบละเอียด</p><a href="#" class="btn-secondary">ดูตารางเปรียบเทียบ</a></div>
+            </div>
+        </div></section>
+
+    </main>
+
+    <!-- =========== Footer =========== -->
+    <footer id="contact" class="bg-slate-900 text-white text-center py-6 border-t border-slate-700"><p>&copy; 2025 ANAJAK T-SHIRT. DESIGNED TO PERFECTION.</p></footer>
+    <script>
+        document.querySelectorAll('#faq h3').forEach(faq => {
+            faq.addEventListener('click', () => {
+                const answer = faq.nextElementSibling;
+                const icon = faq.querySelector('i');
+                
+                // Close all other FAQs before opening the new one
+                document.querySelectorAll('#faq .p-4.text-slate-600').forEach(ans => {
+                    if (ans !== answer && !ans.classList.contains('hidden')) {
+                        ans.classList.add('hidden');
+                        let otherIcon = ans.previousElementSibling.querySelector('i');
+                        otherIcon.classList.remove('rotate-45', 'vibrant-gradient-text');
+                        otherIcon.classList.add('text-slate-400');
+                    }
+                });
+
+                // Toggle current FAQ
+                answer.classList.toggle('hidden');
+                icon.classList.toggle('rotate-45');
+                icon.classList.toggle('text-slate-400');
+                icon.classList.toggle('vibrant-gradient-text');
+            });
+        });
+    </script>
+</body>
+</html>
+

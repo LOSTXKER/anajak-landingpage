@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เปรียบเทียบเนื้อผ้า - Anajak T-Shirt</title>
+    <meta name="description" content="เปรียบเทียบคุณสมบัติเนื้อผ้าแต่ละชนิด เพื่อเลือกเสื้อที่เหมาะสมกับการใช้งานของคุณที่สุด ทั้งเสื้อยืด Cotton, เสื้อโปโล, และเสื้อกีฬา">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #fafafa; /* Subtle BG */
+            color: #000000; /* Primary Text */
+        }
+        .comparison-table .feature-col {
+            background-color: #f9fafb;
+        }
+        .comparison-table .product-col {
+            background-color: #ffffff;
+            border-left: 1px solid #e5e7eb;
+        }
+        .comparison-table .feature-row {
+            border-top: 1px solid #e5e7eb;
+        }
+        .comparison-table .check-icon {
+            color: #4B7F94;
+        }
+        .custom-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            /* The background-image is now handled by an inline SVG in the HTML for better control */
+            background-repeat: no-repeat;
+            background-position: right 0.5rem center;
+            background-size: 1.25em;
+            padding-right: 2.5rem;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== Header / Navigation =========== -->
+    <header class="bg-white/80 sticky top-0 z-40 backdrop-blur-sm border-b border-gray-200">
+        <nav class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+            <div class="text-xl sm:text-2xl font-bold text-black"><a href="index.html">ANAJAK T-SHIRT</a></div>
+            <div class="hidden md:flex md:space-x-6 font-semibold">
+                <a href="index.html" class="block text-gray-500 hover:text-black">หน้าหลัก</a>
+                <a href="หน้า Service หลัก.html" class="block text-gray-500 hover:text-black">บริการของเรา</a>
+                <a href="portfolio.html" class="block text-gray-500 hover:text-black">ผลงาน</a>
+                <a href="products.html" class="block text-black">สินค้า</a>
+                <a href="about.html" class="block text-gray-500 hover:text-black">เกี่ยวกับเรา</a>
+                <a href="contact.html" class="block text-gray-500 hover:text-black">ติดต่อ</a>
+            </div>
+            <div class="md:hidden">
+                <button id="hamburger-button" class="text-black text-2xl z-50">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="container mx-auto px-4 sm:px-6 py-12 sm:py-20">
+            <header class="text-center mb-12 sm:mb-16">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-black">เนื้อผ้าแบบไหน<span style="color: #4B7F94;">ที่ใช่สำหรับคุณ?</span></h1>
+                <p class="mt-4 text-lg text-gray-500 max-w-3xl mx-auto">เปรียบเทียบคุณสมบัติเด่นของผ้าแต่ละชนิด เพื่อให้คุณเลือกเสื้อที่ตอบโจทย์การใช้งานได้ดีที่สุด</p>
+            </header>
+
+            <div id="comparison-container" class="comparison-table overflow-x-auto rounded-lg border border-gray-200 shadow-sm">
+                <!-- Table will be dynamically generated here -->
+            </div>
+
+            <!-- CTA for Screen Comparison -->
+            <div class="bg-white rounded-lg shadow-md p-8 md:p-12 mt-16 sm:mt-24 text-center">
+                <h2 class="text-3xl md:text-4xl font-extrabold text-black">
+                    เลือกผ้าได้แล้ว แต่ยังไม่แน่ใจเรื่อง<span style="color: #4B7F94;">งานสกรีน</span>?
+                </h2>
+                <p class="mt-4 text-lg text-gray-500 max-w-2xl mx-auto">
+                    เปรียบเทียบความแตกต่างระหว่างงานสกรีน 2 เทคโนโลยียอดนิยม <span class="font-semibold" style="color: #4B7F94;">DTF</span> และ <span class="font-semibold" style="color: #374151;">DTG</span> เพื่อให้คุณได้งานที่สวยตรงใจที่สุด
+                </p>
+                <div class="mt-8">
+                    <a href="GOD/เปรียบเทียบ DTF vs DTG.html" class="inline-block px-8 py-3 font-semibold text-white rounded-lg transition-transform transform hover:scale-105" style="background-color: #000000;">
+                        เปรียบเทียบ DTF vs DTG
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- =========== Footer =========== -->
+    <footer class="bg-[#1f2937] text-gray-300 py-12">
+        <div class="container mx-auto px-6 text-center">
+             <p>&copy; 2024 Anajak T-Shirt. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const allProducts = {
+            'oe': {
+                category: 'เสื้อยืด',
+                name: 'Cotton OE',
+                slogan: 'ผ้าคอตตอนเกรดประหยัด',
+                image: 'https://placehold.co/200x200/eeeeee/111827?text=OE',
+                link: '#',
+                features: {
+                    shirtFit: 'ทรง Unisex ปกติ',
+                    stitching: 'ตะเข็บเดี่ยว',
+                    fabricGrade: 'OE',
+                    fiberType: 'Cotton 100%',
+                    yarnCount: 'No. 20 / No. 32',
+                    gsm: '150-160 gsm',
+                    texture: 'หยาบกระด้าง',
+                    softness: 2,
+                    breathability: 3,
+                    durability: 'ปานกลาง',
+                    wrinkleResistance: 'ยับง่ายมาก',
+                    dtf: true,
+                    dtg: true,
+                    useCase: 'เสื้อแจก, เสื้ออีเว้นท์ (เน้นราคา)',
+                    minOrder: '50 ตัว',
+                    colorRange: '10+ สี',
+                    colorSwatches: ['#ffffff', '#d1d5db', '#1f2937', '#b91c1c']
+                }
+            },
+            'semi': {
+                category: 'เสื้อยืด',
+                name: 'Cotton Semi No.32',
+                slogan: 'ผ้าคอตตอนมาตรฐานสุดคุ้มค่า',
+                image: 'https://placehold.co/200x200/f3f4f6/111827?text=Semi',
+                link: 'สินค้าย่อย2.html',
+                features: {
+                    shirtFit: 'ทรง Unisex ปกติ',
+                    stitching: 'ตะเข็บคู่ แข็งแรง',
+                    fabricGrade: 'Semi-Combed',
+                    fiberType: 'Cotton 100%',
+                    yarnCount: 'No. 32',
+                    gsm: '155-165 gsm',
+                    texture: 'นุ่มมาตรฐาน',
+                    softness: 3,
+                    breathability: 3,
+                    durability: 'ทนทาน',
+                    wrinkleResistance: 'ยับง่ายกว่า',
+                    dtf: true,
+                    dtg: true,
+                    useCase: 'เสื้อทีม, เสื้อกิจกรรม, เสื้อแบรนด์ (เน้นคุ้มค่า)',
+                    minOrder: 'ไม่มีขั้นต่ำ',
+                    colorRange: '12+ สี',
+                    colorSwatches: ['#1f2937', '#ffffff', '#d1d5db', '#1e3a8a', '#881337']
+                }
+            },
+            'comb': {
+                category: 'เสื้อยืด',
+                name: 'Cotton Comb No.32',
+                slogan: 'สุดยอดผ้าคอตตอน นุ่มพิเศษ',
+                image: 'https://placehold.co/200x200/d1fae5/065f46?text=Comb',
+                link: '#',
+                features: {
+                    shirtFit: 'ทรง Unisex ปกติ',
+                    stitching: 'ตะเข็บคู่พรีเมียม',
+                    fabricGrade: 'Combed',
+                    fiberType: 'Cotton 100%',
+                    yarnCount: 'No. 32',
+                    gsm: '155-165 gsm',
+                    texture: 'นุ่มพิเศษ เรียบเนียน',
+                    softness: 5,
+                    breathability: 4,
+                    durability: 'ทนทานสูง',
+                    wrinkleResistance: 'ยับยากกว่า Semi',
+                    dtf: true,
+                    dtg: true,
+                    useCase: 'เสื้อแบรนด์พรีเมียม, เสื้อใส่เอง, ของขวัญ',
+                    minOrder: 'ไม่มีขั้นต่ำ',
+                    colorRange: '20+ สี',
+                    colorSwatches: ['#111827', '#ffffff', '#fca5a5', '#fdba74', '#fde047', '#86efac', '#67e8f9', '#a5b4fc']
+                }
+            },
+            'drytech': {
+                category: 'เสื้อกีฬา',
+                name: 'เสื้อ Dry-Tech',
+                slogan: 'ผ้ากีฬา แห้งไว ระบายอากาศเยี่ยม',
+                image: 'https://placehold.co/200x200/fee2e2/991b1b?text=Dry-Tech',
+                link: '#',
+                features: {
+                    shirtFit: 'ทรง Sport Fit',
+                    stitching: 'ตะเข็บล็อค แข็งแรงพิเศษ',
+                    fabricGrade: 'N/A',
+                    fiberType: 'Polyester 100%',
+                    yarnCount: 'N/A',
+                    gsm: '140-150 gsm',
+                    texture: 'ลื่น เบา สบาย',
+                    softness: 3,
+                    breathability: 5,
+                    durability: 'ทนทานมาก',
+                    wrinkleResistance: 'ไม่ยับเลย',
+                    dtf: true,
+                    dtg: false,
+                    useCase: 'เสื้อวิ่ง, เสื้อกีฬา, เสื้อฟิตเนส',
+                    minOrder: '50 ตัว',
+                    colorRange: '15+ สี',
+                    colorSwatches: ['#1f2937', '#ffffff', '#ef4444', '#3b82f6', '#22c55e', '#f97316', '#eab308']
+                }
+            },
+            'pique': {
+                category: 'เสื้อโปโล',
+                name: 'เสื้อโปโล Pique',
+                slogan: 'ผ้าโปโลทนทาน สำหรับยูนิฟอร์ม',
+                image: 'https://placehold.co/200x200/e0e7ff/3730a3?text=Polo',
+                link: '#',
+                features: {
+                    shirtFit: 'ทรงโปโลคลาสสิก',
+                    stitching: 'มาตรฐานเสื้อโปโล',
+                    fabricGrade: 'N/A',
+                    fiberType: 'Cotton/Polyester Blend',
+                    yarnCount: 'N/A',
+                    gsm: '200-220 gsm',
+                    texture: 'มีลายทอเฉพาะตัว',
+                    softness: 4,
+                    breathability: 3,
+                    durability: 'ทนทานสูงมาก',
+                    wrinkleResistance: 'ยับยาก',
+                    dtf: true,
+                    dtg: false,
+                    useCase: 'เสื้อพนักงาน, ยูนิฟอร์มบริษัท',
+                    minOrder: '50 ตัว',
+                    colorRange: '10+ สี',
+                    colorSwatches: ['#1f2937', '#ffffff', '#d1d5db', '#1e3a8a', '#be123c', '#166534']
+                }
+            }
+        };
+
+        const featureLabels = {
+            shirtFit: 'ทรงเสื้อ',
+            stitching: 'การตัดเย็บ',
+            fabricGrade: 'เกรดเนื้อผ้า',
+            fiberType: 'ประเภทเส้นใย',
+            yarnCount: 'เบอร์ผ้า',
+            gsm: 'ความหนา',
+            texture: 'สัมผัสเนื้อผ้า',
+            softness: 'ความนุ่ม',
+            breathability: 'การระบายอากาศ',
+            durability: 'ความทนทาน',
+            wrinkleResistance: 'ความยับยาก',
+            dtf: 'เหมาะสำหรับสกรีน DTF',
+            dtg: 'เหมาะสำหรับสกรีน DTG',
+            useCase: 'เหมาะสำหรับงาน',
+            minOrder: 'ขั้นต่ำการผลิต',
+            colorRange: 'เฉดสี'
+        };
+
+        let comparedProductIds = ['oe', 'semi', 'comb'];
+        const container = document.getElementById('comparison-container');
+
+        function renderStars(rating) {
+            let stars = '';
+            for (let i = 0; i < 5; i++) {
+                stars += i < rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
+            }
+            return `<div class="text-yellow-400">${stars}</div>`;
+        }
+
+        function renderCheck(value) {
+            return value ? `<i class="fas fa-check-circle text-2xl check-icon"></i>` : `<span class="text-gray-300">-</span>`;
+        }
+        
+        function renderColorSwatches(colors, totalString) {
+            const totalCount = parseInt(totalString.match(/\d+/)[0]);
+            if (!colors || colors.length === 0) {
+                return totalString; 
+            }
+            
+            const maxSwatches = 5;
+            let swatchesHtml = colors.slice(0, maxSwatches).map((color, index) =>
+                `<div class="w-6 h-6 rounded-full border-2 border-white" style="background-color: ${color}; z-index: ${maxSwatches - index}; margin-left: ${index === 0 ? '0' : '-0.75rem'};"></div>`
+            ).join('');
+
+            if (totalCount > maxSwatches) {
+                swatchesHtml += `<div class="w-6 h-6 rounded-full border-2 border-white bg-gray-200 text-gray-700 text-xs font-semibold flex items-center justify-center" style="z-index: 0; margin-left: -0.75rem;">+${totalCount - maxSwatches}</div>`;
+            }
+            return `<div class="flex items-center justify-center">${swatchesHtml}</div>`;
+        }
+        
+        function renderComparisonTable() {
+            const productGroups = {};
+            for (const id in allProducts) {
+                const product = allProducts[id];
+                if (!productGroups[product.category]) {
+                    productGroups[product.category] = [];
+                }
+                productGroups[product.category].push({ id, ...product });
+            }
+
+            let headerHtml = `<div class="feature-col p-6 sticky left-0 z-10 min-w-[200px]"></div>`;
+            comparedProductIds.forEach((id, index) => {
+                const product = allProducts[id];
+                
+                let dropdownOptions = '';
+                for (const category in productGroups) {
+                    dropdownOptions += `<optgroup label="${category}">`;
+                    productGroups[category].forEach(p => {
+                        const isSelected = p.id === id;
+                        const isDisabled = comparedProductIds.includes(p.id) && !isSelected;
+                        dropdownOptions += `<option value="${p.id}" ${isSelected ? 'selected' : ''} ${isDisabled ? 'disabled' : ''}>${p.name}</option>`;
+                    });
+                    dropdownOptions += `</optgroup>`;
+                }
+
+                headerHtml += `
+                    <div class="product-col text-center p-6 min-w-[250px]">
+                        <div class="relative group">
+                            <select data-index="${index}" class="product-select custom-select w-full font-bold text-lg border-gray-300 bg-gray-50 rounded-md p-2 mb-4 focus:ring-2 focus:ring-[#4B7F94] focus:border-[#4B7F94] appearance-none">
+                                ${dropdownOptions}
+                            </select>
+                            <div class="absolute top-0 right-0 mt-3 mr-3 pointer-events-none">
+                                <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l4-4 4 4m0 6l-4 4-4-4"></path></svg>
+                            </div>
+                            <div class="absolute -top-5 right-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <span class="text-xs bg-black text-white rounded-md px-2 py-1">เปลี่ยนเสื้อ</span>
+                            </div>
+                        </div>
+                        <img src="${product.image}" alt="${product.name}" class="mx-auto my-4 rounded-lg">
+                        <p class="text-gray-500 text-sm mt-2 mb-4 h-10 flex items-center justify-center">${product.slogan || ''}</p>
+                        <a href="${product.link}" class="text-sm font-semibold text-[#4B7F94] hover:underline">ดูรายละเอียด &rarr;</a>
+                    </div>
+                `;
+            });
+
+            let featuresHtml = '';
+            for (const key in featureLabels) {
+                let featureRow = `
+                    <div class="feature-col feature-row font-bold p-6 col-span-1 sticky left-0 z-10 flex items-center">${featureLabels[key]}</div>
+                `;
+                comparedProductIds.forEach(id => {
+                    const product = allProducts[id];
+                    let value = product.features[key];
+                    if (key === 'softness' || key === 'breathability') value = renderStars(value);
+                    else if (key === 'dtf' || key === 'dtg') value = renderCheck(value);
+                    else if (key === 'colorRange') value = renderColorSwatches(product.features.colorSwatches, product.features.colorRange);
+                    
+                    featureRow += `<div class="product-col feature-row text-center p-6 col-span-1 h-full flex items-center justify-center text-sm sm:text-base">${value}</div>`;
+                });
+                featuresHtml += featureRow;
+            }
+
+            container.innerHTML = `<div class="grid" style="grid-template-columns: auto repeat(${comparedProductIds.length}, 1fr);">${headerHtml}${featuresHtml}</div>`;
+            
+            document.querySelectorAll('.product-select').forEach(select => {
+                select.addEventListener('change', (e) => {
+                    const selectedIndex = parseInt(e.currentTarget.dataset.index);
+                    const newProductId = e.currentTarget.value;
+                    comparedProductIds[selectedIndex] = newProductId;
+                    renderComparisonTable();
+                });
+            });
+        }
+        
+        renderComparisonTable();
+    });
+    </script>
+</body>
+</html>
+

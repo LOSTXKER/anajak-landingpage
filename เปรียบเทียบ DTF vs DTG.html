@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTF vs DTG: เลือกเทคโนโลยีที่ใช่สำหรับคุณ | Anajak T-Shirt</title>
+    <meta name="description" content="เจาะลึกทุกความแตกต่างระหว่างการสกรีน DTF และ DTG เพื่อค้นพบเทคโนโลยีที่ตอบโจทย์โปรเจกต์ของคุณที่สุด ทั้งด้านสัมผัส, สีสัน, ความทนทาน และชนิดผ้าที่เหมาะสม">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            background-color: #ffffff; 
+            color: #000000;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Accent Colors */
+        .text-accent-dtf { color: #4B7F94; } /* Muted Teal Blue from main theme */
+        .text-accent-dtg { color: #374151; } /* Gray-700 for a more subtle, professional look */
+
+        /* Button Styles - Monochrome */
+        .btn {
+            padding: 0.75rem 2rem; 
+            border-radius: 0; /* Match main site style */
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 0.05em; 
+            transition: all 0.3s ease; 
+            border: 2px solid #000;
+            display: inline-block;
+            text-align: center;
+        }
+        .btn-dark {
+            background: #000;
+            color: #fff;
+            border-color: #000;
+        }
+        .btn-dark:hover {
+            background: #333;
+            border-color: #333;
+        }
+        .btn-light-outline {
+            background-color: transparent;
+            color: #000;
+            border-color: #000;
+        }
+        .btn-light-outline:hover {
+            background-color: #000;
+            color: #fff;
+        }
+
+        /* Card Styles - Monochrome */
+        .sleek-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb; /* Gray-200 */
+            transition: all 0.3s ease;
+        }
+        .sleek-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+            border-color: #000;
+        }
+        .dark-card {
+            background-color: #1f2937; /* gray-800 */
+            color: #fff;
+            border: 1px solid #1f2937; /* gray-800 */
+            transition: all 0.3s ease;
+        }
+        .dark-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -2px rgb(0 0 0 / 0.05);
+        }
+        
+        .section-title {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        .section-subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.25rem);
+            color: #6b7280; /* Gray-500 */
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- =========== Header =========== -->
+    <header class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 border-b border-gray-200">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-black tracking-wider">ANAJAK</a>
+            <div class="hidden md:flex space-x-8 font-semibold items-center text-sm">
+                <a href="บริการสกรีน DTF2.html" class="text-gray-500 hover:text-black transition-colors">บริการ DTF</a>
+                <a href="บริการสกรีน DTG3.html" class="text-gray-500 hover:text-black transition-colors">บริการ DTG</a>
+                <a href="#" class="text-black border-b-2 border-black pb-1">เปรียบเทียบ</a>
+            </div>
+            <div class="md:hidden">
+                 <i class="fas fa-bars text-2xl"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- =========== Hero Section =========== -->
+        <section class="text-center py-20 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-black">
+                    <span class="text-accent-dtf">DTF</span> vs <span class="text-accent-dtg">DTG</span>
+                </h1>
+                <p class="text-3xl md:text-5xl font-extrabold text-black mt-2">The Choice is Yours.</p>
+                <p class="section-subtitle mt-6 max-w-3xl mx-auto">เจาะลึกทุกความแตกต่าง เพื่อค้นพบเทคโนโลยีการพิมพ์ที่ตอบโจทย์วิสัยทัศน์และโปรเจกต์ของคุณได้อย่างสมบูรณ์แบบที่สุด</p>
+                <div class="mt-8 flex justify-center gap-4">
+                    <a href="#comparison" class="btn btn-dark">ดูตารางเปรียบเทียบ</a>
+                    <a href="#scenarios" class="btn btn-light-outline">ดูสถานการณ์ใช้งาน</a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- =========== Comparison Section =========== -->
+        <section id="comparison" class="py-20 md:py-24 bg-[#fafafa]">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="section-title">เปรียบเทียบ<span class="text-accent-dtf">หมัด</span>ต่อ<span class="text-accent-dtg">หมัด</span></h2>
+                    <p class="section-subtitle mt-4">เราแยกคุณสมบัติเด่นของแต่ละเทคโนโลยีออกมาให้เห็นภาพชัดเจน เพื่อง่ายต่อการตัดสินใจของคุณ</p>
+                </div>
+
+                <!-- Comparison Grid -->
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-0.5 bg-gray-200 shadow-xl rounded-xl overflow-hidden">
+                    <!-- Headers -->
+                    <div class="p-6 bg-gray-100 flex items-center justify-center"><h3 class="text-xl font-bold text-black">คุณสมบัติ</h3></div>
+                    <div class="p-6 bg-gray-100 text-center"><h3 class="text-2xl font-bold text-accent-dtf">DTF</h3><p class="text-xs font-semibold text-gray-500 uppercase tracking-widest">Direct to Film</p></div>
+                    <div class="p-6 bg-gray-800 text-center"><h3 class="text-2xl font-bold text-white">DTG</h3><p class="text-xs font-semibold text-gray-300 uppercase tracking-widest">Direct to Garment</p></div>
+
+                    <!-- Row: Feel -->
+                    <div class="p-6 bg-white font-bold text-black flex items-center"><i class="fas fa-hand-paper mr-4 text-yellow-500"></i>สัมผัส (Feel)</div>
+                    <div class="p-6 bg-white text-center"><p class="font-semibold text-lg text-black">เรียบเนียน ยืดหยุ่น</p><p class="text-sm text-gray-600 mt-1">ลายสกรีนเป็นชั้นฟิล์มบางๆ บนผิวผ้า มีความยืดหยุ่นสูง</p></div>
+                    <div class="p-6 bg-gray-800 text-center text-white"><p class="font-semibold text-lg">นุ่ม เป็นเนื้อเดียวกับผ้า</p><p class="text-sm text-gray-400 mt-1">หมึกซึมลงในเส้นใยผ้าโดยตรง ระบายอากาศได้ดีเยี่ยม</p></div>
+
+                    <!-- Row: Fabric -->
+                    <div class="p-6 bg-white font-bold text-black flex items-center"><i class="fas fa-tshirt mr-4 text-blue-500"></i>ชนิดผ้าที่เหมาะสม</div>
+                    <div class="p-6 bg-white text-center"><p class="font-semibold text-lg text-black">หลากหลายมาก</p><p class="text-sm text-gray-600 mt-1">Cotton, Polyester, TC, CVC, ยีนส์, หนัง, ผ้าใบ, ไนลอน</p></div>
+                    <div class="p-6 bg-gray-800 text-center text-white"><p class="font-semibold text-lg">จำกัด</p><p class="text-sm text-gray-400 mt-1">Cotton 100% ดีที่สุด, ผ้าฝ้ายผสมที่เปอร์เซ็นต์สูง</p></div>
+
+                    <!-- Row: Color & Sharpness -->
+                    <div class="p-6 bg-white font-bold text-black flex items-center"><i class="fas fa-palette mr-4 text-pink-500"></i>สีและความคมชัด</div>
+                    <div class="p-6 bg-white text-center"><p class="font-semibold text-lg text-black">สีสด อิ่มตัว คมกริบ</p><p class="text-sm text-gray-600 mt-1">สีลอยเด่นออกจากผ้า เหมาะกับโลโก้, ตัวอักษร, ลายเส้น</p></div>
+                    <div class="p-6 bg-gray-800 text-center text-white"><p class="font-semibold text-lg">สีสวย เป็นธรรมชาติ</p><p class="text-sm text-gray-400 mt-1">ไล่เฉดสีได้เนียน เหมาะกับงานภาพถ่าย, ภาพวาด</p></div>
+
+                    <!-- Row: Durability -->
+                    <div class="p-6 bg-white font-bold text-black flex items-center"><i class="fas fa-shield-alt mr-4 text-green-500"></i>ความทนทาน</div>
+                    <div class="p-6 bg-white text-center"><p class="font-semibold text-lg text-black">ทนทานและยืดหยุ่นสูงมาก</p><p class="text-sm text-gray-600 mt-1">ไม่แตกลอกง่าย ทนต่อการซักและการขีดข่วน</p></div>
+                    <div class="p-6 bg-gray-800 text-center text-white"><p class="font-semibold text-lg">ทนทานสูง</p><p class="text-sm text-gray-400 mt-1">สีจะซีดจางลงตามกาลเวลาและการซัก เหมือนเสื้อพิมพ์แบรนด์</p></div>
+
+                    <!-- Row: File Limitations -->
+                    <div class="p-6 bg-white font-bold text-black flex items-center"><i class="fas fa-file-image mr-4 text-red-500"></i>ข้อจำกัดไฟล์งาน</div>
+                    <div class="p-6 bg-white text-center"><p class="font-semibold text-lg text-black">ไม่เหมาะกับขอบฟุ้ง</p><p class="text-sm text-gray-600 mt-1">ทำภาพขอบเบลอ, เงาฟุ้ง, หรือลายน้ำโปร่งใสไล่สีไม่ได้</p></div>
+                    <div class="p-6 bg-gray-800 text-center text-white"><p class="font-semibold text-lg">ยืดหยุ่นสูง</p><p class="text-sm text-gray-400 mt-1">รองรับไฟล์ภาพทุกประเภท ทั้งภาพถ่ายและกราฟิกไล่สี</p></div>
+
+                    <!-- Row: Ideal For -->
+                    <div class="p-6 bg-white font-bold text-black flex items-center"><i class="fas fa-star mr-4 text-purple-500"></i>เหมาะสำหรับ</div>
+                    <div class="p-6 bg-white text-center"><p class="font-semibold text-lg text-black">เสื้อทีม, เสื้อบริษัท, สินค้าโปรโมชั่น</p><p class="text-sm text-gray-600 mt-1">คุ้มค่าเมื่อผลิตจำนวนมาก</p></div>
+                    <div class="p-6 bg-gray-800 text-center text-white"><p class="font-semibold text-lg">แบรนด์แฟชั่น, ของขวัญ, งานพรีเมียม</p><p class="text-sm text-gray-400 mt-1">เหมาะกับงานจำนวนน้อย, ไม่มีขั้นต่ำ</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Fabric Suitability Section =========== -->
+        <section id="fabric-types" class="py-20 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="section-title">ประเภทของ<span class="text-accent-dtf">เนื้อผ้า</span>ที่เหมาะสม</h2>
+                    <p class="section-subtitle mt-4">ข้อจำกัดและความยืดหยุ่นของแต่ละเทคนิค คือปัจจัยสำคัญในการเลือกใช้ให้เหมาะกับสินค้าของคุณ</p>
+                </div>
+
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <!-- Cotton -->
+                    <div class="sleek-card p-6 text-center rounded-xl">
+                        <div class="text-4xl mb-4 text-green-500"><i class="fas fa-leaf"></i></div>
+                        <h3 class="text-xl font-bold mb-4">ผ้าคอตตอน (Cotton)</h3>
+                        <div class="space-y-2 text-left text-sm mx-auto w-fit">
+                            <p><strong class="font-semibold">DTG:</strong> <span class="font-bold text-black">ดีที่สุด</span></p>
+                            <p><strong class="font-semibold">DTF:</strong> <span class="font-semibold text-gray-800">ดีมาก</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Polyester -->
+                    <div class="sleek-card p-6 text-center rounded-xl">
+                        <div class="text-4xl mb-4 text-blue-500"><i class="fas fa-running"></i></div>
+                        <h3 class="text-xl font-bold mb-4">โพลีเอสเตอร์ (Polyester)</h3>
+                         <div class="space-y-2 text-left text-sm mx-auto w-fit">
+                            <p><strong class="font-semibold">DTG:</strong> <span class="text-gray-500">ไม่แนะนำ</span></p>
+                            <p><strong class="font-semibold">DTF:</strong> <span class="font-bold text-black">ดีที่สุด</span></p>
+                        </div>
+                    </div>
+
+                    <!-- TC/CVC -->
+                    <div class="sleek-card p-6 text-center rounded-xl">
+                        <div class="text-4xl mb-4 text-purple-500"><i class="fas fa-layer-group"></i></div>
+                        <h3 class="text-xl font-bold mb-4">ผ้าผสม (TC/CVC)</h3>
+                         <div class="space-y-2 text-left text-sm mx-auto w-fit">
+                            <p><strong class="font-semibold">DTG:</strong> <span class="text-gray-600">พอใช้ (อาจจาง)</span></p>
+                            <p><strong class="font-semibold">DTF:</strong> <span class="font-semibold text-gray-800">ดีมาก</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Denim -->
+                    <div class="sleek-card p-6 text-center rounded-xl">
+                        <div class="text-4xl mb-4 text-indigo-500"><i class="fas fa-swatchbook"></i></div>
+                        <h3 class="text-xl font-bold mb-4">ผ้ายีนส์ (Denim)</h3>
+                         <div class="space-y-2 text-left text-sm mx-auto w-fit">
+                            <p><strong class="font-semibold">DTG:</strong> <span class="text-gray-500">ไม่แนะนำ</span></p>
+                            <p><strong class="font-semibold">DTF:</strong> <span class="font-semibold text-gray-800">ดีมาก</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Leather -->
+                    <div class="sleek-card p-6 text-center rounded-xl">
+                        <div class="text-4xl mb-4 text-amber-500"><i class="fas fa-gem"></i></div>
+                        <h3 class="text-xl font-bold mb-4">หนัง (Leather)</h3>
+                         <div class="space-y-2 text-left text-sm mx-auto w-fit">
+                            <p><strong class="font-semibold">DTG:</strong> <span class="font-bold text-gray-500">ไม่ได้</span></p>
+                            <p><strong class="font-semibold">DTF:</strong> <span class="font-semibold text-gray-800">ดีมาก</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Canvas -->
+                    <div class="sleek-card p-6 text-center rounded-xl">
+                        <div class="text-4xl mb-4 text-orange-500"><i class="fas fa-shopping-bag"></i></div>
+                        <h3 class="text-xl font-bold mb-4">ผ้าใบ (Canvas)</h3>
+                         <div class="space-y-2 text-left text-sm mx-auto w-fit">
+                            <p><strong class="font-semibold">DTG:</strong> <span class="text-gray-500">ไม่แนะนำ</span></p>
+                            <p><strong class="font-semibold">DTF:</strong> <span class="font-semibold text-gray-800">ดีมาก</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary -->
+                <div class="mt-12 max-w-3xl mx-auto bg-gray-100 p-6 rounded-lg flex items-center justify-center text-center">
+                     <i class="fas fa-info-circle mr-3 text-2xl text-gray-500"></i>
+                    <p class="font-semibold text-black"><strong>สรุปง่ายๆ:</strong> DTG เหมาะที่สุดกับ Cotton 100%, ในขณะที่ DTF มีความยืดหยุ่นสูง สามารถสกรีนลงบนผ้าแทบทุกชนิด</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Durability & Peeling Section =========== -->
+        <section id="durability" class="py-20 md:py-24 bg-[#fafafa]">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h2 class="section-title"><span class="text-accent-dtf">ความทนทาน</span>และการ<span class="text-accent-dtg">ลอกหลุด</span></h2>
+                    <p class="section-subtitle mt-4">หนึ่งในคำถามที่พบบ่อยที่สุดคือ ลายสกรีนจะอยู่ได้นานแค่ไหน? ทั้งสองเทคนิคมีความทนทานที่ยอดเยี่ยม แต่มีลักษณะการเสื่อมสภาพที่แตกต่างกัน</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 mt-16 max-w-6xl mx-auto">
+                    <div class="sleek-card p-8 lg:p-10 rounded-xl">
+                        <h3 class="text-3xl font-bold mb-6 text-black">DTF: ทนทานและยืดหยุ่น</h3>
+                        <ul class="list-none space-y-4 text-lg">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1.5 mr-3"></i><div><strong>ไม่แตกลอก:</strong> ชั้นฟิล์มมีความยืดหยุ่นสูงมาก สามารถยืดไปกับเนื้อผ้าได้โดยไม่เกิดรอยแตก</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1.5 mr-3"></i><div><strong>ทนต่อการซัก:</strong> ผ่านการทดสอบซักเครื่องได้หลายสิบครั้งโดยที่สีและความคมชัดยังคงเดิม</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1.5 mr-3"></i><div><strong>ทนการขีดข่วน:</strong> ผิวของลายสกรีนมีความทนทานต่อการขีดข่วนในชีวิตประจำวัน</div></li>
+                        </ul>
+                    </div>
+                    <div class="dark-card p-8 lg:p-10 rounded-xl">
+                        <h3 class="text-3xl font-bold mb-6 text-white">DTG: จางลงอย่างเป็นธรรมชาติ</h3>
+                        <ul class="list-none space-y-4 text-lg">
+                             <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><div><strong>ไม่ลอกเป็นแผ่น:</strong> เนื่องจากหมึกซึมลงในผ้า จึงไม่มีการลอกหลุดออกมาเป็นชั้นฟิล์ม</div></li>
+                             <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><div><strong>สีซีดลง (Fading):</strong> เมื่อผ่านการซักไปนานๆ สีจะค่อยๆ จางลงอย่างช้าๆและสม่ำเสมอ ให้ลุคแบบวินเทจ</div></li>
+                             <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><div><strong>เหมือนเสื้อแบรนด์:</strong> ลักษณะการซีดจางจะคล้ายกับเสื้อยืดพิมพ์ลายจากแบรนด์ชั้นนำทั่วไป</div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== File Limitations Section (ADDED BACK) =========== -->
+        <section id="file-limitations" class="py-20 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h2 class="section-title">ข้อจำกัดของ<span class="text-accent-dtf">ไฟล์</span>และ<span class="text-accent-dtg">ประเภทงาน</span></h2>
+                    <p class="section-subtitle mt-4">ไฟล์งานบางประเภทอาจไม่เหมาะกับเทคนิคการพิมพ์บางชนิด การเลือกให้ถูกต้องจะทำให้งานออกมาสวยงามที่สุด</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 mt-16 max-w-6xl mx-auto">
+                    <div class="sleek-card p-8 lg:p-10 rounded-xl">
+                        <h3 class="text-3xl font-bold mb-6 text-black">งานที่ไม่เหมาะกับ <span class="text-accent-dtf">DTF</span></h3>
+                        <ul class="list-none space-y-4 text-lg">
+                            <li class="flex items-start"><i class="fas fa-times-circle text-red-500 mt-1.5 mr-3"></i><div><strong>ภาพฟุ้ง, ขอบเบลอ:</strong> ไม่สามารถทำขอบของลายให้จางหายไปกับเสื้อได้</div></li>
+                            <li class="flex items-start"><i class="fas fa-times-circle text-red-500 mt-1.5 mr-3"></i><div><strong>ลายน้ำ หรือ เงา (Drop Shadow):</strong> เงาที่ฟุ้งๆ จะมีขอบที่ชัดเจนเมื่อพิมพ์ออกมา</div></li>
+                             <li class="flex items-start"><i class="fas fa-times-circle text-red-500 mt-1.5 mr-3"></i><div><strong>Transparent ไล่เฉดสี:</strong> ความโปร่งใสที่ไล่ระดับสีจะไม่สามารถทำได้</div></li>
+                        </ul>
+                         <p class="mt-6 text-sm text-gray-600 bg-gray-100 p-4 rounded-md"><strong>เหตุผล:</strong> DTF ต้องใช้ผงกาวในการยึดติด ทำให้ขอบของลายพิมพ์มีความคมชัดเสมอ ไม่สามารถทำเอฟเฟกต์ขอบฟุ้งได้</p>
+                    </div>
+                    <div class="dark-card p-8 lg:p-10 rounded-xl">
+                        <h3 class="text-3xl font-bold mb-6 text-white">งานที่ <span class="text-white">DTG</span> ทำได้ดี</h3>
+                        <ul class="list-none space-y-4 text-lg">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><div><strong>ภาพถ่ายบุคคล, สัตว์เลี้ยง:</strong> ให้สีที่เป็นธรรมชาติ เก็บรายละเอียดได้ดี</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><div><strong>ภาพวาดสีน้ำ, สีน้ำมัน:</strong> ไล่เฉดสีและแสดงเท็กซ์เจอร์ของลายเส้นได้สวยงาม</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-green-400 mt-1.5 mr-3"></i><div><strong>กราฟิกที่ไล่สีซับซ้อน:</strong> ทำงานประเภท Gradient หรือมีความโปร่งใสได้ดีเยี่ยม</div></li>
+                        </ul>
+                        <p class="mt-6 text-sm text-gray-300 bg-gray-900 p-4 rounded-md"><strong>เหตุผล:</strong> หมึกของ DTG ซึมลงบนใยผ้าโดยตรง ทำให้ไล่เฉดสีและความโปร่งใสได้อย่างเป็นธรรมชาติ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Scenarios Section =========== -->
+        <section id="scenarios" class="py-20 md:py-24 bg-[#fafafa]">
+            <div class="container mx-auto px-6">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h2 class="section-title">สถานการณ์ไหนที่<span class="text-accent-dtf">เหมาะ</span>กับ<span class="text-accent-dtg">คุณ?</span></h2>
+                    <p class="section-subtitle mt-4">เราได้สรุปสถานการณ์การใช้งานจริง เพื่อช่วยให้การตัดสินใจของคุณง่ายและชัดเจนยิ่งขึ้น</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 mt-16 max-w-6xl mx-auto">
+                    <!-- DTF Card -->
+                    <div class="sleek-card p-8 lg:p-10 rounded-xl">
+                        <h3 class="text-3xl font-bold mb-6 text-black">เลือก <span class="text-accent-dtf">DTF</span> เมื่อ...</h3>
+                        <ul class="list-none space-y-4 text-lg">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-accent-dtf mt-1.5 mr-3"></i><div>คุณต้องการทำ <strong class="font-semibold text-black">เสื้อทีม, เสื้อบริษัท, เสื้ออีเวนต์</strong> ที่มีโลโก้สีสันสดใสและคมชัด</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-accent-dtf mt-1.5 mr-3"></i><div>เสื้อที่คุณใช้เป็น <strong class="font-semibold text-black">ผ้า Polyester</strong>, เสื้อกีฬา หรือผ้าชนิดอื่นๆ ที่หลากหลาย</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-accent-dtf mt-1.5 mr-3"></i><div>คุณต้องการงานที่ <strong class="font-semibold text-black">ทนทานเป็นพิเศษ</strong> และผลิตในจำนวนมากด้วยราคาที่คุ้มค่า</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-accent-dtf mt-1.5 mr-3"></i><div>ลายสกรีนของคุณเน้น <strong class="font-semibold text-black">ตัวอักษรและลายเส้น</strong> ที่ต้องการความคมชัดสูงสุด</div></li>
+                        </ul>
+                         <div class="mt-8">
+                             <a href="บริการสกรีน DTF2.html" class="btn btn-light-outline w-full md:w-auto">เรียนรู้เกี่ยวกับ DTF เพิ่มเติม</a>
+                         </div>
+                    </div>
+                    <!-- DTG Card -->
+                    <div class="dark-card p-8 lg:p-10 rounded-xl">
+                        <h3 class="text-3xl font-bold mb-6 text-white">เลือก <span class="text-white">DTG</span> เมื่อ...</h3>
+                        <ul class="list-none space-y-4 text-lg">
+                            <li class="flex items-start"><i class="fas fa-check-circle text-gray-300 mt-1.5 mr-3"></i><div>คุณต้องการสร้าง <strong class="font-semibold text-white">แบรนด์เสื้อผ้าแฟชั่น</strong> ที่ให้ความรู้สึกพรีเมียม สัมผัสนุ่ม</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-gray-300 mt-1.5 mr-3"></i><div>ลายสกรีนเป็น <strong class="font-semibold text-white">ภาพถ่ายบุคคล</strong> หรือภาพวาดที่มีการไล่สีซับซ้อน</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-gray-300 mt-1.5 mr-3"></i><div>เสื้อที่คุณเลือกใช้เป็น <strong class="font-semibold text-white">Cotton 100% คุณภาพสูง</strong> และต้องการความสบายในการสวมใส่สูงสุด</div></li>
+                            <li class="flex items-start"><i class="fas fa-check-circle text-gray-300 mt-1.5 mr-3"></i><div>คุณต้องการสั่งทำ <strong class="font-semibold text-white">เพียงตัวเดียว</strong> เพื่อเป็นของขวัญหรือทดลองทำตัวอย่าง</div></li>
+                        </ul>
+                        <div class="mt-8">
+                             <a href="บริการสกรีน DTG3.html" class="btn btn-dark !bg-white !text-black hover:!bg-gray-200 hover:!border-gray-200 w-full md:w-auto">เรียนรู้เกี่ยวกับ DTG เพิ่มเติม</a>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========== Final CTA =========== -->
+        <section class="bg-gray-800">
+            <div class="container mx-auto px-6 py-20 text-center">
+                <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-white">ยังไม่แน่ใจ? ให้เราช่วย</h2>
+                <p class="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">ทีมงานผู้เชี่ยวชาญของเราพร้อมให้คำปรึกษา เพื่อให้คุณได้งานสกรีนที่ตรงกับความต้องการและงบประมาณมากที่สุด</p>
+                <a href="#" class="btn btn-dark !bg-white !text-black hover:!bg-gray-200 hover:!border-gray-200">ปรึกษาผู้เชี่ยวชาญฟรี</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- =========== Footer =========== -->
+    <footer class="bg-gray-800 text-white text-center py-6 border-t border-gray-700">
+        <p class="text-sm font-semibold tracking-wider">ANAJAK T-SHIRT</p>
+        <p class="text-xs text-gray-400 mt-2">Copyright © 2025 Anajak T-Shirt Inc. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+

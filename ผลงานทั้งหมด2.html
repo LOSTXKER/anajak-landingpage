@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO: Title Tag - มี Keyword หลักและชื่อแบรนด์ -->
+    <title>Case Study ผลงานสกรีนเสื้อแบรนด์ | Anajak T-Shirt เชียงใหม่</title>
+    
+    <!-- SEO: Meta Description - อธิบายเนื้อหาของหน้าอย่างน่าสนใจ -->
+    <meta name="description" content="เจาะลึกเบื้องหลังผลงานสกรีนเสื้อแบรนด์แฟชั่น เสื้อบริษัท และเสื้อกิจกรรม กับ Anajak T-Shirt โรงงานสกรีนเสื้อคุณภาพในเชียงใหม่">
+
+    <!-- SEO: Canonical URL - ป้องกันปัญหาเนื้อหาซ้ำซ้อน -->
+    <link rel="canonical" href="https://www.anajak-tshirt.com/portfolio.html" />
+
+    <!-- Social Media Tags (Open Graph) -->
+    <meta property="og:title" content="Case Study ผลงานสกรีนเสื้อแบรนด์ | Anajak T-Shirt เชียงใหม่" />
+    <meta property="og:description" content="เจาะลึกเบื้องหลังผลงานสกรีนเสื้อแบรนด์แฟชั่น เสื้อบริษัท และเสื้อกิจกรรม กับ Anajak T-Shirt" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?q=80&w=1972&auto=format&fit=crop" />
+    <meta property="og:url" content="https://www.anajak-tshirt.com/portfolio.html" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Anajak T-Shirt" />
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts (Kanit) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            background-color: #f9fafb; /* Changed background for depth */
+            color: #111111;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        .section-super-title-container {
+            position: relative;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        .section-super-title {
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 800;
+            color: #f0f0f0;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            width: 100%;
+            white-space: nowrap;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background-color: #000;
+            margin: 1rem auto 0;
+        }
+        .case-study-card {
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        .case-study-card:hover {
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            transform: translateY(-5px);
+        }
+        .testimonial-quote {
+            border-left: 4px solid;
+            padding-left: 1.5rem;
+            margin-top: 1.5rem;
+        }
+    </style>
+
+    <!-- SEO: JSON-LD for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Anajak T-Shirt",
+      "image": "https://www.anajak-tshirt.com/images/logo.png",
+      "@id": "",
+      "url": "https://www.anajak-tshirt.com/",
+      "telephone": "095-242-9366",
+      "description": "โรงงานสกรีนเสื้อครบวงจรในเชียงใหม่ ให้บริการสกรีนเสื้อด้วยเทคนิค DTF และ DTG คุณภาพสูง ไม่มีขั้นต่ำ",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "111/180 Moo 5",
+        "addressLocality": "Mae Hia, Mueang",
+        "addressRegion": "Chiang Mai",
+        "postalCode": "50100",
+        "addressCountry": "TH"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 18.7559,
+        "longitude": 98.9567
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.facebook.com/anajaktshirt",
+        "https://www.instagram.com/anajaktshirt"
+      ] 
+    }
+    </script>
+</head>
+<body class="antialiased">
+
+    <!-- =========== Header / Navigation =========== -->
+    <header class="bg-white/80 sticky top-0 z-50 backdrop-blur-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-black"><a href="index.html">ANAJAK T-SHIRT</a></div>
+            <div id="nav-menu" class="nav hidden fixed top-0 right-0 h-full w-2/3 bg-white shadow-lg p-8 space-y-4 md:space-y-0 md:relative md:flex md:space-x-6 md:p-0 md:w-auto md:bg-transparent md:shadow-none md:h-auto font-semibold">
+                <a href="หน้า Service หลัก.html" class="block text-gray-700 hover:text-black">บริการของเรา</a>
+                <a href="portfolio.html" class="block text-black border-b-2 border-black">ผลงาน</a>
+                <a href="about.html" class="block text-gray-700 hover:text-black">เกี่ยวกับเรา</a>
+                <a href="contact.html" class="block text-gray-700 hover:text-black">ติดต่อ</a>
+            </div>
+            <div class="md:hidden">
+                <button id="hamburger-button" class="text-black text-2xl z-50">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="py-20 sm:py-28">
+            <div class="container mx-auto px-6">
+
+                <!-- Title -->
+                <div class="section-super-title-container">
+                    <div class="section-super-title">Case Studies</div>
+                    <h1 class="section-title">เบื้องหลังผลงานของเรา</h1>
+                </div>
+
+                <div class="text-center mb-12 max-w-3xl mx-auto">
+                    <p class="text-lg text-gray-600">เราไม่ได้แค่สกรีนเสื้อ แต่เราสร้างสรรค์ผลงานร่วมกับลูกค้า เจาะลึกเบื้องหลังโปรเจกต์เด่นๆ ที่เราภูมิใจ และสามารถชมผลงานทั้งหมดของเราได้ที่แกลเลอรีด้านล่างนี้</p>
+                </div>
+
+                <!-- More Works CTA (New Position) -->
+                <section class="mb-16 bg-gray-800 rounded-lg">
+                    <div class="container mx-auto px-6 py-16 text-center text-white">
+                        <i class="fas fa-images text-5xl text-gray-400 mb-6"></i>
+                        <h2 class="text-3xl font-bold">แกลเลอรีผลงานทั้งหมด</h2>
+                        <p class="mt-4 text-lg text-gray-300 max-w-2xl mx-auto">เราได้รวบรวมโปรเจกต์ที่น่าสนใจอีกมากมายไว้ให้คุณได้ชมแบบจุใจในแกลเลอรี Google Drive ของเรา</p>
+                        <a href="#" target="_blank" rel="noopener noreferrer" class="mt-8 inline-block bg-white text-gray-800 py-3 px-8 text-lg font-semibold rounded-lg hover:bg-gray-200 transition-colors">
+                            <i class="fab fa-google-drive mr-2"></i> ชมผลงานทั้งหมด
+                        </a>
+                    </div>
+                </section>
+
+                <!-- Case Study Grid -->
+                <div class="space-y-16 lg:space-y-24">
+
+                    <!-- ===== CASE STUDY 1: Streetwear Brand ===== -->
+                    <div class="case-study-card grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div class="p-6 lg:p-10">
+                            <p class="font-semibold text-blue-600 mb-2">เสื้อแบรนด์แฟชั่น</p>
+                            <h2 class="text-3xl font-bold mb-4">แบรนด์ ERROR 404 - คอลเลกชัน 'Human Not Found'</h2>
+                            <div class="space-y-6 text-gray-700">
+                                <p><strong class="font-semibold text-black">ความต้องการ:</strong> แบรนด์ต้องการผลิตเสื้อสำหรับคอลเลกชันเปิดตัว ที่มีลายกราฟิกคมชัด สีสด และต้องติดทนทานบนเสื้อยืด Cotton ทรง Oversized คุณภาพสูง</p>
+                                <p><strong class="font-semibold text-black">โซลูชันของเรา:</strong> เราแนะนำ <strong class="text-blue-600">เทคนิค DTF (Direct to Film)</strong> เพราะสามารถพิมพ์ลายที่ซับซ้อนและมีสีสันจัดจ้านได้อย่างแม่นยำ และยังให้สัมผัสที่ยืดหยุ่น ทนทานต่อการซัก ไม่แตกลอกง่าย เหมาะกับเสื้อผ้าสตรีทแวร์ที่ต้องการความโดดเด่น</p>
+                                <div class="testimonial-quote border-blue-500">
+                                    <p class="text-gray-600 italic">"คุณภาพงานสกรีนดีมากครับ สีสดเหมือนที่ออกแบบไว้เลย ทีมงานให้คำปรึกษาดีมาก ทำให้คอลเลกชันแรกของเราออกมาสมบูรณ์แบบ"</p>
+                                    <p class="mt-2 font-semibold text-gray-800">- คุณเอ, เจ้าของแบรนด์ ERROR 404</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h-80 lg:h-full">
+                            <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=2070&auto=format&fit=crop" alt="นายแบบใส่เสื้อยืดแบรนด์ Error 404 สกรีนลาย Human Not Found" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- ===== CASE STUDY 2: Corporate Uniform ===== -->
+                    <div class="case-study-card grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                         <div class="h-80 lg:h-full lg:order-last">
+                            <img src="https://images.unsplash.com/photo-1556742517-88c21c97a4a5?q=80&w=2070&auto=format&fit=crop" alt="พนักงานร้านกาแฟใส่เสื้อโปโลยูนิฟอร์มสีเขียว" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 lg:p-10">
+                            <p class="font-semibold text-green-600 mb-2">เสื้อพนักงาน / บริษัท</p>
+                            <h2 class="text-3xl font-bold mb-4">The Green Bean Cafe - ยูนิฟอร์มพนักงานใหม่</h2>
+                            <div class="space-y-6 text-gray-700">
+                                <p><strong class="font-semibold text-black">ความต้องการ:</strong> ร้านกาแฟชื่อดังในเชียงใหม่ ต้องการยูนิฟอร์มเสื้อโปโลสำหรับพนักงานที่ดูพรีเมียม สัมผัสนุ่มสบาย และระบายอากาศได้ดี โลโก้ต้องดูเรียบหรูเป็นส่วนหนึ่งของเนื้อผ้า</p>
+                                <p><strong class="font-semibold text-black">โซลูชันของเรา:</strong> เราเลือกใช้ <strong class="text-green-600">เทคนิค DTG (Direct to Garment)</strong> พิมพ์ลงบนเสื้อโปโลเนื้อผ้า Cotton 100% เพราะหมึกจะซึมลงไปในเส้นใยผ้า ทำให้ไม่มีความรู้สึกของชั้นสี สัมผัสนุ่มสบาย และยังคงคุณสมบัติการระบายอากาศของผ้าไว้ได้อย่างเต็มที่</p>
+                                <div class="testimonial-quote border-green-500">
+                                    <p class="text-gray-600 italic">"เสื้อสวยมากค่ะ เนื้อผ้าดี สกรีนโลโก้เนียนไปกับผ้าเลย พนักงานทุกคนชอบมาก ทำให้ร้านดูเป็นมืออาชีพขึ้นเยอะเลยค่ะ"</p>
+                                    <p class="mt-2 font-semibold text-gray-800">- คุณบี, ผู้จัดการร้าน The Green Bean Cafe</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ===== CASE STUDY 3: Event T-Shirts ===== -->
+                    <div class="case-study-card grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                        <div class="p-6 lg:p-10">
+                            <p class="font-semibold text-orange-600 mb-2">เสื้อทีม / กิจกรรม</p>
+                            <h2 class="text-3xl font-bold mb-4">Chiang Mai Run 2025 - เสื้อวิ่งสำหรับนักกีฬา</h2>
+                            <div class="space-y-6 text-gray-700">
+                                <p><strong class="font-semibold text-black">ความต้องการ:</strong> ผู้จัดงานวิ่งมาราธอนต้องการเสื้อสำหรับนักวิ่งกว่า 5,000 คน เนื้อผ้าต้องเป็น Dry-Tech ที่ระบายอากาศได้ดี สีสันของสปอนเซอร์ต้องสดใสและมองเห็นได้ชัดเจน และต้องทนทานต่อการใช้งานหนัก</p>
+                                <p><strong class="font-semibold text-black">โซลูชันของเรา:</strong> <strong class="text-orange-600">เทคนิค DTF</strong> คือคำตอบที่ดีที่สุดสำหรับงานนี้ เพราะสามารถพิมพ์ลงบนผ้าใยสังเคราะห์ (Polyester) ได้อย่างยอดเยี่ยม ให้สีที่สดและติดทนแน่น ไม่หลุดลอกแม้จะผ่านการซักหลายครั้ง และผลิตได้รวดเร็วทันต่อความต้องการจำนวนมาก</p>
+                                <div class="testimonial-quote border-orange-500">
+                                     <p class="text-gray-600 italic">"ประสานงานง่าย ผลิตงานได้รวดเร็วและมีคุณภาพมากครับ เสื้อวิ่ง 5,000 ตัวเสร็จทันเวลาพอดี นักวิ่งทุกคนประทับใจมากครับ"</p>
+                                    <p class="mt-2 font-semibold text-gray-800">- คุณซี, ผู้จัดงาน Chiang Mai Run 2025</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="h-80 lg:h-full">
+                            <img src="https://images.unsplash.com/photo-1579626343200-547854375b6a?q=80&w=1974&auto=format&fit=crop" alt="นักวิ่งในงานมาราธอนใส่เสื้อกิจกรรมสีส้ม" class="w-full h-full object-cover">
+                        </div>
+                    </div>
+
+                    <!-- ===== CASE STUDY 4: Artist Merch ===== -->
+                     <div class="case-study-card grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                         <div class="h-80 lg:h-full lg:order-last">
+                            <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945&auto=format&fit=crop" alt="เสื้อยืดสกรีนลายอาร์ตเวิร์คภาพวาดศิลปะ" class="w-full h-full object-cover">
+                        </div>
+                        <div class="p-6 lg:p-10">
+                            <p class="font-semibold text-purple-600 mb-2">งานดีไซน์ / อาร์ตเวิร์ค</p>
+                            <h2 class="text-3xl font-bold mb-4">Lanna Artist - สินค้าลายภาพวาดสีน้ำ</h2>
+                            <div class="space-y-6 text-gray-700">
+                                <p><strong class="font-semibold text-black">ความต้องการ:</strong> ศิลปินชาวเชียงใหม่ต้องการนำผลงานภาพวาดสีน้ำที่มีการไล่เฉดสีที่ละเอียดอ่อน มาผลิตเป็นเสื้อยืดเพื่อจำหน่าย โดยต้องการให้ลายสกรีนเก็บรายละเอียดและให้ความรู้สึกเหมือนภาพวาดต้นฉบับมากที่สุด</p>
+                                <p><strong class="font-semibold text-black">โซลูชันของเรา:</strong> ไม่มีเทคนิคไหนเหมาะกับงานนี้เท่า <strong class="text-purple-600">เทคนิค DTG</strong> ซึ่งสามารถพิมพ์สีได้ไม่จำกัดและไล่โทนสีได้อย่างนุ่มนวลเหมือนเครื่องพิมพ์กระดาษ ทำให้สามารถเก็บรายละเอียดเล็กๆ น้อยๆ และความโปร่งแสงของสีน้ำได้อย่างครบถ้วน</p>
+                                 <div class="testimonial-quote border-purple-500">
+                                    <p class="text-gray-600 italic">"งานสกรีนเก็บรายละเอียดพู่กันได้ดีมาก ไม่เคยคิดว่าลายเส้นสีน้ำจะพิมพ์ลงบนเสื้อได้สวยขนาดนี้ ประทับใจจริงๆ ค่ะ"</p>
+                                    <p class="mt-2 font-semibold text-gray-800">- คุณดี, ศิลปิน Lanna Artist</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- =========== Final CTA Section =========== -->
+        <section class="relative bg-black text-white">
+             <div class="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1974&auto=format&fit=crop" 
+                     alt="Man wearing a custom t-shirt" 
+                     class="w-full h-full object-cover opacity-30">
+            </div>
+            <div class="container mx-auto px-6 py-20 sm:py-28 relative z-10">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="max-w-lg">
+                        <h2 class="text-3xl lg:text-4xl font-extrabold tracking-tight">
+                            พร้อมเริ่มต้นแบรนด์ หรือสั่งผลิตกับโรงงานมืออาชีพแล้วรึยัง?
+                        </h2>
+                        <p class="mt-4 text-lg text-gray-300">
+                            จะ 10 ตัว หรือ 10,000 ตัว เราก็ดูแลทุกออเดอร์ด้วยมาตรฐานเดียวกัน ให้คำปรึกษาฟรี ไม่มีขั้นต่ำ พร้อมช่วยออกแบบ Mockup
+                        </p>
+                        <div class="mt-8 flex flex-wrap gap-4">
+                            <a href="contact.html" class="bg-white text-black py-3 px-6 font-semibold hover:bg-gray-200 transition-colors rounded-md inline-block text-center">
+                                ติดต่อประเมินราคา
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- =========== Footer =========== -->
+    <footer class="bg-[#111111] text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-1">
+                    <h3 class="text-2xl font-bold text-white mb-4">ANAJAK T-SHIRT</h3>
+                    <p class="text-gray-400">
+                        โรงงานสกรีนเสื้อครบวงจร ไม่ว่าจะเป็น DTF, DTG, QC เราใส่ใจทุกขั้นตอนการผลิตเพื่อให้ลูกค้าได้รับสินค้าที่มีคุณภาพที่สุด
+                    </p>
+                </div>
+                <div>
+                     <h4 class="font-semibold text-white mb-4">หจก. อาณาจักรแฟคทอรี่</h4>
+                     <p class="text-gray-400">111/180 หมู่ 5 ตำบลแม่เหียะ<br>อำเภอเมืองเชียงใหม่ 50100</p>
+                     <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Facebook Page"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="Instagram"><i class="fab fa-instagram text-xl"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white" aria-label="TikTok"><i class="fab fa-tiktok text-xl"></i></a>
+                     </div>
+                </div>
+                <div>
+                     <h4 class="font-semibold text-white mb-4">เมนู</h4>
+                     <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white">หน้าหลัก</a></li>
+                        <li><a href="หน้า Service หลัก.html" class="text-gray-400 hover:text-white">บริการของเรา</a></li>
+                        <li><a href="portfolio.html" class="text-gray-400 hover:text-white">ผลงาน</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white">ติดต่อเรา</a></li>
+                     </ul>
+                </div>
+            </div>
+            <div class="mt-12 pt-8 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">© 2025 All rights reserved. anajak_t-shirt@hotmail.com, 095 242 9366</p>
+                <div class="flex space-x-2 mt-4 md:mt-0">
+                    <i class="fab fa-cc-visa text-2xl"></i>
+                    <i class="fab fa-cc-mastercard text-2xl"></i>
+                    <i class="fab fa-cc-jcb text-2xl"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Menu Script -->
+    <script>
+        const hamburgerButton = document.getElementById('hamburger-button');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerButton.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('flex');
+        });
+    </script>
+    
+</body>
+</html>
+
