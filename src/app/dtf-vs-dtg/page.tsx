@@ -92,8 +92,20 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-          {/* Comparison Grid */}
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-0.5 bg-slate-200 shadow-2xl rounded-2xl overflow-hidden">
+          {/* Mobile Scroll Hint */}
+          <div className="md:hidden mb-6 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-50 px-5 py-3 rounded-xl border-2 border-amber-200 shadow-sm animate-pulse">
+            <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+            </svg>
+            <span className="font-semibold text-amber-900">💡 ปัดซ้าย-ขวาเพื่อดูตาราง</span>
+            <svg className="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </div>
+
+          {/* Comparison Grid Wrapper */}
+          <div className="md:max-w-7xl md:mx-auto overflow-x-auto scrollbar-hide">
+            <div className="min-w-[800px] md:min-w-0 grid grid-cols-4 gap-0.5 bg-slate-200 shadow-2xl rounded-2xl overflow-hidden">
             {/* Headers */}
             <div className="p-4 md:p-6 bg-slate-100 flex items-center justify-center">
               <h3 className="text-lg md:text-xl font-bold text-slate-900">คุณสมบัติ</h3>
@@ -217,6 +229,7 @@ export default function DTFvsDTGPage() {
             <div className="p-4 md:p-6 bg-slate-700 text-center text-white">
               <p className="font-semibold text-base md:text-lg">ยูนิฟอร์มโรงงาน, อีเว้นท์ขนาดใหญ่</p>
               <p className="text-xs md:text-sm text-slate-300 mt-1">จำนวนมาก 50+ ตัว ยิ่งสั่งเยอะยิ่งถูก</p>
+            </div>
             </div>
           </div>
         </div>
