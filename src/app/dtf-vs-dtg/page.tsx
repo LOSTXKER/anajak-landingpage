@@ -848,8 +848,9 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-
-          <div className="mobile-scroll-grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="relative max-w-7xl mx-auto">
+            <ScrollNav scrollId="images-scroll" scrollAmount={350} />
+            <div id="images-scroll" className="mobile-scroll-grid md:grid-cols-3 gap-8">
             {/* DTF Image */}
             <div className="card overflow-hidden">
               <div className="aspect-square bg-gradient-to-br from-ci-blue/10 to-ci-blue/5 flex items-center justify-center">
@@ -950,6 +951,7 @@ export default function DTFvsDTGPage() {
                   <li><strong>สัมผัสของผ้า:</strong> DTG นุ่มที่สุด DTF นุ่มปานกลาง Silk Screen แข็งเล็กน้อย</li>
                 </ul>
               </div>
+            </div>
             </div>
           </div>
         </div>
