@@ -244,8 +244,10 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-          {/* Desktop: Grid */}
-          <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="relative max-w-5xl mx-auto">
+            <ScrollNav scrollId="fabric-types-scroll" scrollAmount={320} />
+            {/* Desktop: Grid */}
+            <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-6">
             {/* Cotton */}
             <div className="card p-6 text-center">
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -324,9 +326,9 @@ export default function DTFvsDTGPage() {
               </div>
             </div>
           </div>
-          
-          {/* Mobile: Carousel */}
-          <div className="md:hidden overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+            
+            {/* Mobile: Carousel */}
+            <div id="fabric-types-scroll" className="md:hidden overflow-x-auto scrollbar-hide snap-x snap-mandatory scroll-smooth">
             <div className="flex gap-4 pb-4 px-4" style={{width: 'max-content'}}>
               {[
                 { icon: Leaf, bg: 'green', title: 'ผ้าคอตตอน (Cotton)', dtg: 'ดีที่สุด', dtf: 'ดีมาก', silk: 'ดีมาก' },
@@ -351,6 +353,7 @@ export default function DTFvsDTGPage() {
                   </div>
                 );
               })}
+            </div>
             </div>
           </div>
 
@@ -571,7 +574,8 @@ export default function DTFvsDTGPage() {
           </div>
           
           {/* Desktop Grid / Mobile Carousel */}
-          <div className="mt-16 max-w-7xl mx-auto">
+          <div className="relative mt-16 max-w-7xl mx-auto">
+            <ScrollNav scrollId="scenarios-scroll" scrollAmount={360} />
             {/* Desktop: Grid */}
             <div className="hidden md:grid md:grid-cols-3 gap-6 md:gap-8">
             {/* DTF Card */}
