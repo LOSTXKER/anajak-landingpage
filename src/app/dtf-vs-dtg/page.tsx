@@ -969,8 +969,9 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-
-          <div className="mobile-scroll-grid md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div className="relative max-w-7xl mx-auto">
+            <ScrollNav scrollId="care-scroll" scrollAmount={350} />
+            <div id="care-scroll" className="mobile-scroll-grid md:grid-cols-3 gap-8">
             {/* DTF Care */}
             <div className="card p-8">
               <div className="flex items-center gap-3 mb-6">
@@ -1110,6 +1111,7 @@ export default function DTFvsDTGPage() {
                   <strong className="text-white">สรุป:</strong> ดูแลง่ายมาก ทนทาน 500-1000+ ครั้ง
                 </p>
               </div>
+            </div>
             </div>
           </div>
         </div>
