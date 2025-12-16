@@ -312,9 +312,31 @@ export default function FabricComparisonPage() {
               เนื้อผ้าแบบไหน<br />
               <span className="bg-gradient-to-r from-ci-blue to-blue-600 text-transparent bg-clip-text">ที่ใช่สำหรับคุณ?</span>
             </h1>
-            <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto opacity-0 animate-fade-in-up delay-200">
+            <p className="text-lg md:text-xl text-slate-600 leading-relaxed max-w-3xl mx-auto opacity-0 animate-fade-in-up delay-200 mb-8">
               เปรียบเทียบคุณสมบัติเด่นของผ้าแต่ละชนิด เพื่อให้คุณเลือกเสื้อที่ตอบโจทย์การใช้งานได้ดีที่สุด
             </p>
+            
+            {/* How to Use Instructions */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-4xl mx-auto mt-12">
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-blue-100 opacity-0 animate-fade-in-up delay-300">
+                <div className="w-10 h-10 rounded-full bg-ci-blue/10 flex items-center justify-center mb-3 mx-auto">
+                  <span className="text-ci-blue font-bold text-lg">1</span>
+                </div>
+                <p className="text-sm text-slate-700 font-medium text-center">เลือกเนื้อผ้าที่ต้องการเปรียบเทียบ (สูงสุด 3 ชนิด)</p>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-blue-100 opacity-0 animate-fade-in-up delay-400">
+                <div className="w-10 h-10 rounded-full bg-ci-blue/10 flex items-center justify-center mb-3 mx-auto">
+                  <span className="text-ci-blue font-bold text-lg">2</span>
+                </div>
+                <p className="text-sm text-slate-700 font-medium text-center">ดูคุณสมบัติที่สำคัญ เช่น ความนุ่ม ความทนทาน</p>
+              </div>
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-4 border border-blue-100 opacity-0 animate-fade-in-up delay-500">
+                <div className="w-10 h-10 rounded-full bg-ci-blue/10 flex items-center justify-center mb-3 mx-auto">
+                  <span className="text-ci-blue font-bold text-lg">3</span>
+                </div>
+                <p className="text-sm text-slate-700 font-medium text-center">เลือกเนื้อผ้าที่เหมาะกับการใช้งานของคุณ</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -322,14 +344,20 @@ export default function FabricComparisonPage() {
       {/* Comparison Table Section */}
       <section className="py-12 md:py-16 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto px-4 md:px-6">
+          {/* Section Title */}
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">ตารางเปรียบเทียบ</h2>
+            <p className="text-slate-600">เลือกเนื้อผ้าจากเมนูด้านล่างเพื่อดูรายละเอียดเปรียบเทียบ</p>
+          </div>
+          
           {/* Mobile Scroll Hint */}
-          <div className="md:hidden mb-4 flex items-center justify-center gap-2 text-sm text-slate-600 bg-blue-50 px-4 py-3 rounded-lg border border-ci-blue/20">
-            <svg className="w-5 h-5 text-ci-blue animate-bounce" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          <div className="lg:hidden mb-6 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-amber-50 via-yellow-50 to-amber-50 px-5 py-3 rounded-xl border-2 border-amber-200 shadow-sm">
+            <svg className="w-5 h-5 text-amber-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
             </svg>
-            <span>เลื่อนซ้าย-ขวาเพื่อดูข้อมูล</span>
-            <svg className="w-5 h-5 text-ci-blue animate-bounce" fill="none" viewBox="0 0 24 12" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4-4m0 0l-4-4m4 4H3" />
+            <span className="font-semibold text-amber-900">💡 ปัดนิ้วซ้าย-ขวาเพื่อดูข้อมูลเพิ่มเติม</span>
+            <svg className="w-5 h-5 text-amber-600 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </div>
           <div className="relative overflow-x-auto rounded-2xl border border-slate-200 bg-white shadow-2xl scroll-smooth">
@@ -340,8 +368,11 @@ export default function FabricComparisonPage() {
               {/* Table Header */}
               <thead>
                 <tr className="border-b-2 border-ci-blue/20">
-                  <th className="bg-gradient-to-br from-slate-50 to-slate-100 p-6 text-left sticky left-0 z-20 w-[200px]">
-                    <span className="text-lg font-bold bg-gradient-to-r from-slate-900 to-slate-700 text-transparent bg-clip-text">คุณสมบัติ</span>
+                  <th className="bg-gradient-to-br from-blue-50 to-slate-50 p-6 text-left sticky left-0 z-20 w-[200px] border-r-2 border-blue-100">
+                    <div className="flex flex-col gap-1">
+                      <span className="text-xs text-ci-blue font-semibold uppercase tracking-wide">เปรียบเทียบ</span>
+                      <span className="text-lg font-bold text-slate-900">คุณสมบัติ</span>
+                    </div>
                   </th>
                   {comparedProducts.map((productId, index) => {
                     const product = allProducts[productId];
@@ -452,10 +483,15 @@ export default function FabricComparisonPage() {
                   .map(([key, label], rowIndex) => (
                     <tr
                       key={key}
-                      className={`border-t border-slate-200 hover:bg-ci-blue/5 transition-colors group/row ${rowIndex % 2 === 0 ? 'bg-slate-50/30' : 'bg-white'}`}
+                      className={`border-t border-slate-200 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-transparent transition-colors group/row ${rowIndex % 2 === 0 ? 'bg-slate-50/30' : 'bg-white'}`}
                     >
-                      <td className="bg-gradient-to-r from-slate-50 to-slate-100/50 p-6 font-bold text-slate-900 sticky left-0 z-10 group-hover/row:from-ci-blue/10 group-hover/row:to-blue-50/30 transition-colors">
-                        {label}
+                      <td className="bg-gradient-to-r from-blue-50 to-slate-50 p-4 md:p-6 font-bold text-slate-900 sticky left-0 z-10 border-r-2 border-blue-100 group-hover/row:from-blue-100 group-hover/row:to-blue-50 transition-colors">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs md:text-sm">{label}</span>
+                          {(key === 'softness' || key === 'breathability' || key === 'durability') && (
+                            <span className="hidden md:inline text-xs text-blue-600">★</span>
+                          )}
+                        </div>
                       </td>
                       {comparedProducts.map((productId, colIndex) => {
                         const product = allProducts[productId];
@@ -476,12 +512,18 @@ export default function FabricComparisonPage() {
                           );
                         }
 
+                        // Highlight important features
+                        const isImportant = ['softness', 'breathability', 'durability', 'useCase'].includes(key);
+                        const cellBg = isImportant ? 'group-hover/row:bg-blue-50/30' : '';
+                        
                         return (
                           <td
                             key={`${productId}-${key}`}
-                            className="p-6 text-center text-sm md:text-base text-slate-800 font-medium border-l border-slate-200 group-hover/row:text-slate-900 transition-colors"
+                            className={`p-4 md:p-6 text-center text-xs sm:text-sm md:text-base text-slate-800 font-medium border-l border-slate-200 group-hover/row:text-slate-900 transition-colors ${cellBg}`}
                           >
-                            {renderedValue}
+                            <div className="flex items-center justify-center gap-2">
+                              {renderedValue}
+                            </div>
                           </td>
                         );
                       })}
@@ -489,6 +531,50 @@ export default function FabricComparisonPage() {
                   ))}
               </tbody>
             </table>
+          </div>
+          
+          {/* Legend / Key Explanation */}
+          <div className="mt-8 bg-gradient-to-br from-blue-50 via-white to-blue-50 rounded-2xl p-6 md:p-8 border-2 border-blue-100 shadow-lg">
+            <h3 className="text-lg md:text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <span className="w-2 h-2 bg-ci-blue rounded-full animate-pulse"></span>
+              คำอธิบายสัญลักษณ์
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              <div className="flex items-start gap-3 bg-white rounded-xl p-4 border border-blue-100">
+                <div className="flex gap-1 text-yellow-400 flex-shrink-0">
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                  <Star className="w-4 h-4 fill-current" />
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 text-sm">ระดับคุณภาพ</p>
+                  <p className="text-xs text-slate-600 mt-1">ดาว 1-5 แสดงระดับความนุ่ม และการระบายอากาศ</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 bg-white rounded-xl p-4 border border-blue-100">
+                <CheckCircle className="w-8 h-8 text-ci-blue flex-shrink-0" />
+                <div>
+                  <p className="font-semibold text-slate-900 text-sm">รองรับการสกรีน</p>
+                  <p className="text-xs text-slate-600 mt-1">เครื่องหมายถูก = รองรับเทคนิคนั้นๆ</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3 bg-white rounded-xl p-4 border border-blue-100">
+                <div className="flex -space-x-2 flex-shrink-0">
+                  <div className="w-6 h-6 rounded-full bg-white border-2 border-white shadow-sm"></div>
+                  <div className="w-6 h-6 rounded-full bg-gray-400 border-2 border-white shadow-sm"></div>
+                  <div className="w-6 h-6 rounded-full bg-black border-2 border-white shadow-sm"></div>
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 text-sm">สีที่มีจำหน่าย</p>
+                  <p className="text-xs text-slate-600 mt-1">แสดงตัวอย่างสีและจำนวนสีทั้งหมด</p>
+                </div>
+              </div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-blue-200">
+              <p className="text-sm text-slate-600 text-center">
+                <span className="font-semibold text-ci-blue">💡 เคล็ดลับ:</span> คลิก "ดูรายละเอียด" ด้านบนแต่ละคอลัมน์เพื่อดูข้อมูลเพิ่มเติมและราคา
+              </p>
+            </div>
           </div>
         </div>
       </section>
