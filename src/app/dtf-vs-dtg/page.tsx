@@ -234,7 +234,13 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          {/* Mobile Scroll Hint */}
+          <div className="md:hidden mb-6 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-green-50 via-blue-50 to-green-50 px-5 py-3 rounded-xl border-2 border-green-200">
+            <span className="font-semibold">👈 ปัดเพื่อดูผ้าชนิดอื่น 👉</span>
+          </div>
+          
+          {/* Desktop: Grid */}
+          <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {/* Cotton */}
             <div className="card p-6 text-center">
               <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mx-auto mb-4">
@@ -313,6 +319,35 @@ export default function DTFvsDTGPage() {
               </div>
             </div>
           </div>
+          
+          {/* Mobile: Carousel */}
+          <div className="md:hidden overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+            <div className="flex gap-4 pb-4 px-4" style={{width: 'max-content'}}>
+              {[
+                { icon: Leaf, bg: 'green', title: 'ผ้าคอตตอน (Cotton)', dtg: 'ดีที่สุด', dtf: 'ดีมาก', silk: 'ดีมาก' },
+                { icon: Zap, bg: 'blue', title: 'โพลีเอสเตอร์ (Polyester)', dtg: 'ไม่แนะนำ', dtf: 'ดีที่สุด', silk: 'ดีมาก' },
+                { icon: Layers, bg: 'purple', title: 'ผ้าผสม (TC/CVC)', dtg: 'พอใช้ (อาจจาง)', dtf: 'ดีมาก', silk: 'ดีมาก' },
+                { icon: Layers, bg: 'indigo', title: 'ผ้ายีนส์ (Denim)', dtg: 'ไม่แนะนำ', dtf: 'ดีมาก', silk: 'พอใช้' },
+                { icon: Gem, bg: 'amber', title: 'หนัง (Leather)', dtg: 'ไม่ได้', dtf: 'ดีมาก', silk: 'พอใช้' },
+                { icon: ShoppingBag, bg: 'orange', title: 'ผ้าใบ (Canvas)', dtg: 'ไม่แนะนำ', dtf: 'ดีมาก', silk: 'ดีมาก' },
+              ].map((item, idx) => {
+                const Icon = item.icon;
+                return (
+                  <div key={idx} className="card p-6 text-center snap-center flex-shrink-0" style={{width: '280px'}}>
+                    <div className={`w-12 h-12 bg-${item.bg}-100 rounded-xl flex items-center justify-center mx-auto mb-4`}>
+                      <Icon className={`w-6 h-6 text-${item.bg}-600`} />
+                    </div>
+                    <h3 className="text-lg font-bold mb-4 text-slate-900">{item.title}</h3>
+                    <div className="space-y-2 text-left text-sm mx-auto w-fit">
+                      <p><strong className="font-semibold">DTG:</strong> <span className={item.dtg.includes('ดีที่สุด') ? 'font-bold text-slate-900' : item.dtg.includes('ไม่') ? 'text-slate-500' : 'text-slate-600'}>{item.dtg}</span></p>
+                      <p><strong className="font-semibold">DTF:</strong> <span className={item.dtf.includes('ดีที่สุด') ? 'font-bold text-slate-900' : 'font-semibold text-slate-700'}>{item.dtf}</span></p>
+                      <p><strong className="font-semibold">Silk Screen:</strong> <span className={item.silk.includes('ดีมาก') ? 'font-semibold text-slate-700' : 'text-slate-600'}>{item.silk}</span></p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
 
           {/* Summary */}
           <div className="mt-12 max-w-3xl mx-auto bg-gradient-to-r from-slate-50 to-blue-50 p-6 rounded-2xl border border-slate-200 shadow-lg flex items-start gap-4">
@@ -336,7 +371,14 @@ export default function DTFvsDTGPage() {
               หนึ่งในคำถามที่พบบ่อยที่สุดคือ ลายสกรีนจะอยู่ได้นานแค่ไหน? ทั้ง 3 เทคนิคมีความทนทานที่ยอดเยี่ยม แต่มีลักษณะการเสื่อมสภาพที่แตกต่างกัน
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
+          
+          {/* Mobile Scroll Hint */}
+          <div className="lg:hidden mt-8 mb-6 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-blue-50 via-green-50 to-blue-50 px-5 py-3 rounded-xl border-2 border-blue-200">
+            <span className="font-semibold">👈 ปัดดูความทนทาน 👉</span>
+          </div>
+          
+          {/* Desktop: Grid */}
+          <div className="hidden lg:grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
             <div className="card p-8 lg:p-10">
               <h3 className="text-3xl font-bold mb-6 text-slate-900">DTF: ทนทานและยืดหยุ่น</h3>
               <ul className="list-none space-y-4 text-lg">

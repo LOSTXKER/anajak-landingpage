@@ -212,6 +212,25 @@
     scroll-padding-top: 6rem;
   }
 
+  /* Mobile grid to scroll */
+  .mobile-scroll-grid {
+    @apply lg:grid;
+  }
+
+  @media (max-width: 1023px) {
+    .mobile-scroll-grid {
+      @apply overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4;
+      display: flex !important;
+      gap: 1rem;
+    }
+    
+    .mobile-scroll-grid > * {
+      @apply snap-center flex-shrink-0;
+      min-width: 320px;
+      max-width: 85vw;
+    }
+  }
+
   .text-balance {
     text-wrap: balance;
   }
