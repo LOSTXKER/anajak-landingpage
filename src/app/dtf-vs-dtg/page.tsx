@@ -466,7 +466,9 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
           
-          <div className="mobile-scroll-grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16 max-w-7xl mx-auto">
+          <div className="relative mt-16 max-w-7xl mx-auto">
+            <ScrollNav scrollId="limitations-scroll" scrollAmount={350} className="lg:hidden" />
+            <div id="limitations-scroll" className="mobile-scroll-grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="card p-8 lg:p-10">
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-slate-900">
                 งานที่ไม่เหมาะกับ <span className="text-ci-blue">DTF</span>
@@ -550,6 +552,7 @@ export default function DTFvsDTGPage() {
               <p className="mt-6 text-sm text-slate-300 bg-slate-800 p-4 rounded-md">
                 <strong>เหตุผล:</strong> แต่ละสีต้องทำแผ่นตาข่ายแยก ยิ่งสีเยอะยิ่งแพง แต่เหมาะกับงานจำนวนมากที่ใช้สีน้อย
               </p>
+            </div>
             </div>
           </div>
         </div>
