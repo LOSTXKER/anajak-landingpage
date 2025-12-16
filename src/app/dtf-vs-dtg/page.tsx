@@ -521,7 +521,16 @@ export default function DTFvsDTGPage() {
               เราได้สรุปสถานการณ์การใช้งานจริง เพื่อช่วยให้การตัดสินใจของคุณง่ายและชัดเจนยิ่งขึ้น
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8 mt-16 max-w-7xl mx-auto">
+          
+          {/* Mobile Scroll Hint */}
+          <div className="md:hidden mt-8 mb-4 flex items-center justify-center gap-2 text-sm text-slate-700 bg-gradient-to-r from-blue-50 via-cyan-50 to-blue-50 px-5 py-3 rounded-xl border-2 border-blue-200 shadow-sm">
+            <span className="font-semibold">👈 ปัดซ้าย-ขวาเพื่อดูเทคนิคอื่นๆ 👉</span>
+          </div>
+          
+          {/* Desktop Grid / Mobile Carousel */}
+          <div className="mt-16 max-w-7xl mx-auto">
+            {/* Desktop: Grid */}
+            <div className="hidden md:grid md:grid-cols-3 gap-6 md:gap-8">
             {/* DTF Card */}
             <div className="card p-6 lg:p-8">
               <h3 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-6 text-slate-900">
@@ -640,6 +649,144 @@ export default function DTFvsDTGPage() {
                 >
                   เรียนรู้เกี่ยวกับ Silk Screen เพิ่มเติม
                 </Link>
+              </div>
+            </div>
+            </div>
+            
+            {/* Mobile: Horizontal Scroll */}
+            <div className="md:hidden relative">
+              <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory">
+                <div className="flex gap-4 pb-4" style={{width: 'max-content'}}>
+                  {/* DTF Card */}
+                  <div className="card p-6 snap-center" style={{width: '85vw', maxWidth: '400px'}}>
+                    <h3 className="text-xl font-bold mb-4 text-slate-900">
+                      เลือก <span className="text-ci-blue">DTF</span> เมื่อ...
+                    </h3>
+                    <ul className="list-none space-y-2 text-sm">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-ci-blue mt-0.5 flex-shrink-0" />
+                        <div>
+                          คุณต้องการทำ <strong className="font-semibold text-slate-900">เสื้อทีม, เสื้อบริษัท, เสื้ออีเวนต์</strong> ที่มีโลโก้สีสันสดใสและคมชัด
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-ci-blue mt-0.5 flex-shrink-0" />
+                        <div>
+                          เสื้อที่คุณใช้เป็น <strong className="font-semibold text-slate-900">ผ้า Polyester</strong>, เสื้อกีฬา หรือผ้าชนิดอื่นๆ ที่หลากหลาย
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-ci-blue mt-0.5 flex-shrink-0" />
+                        <div>
+                          คุณต้องการงานที่ <strong className="font-semibold text-slate-900">ทนทานเป็นพิเศษ</strong> และผลิตในจำนวนมากด้วยราคาที่คุ้มค่า
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-ci-blue mt-0.5 flex-shrink-0" />
+                        <div>
+                          ลายสกรีนของคุณเน้น <strong className="font-semibold text-slate-900">ตัวอักษรและลายเส้น</strong> ที่ต้องการความคมชัดสูงสุด
+                        </div>
+                      </li>
+                    </ul>
+                    <div className="mt-6">
+                      <Link 
+                        href="/services/printing/dtf" 
+                        className="btn-secondary inline-flex text-sm"
+                      >
+                        เรียนรู้เกี่ยวกับ DTF เพิ่มเติม
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  {/* DTG Card */}
+                  <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-6 rounded-2xl snap-center" style={{width: '85vw', maxWidth: '400px'}}>
+                    <h3 className="text-xl font-bold mb-4 text-white">
+                      เลือก <span className="text-white">DTG</span> เมื่อ...
+                    </h3>
+                    <ul className="list-none space-y-2 text-sm text-white">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+                        <div>
+                          คุณต้องการสร้าง <strong className="font-semibold text-white">แบรนด์เสื้อผ้าแฟชั่น</strong> ที่ให้ความรู้สึกพรีเมียม สัมผัสนุ่ม
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+                        <div>
+                          ลายสกรีนเป็น <strong className="font-semibold text-white">ภาพถ่ายบุคคล</strong> หรือภาพวาดที่มีการไล่สีซับซ้อน
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+                        <div>
+                          เสื้อที่คุณเลือกใช้เป็น <strong className="font-semibold text-white">Cotton 100% คุณภาพสูง</strong> และต้องการความสบายในการสวมใส่สูงสุด
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+                        <div>
+                          คุณต้องการสั่งทำ <strong className="font-semibold text-white">เพียงตัวเดียว</strong> เพื่อเป็นของขวัญหรือทดลองทำตัวอย่าง
+                        </div>
+                      </li>
+                    </ul>
+                    <div className="mt-6">
+                      <Link 
+                        href="/services/printing/dtg" 
+                        className="inline-flex px-4 py-2 text-sm bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-all duration-300"
+                      >
+                        เรียนรู้เกี่ยวกับ DTG เพิ่มเติม
+                      </Link>
+                    </div>
+                  </div>
+                  
+                  {/* Silk Screen Card */}
+                  <div className="bg-slate-700 p-6 rounded-2xl snap-center" style={{width: '85vw', maxWidth: '400px'}}>
+                    <h3 className="text-xl font-bold mb-4 text-white">
+                      เลือก <span className="text-white">Silk Screen</span> เมื่อ...
+                    </h3>
+                    <ul className="list-none space-y-2 text-sm text-white">
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+                        <div>
+                          คุณต้องการผลิตเสื้อ <strong className="font-semibold text-white">จำนวนมาก (50+ ตัว)</strong> ในราคาที่คุ้มค่าที่สุด
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+                        <div>
+                          ลายสกรีนเป็น <strong className="font-semibold text-white">โลโก้หรือตัวอักษร</strong> สูงสุด 2-3 สี (ไม่ซับซ้อน)
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+                        <div>
+                          คุณต้องการสีสันที่ <strong className="font-semibold text-white">สดใสที่สุด</strong> และเส้นขอบที่คมชัด
+                        </div>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <CheckCircle2 className="w-4 h-4 text-slate-300 mt-0.5 flex-shrink-0" />
+                        <div>
+                          ต้องการงานที่ <strong className="font-semibold text-white">ทนทานที่สุด</strong> ซักได้หลายร้อย-พันครั้ง
+                        </div>
+                      </li>
+                    </ul>
+                    <div className="mt-6">
+                      <Link 
+                        href="/services/printing/silkscreen" 
+                        className="inline-flex px-4 py-2 text-sm bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 transition-all duration-300"
+                      >
+                        เรียนรู้เกี่ยวกับ Silk Screen เพิ่มเติม
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Scroll Indicators */}
+              <div className="flex justify-center gap-2 mt-6">
+                <div className="w-2 h-2 rounded-full bg-ci-blue"></div>
+                <div className="w-2 h-2 rounded-full bg-slate-300"></div>
+                <div className="w-2 h-2 rounded-full bg-slate-300"></div>
               </div>
             </div>
           </div>
