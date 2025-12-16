@@ -13,6 +13,8 @@ import {
   FileImage,
   Star,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   XCircle,
   Leaf,
   Layers,
@@ -93,9 +95,33 @@ export default function DTFvsDTGPage() {
           </div>
 
 
-          {/* Comparison Grid Wrapper */}
-          <div className="md:max-w-7xl md:mx-auto overflow-x-auto scrollbar-hide">
-            <div className="min-w-[800px] md:min-w-0 grid grid-cols-4 gap-0.5 bg-slate-200 shadow-2xl rounded-2xl overflow-hidden">
+          {/* Comparison Grid Wrapper with Navigation */}
+          <div className="relative">
+            {/* Navigation Buttons - Mobile Only */}
+            <button
+              onClick={() => {
+                const container = document.getElementById('comparison-table');
+                if (container) container.scrollBy({ left: -300, behavior: 'smooth' });
+              }}
+              className="md:hidden absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-r-xl p-3 backdrop-blur-sm"
+              aria-label="Scroll left"
+            >
+              <ChevronLeft className="w-6 h-6 text-slate-900" />
+            </button>
+            
+            <button
+              onClick={() => {
+                const container = document.getElementById('comparison-table');
+                if (container) container.scrollBy({ left: 300, behavior: 'smooth' });
+              }}
+              className="md:hidden absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white shadow-lg rounded-l-xl p-3 backdrop-blur-sm"
+              aria-label="Scroll right"
+            >
+              <ChevronRight className="w-6 h-6 text-slate-900" />
+            </button>
+
+            <div id="comparison-table" className="md:max-w-7xl md:mx-auto overflow-x-auto scrollbar-hide scroll-smooth">
+              <div className="min-w-[800px] md:min-w-0 grid grid-cols-4 gap-0.5 bg-slate-200 shadow-2xl rounded-2xl overflow-hidden">
             {/* Headers */}
             <div className="p-4 md:p-6 bg-slate-100 flex items-center justify-center">
               <h3 className="text-lg md:text-xl font-bold text-slate-900">คุณสมบัติ</h3>
@@ -219,6 +245,7 @@ export default function DTFvsDTGPage() {
             <div className="p-4 md:p-6 bg-slate-700 text-center text-white">
               <p className="font-semibold text-base md:text-lg">ยูนิฟอร์มโรงงาน, อีเว้นท์ขนาดใหญ่</p>
               <p className="text-xs md:text-sm text-slate-300 mt-1">จำนวนมาก 50+ ตัว ยิ่งสั่งเยอะยิ่งถูก</p>
+            </div>
             </div>
             </div>
           </div>
@@ -394,7 +421,7 @@ export default function DTFvsDTGPage() {
                 </li>
               </ul>
             </div>
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-8 lg:p-10 rounded-2xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-8 lg:p-10 rounded-2xl md:hover:shadow-2xl md:hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-3xl font-bold mb-6 text-white">DTG: จางลงอย่างเป็นธรรมชาติ</h3>
               <ul className="list-none space-y-4 text-lg text-white">
                 <li className="flex items-start gap-3">
@@ -417,7 +444,7 @@ export default function DTFvsDTGPage() {
                 </li>
               </ul>
             </div>
-            <div className="bg-slate-700 p-8 lg:p-10 rounded-2xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-slate-700 p-8 lg:p-10 rounded-2xl md:hover:shadow-2xl md:hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-3xl font-bold mb-6 text-white">Silk Screen: ทนทานสุดขีด</h3>
               <ul className="list-none space-y-4 text-lg text-white">
                 <li className="flex items-start gap-3">
@@ -485,7 +512,7 @@ export default function DTFvsDTGPage() {
                 <strong>เหตุผล:</strong> DTF ต้องใช้ผงกาวในการยึดติด ทำให้ขอบของลายพิมพ์มีความคมชัดเสมอ ไม่สามารถทำเอฟเฟกต์ขอบฟุ้งได้
               </p>
             </div>
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-8 lg:p-10 rounded-2xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 p-8 lg:p-10 rounded-2xl md:hover:shadow-2xl md:hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
                 งานที่ <span className="text-white">DTG</span> ทำได้ดี
               </h3>
@@ -513,7 +540,7 @@ export default function DTFvsDTGPage() {
                 <strong>เหตุผล:</strong> หมึกของ DTG ซึมลงบนใยผ้าโดยตรง ทำให้ไล่เฉดสีและความโปร่งใสได้อย่างเป็นธรรมชาติ
               </p>
             </div>
-            <div className="bg-slate-700 p-8 lg:p-10 rounded-2xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-slate-700 p-8 lg:p-10 rounded-2xl md:hover:shadow-2xl md:hover:-translate-y-1 transition-all duration-300">
               <h3 className="text-2xl md:text-3xl font-bold mb-6 text-white">
                 <span className="text-white">Silk Screen</span> เหมาะกับงาน
               </h3>
@@ -635,7 +662,7 @@ export default function DTFvsDTGPage() {
               <div className="mt-6">
                 <Link 
                   href="/services/printing/dtg" 
-                  className="inline-flex px-4 py-2 text-sm bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 hover:-translate-y-0.5 transition-all duration-300"
+                  className="inline-flex px-4 py-2 text-sm bg-white text-slate-900 font-bold rounded-xl md:hover:bg-slate-100 md:hover:-translate-y-0.5 transition-all duration-300"
                 >
                   เรียนรู้เกี่ยวกับ DTG เพิ่มเติม
                 </Link>
@@ -675,7 +702,7 @@ export default function DTFvsDTGPage() {
               <div className="mt-6">
                 <Link 
                   href="/services/printing/silkscreen" 
-                  className="inline-flex px-4 py-2 text-sm bg-white text-slate-900 font-bold rounded-xl hover:bg-slate-100 hover:-translate-y-0.5 transition-all duration-300"
+                  className="inline-flex px-4 py-2 text-sm bg-white text-slate-900 font-bold rounded-xl md:hover:bg-slate-100 md:hover:-translate-y-0.5 transition-all duration-300"
                 >
                   เรียนรู้เกี่ยวกับ Silk Screen เพิ่มเติม
                 </Link>
@@ -866,7 +893,7 @@ export default function DTFvsDTGPage() {
             </div>
 
             {/* DTG Image */}
-            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl overflow-hidden md:hover:shadow-2xl md:hover:-translate-y-1 transition-all duration-300">
               <div className="aspect-square bg-gradient-to-br from-slate-700 to-slate-800 flex items-center justify-center">
                 <div className="text-center p-8">
                   <Palette className="w-16 h-16 text-white mx-auto mb-4" />
@@ -894,7 +921,7 @@ export default function DTFvsDTGPage() {
             </div>
 
             {/* Silk Screen Image */}
-            <div className="bg-slate-700 rounded-2xl overflow-hidden hover:shadow-2xl hover:-translate-y-1 transition-all duration-300">
+            <div className="bg-slate-700 rounded-2xl overflow-hidden md:hover:shadow-2xl md:hover:-translate-y-1 transition-all duration-300">
               <div className="aspect-square bg-slate-600 flex items-center justify-center">
                 <div className="text-center p-8">
                   <Factory className="w-16 h-16 text-white mx-auto mb-4" />
