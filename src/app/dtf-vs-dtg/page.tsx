@@ -1129,8 +1129,9 @@ export default function DTFvsDTGPage() {
             </p>
           </div>
 
-
-          <div className="mobile-scroll-grid md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+          <div className="relative max-w-7xl mx-auto mb-12">
+            <ScrollNav scrollId="pricing-scroll" scrollAmount={350} />
+            <div id="pricing-scroll" className="mobile-scroll-grid md:grid-cols-3 gap-8">
             {/* DTF Pricing */}
             <div className="card p-8 border-2 border-ci-blue/20">
               <div className="flex items-center justify-between mb-6">
@@ -1273,6 +1274,7 @@ export default function DTFvsDTGPage() {
                   </p>
                 </div>
               </div>
+            </div>
             </div>
           </div>
 
