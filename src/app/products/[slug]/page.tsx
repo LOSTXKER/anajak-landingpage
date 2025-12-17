@@ -50,6 +50,10 @@ const colors = [
   { name: 'เขียว', hex: '#16a34a', image: 'https://placehold.co/800x800/16a34a/ffffff?text=Green' },
   { name: 'เหลือง', hex: '#ca8a04', image: 'https://placehold.co/800x800/ca8a04/ffffff?text=Yellow' },
   { name: 'ชมพู', hex: '#ec4899', image: 'https://placehold.co/800x800/ec4899/ffffff?text=Pink' },
+  { name: 'ส้ม', hex: '#ea580c', image: 'https://placehold.co/800x800/ea580c/ffffff?text=Orange' },
+  { name: 'ม่วง', hex: '#9333ea', image: 'https://placehold.co/800x800/9333ea/ffffff?text=Purple' },
+  { name: 'ฟ้า', hex: '#0ea5e9', image: 'https://placehold.co/800x800/0ea5e9/ffffff?text=Sky' },
+  { name: 'น้ำตาล', hex: '#92400e', image: 'https://placehold.co/800x800/92400e/ffffff?text=Brown' },
 ];
 
 // Reviews data
@@ -196,94 +200,94 @@ export default function ProductDetailPage() {
                   <div className="w-1 h-4 bg-gradient-to-b from-ci-blue to-blue-600 rounded-full" />
                   คุณสมบัติและรายละเอียด
                 </h3>
-                <div className="bg-gradient-to-br from-slate-50 to-blue-50/30 rounded-xl p-4 border border-blue-100">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2.5 text-xs">
+                <div className="bg-gradient-to-br from-slate-50 to-blue-50/30 rounded-xl p-5 border border-blue-100">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3 text-sm">
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Shirt className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Shirt className="w-4 h-4 text-ci-blue" />
                         ทรงเสื้อ
                       </span>
                       <span className="text-slate-900 font-medium">คอกลม / Unisex</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Sparkles className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Sparkles className="w-4 h-4 text-ci-blue" />
                         สัมผัสเนื้อผ้า
                       </span>
                       <span className="text-slate-900 font-medium">นุ่มปานกลาง</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Target className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Target className="w-4 h-4 text-ci-blue" />
                         การตัดเย็บ
                       </span>
                       <span className="text-slate-900 font-medium">ตะเข็บคู่ แข็งแรง</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Star className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Star className="w-4 h-4 text-ci-blue" />
                         ความนุ่ม
                       </span>
                       <div className="flex text-amber-400">
-                        {[1, 2, 3].map((i) => <Star key={i} className="w-3 h-3 fill-current" />)}
-                        {[4, 5].map((i) => <Star key={i} className="w-3 h-3" />)}
+                        {[1, 2, 3].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+                        {[4, 5].map((i) => <Star key={i} className="w-4 h-4" />)}
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Layers className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Layers className="w-4 h-4 text-ci-blue" />
                         ประเภทเส้นใย
                       </span>
                       <span className="text-slate-900 font-medium">ฝ้าย 100%</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Wind className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Wind className="w-4 h-4 text-ci-blue" />
                         การระบายอากาศ
                       </span>
                       <div className="flex text-amber-400">
-                        {[1, 2, 3, 4].map((i) => <Star key={i} className="w-3 h-3 fill-current" />)}
-                        <Star className="w-3 h-3" />
+                        {[1, 2, 3, 4].map((i) => <Star key={i} className="w-4 h-4 fill-current" />)}
+                        <Star className="w-4 h-4" />
                       </div>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Award className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Award className="w-4 h-4 text-ci-blue" />
                         เกรดผ้า
                       </span>
                       <span className="text-ci-blue font-bold">Semi-combed</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Check className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Check className="w-4 h-4 text-ci-blue" />
                         ความทนทาน
                       </span>
                       <span className="text-slate-900 font-medium">ปานกลาง</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Ruler className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Ruler className="w-4 h-4 text-ci-blue" />
                         เบอร์ผ้า
                       </span>
                       <span className="text-slate-900 font-medium">No. 32</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Shirt className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Shirt className="w-4 h-4 text-ci-blue" />
                         ความยับยาก
                       </span>
                       <span className="text-slate-900 font-medium">ยับง่ายกว่า Comb</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Weight className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Weight className="w-4 h-4 text-ci-blue" />
                         ความหนา
                       </span>
                       <span className="text-slate-900 font-medium">155-165 gsm</span>
                     </div>
                     <div className="flex items-center justify-between">
-                      <span className="flex items-center gap-1.5 text-slate-600">
-                        <Target className="w-3 h-3 text-ci-blue" />
+                      <span className="flex items-center gap-2 text-slate-600">
+                        <Target className="w-4 h-4 text-ci-blue" />
                         เหมาะสำหรับ
                       </span>
                       <span className="text-slate-900 font-medium">เสื้อทีม, แบรนด์</span>
@@ -322,13 +326,22 @@ export default function ProductDetailPage() {
 
               {/* Color Selection */}
               <div className="mt-6">
-                <h3 className="text-base font-bold mb-3 text-slate-900 flex items-center gap-2">
-                  <div className="w-1 h-4 bg-gradient-to-b from-ci-blue to-blue-600 rounded-full" />
-                  เลือกเฉดสี
-                  <span className="text-xs font-normal text-slate-500">({colors.length} สี)</span>
-                </h3>
-                <div className="bg-slate-50 rounded-xl p-2.5 border border-slate-200">
-                  <div className="grid grid-cols-8 gap-1.5">
+                <div className="flex items-center justify-between mb-3">
+                  <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                    <div className="w-1 h-4 bg-gradient-to-b from-ci-blue to-blue-600 rounded-full" />
+                    เลือกเฉดสี
+                    <span className="text-xs font-normal text-slate-500">({colors.length} สี)</span>
+                  </h3>
+                  <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-lg border border-slate-200">
+                    <div 
+                      className="w-4 h-4 rounded border border-slate-300"
+                      style={{ backgroundColor: selectedColor.hex }}
+                    />
+                    <span className="text-sm font-medium text-slate-900">{selectedColor.name}</span>
+                  </div>
+                </div>
+                <div className="bg-slate-50 rounded-xl p-2 border border-slate-200">
+                  <div className="grid grid-cols-10 sm:grid-cols-12 gap-1">
                     {colors.map((color) => (
                       <button
                         key={color.name}
@@ -343,7 +356,7 @@ export default function ProductDetailPage() {
                       >
                         {selectedColor.name === color.name && (
                           <div className="absolute inset-0 flex items-center justify-center">
-                            <Check className="w-3.5 h-3.5 text-white drop-shadow-lg" strokeWidth={3} />
+                            <Check className="w-3 h-3 text-white drop-shadow-lg" strokeWidth={3} />
                           </div>
                         )}
                       </button>
@@ -647,7 +660,7 @@ export default function ProductDetailPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 text-center mb-12">
             เรียนรู้เพิ่มเติมเกี่ยวกับเทคนิคสกรีน
           </h2>
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Link
               href="/services/printing/dtf"
               className="card-interactive group p-6 md:p-8"
@@ -671,6 +684,21 @@ export default function ProductDetailPage() {
               <h3 className="text-xl font-bold text-slate-900 mb-2">สกรีน DTG (Direct to Garment)</h3>
               <p className="text-slate-600 mb-4">
                 พิมพ์ลายลงบนเนื้อผ้าโดยตรง สัมผัสนุ่มสบาย เหมาะกับงานภาพถ่าย
+              </p>
+              <span className="font-semibold text-slate-900 group-hover:text-ci-blue transition-colors inline-flex items-center gap-2">
+                ดูรายละเอียดเพิ่มเติม
+                <ChevronRight className="w-4 h-4" />
+              </span>
+            </Link>
+
+            <Link
+              href="/services/printing/silkscreen"
+              className="card-interactive group p-6 md:p-8"
+            >
+              <Layers className="w-12 h-12 text-ci-blue mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 mb-2">สกรีน Silk Screen</h3>
+              <p className="text-slate-600 mb-4">
+                เทคนิคคลาสสิก สีทึบสวย ราคาประหยัด เหมาะกับงานจำนวนมาก
               </p>
               <span className="font-semibold text-slate-900 group-hover:text-ci-blue transition-colors inline-flex items-center gap-2">
                 ดูรายละเอียดเพิ่มเติม
@@ -741,6 +769,7 @@ export default function ProductDetailPage() {
     </PageLayout>
   );
 }
+
 
 
 

@@ -192,8 +192,8 @@ export default function SilkScreenPage() {
               </h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                 <strong>Silk Screen (สกรีนซิลค์)</strong> คือเทคนิคการสกรีนแบบดั้งเดิม 
-                ที่ใช้ผ้าไนลอนตึงเป็นตาข่าย จากนั้นปิดส่วนที่ไม่ต้องการด้วยฟิล์ม 
-                แล้วใช้ยางรีดผลักหมึกผ่านตาข่ายลงบนผ้า
+                ที่ใช้ <strong>บล็อกสกรีน</strong> (กรอบขึงผ้าตาข่ายที่มีลายอยู่) 
+                วางทับบนเสื้อ แล้วใช้ยางรีดผลักหมึกผ่านบล็อกลงบนผ้า
               </p>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
                 เหมาะสำหรับ<strong>งานจำนวนมาก</strong> (30+ ตัว) เพราะยิ่งสั่งเยอะ 
@@ -275,15 +275,15 @@ export default function SilkScreenPage() {
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                   <div>
-                    <strong className="text-slate-900">ต้องทำฟิล์ม</strong>
-                    <p className="text-slate-600 text-sm">แต่ละสีต้องทำฟิล์มแยก มีค่าใช้จ่ายเริ่มต้น</p>
+                    <strong className="text-slate-900">ต้องทำบล็อก</strong>
+                    <p className="text-slate-600 text-sm">แต่ละสีต้องทำบล็อกสกรีนแยก มีค่าใช้จ่ายเริ่มต้น</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
                   <XCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                   <div>
                     <strong className="text-slate-900">มีขั้นต่ำ</strong>
-                    <p className="text-slate-600 text-sm">ขั้นต่ำ 30 ตัว เพื่อให้คุ้มกับค่าทำฟิล์ม</p>
+                    <p className="text-slate-600 text-sm">ขั้นต่ำ 30 ตัว เพื่อให้คุ้มกับค่าทำบล็อก</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -297,7 +297,7 @@ export default function SilkScreenPage() {
                   <XCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                   <div>
                     <strong className="text-slate-900">ใช้เวลานานกว่า</strong>
-                    <p className="text-slate-600 text-sm">7-14 วันทำการ เพราะต้องทำฟิล์มก่อน</p>
+                    <p className="text-slate-600 text-sm">7-14 วันทำการ เพราะต้องทำบล็อกก่อน</p>
                   </div>
                 </li>
               </ul>
@@ -409,11 +409,12 @@ export default function SilkScreenPage() {
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">01</span>
-                  ทำฟิล์ม (Film Making)
+                  เตรียมบล็อกสกรีน (Screen Preparation)
                 </h3>
                 <p className="text-white/80">
-                  แยกสีออกเป็นชั้นๆ แล้วทำฟิล์มสำหรับแต่ละสี 
-                  ฟิล์มจะเป็นแบบที่จะใช้อัดลงบนผ้าตาข่าย เพื่อสร้างส่วนที่หมึกจะผ่าน
+                  เคลือบน้ำยาไวแสงลงบนผ้าตาข่าย จากนั้นนำลายที่ต้องการไปอัดด้วยแสง UV 
+                  ส่วนที่ถูกแสงจะแข็งตัว ส่วนที่เป็นลายจะล้างออก เหลือเป็นรูให้หมึกผ่าน 
+                  ได้ <strong>บล็อกสกรีน</strong> ที่พร้อมใช้งาน
                 </p>
               </div>
             </div>
@@ -425,12 +426,12 @@ export default function SilkScreenPage() {
               <div className="md:order-1">
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">02</span>
-                  อัดผ้าตาข่าย (Screen Exposure)
+                  เตรียมหมึกและผสมสี (Ink Preparation)
                 </h3>
                 <p className="text-white/80">
-                  เคลือบผ้าตาข่ายด้วยสารไวแสง แล้ววางฟิล์มทับ จากนั้นฉายแสง UV 
-                  ส่วนที่ถูกแสงจะแข็งตัว ส่วนที่ถูกฟิล์มบังจะถูกล้างออก 
-                  เหลือเป็นรูที่หมึกจะผ่าน
+                  ผสมหมึกสกรีนให้ได้สีตรงตามที่ลูกค้าต้องการ 
+                  แต่ละสีจะต้องมีบล็อกสกรีนแยก จึงต้องเตรียมบล็อกและหมึก
+                  ให้ครบทุกสีก่อนเริ่มสกรีน
                 </p>
               </div>
             </div>
@@ -445,9 +446,9 @@ export default function SilkScreenPage() {
                   สกรีนลงเสื้อ (Screen Printing)
                 </h3>
                 <p className="text-white/80">
-                  วางผ้าตาข่ายลงบนเสื้อ เทหมึกลงบนผ้าตาข่าย 
-                  แล้วใช้ยางรีดผลักหมึกให้ผ่านตาข่ายลงบนเสื้อ 
-                  ทำซ้ำในแต่ละสี หากมีหลายสีต้องรอให้แห้งก่อนทับสีถัดไป
+                  วางบล็อกสกรีนลงบนเสื้อ เทหมึกลงบนบล็อก 
+                  แล้วใช้ยางรีดผลักหมึกให้ผ่านรูตาข่ายลงบนเสื้อ 
+                  หากมีหลายสี ต้องสกรีนทีละสีและรอให้แห้งก่อนทับสีถัดไป
                 </p>
               </div>
             </div>
@@ -482,7 +483,7 @@ export default function SilkScreenPage() {
               <span>ราคาบริการ</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              <span className="gradient-text">ราคา</span>บริการสกรีนตะแกรงไหม
+              <span className="gradient-text">ราคา</span>บริการ Silk Screen
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
               ยิ่งสั่งเยอะ ยิ่งคุ้ม! ราคาต่อตัวถูกที่สุดสำหรับงานจำนวนมาก
@@ -563,14 +564,14 @@ export default function SilkScreenPage() {
                 </div>
                 <div className="p-3 bg-blue-50 rounded-lg border border-ci-blue text-center">
                   <p className="text-slate-700 text-xs">
-                    <strong className="text-ci-blue">ขนาด A5 สกรีนหน้า</strong><br />
+                    <strong className="text-ci-blue">ขนาด A5 ลดราคา</strong><br />
                     ตัวละ 5-10 บาท
                   </p>
                 </div>
                 <div className="p-3 bg-blue-50 rounded-lg border border-ci-blue text-center">
                   <p className="text-slate-700 text-xs">
-                    <strong className="text-ci-blue">เพิ่มสุด</strong><br />
-                    ตัวละ 5-10 บาท
+                    <strong className="text-ci-blue">เพิ่มจุด</strong><br />
+                    จุดละ 5-10 บาท
                   </p>
                 </div>
               </div>
@@ -1044,11 +1045,11 @@ export default function SilkScreenPage() {
             {[
               {
                 q: 'ทำไมต้องมีขั้นต่ำ 30 ตัว?',
-                a: 'เพราะต้องมีค่าใช้จ่ายในการทำฟิล์มและเตรียมผ้าตาข่ายก่อน (ประมาณ 500-1000 บาท/สี) ถ้าสั่งน้อยเกินไป ราคาต่อตัวจะสูงมาก ไม่คุ้มค่า แนะนำให้สั่งอย่างน้อย 30 ตัวขึ้นไป'
+                a: 'เพราะต้องมีค่าใช้จ่ายในการทำบล็อกสกรีนก่อน (ประมาณ 500-1000 บาท/สี) ถ้าสั่งน้อยเกินไป ราคาต่อตัวจะสูงมาก ไม่คุ้มค่า แนะนำให้สั่งอย่างน้อย 30 ตัวขึ้นไป'
               },
               {
                 q: 'ถ้าใช้หลายสี ราคาเป็นอย่างไร?',
-                a: 'แต่ละสีจะมีค่าทำฟิล์มและค่าพิมพ์เพิ่มขึ้น ยิ่งใช้สีเยอะ ราคายิ่งสูง แต่ถ้าสั่งจำนวนมาก ราคาต่อตัวยังคุ้มค่า แนะนำให้ใช้ไม่เกิน 4-5 สีเพื่อควบคุมต้นทุน'
+                a: 'แต่ละสีจะมีค่าทำบล็อกและค่าสกรีนเพิ่มขึ้น ยิ่งใช้สีเยอะ ราคายิ่งสูง แต่ถ้าสั่งจำนวนมาก ราคาต่อตัวยังคุ้มค่า แนะนำให้ใช้ไม่เกิน 4-5 สีเพื่อควบคุมต้นทุน'
               },
               {
                 q: 'Silk Screen ทนทานกว่า DTG/DTF จริงไหม?',
@@ -1056,11 +1057,11 @@ export default function SilkScreenPage() {
               },
               {
                 q: 'ทำไมใช้เวลานานกว่าเทคนิคอื่น?',
-                a: 'เพราะต้องมีขั้นตอนการทำฟิล์มและอัดผ้าตาข่ายก่อน ซึ่งใช้เวลา 1-2 วัน หลังจากนั้นจึงจะสกรีนได้ ทั้งหมดรวมประมาณ 7-14 วันทำการ แต่คุณภาพและความคุ้มค่าที่ได้ก็มากกว่า'
+                a: 'เพราะต้องมีขั้นตอนการทำบล็อกสกรีนก่อน ซึ่งใช้เวลา 1-2 วัน หลังจากนั้นจึงจะสกรีนได้ ทั้งหมดรวมประมาณ 7-14 วันทำการ แต่คุณภาพและความคุ้มค่าที่ได้ก็มากกว่า'
               },
               {
                 q: 'สั่งซ้ำรอบ 2 ถูกกว่าไหม?',
-                a: 'ถูกกว่าครับ! ถ้าเก็บฟิล์มและผ้าตาข่ายไว้ การสั่งซ้ำจะไม่มีค่าทำฟิล์มอีก ทำให้ราคาถูกลงมาก'
+                a: 'ถูกกว่าครับ! ถ้าเก็บบล็อกสกรีนไว้ การสั่งซ้ำจะไม่มีค่าทำบล็อกอีก ทำให้ราคาถูกลงมาก'
               }
             ].map((faq, idx) => (
               <details key={idx} className="group bg-white rounded-2xl border border-slate-100 shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
