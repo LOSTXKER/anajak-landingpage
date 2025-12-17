@@ -3,8 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X, Phone, Mail, MapPin, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, Mail, MapPin, ChevronDown, ChevronRight, MessageCircle } from 'lucide-react';
 import { siteConfig } from '@/config/site';
+import Image from 'next/image';
 
 interface NavItem {
   name: string;
@@ -12,9 +13,16 @@ interface NavItem {
   children?: NavItem[];
 }
 
+const printingSubmenu: NavItem[] = [
+  { name: 'เปรียบเทียบเทคนิค', href: '/services/printing' },
+  { name: 'DTG - Direct to Garment', href: '/services/printing/dtg' },
+  { name: 'DTF - Direct to Film', href: '/services/printing/dtf' },
+  { name: 'Silk Screen', href: '/services/printing/silkscreen' },
+];
+
 const servicesSubmenu: NavItem[] = [
   { name: 'บริการทั้งหมด', href: '/services' },
-  { name: 'บริการสกรีน', href: '/services/printing' },
+  { name: 'บริการสกรีน', href: '/services/printing', children: printingSubmenu },
   { name: 'ทำแพทเทิร์น', href: '/services/pattern' },
   { name: 'เนื้อผ้าหลากหลาย', href: '/services/fabric' },
   { name: 'ออกแบบกราฟิก', href: '/services#design' },
@@ -59,6 +67,7 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [openNestedDropdown, setOpenNestedDropdown] = useState<string | null>(null);
   const pathname = usePathname();
 
   const isHomePage = pathname === '/';
@@ -135,13 +144,16 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
       <nav className="container mx-auto px-4 md:px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-ci-blue to-ci-blueDark rounded-lg flex items-center justify-center text-white font-bold text-xl group-hover:scale-110 transition-transform">
-              A
-            </div>
-            <div>
-              <div className="font-bold text-lg leading-tight text-slate-900">{siteConfig.name}</div>
-              <div className="text-xs text-slate-500">{siteConfig.nameEn}</div>
+          <Link href="/" className="group">
+            <div className="relative w-12 h-12 group-hover:scale-110 transition-transform">
+              <Image
+                src="/images/logo.png"
+                alt="Anajak T-Shirt"
+                width={48}
+                height={48}
+                className="object-contain"
+                priority
+              />
             </div>
           </Link>
 
@@ -191,15 +203,55 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
                     {openDropdown === item.name && (
                         <div className="absolute top-full left-0 -mt-1 pt-3 w-56">
                           <div className="bg-white rounded-xl shadow-xl border border-slate-100 py-2 animate-fade-in-down">
-                        {item.children!.map((child) => (
-                          <Link
-                            key={child.name}
-                            href={child.href}
-                            className="block px-4 py-2.5 text-slate-700 hover:text-ci-blue hover:bg-blue-50 transition-all"
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
+                        {item.children!.map((child) => {
+                          const hasNestedChildren = child.children && child.children.length > 0;
+                          
+                          if (hasNestedChildren) {
+                            return (
+                              <div
+                                key={child.name}
+                                className="relative group"
+                                onMouseEnter={() => setOpenNestedDropdown(child.name)}
+                                onMouseLeave={() => setOpenNestedDropdown(null)}
+                              >
+                                <Link
+                                  href={child.href}
+                                  className="flex items-center justify-between px-4 py-2.5 text-slate-700 hover:text-ci-blue hover:bg-blue-50 transition-all"
+                                >
+                                  <span>{child.name}</span>
+                                  <ChevronRight className="w-4 h-4" />
+                                </Link>
+                                
+                                {/* Nested Submenu */}
+                                {openNestedDropdown === child.name && (
+                                  <div className="absolute left-full top-0 ml-1 w-56">
+                                    <div className="bg-white rounded-xl shadow-xl border border-slate-100 py-2 animate-fade-in-left">
+                                      {child.children!.map((nestedChild) => (
+                                        <Link
+                                          key={nestedChild.name}
+                                          href={nestedChild.href}
+                                          className="block px-4 py-2.5 text-slate-700 hover:text-ci-blue hover:bg-blue-50 transition-all"
+                                        >
+                                          {nestedChild.name}
+                                        </Link>
+                                      ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            );
+                          }
+                          
+                          return (
+                            <Link
+                              key={child.name}
+                              href={child.href}
+                              className="block px-4 py-2.5 text-slate-700 hover:text-ci-blue hover:bg-blue-50 transition-all"
+                            >
+                              {child.name}
+                            </Link>
+                          );
+                        })}
                           </div>
                       </div>
                     )}
@@ -293,18 +345,51 @@ export default function Header({ navMode = 'auto' }: HeaderProps) {
                       <span>{item.name}</span>
                       <ChevronDown className={`w-5 h-5 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
                     </button>
-                    <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                    <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[600px] opacity-100' : 'max-h-0 opacity-0'}`}>
                       <div className="ml-4 mt-1 space-y-1 py-2">
-                        {item.children!.map((child) => (
-                          <Link
-                            key={child.name}
-                            href={child.href}
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="block px-4 py-2.5 text-sm text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
+                        {item.children!.map((child) => {
+                          const hasNestedChildren = child.children && child.children.length > 0;
+                          const isNestedOpen = openNestedDropdown === child.name;
+                          
+                          if (hasNestedChildren) {
+                            return (
+                              <div key={child.name}>
+                                <button
+                                  onClick={() => setOpenNestedDropdown(isNestedOpen ? null : child.name)}
+                                  className="w-full flex items-center justify-between px-4 py-2.5 text-sm text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
+                                >
+                                  <span>{child.name}</span>
+                                  <ChevronRight className={`w-4 h-4 transition-transform duration-200 ${isNestedOpen ? 'rotate-90' : ''}`} />
+                                </button>
+                                <div className={`overflow-hidden transition-all duration-300 ${isNestedOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}>
+                                  <div className="ml-4 mt-1 space-y-1 py-1">
+                                    {child.children!.map((nestedChild) => (
+                                      <Link
+                                        key={nestedChild.name}
+                                        href={nestedChild.href}
+                                        onClick={() => setIsMobileMenuOpen(false)}
+                                        className="block px-4 py-2 text-xs text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
+                                      >
+                                        {nestedChild.name}
+                                      </Link>
+                                    ))}
+                                  </div>
+                                </div>
+                              </div>
+                            );
+                          }
+                          
+                          return (
+                            <Link
+                              key={child.name}
+                              href={child.href}
+                              onClick={() => setIsMobileMenuOpen(false)}
+                              className="block px-4 py-2.5 text-sm text-slate-600 hover:text-ci-blue hover:bg-blue-50 rounded-lg transition-all"
+                            >
+                              {child.name}
+                            </Link>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>

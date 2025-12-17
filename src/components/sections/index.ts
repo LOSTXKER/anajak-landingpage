@@ -11,3 +11,4 @@ export { default as FAQSection } from './FAQSection';
 export { default as FinalCTASection } from './FinalCTASection';
 export { default as UseCaseSection } from './UseCaseSection';
 export { default as ClientLogosSection } from './ClientLogosSection';
+export { default as RelatedPagesSection } from './RelatedPagesSection';

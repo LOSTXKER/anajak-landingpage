@@ -19,6 +19,7 @@ import {
   ImageIcon,
   Star,
   Phone,
+  MessageCircle,
   Zap,
   Layers,
   Scissors,
@@ -51,7 +52,7 @@ const printingMethods = [
     image: '/images/printing/dtf.jpg',
     features: ['สีสด ทนทาน', 'ผ้าได้หลายชนิด', 'ยืดหยุ่น', 'ซักไม่หลุด'],
     minOrder: '1 ตัว',
-    priceRange: 'เริ่มต้น 120 บาท/ตัว',
+    priceRange: '30-250฿/ตัว (ตามขนาด)',
     useCases: [
       'ผ้ายืด ผ้ากีฬา',
       'สินค้าขายออนไลน์',
@@ -67,8 +68,8 @@ const printingMethods = [
     description: 'การสกรีนแบบดั้งเดิมที่ให้สีสดและทนทานที่สุด เหมาะสำหรับงานจำนวนมาก',
     image: '/images/printing/silkscreen.jpg',
     features: ['ต้นทุนต่ำ', 'สีสด ทน', 'งานจำนวนมาก', 'คุณภาพสูง'],
-    minOrder: '50 ตัว',
-    priceRange: 'เริ่มต้น 80 บาท/ตัว',
+    minOrder: '30 ตัว',
+    priceRange: '20-70฿/ตัว (จำนวนมาก)',
     useCases: [
       'งานองค์กร จำนวนมาก',
       'เสื้อทีม สโมสร',
@@ -83,13 +84,13 @@ const printingMethods = [
 const comparisonData = {
   headers: ['', 'DTG', 'DTF', 'Silk Screen'],
   rows: [
-    { label: 'ขั้นต่ำ', values: ['1 ตัว', '1 ตัว', '50 ตัว'] },
-    { label: 'ราคา/ตัว', values: ['150฿+', '120฿+', '80฿+'] },
+    { label: 'ขั้นต่ำ', values: ['1 ตัว', '1 ตัว', '30 ตัว'] },
+    { label: 'ราคา/ตัว', values: ['150฿+', '30-250฿', '20-70฿'] },
     { label: 'ความละเอียด', values: ['★★★', '★★', '★★'] },
     { label: 'ความทนทาน', values: ['★★', '★★★', '★★★'] },
     { label: 'ผ้าที่รองรับ', values: ['ฝ้าย', 'ทุกชนิด', 'ทุกชนิด'] },
     { label: 'เวลาผลิต', values: ['7-14 วัน', '2-3 วัน', '7-14 วัน'] },
-    { label: 'เหมาะกับ', values: ['สั่งน้อย', 'ผ้ายืด', 'จำนวนมาก'] },
+    { label: 'เหมาะกับ', values: ['ภาพถ่าย งานศิลปะ', 'โลโก้ ลายกราฟิก', 'โลโก้ 1-4 สี'] },
   ]
 };
 
@@ -97,7 +98,7 @@ const comparisonData = {
 const faqs = [
   {
     question: 'เลือกเทคนิคไหนดีสำหรับงานของฉัน?',
-    answer: 'ถ้าสั่งน้อย (1-10 ตัว) แนะนำ DTG หรือ DTF / ถ้าสั่งเยอะ (50+ ตัว) แนะนำ Silk Screen ประหยัดกว่า / ถ้าเป็นผ้ายืด กีฬา แนะนำ DTF ทนทานสุด'
+    answer: 'ถ้าสั่งน้อย (1-10 ตัว) แนะนำ DTG หรือ DTF / ถ้าสั่งเยอะ (30+ ตัว) แนะนำ Silk Screen ประหยัดกว่า / ถ้าเป็นผ้ายืด กีฬา แนะนำ DTF ทนทานสุด'
   },
   {
     question: 'ซักแล้วหลุดไหม?',
@@ -230,8 +231,8 @@ export default function PrintingServicePage() {
                 href="/contact" 
                 className="group px-8 py-4 bg-white text-slate-700 border-2 border-slate-200 rounded-2xl font-bold text-lg hover:border-ci-blue hover:text-ci-blue hover:-translate-y-1 hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2"
               >
-                <Phone className="w-5 h-5" />
-                ขอใบเสนอราคา
+                <MessageCircle className="w-5 h-5" />
+                ติดต่อเรา
               </a>
             </div>
 

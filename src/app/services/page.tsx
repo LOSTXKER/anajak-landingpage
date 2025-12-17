@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
@@ -25,6 +25,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Phone,
+  MessageCircle,
 } from 'lucide-react';
 
 // บริการหลัก (มีหน้าแยก)
@@ -66,21 +67,26 @@ const additionalServices = [
   {
     id: 'design',
     title: 'ออกแบบกราฟิก',
-    description: 'ทีมดีไซน์มืออาชีพ',
-    fullDescription: 'ทีมดีไซน์เนอร์พร้อมช่วยออกแบบลายเสื้อให้คุณ ตั้งแต่ไอเดียจนถึงไฟล์พร้อมพิมพ์',
+    description: 'เริ่มต้น 100-1,600฿',
+    fullDescription: 'ทีมดีไซน์เนอร์พร้อมช่วยออกแบบลายเสื้อ ตั้งแต่ไอเดียจนถึงไฟล์พร้อมพิมพ์ ค่าบริการ 100-1,600฿',
     icon: Palette,
     image: '/images/services/design.jpg',
-    badge: 'ฟรี!',
-    features: ['ออกแบบฟรี', 'แก้ไขไม่จำกัด', 'ไฟล์พร้อมใช้'],
+    badge: '100-1,600฿',
+    features: [
+      'แก้ไขฟรี 2 ครั้ง (หากเกิน +100฿/ครั้ง)', 
+      'ใช้เวลา 1-3 วัน (ตามคิว)', 
+      'ไฟล์พร้อมพิมพ์',
+      'ค่าออกแบบแยกจากค่าสกรีนและเสื้อ'
+    ],
   },
   {
     id: 'photography',
     title: 'ถ่ายภาพสินค้า',
-    description: 'Studio ในโรงงาน',
-    fullDescription: 'สตูดิโอถ่ายภาพในโรงงาน พร้อมทีมช่างภาพมืออาชีพ ได้ภาพสวยพร้อมขาย',
+    description: 'ถ่ายเสื้อจริงให้ดู',
+    fullDescription: 'บริการถ่ายภาพเสื้อจริงในโรงงาน เพื่อให้ลูกค้าเห็นผลงานจริงก่อนส่ง',
     icon: Camera,
     image: '/images/services/photography.jpg',
-    features: ['สตูดิโอพร้อม', 'ช่างภาพมืออาชีพ', 'รีทัชพร้อมใช้'],
+    features: ['ถ่ายเสื้อจริง', 'ให้ลูกค้าเห็นผลงาน', 'ไม่มีค่าใช้จ่ายเพิ่ม'],
   },
   {
     id: 'qc',
@@ -118,46 +124,11 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function ServicesPage() {
-  const [activeTab, setActiveTab] = useState(0);
+  // Carousel state for products
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-
-  // Handle hash navigation
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      if (hash) {
-        // Check if hash matches additional service
-        const serviceId = hash.replace('#', '');
-        const serviceIndex = additionalServices.findIndex(s => s.id === serviceId);
-        
-        if (serviceIndex !== -1) {
-          // Switch to the matching tab
-          setActiveTab(serviceIndex);
-          
-          // Scroll to additional services section
-          setTimeout(() => {
-            const element = document.querySelector('#additional-services');
-            if (element) {
-              element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-          }, 100);
-        }
-      }
-    };
-
-    // Handle initial load
-    handleHashChange();
-
-    // Listen for hash changes
-    window.addEventListener('hashchange', handleHashChange);
-    
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-    };
-  }, []);
 
   const scrollCarousel = (direction: 'left' | 'right') => {
     if (carouselRef.current) {
@@ -172,7 +143,7 @@ export default function ServicesPage() {
   // Mouse drag handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!carouselRef.current) return;
-    e.preventDefault(); // Prevent text selection
+    e.preventDefault();
     setIsDragging(true);
     setStartX(e.pageX - carouselRef.current.offsetLeft);
     setScrollLeft(carouselRef.current.scrollLeft);
@@ -197,7 +168,7 @@ export default function ServicesPage() {
     if (!isDragging || !carouselRef.current) return;
     e.preventDefault();
     const x = e.pageX - carouselRef.current.offsetLeft;
-    const walk = (x - startX) * 2; // Multiply by 2 for faster scroll
+    const walk = (x - startX) * 2;
     carouselRef.current.scrollLeft = scrollLeft - walk;
   };
 
@@ -219,6 +190,7 @@ export default function ServicesPage() {
   const handleTouchEnd = () => {
     setIsDragging(false);
   };
+
 
   return (
     <PageLayout>
@@ -286,13 +258,13 @@ export default function ServicesPage() {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row justify-center gap-4 opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="/contact" 
+                href="/contact"
                 className="group relative px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 <span className="relative flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" />
-                  ขอใบเสนอราคา
+                  <MessageCircle className="w-5 h-5" />
+                  ติดต่อเรา
                   <span className="px-2 py-0.5 bg-white/20 rounded-full text-xs">ฟรี!</span>
                 </span>
               </a>
@@ -495,7 +467,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* Additional Services - Grid เหมือนหน้าแรก */}
+      {/* Additional Services - สลับซ้ายขวา */}
       <section id="additional-services" className="py-24 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden scroll-mt-20">
         <div className="absolute top-20 right-10 w-72 h-72 bg-ci-blue/10 rounded-full blur-3xl" />
 
@@ -514,76 +486,110 @@ export default function ServicesPage() {
             </p>
           </div>
 
-          {/* Tabs */}
-          <div className="flex flex-wrap justify-center gap-3 mb-8">
+          {/* Services Grid - สลับซ้ายขวา */}
+          <div className="space-y-12">
             {additionalServices.map((service, index) => {
               const Icon = service.icon;
-              const isActive = activeTab === index;
+              const isReversed = index % 2 !== 0;
+              
               return (
-                <button
-                  key={service.id}
-                  onClick={() => setActiveTab(index)}
-                  className={`flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-all ${
-                    isActive
-                      ? 'bg-gradient-to-r from-ci-blue to-ci-blueDark text-white shadow-lg'
-                      : 'bg-white text-slate-600 border-2 border-slate-200 hover:border-ci-blue hover:text-ci-blue'
-                  }`}
+                <div 
+                  key={service.id} 
+                  id={service.id}
+                  className="bg-white rounded-2xl border border-slate-100 shadow-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
                 >
-                  <Icon className="w-5 h-5" />
-                  {service.title}
-                </button>
+                  <div className={`grid lg:grid-cols-2 lg:h-[550px] ${isReversed ? '' : ''}`}>
+                    {/* Image */}
+                    <div className={`relative h-80 lg:h-full min-h-[400px] group overflow-hidden ${isReversed ? 'lg:order-2' : 'lg:order-1'}`}>
+                      <ServiceImage 
+                        src={service.image} 
+                        alt={service.title}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                      
+                      {/* Icon overlay */}
+                      <div className="absolute top-6 right-6 w-14 h-14 bg-white/90 backdrop-blur-sm rounded-2xl flex items-center justify-center shadow-lg">
+                        <Icon className="w-7 h-7 text-ci-blue" />
+                      </div>
+                      
+                      {service.badge && (
+                        <div className="absolute bottom-6 left-6">
+                          <span className="px-4 py-2 bg-ci-yellow text-slate-900 text-sm font-bold rounded-full shadow-lg">
+                            {service.badge}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Content */}
+                    <div className={`p-6 md:p-8 lg:p-10 flex flex-col justify-center ${isReversed ? 'lg:order-1' : 'lg:order-2'}`}>
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="w-10 h-10 bg-gradient-to-br from-ci-blue/10 to-ci-blue/5 rounded-xl flex items-center justify-center">
+                          <Icon className="w-5 h-5 text-ci-blue" />
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold text-slate-900">
+                          {service.title}
+                        </h3>
+                      </div>
+                      
+                      <p className="text-base text-slate-600 mb-6 leading-relaxed">
+                        {service.fullDescription}
+                      </p>
+
+                      {/* ขั้นตอนการสั่งออกแบบ - แสดงเฉพาะออกแบบกราฟิก */}
+                      {service.id === 'design' && (
+                        <div className="mb-6">
+                          <ol className="space-y-2.5 mb-3 text-sm text-slate-700">
+                            <li className="flex gap-2.5 p-2.5 bg-slate-50 rounded-lg">
+                              <span className="flex-shrink-0 w-6 h-6 bg-purple-600 text-white rounded-full flex items-center justify-center text-xs font-bold">1</span>
+                              <span className="font-medium">แจ้งรูปภาพ/แบบร่างที่ต้องการ หรือส่งภาพอ้างอิง</span>
+                            </li>
+                            <li className="flex gap-2.5 p-2.5 bg-slate-50 rounded-lg">
+                              <span className="flex-shrink-0 w-6 h-6 bg-purple-600 text-white rounded-full flex items-center justify-center text-xs font-bold">2</span>
+                              <span className="font-medium">แจ้งบรีฟ โทนสี อารมณ์ ลักษณะที่ต้องการ</span>
+                            </li>
+                            <li className="flex gap-2.5 p-2.5 bg-slate-50 rounded-lg">
+                              <span className="flex-shrink-0 w-6 h-6 bg-purple-600 text-white rounded-full flex items-center justify-center text-xs font-bold">3</span>
+                              <span className="font-medium">ชำระค่าออกแบบ <strong className="text-purple-700">100-1,600฿</strong></span>
+                            </li>
+                            <li className="flex gap-2.5 p-2.5 bg-slate-50 rounded-lg">
+                              <span className="flex-shrink-0 w-6 h-6 bg-purple-600 text-white rounded-full flex items-center justify-center text-xs font-bold">4</span>
+                              <span className="font-medium">รอออกแบบ 1-3 วัน (ตามคิว)</span>
+                            </li>
+                          </ol>
+                          <div>
+                            <p className="text-sm text-slate-600 flex items-start gap-2 p-2.5 bg-slate-50 rounded-lg">
+                              <span className="font-bold text-green-600">✓</span>
+                              <span className="font-medium">แก้ไขฟรี 2 ครั้ง (เกิน +100฿/ครั้ง)</span>
+                            </p>
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Features - แสดงเฉพาะบริการอื่นที่ไม่ใช่ออกแบบ */}
+                      {service.id !== 'design' && service.features && (
+                        <div className="space-y-2.5 mb-6">
+                          {service.features.map((feature, idx) => (
+                            <div key={idx} className="flex items-center gap-2.5 p-2.5 bg-slate-50 rounded-lg">
+                              <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                              <span className="text-sm text-slate-700 font-medium">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      <a
+                        href="/contact"
+                        className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all w-fit"
+                      >
+                        ติดต่อสอบถาม
+                        <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
               );
             })}
-          </div>
-
-          {/* Tab Content - Card style เหมือนหน้าแรก */}
-          <div className="bg-white rounded-2xl border border-slate-100 shadow-lg overflow-hidden">
-            <div className="grid lg:grid-cols-2 gap-0">
-              {/* Image */}
-              <div className="relative h-72 lg:h-auto min-h-[350px] group">
-                <ServiceImage 
-                  src={additionalServices[activeTab].image} 
-                  alt={additionalServices[activeTab].title}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                
-                {additionalServices[activeTab].badge && (
-                  <div className="absolute top-4 left-4">
-                    <span className="px-3 py-1 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full">
-                      {additionalServices[activeTab].badge}
-                    </span>
-                  </div>
-                )}
-              </div>
-
-              {/* Content */}
-              <div className="p-8 md:p-12 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-                  {additionalServices[activeTab].title}
-                </h3>
-                <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                  {additionalServices[activeTab].fullDescription}
-                </p>
-
-                {/* Features */}
-                <div className="space-y-3 mb-8">
-                  {additionalServices[activeTab].features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
-                      <span className="text-slate-700">{feature}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <a
-                  href="/contact"
-                  className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all w-fit"
-                >
-                  ติดต่อสอบถาม
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -598,7 +604,7 @@ export default function ServicesPage() {
           },
           {
             question: "รับสกรีนเสื้อตัวเดียวได้ไหม?",
-            answer: "ได้ครับ! เราไม่มีขั้นต่ำสำหรับ DTF และ DTG แต่ Silk Screen จะมีขั้นต่ำอยู่ที่ประมาณ 50-100 ตัว เนื่องจากต้องทำฟิล์มและต้นทุนการเตรียมงาน"
+            answer: "ได้ครับ! เราไม่มีขั้นต่ำสำหรับ DTF และ DTG แต่ Silk Screen จะมีขั้นต่ำอยู่ที่ 30 ตัว เนื่องจากต้องทำฟิล์มและต้นทุนการเตรียมงาน"
           },
           {
             question: "ใช้เวลาผลิตนานแค่ไหน?",

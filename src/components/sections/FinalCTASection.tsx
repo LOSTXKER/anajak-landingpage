@@ -64,22 +64,18 @@ export default function FinalCTASection({ className = '' }: FinalCTASectionProps
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
             <a 
-              href={siteConfig.phoneHref}
-              className="group w-full sm:w-auto px-10 py-5 bg-white text-ci-blue rounded-2xl font-bold text-xl shadow-2xl hover:shadow-white/20 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden"
-            >
-              {/* Shine effect */}
-              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-ci-blue/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
-              <Phone className="w-6 h-6 group-hover:animate-wiggle" />
-              <span className="relative">โทรเลย {siteConfig.phone}</span>
-            </a>
-            <a 
-              href={siteConfig.lineUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group w-full sm:w-auto px-10 py-5 bg-green-500 text-white rounded-2xl font-bold text-xl hover:bg-green-600 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3"
+              href="/contact"
+              className="group w-full sm:w-auto px-10 py-5 bg-green-500 text-white rounded-2xl font-bold text-xl shadow-2xl hover:bg-green-600 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-3"
             >
               <MessageCircle className="w-6 h-6 group-hover:animate-bounce-subtle" />
-              แชทผ่าน LINE
+              <span>แชทผ่าน LINE</span>
+              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            </a>
+            <a 
+              href="/contact"
+              className="group w-full sm:w-auto px-10 py-5 bg-white/10 backdrop-blur-sm text-white border-2 border-white/30 rounded-2xl font-bold text-xl hover:bg-white/20 hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 flex items-center justify-center gap-3"
+            >
+              ติดต่อเรา
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
           </div>

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
-import { FinalCTASection } from '@/components/sections';
+import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
 import {
   Layers,
@@ -21,7 +21,10 @@ import {
   ImageIcon,
   Star,
   Phone,
+  MessageCircle,
   Zap,
+  Printer,
+  Scissors,
 } from 'lucide-react';
 
 // Fabric categories
@@ -186,8 +189,8 @@ export default function FabricServicePage() {
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 <span className="relative flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" />
-                  ขอตัวอย่างผ้า
+                  <MessageCircle className="w-5 h-5" />
+                  ติดต่อเรา
                 </span>
               </a>
             </div>
@@ -401,6 +404,32 @@ export default function FabricServicePage() {
           </div>
         </div>
       </section>
+
+      {/* Related Pages */}
+      <RelatedPagesSection
+        title="บริการที่เกี่ยวข้อง"
+        description="สำรวจบริการอื่นๆ ที่เราเตรียมไว้สำหรับคุณ"
+        pages={[
+          {
+            title: 'เทคนิคการสกรีน',
+            description: 'DTG, DTF และ Silk Screen สำหรับผ้าทุกชนิด',
+            href: '/services/printing',
+            icon: Printer,
+          },
+          {
+            title: 'ออกแบบแพทเทิร์น',
+            description: 'บริการออกแบบและตัดแพทเทิร์นเสื้อมืออาชีพ',
+            href: '/services/pattern',
+            icon: Scissors,
+          },
+          {
+            title: 'ติดต่อเรา',
+            description: 'ปรึกษาและขอตัวอย่างผ้าได้ฟรี',
+            href: '/contact',
+            icon: MessageCircle,
+          },
+        ]}
+      />
 
       <FinalCTASection />
     </PageLayout>

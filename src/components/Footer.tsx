@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Phone, Mail, MapPin, Facebook, 
   MessageCircle, Clock, ChevronRight 
@@ -45,13 +46,15 @@ export default function Footer({ className = '' }: FooterProps) {
         <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
           {/* Company Info */}
           <div>
-            <Link href="/" className="flex items-center gap-2 mb-6">
-              <div className="w-12 h-12 bg-gradient-to-br from-ci-blue to-ci-blueDark rounded-lg flex items-center justify-center text-white font-bold text-2xl">
-                A
-              </div>
-              <div>
-                <div className="font-bold text-lg leading-tight">{siteConfig.name}</div>
-                <div className="text-xs text-slate-400">{siteConfig.nameEn}</div>
+            <Link href="/" className="inline-block mb-6">
+              <div className="relative w-16 h-16 hover:scale-110 transition-transform">
+                <Image
+                  src="/images/logo.png"
+                  alt="Anajak T-Shirt"
+                  width={64}
+                  height={64}
+                  className="object-contain"
+                />
               </div>
             </Link>
             <p className="text-slate-300 mb-6 leading-relaxed">
@@ -164,6 +167,19 @@ export default function Footer({ className = '' }: FooterProps) {
                   จันทร์-เสาร์: {siteConfig.businessHours.weekdays}<br />
                   อาทิตย์: {siteConfig.businessHours.sunday}
                 </div>
+              </div>
+              
+              {/* LINE CTA Button */}
+              <div className="mt-6">
+                <a 
+                  href={siteConfig.lineUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-green-500 text-white rounded-xl font-bold hover:bg-green-600 transition-all hover:scale-105 shadow-lg"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  <span>แชทผ่าน LINE</span>
+                </a>
               </div>
             </div>
           </div>

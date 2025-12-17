@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import Breadcrumb from '@/components/Breadcrumb';
+import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import { 
   Phone, 
   Mail, 
@@ -12,7 +13,10 @@ import {
   Facebook,
   Instagram,
   Youtube,
-  Video
+  Video,
+  Printer,
+  Calculator,
+  Sparkles
 } from 'lucide-react';
 import { siteConfig } from '@/config/site';
 
@@ -245,6 +249,35 @@ export default function ContactPage() {
           className="grayscale hover:grayscale-0 transition-all duration-500"
         />
       </section>
+
+      {/* Related Pages */}
+      <RelatedPagesSection
+        title="สำรวจบริการของเรา"
+        description="ดูบริการต่างๆ ผลงาน และคำนวณราคาได้ง่ายๆ"
+        pages={[
+          {
+            title: 'บริการสกรีนเสื้อ',
+            description: 'ดูเทคนิคสกรีน DTG, DTF และ Silk Screen',
+            href: '/services/printing',
+            icon: Printer,
+          },
+          {
+            title: 'คำนวณราคา',
+            description: 'คำนวณราคาเบื้องต้นได้ด้วยตัวเอง',
+            href: '/calculator',
+            icon: Calculator,
+          },
+          {
+            title: 'ผลงานของเรา',
+            description: 'ชมตัวอย่างผลงานคุณภาพจากโปรเจกต์จริง',
+            href: '/portfolio',
+            icon: Sparkles,
+          },
+        ]}
+      />
+
+      {/* Final CTA */}
+      <FinalCTASection />
     </PageLayout>
   );
 }

@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
-import { FinalCTASection } from '@/components/sections';
+import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Printer,
@@ -14,6 +14,7 @@ import {
   XCircle,
   Star,
   Phone,
+  MessageCircle,
   Zap,
   ImageIcon,
   Shield,
@@ -26,6 +27,9 @@ import {
   Store,
   GraduationCap,
   Factory,
+  Layers,
+  Calculator,
+  Shirt,
 } from 'lucide-react';
 
 // Image with fallback
@@ -108,7 +112,7 @@ export default function SilkScreenPage() {
             <p className="text-lg md:text-xl text-slate-700 mb-8 leading-relaxed opacity-0 animate-fade-in-up delay-200 max-w-2xl mx-auto font-medium">
               เทคนิคดั้งเดิมมาตรฐานโลก <span className="text-amber-600 font-bold">ยิ่งสั่งเยอะ ยิ่งถูก</span> 
               สีสดชัดที่สุด ทนทานที่สุด เหมาะกับ<span className="text-orange-600 font-bold">งานจำนวนมาก</span> 
-              ตั้งแต่ 50-1000+ ตัว ราคาโรงงาน
+              ตั้งแต่ 30-1000+ ตัว ราคาโรงงาน
             </p>
 
             <div className="flex flex-wrap justify-center gap-4 mb-8 opacity-0 animate-fade-in-up delay-300">
@@ -126,22 +130,29 @@ export default function SilkScreenPage() {
               </span>
             </div>
 
-            <div className="flex justify-center opacity-0 animate-fade-in-up delay-400">
+            <div className="flex justify-center gap-4 opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="/contact" 
+                href="/contact"
                 className="group relative px-8 py-4 bg-gradient-to-r from-amber-500 via-orange-500 to-yellow-500 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 <span className="relative flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5" />
                   ขอใบเสนอราคา
                 </span>
+              </a>
+              <a 
+                href="/calculator"
+                className="group px-8 py-4 bg-white text-amber-600 border-2 border-amber-200 rounded-2xl font-bold text-lg hover:border-amber-600 hover:bg-amber-50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <span>คำนวณราคา</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
             <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-12 opacity-0 animate-fade-in-up delay-500">
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold text-slate-900">50 ตัว</div>
+                <div className="text-3xl md:text-4xl font-bold text-slate-900">30 ตัว</div>
                 <div className="text-sm text-slate-600">ขั้นต่ำ</div>
               </div>
               <div className="text-center">
@@ -185,7 +196,7 @@ export default function SilkScreenPage() {
                 แล้วใช้ยางรีดผลักหมึกผ่านตาข่ายลงบนผ้า
               </p>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                เหมาะสำหรับ<strong>งานจำนวนมาก</strong> (50+ ตัว) เพราะยิ่งสั่งเยอะ 
+                เหมาะสำหรับ<strong>งานจำนวนมาก</strong> (30+ ตัว) เพราะยิ่งสั่งเยอะ 
                 <strong>ราคาต่อตัวยิ่งถูก</strong> สีสดชัดและทนทานที่สุดในบรรดาเทคนิคทั้งหมด
               </p>
             </div>
@@ -272,7 +283,7 @@ export default function SilkScreenPage() {
                   <XCircle className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
                   <div>
                     <strong className="text-slate-900">มีขั้นต่ำ</strong>
-                    <p className="text-slate-600 text-sm">ขั้นต่ำ 50 ตัว เพื่อให้คุ้มกับค่าทำฟิล์ม</p>
+                    <p className="text-slate-600 text-sm">ขั้นต่ำ 30 ตัว เพื่อให้คุ้มกับค่าทำฟิล์ม</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
@@ -315,7 +326,7 @@ export default function SilkScreenPage() {
               </div>
               <h3 className="font-bold text-slate-900 mb-2">งานองค์กร จำนวนมาก</h3>
               <p className="text-slate-600 text-sm">
-                ยูนิฟอร์มพนักงาน เสื้อบริษัท สั่งเป็น 100-1000+ ตัว
+                ยูนิฟอร์มพนักงาน เสื้อบริษัท สั่งเป็น 30-1000+ ตัว
               </p>
             </div>
 
@@ -478,46 +489,105 @@ export default function SilkScreenPage() {
             </p>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-2xl shadow-xl p-8 mb-8">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6 text-center">
-                ตัวอย่างราคา (1 สี)
-              </h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="text-center p-6 bg-white rounded-xl border border-slate-100 shadow-sm">
-                  <div className="text-4xl font-bold text-slate-900 mb-2">100฿</div>
-                  <div className="text-slate-600 mb-1">50-99 ตัว</div>
-                  <div className="text-xs text-slate-500">+ ค่าฟิล์ม 500฿/สี</div>
-                </div>
-                <div className="text-center p-6 bg-gradient-to-br from-ci-blue to-ci-blueDark rounded-xl shadow-lg transform scale-105">
-                  <div className="text-4xl font-bold text-white mb-2">80฿</div>
-                  <div className="text-white mb-1">100-499 ตัว</div>
-                  <div className="text-xs text-white/80">ยอดนิยม!</div>
-                </div>
-                <div className="text-center p-6 bg-white rounded-xl border border-slate-100 shadow-sm">
-                  <div className="text-4xl font-bold text-slate-900 mb-2">60฿</div>
-                  <div className="text-slate-600 mb-1">500+ ตัว</div>
-                  <div className="text-xs text-slate-500">คุ้มที่สุด!</div>
-                </div>
-              </div>
-              <p className="text-center text-slate-500 text-sm mt-6">
-                * ราคาอาจแตกต่างตามขนาดลาย จำนวนสี และชนิดของเสื้อ
-              </p>
+          {/* Price Table */}
+          <div className="max-w-6xl mx-auto mb-8">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="bg-gradient-to-r from-ci-blue to-ci-blueDark text-white">
+                    <th className="p-3 md:p-4 text-left text-sm md:text-base font-bold border-r border-white/10">
+                      <div className="flex items-center gap-2">
+                        <Layers className="w-4 h-4 text-ci-yellow" />
+                        <span>จำนวนสี</span>
+                      </div>
+                    </th>
+                    <th className="p-3 md:p-4 text-center text-xs md:text-sm font-bold border-r border-white/10">30-49ตัว</th>
+                    <th className="p-3 md:p-4 text-center text-xs md:text-sm font-bold border-r border-white/10">50-99ตัว</th>
+                    <th className="p-3 md:p-4 text-center text-xs md:text-sm font-bold border-r border-white/10">100-499ตัว</th>
+                    <th className="p-3 md:p-4 text-center text-xs md:text-sm font-bold border-r border-white/10">500-999ตัว</th>
+                    <th className="p-3 md:p-4 text-center text-xs md:text-sm font-bold">1,000ตัว</th>
+                  </tr>
+                </thead>
+                <tbody className="text-sm md:text-base">
+                  {[
+                    { colors: '1 สี', prices: [70, 50, 30, 25, 20] },
+                    { colors: '2 สี', prices: [80, 60, 35, 30, 25] },
+                    { colors: '3 สี', prices: [90, 60, 40, 35, 30] },
+                    { colors: '4 สี', prices: [100, 70, 45, 40, 35] },
+                    { colors: '5 สี', prices: [110, 70, 50, 45, 40] },
+                    { colors: '6 สี', prices: [null, 80, 55, 50, 45] },
+                    { colors: '7 สี', prices: [null, 80, 60, 55, 50] },
+                    { colors: '8-10 สี', prices: [null, 90, 65, 60, 55] },
+                  ].map((row, idx) => (
+                    <tr key={idx} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                      <td className="p-3 md:p-4 font-bold text-slate-900 border-r border-slate-200">{row.colors}</td>
+                      {row.prices.map((price, priceIdx) => (
+                        <td 
+                          key={priceIdx} 
+                          className={`p-3 md:p-4 text-center border-r border-slate-200 last:border-r-0 ${
+                            priceIdx >= 2 ? 'bg-blue-50/30' : ''
+                          } ${priceIdx === 4 ? 'bg-yellow-50' : ''}`}
+                        >
+                          {price ? (
+                            <div className="flex flex-col items-center">
+                              <span className={`text-base md:text-lg font-bold ${priceIdx >= 2 ? 'text-ci-blue' : 'text-slate-900'} ${priceIdx === 4 ? 'text-amber-700' : ''}`}>
+                                {price}
+                              </span>
+                              <span className="text-xs text-slate-500">บาท</span>
+                            </div>
+                          ) : (
+                            <span className="text-slate-400">-</span>
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
 
-            <div className="text-center max-w-3xl mx-auto bg-gradient-to-br from-slate-50 to-white border border-slate-200 p-8 rounded-2xl shadow-lg">
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">
-                ขอใบเสนอราคา<span className="gradient-text">ที่แม่นยำ</span>
-              </h3>
-              <p className="text-slate-600 mb-6">
-                เพื่อให้ได้ราคาที่แม่นยำที่สุด กรุณาแจ้ง: จำนวนที่ต้องการ, จำนวนสี, 
-                และขนาดลาย เราจะประเมินราคาให้ทันที
-              </p>
-              <a href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-                <Phone className="w-5 h-5" />
-                ขอใบเสนอราคา
-              </a>
+            {/* Notes */}
+            <div className="mt-6 space-y-3">
+              <div className="p-3 bg-slate-50 rounded-lg border border-slate-200 text-center">
+                <p className="text-slate-700 text-sm">
+                  <strong className="text-slate-900">ขั้นต่ำ:</strong> 30 ตัว/ลาย • <strong className="text-slate-900">ขนาด:</strong> A4-A3 (สกรีนหน้า-หลัง)
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-3">
+                <div className="p-3 bg-blue-50 rounded-lg border border-ci-blue text-center">
+                  <p className="text-slate-700 text-xs">
+                    <strong className="text-ci-blue">ขนาด 2"×2"</strong><br />
+                    ตัวละ 5-10 บาท
+                  </p>
+                </div>
+                <div className="p-3 bg-blue-50 rounded-lg border border-ci-blue text-center">
+                  <p className="text-slate-700 text-xs">
+                    <strong className="text-ci-blue">ขนาด A5 สกรีนหน้า</strong><br />
+                    ตัวละ 5-10 บาท
+                  </p>
+                </div>
+                <div className="p-3 bg-blue-50 rounded-lg border border-ci-blue text-center">
+                  <p className="text-slate-700 text-xs">
+                    <strong className="text-ci-blue">เพิ่มสุด</strong><br />
+                    ตัวละ 5-10 บาท
+                  </p>
+                </div>
+              </div>
             </div>
+          </div>
+
+          <div className="text-center max-w-3xl mx-auto bg-gradient-to-br from-slate-50 to-white border border-slate-200 p-6 rounded-2xl shadow-lg">
+            <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3">
+              ต้องการคำปรึกษา หรือราคาพิเศษ?
+            </h3>
+            <p className="text-slate-600 mb-5 text-sm md:text-base">
+              ติดต่อเราเพื่อขอคำปรึกษาและรับใบเสนอราคาที่เหมาะสมกับงานของคุณ
+            </p>
+            <a href="/contact" className="inline-flex items-center gap-2 px-6 md:px-8 py-3 md:py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-base md:text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+              <MessageCircle className="w-5 h-5" />
+              สอบถามราคาพิเศษ
+            </a>
           </div>
         </div>
       </section>
@@ -973,8 +1043,8 @@ export default function SilkScreenPage() {
           <div className="max-w-4xl mx-auto space-y-4">
             {[
               {
-                q: 'ทำไมต้องมีขั้นต่ำ 50 ตัว?',
-                a: 'เพราะต้องมีค่าใช้จ่ายในการทำฟิล์มและเตรียมผ้าตาข่ายก่อน (ประมาณ 500-1000 บาท/สี) ถ้าสั่งน้อยเกินไป ราคาต่อตัวจะสูงมาก ไม่คุ้มค่า แนะนำให้สั่งอย่างน้อย 50 ตัวขึ้นไป'
+                q: 'ทำไมต้องมีขั้นต่ำ 30 ตัว?',
+                a: 'เพราะต้องมีค่าใช้จ่ายในการทำฟิล์มและเตรียมผ้าตาข่ายก่อน (ประมาณ 500-1000 บาท/สี) ถ้าสั่งน้อยเกินไป ราคาต่อตัวจะสูงมาก ไม่คุ้มค่า แนะนำให้สั่งอย่างน้อย 30 ตัวขึ้นไป'
               },
               {
                 q: 'ถ้าใช้หลายสี ราคาเป็นอย่างไร?',
@@ -1254,6 +1324,32 @@ export default function SilkScreenPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Pages */}
+      <RelatedPagesSection
+        title="ขั้นตอนต่อไปคืออะไร?"
+        description="พร้อมสกรีนเสื้อแล้ว หรือต้องการสำรวจเพิ่มเติม?"
+        pages={[
+          {
+            title: 'เลือกเสื้อเปล่า',
+            description: 'ดูเสื้อคุณภาพหลากหลายรุ่นให้เลือก',
+            href: '/products',
+            icon: Shirt,
+          },
+          {
+            title: 'คำนวณราคา',
+            description: 'ประมาณการราคาเบื้องต้นได้ด้วยตัวเอง',
+            href: '/calculator',
+            icon: Calculator,
+          },
+          {
+            title: 'ผลงานของเรา',
+            description: 'ชมตัวอย่างผลงาน Silk Screen คุณภาพจากโปรเจกต์จริง',
+            href: '/portfolio',
+            icon: Sparkles,
+          },
+        ]}
+      />
 
       <FinalCTASection />
     </PageLayout>

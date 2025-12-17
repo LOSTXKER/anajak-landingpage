@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
-import { FinalCTASection } from '@/components/sections';
+import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Printer,
@@ -14,6 +14,7 @@ import {
   XCircle,
   Star,
   Phone,
+  MessageCircle,
   Zap,
   ImageIcon,
   Palette,
@@ -27,6 +28,8 @@ import {
   Camera,
   Shield,
   Trophy,
+  AlertCircle,
+  Calculator,
 } from 'lucide-react';
 
 // Image with fallback
@@ -127,16 +130,23 @@ export default function DTGPage() {
               </span>
             </div>
 
-            <div className="flex justify-center opacity-0 animate-fade-in-up delay-400">
+            <div className="flex justify-center gap-4 opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="/contact" 
+                href="/contact"
                 className="group relative px-8 py-4 bg-gradient-to-r from-purple-600 via-pink-600 to-blue-600 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 <span className="relative flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5" />
                   ขอใบเสนอราคา
                 </span>
+              </a>
+              <a 
+                href="/calculator"
+                className="group px-8 py-4 bg-white text-purple-600 border-2 border-purple-200 rounded-2xl font-bold text-lg hover:border-purple-600 hover:bg-purple-50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <span>คำนวณราคา</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
@@ -525,9 +535,25 @@ export default function DTGPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               <span className="gradient-text">ราคา</span>บริการพิมพ์ลงผ้าโดยตรง
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-slate-600 max-w-2xl mx-auto mb-6">
               ราคาของเราโปร่งใส คิดตามปริมาณการใช้หมึกจริง เพื่อให้คุณได้ราคาที่คุ้มค่าที่สุด
             </p>
+            
+            {/* Highlight: Color-based Pricing */}
+            <div className="max-w-3xl mx-auto mb-8">
+              <div className="bg-gradient-to-r from-blue-50 to-cyan-50 border-2 border-ci-blue rounded-2xl p-6 shadow-lg text-center">
+                <div className="flex items-center justify-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-ci-blue rounded-xl flex items-center justify-center">
+                    <Palette className="w-5 h-5 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900">คิดราคาตามสีที่ใช้</h3>
+                </div>
+                <p className="text-slate-700 leading-relaxed">
+                  <strong className="text-ci-blue">DTG คำนวณราคาตามจำนวนหมึกที่ใช้จริง</strong> ลายที่มีสีน้อย ราคาถูกกว่า 
+                  ลายที่มีสีเยอะ หรือพื้นที่สีเต็ม ราคาจะสูงขึ้น <span className="text-slate-900 font-semibold">เป็นราคาที่ยุติธรรมและคุ้มค่าที่สุด</span>
+                </p>
+              </div>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -564,17 +590,100 @@ export default function DTGPage() {
             </div>
           </div>
 
+          {/* DTG Promotion */}
+          <div className="mt-12 max-w-5xl mx-auto">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden">
+              {/* Header */}
+              <div className="bg-gradient-to-r from-slate-50 to-white border-b border-slate-200 p-4 md:p-5">
+                <div className="flex items-center justify-center gap-2 mb-1">
+                  <div className="w-7 h-7 bg-ci-yellow/20 rounded-lg flex items-center justify-center">
+                    <Star className="w-4 h-4 fill-ci-yellow text-ci-yellow" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-slate-900">สกรีน DTG โปรโมชั่น</h3>
+                </div>
+                <div className="flex items-center justify-center gap-2 text-slate-600 text-sm">
+                  <Palette className="w-3.5 h-3.5 text-ci-blue" />
+                  <p className="text-center"><strong className="text-ci-blue">คิดตามสีที่ใช้</strong> • ส่วนลดตามจำนวน</p>
+                </div>
+              </div>
+
+              <div className="p-5 md:p-8">
+                {/* Discount Cards */}
+                <div className="grid md:grid-cols-3 gap-4 mb-6">
+                  {/* 30 pieces */}
+                  <div className="text-center p-4 bg-blue-50/50 rounded-xl border border-blue-200 hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div className="w-10 h-10 bg-ci-blue rounded-lg flex items-center justify-center mx-auto mb-3">
+                      <Gift className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="text-3xl font-bold text-ci-blue mb-1">5%</div>
+                    <div className="text-slate-600 text-sm">สั่งผลิต <strong className="text-ci-blue">30 ตัว</strong></div>
+                  </div>
+                  
+                  {/* 50 pieces */}
+                  <div className="text-center p-4 bg-blue-50/50 rounded-xl border-2 border-ci-blue hover:shadow-lg hover:-translate-y-1 transition-all">
+                    <div className="w-10 h-10 bg-gradient-to-br from-ci-blue to-ci-blueDark rounded-lg flex items-center justify-center mx-auto mb-3">
+                      <Gift className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="text-3xl font-bold text-ci-blue mb-1">10%</div>
+                    <div className="text-slate-600 text-sm mb-2">สั่งผลิต <strong className="text-ci-blue">50 ตัว</strong></div>
+                    <span className="inline-block px-2.5 py-0.5 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full">แนะนำ</span>
+                  </div>
+                  
+                  {/* 100 pieces */}
+                  <div className="text-center p-4 bg-blue-50/50 rounded-xl border border-blue-200 hover:shadow-md hover:-translate-y-1 transition-all">
+                    <div className="w-10 h-10 bg-ci-blue rounded-lg flex items-center justify-center mx-auto mb-3">
+                      <Trophy className="w-5 h-5 text-white" />
+                    </div>
+                    <div className="text-3xl font-bold text-ci-blue mb-1">15%</div>
+                    <div className="text-slate-600 text-sm">สั่งผลิต <strong className="text-ci-blue">100 ตัว</strong></div>
+                  </div>
+                </div>
+
+                {/* Notes */}
+                <div className="space-y-3">
+                  {/* Color-based pricing reminder */}
+                  <div className="text-center p-3 bg-blue-50 rounded-lg border border-ci-blue">
+                    <div className="flex items-center justify-center gap-2">
+                      <Palette className="w-4 h-4 text-ci-blue" />
+                      <p className="text-ci-blue font-bold text-sm">คำนวณราคาตามสีที่ใช้</p>
+                    </div>
+                    <p className="text-slate-600 text-xs mt-1">
+                      ลายที่มีสีน้อย ราคาถูกกว่า • ลายที่มีสีเต็มพื้นที่ ราคาสูงขึ้น
+                    </p>
+                  </div>
+                  
+                  <div className="grid md:grid-cols-2 gap-3">
+                    <div className="text-center p-3 bg-slate-50 rounded-lg border border-slate-200">
+                      <p className="text-slate-700 text-xs">
+                        <strong className="text-slate-900">หมายเหตุ:</strong> ส่วนลดเฉพาะค่าสกรีน แบบเดียวกัน
+                      </p>
+                    </div>
+                    
+                    {/* Warning Card */}
+                    <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+                      <div className="flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4 text-amber-600 flex-shrink-0" />
+                        <p className="text-amber-800 text-xs">
+                          <strong>เสื้อสีดำแพงกว่าสีขาวเกือบ 2 เท่า</strong>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="text-center mt-12 max-w-3xl mx-auto bg-gradient-to-br from-slate-50 to-white border border-slate-200 p-8 rounded-2xl shadow-lg">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
-              ราคาคิดตาม<span className="gradient-text">ปริมาณการใช้สี</span>
+              ต้องการคำปรึกษา หรือราคาพิเศษ?
             </h3>
             <p className="text-slate-600 mb-6">
-              เพื่อให้ได้ราคาที่แม่นยำและยุติธรรมที่สุดสำหรับงานของคุณ 
-              กรุณาส่งไฟล์ Artwork พร้อมแจ้งขนาดและจำนวนที่ต้องการมาให้เราประเมินราคา
+              ติดต่อเราเพื่อขอคำปรึกษาและรับใบเสนอราคาที่เหมาะสมกับงานของคุณ
             </p>
             <a href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-              <Phone className="w-5 h-5" />
-              ประเมินราคาเฉพาะลายของคุณ
+              <MessageCircle className="w-5 h-5" />
+              สอบถามราคาพิเศษ
             </a>
           </div>
         </div>
@@ -1308,6 +1417,32 @@ export default function DTGPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Pages */}
+      <RelatedPagesSection
+        title="ขั้นตอนต่อไปคืออะไร?"
+        description="พร้อมสกรีนเสื้อแล้ว หรือต้องการสำรวจเพิ่มเติม?"
+        pages={[
+          {
+            title: 'เลือกเสื้อเปล่า',
+            description: 'ดูเสื้อคุณภาพหลากหลายรุ่นให้เลือก',
+            href: '/products',
+            icon: Shirt,
+          },
+          {
+            title: 'คำนวณราคา',
+            description: 'ประมาณการราคาเบื้องต้นได้ด้วยตัวเอง',
+            href: '/calculator',
+            icon: Calculator,
+          },
+          {
+            title: 'ผลงานของเรา',
+            description: 'ชมตัวอย่างผลงาน DTG คุณภาพจากโปรเจกต์จริง',
+            href: '/portfolio',
+            icon: Sparkles,
+          },
+        ]}
+      />
 
       <FinalCTASection />
     </PageLayout>

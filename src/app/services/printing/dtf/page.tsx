@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import PageLayout from '@/components/PageLayout';
-import { FinalCTASection } from '@/components/sections';
+import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
 import { 
   Printer,
@@ -14,6 +14,7 @@ import {
   XCircle,
   Star,
   Phone,
+  MessageCircle,
   Zap,
   ImageIcon,
   Shield,
@@ -27,6 +28,7 @@ import {
   Layers,
   RefreshCw,
   Trophy,
+  Calculator,
 } from 'lucide-react';
 
 // Image with fallback
@@ -127,16 +129,23 @@ export default function DTFPage() {
               </span>
             </div>
 
-            <div className="flex justify-center opacity-0 animate-fade-in-up delay-400">
+            <div className="flex justify-center gap-4 opacity-0 animate-fade-in-up delay-400">
               <a 
-                href="/contact" 
+                href="/contact"
                 className="group relative px-8 py-4 bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 overflow-hidden"
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 <span className="relative flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" />
+                  <MessageCircle className="w-5 h-5" />
                   ขอใบเสนอราคา
                 </span>
+              </a>
+              <a 
+                href="/calculator"
+                className="group px-8 py-4 bg-white text-emerald-600 border-2 border-emerald-200 rounded-2xl font-bold text-lg hover:border-emerald-600 hover:bg-emerald-50 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center gap-2"
+              >
+                <span>คำนวณราคา</span>
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>
 
@@ -519,39 +528,121 @@ export default function DTFPage() {
               <span>ราคาบริการ</span>
             </div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-              <span className="gradient-text">ราคา</span>บริการพิมพ์บนฟิล์ม
+              <span className="gradient-text">ราคา</span>บริการสกรีน DTF
             </h2>
             <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-              ราคาเริ่มต้นที่คุ้มค่า ทนทานยาวนาน ใช้ได้กับผ้าทุกชนิด
+              ราคาโปร่งใส คุ้มค่า ศูนย์ภาพมาตรฐาน (ราคายังไม่รวมค่าเสื้อ)
             </p>
           </div>
 
-          <div className="max-w-3xl mx-auto bg-white rounded-2xl border border-slate-100 shadow-lg p-8 text-center hover:shadow-xl hover:-translate-y-1 transition-all">
-            <div className="w-16 h-16 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
-              <Layers className="w-8 h-8 text-emerald-600" />
+          {/* Price Table */}
+          <div className="max-w-6xl mx-auto mb-8">
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-lg overflow-hidden mb-6">
+              <div className="bg-gradient-to-r from-ci-blue to-ci-blueDark text-white p-5 text-center">
+                <h3 className="text-xl font-bold mb-1">ตารางราคาสกรีน DTF</h3>
+                <p className="text-sm text-white/90">ราคาโปร่งใส คุ้มค่า ศูนย์ภาพมาตรฐาน (ราคายังไม่รวมค่าเสื้อ)</p>
+              </div>
+              
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead>
+                    <tr className="bg-slate-50 border-b-2 border-slate-200">
+                      <th className="p-4 text-left font-bold text-slate-700">ขนาด</th>
+                      <th className="p-4 text-center font-bold text-slate-700 text-sm border-r border-slate-200" colSpan={4}>
+                        ค่าสกรีนจุดแรก
+                      </th>
+                      <th className="p-4 text-center font-bold text-slate-700 text-sm">
+                        จุดถัดไป
+                      </th>
+                    </tr>
+                    <tr className="bg-slate-50 border-b-2 border-slate-200">
+                      <th className="p-3 text-left font-bold text-slate-600 text-xs"></th>
+                      <th className="p-3 text-center font-bold text-slate-600 text-xs">1 ตัว</th>
+                      <th className="p-3 text-center font-bold text-slate-600 text-xs">10 ตัว</th>
+                      <th className="p-3 text-center font-bold text-slate-600 text-xs">50 ตัว</th>
+                      <th className="p-3 text-center font-bold text-slate-600 text-xs border-r border-slate-200">100 ตัว</th>
+                      <th className="p-3 text-center font-bold text-slate-600 text-xs bg-blue-50/50">ต่อจุด</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {[
+                      { size: 'LOGO 2x2', note: '(คอเสื้อ)', prices: [30, 10, 5, 5], nextPoint: 5 },
+                      { size: 'A7 3x4', prices: [80, 40, 35, 30], nextPoint: 25 },
+                      { size: 'A6 4x6', prices: [90, 50, 45, 40], nextPoint: 30 },
+                      { size: 'A5 5x8', prices: [110, 60, 55, 50], nextPoint: 35 },
+                      { size: 'A4 8x12', prices: [130, 90, 80, 70], nextPoint: 45 },
+                      { size: 'A3 12x16', prices: [150, 100, 90, 80], nextPoint: 75 },
+                      { size: 'A2 16x21', prices: [200, 150, 140, 130], nextPoint: 95 },
+                      { size: 'A1 21x28', prices: [250, 200, 190, 180], nextPoint: 145 },
+                    ].map((row, idx) => (
+                      <tr key={idx} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+                        <td className="p-4">
+                          <div className="font-bold text-slate-900">{row.size}</div>
+                          {row.note && <div className="text-xs text-slate-500 mt-0.5">{row.note}</div>}
+                        </td>
+                        {row.prices.map((price, pIdx) => (
+                          <td key={pIdx} className={`p-4 text-center font-bold text-slate-900 ${pIdx === 3 ? 'border-r border-slate-200' : ''}`}>
+                            {price}
+                          </td>
+                        ))}
+                        <td className="p-4 text-center font-bold text-ci-blue bg-blue-50/30">
+                          {row.nextPoint}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">คุ้มค่า ทนทาน ใช้ได้กับทุกผ้า</h3>
-            <p className="text-slate-600 mb-6">
-              เหมาะกับทุกชนิดผ้า ไม่ว่าจะฝ้าย โพลี ผ้ายืด หรือผ้ากีฬา 
-              ราคาคิดตามขนาดและจำนวนสี
-            </p>
-            <div className="mt-6 px-6 py-4 bg-gradient-to-r from-ci-blue/10 to-ci-blueDark/10 rounded-xl">
-              <span className="text-3xl font-bold text-ci-blue">120฿+</span>
-              <span className="text-slate-600 text-sm ml-2">/ตัว</span>
+
+            {/* Example Calculation */}
+            <div className="bg-blue-50 border-2 border-ci-blue rounded-xl p-6 mb-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 bg-ci-blue rounded-xl flex items-center justify-center flex-shrink-0">
+                  <Zap className="w-6 h-6 text-white" />
+                </div>
+                <div className="flex-1">
+                  <h4 className="text-lg font-bold text-slate-900 mb-3">ตัวอย่างการคำนวณ</h4>
+                  <div className="space-y-2">
+                    <p className="text-slate-700">
+                      <strong className="text-ci-blue">เช่น:</strong> สกรีน จำนวน 10 ตัว หน้า A7 หลัง A3
+                    </p>
+                    <p className="text-slate-600 leading-relaxed">
+                      ค่าสกรีน = <strong className="text-ci-blue">100฿</strong> (A3 จุดแรก 10ตัว) + <strong className="text-ci-blue">25฿</strong> (A7 จุดถัดไป) = <strong className="text-ci-blue text-xl">125 บาท</strong>
+                    </p>
+                    <div className="mt-3 p-3 bg-white/80 rounded-lg border border-ci-blue/30">
+                      <p className="text-xs text-slate-600">
+                        <strong className="text-ci-blue">💡 หมายเหตุ:</strong> จุดแรกคือจุดที่ใหญ่ที่สุด (ในตัวอย่างคือ A3 หลัง)
+                      </p>
+                    </div>
+                    <p className="text-sm text-slate-500 pt-2 border-t border-slate-200">
+                      <strong>**ราคายังไม่รวมเสื้อ**</strong>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Note */}
+            <div className="text-center p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <p className="text-slate-700">
+                <strong className="text-slate-900">💡 หมายเหตุ:</strong> สำหรับงานจำนวนมาก หรือมาตรฐานพิเศษ 
+                <a href="/contact" className="text-ci-blue font-bold hover:underline ml-1">ติดต่อเราเพื่อขอราคาพิเศษ</a>
+              </p>
             </div>
           </div>
 
-          <div className="text-center mt-12 max-w-3xl mx-auto bg-gradient-to-br from-slate-50 to-white border border-slate-200 p-8 rounded-2xl shadow-lg">
+          {/* Contact CTA */}
+          <div className="text-center max-w-3xl mx-auto bg-gradient-to-br from-slate-50 to-white border border-slate-200 p-8 rounded-2xl shadow-lg">
             <h3 className="text-2xl font-bold text-slate-900 mb-4">
-              ราคาคิดตาม<span className="gradient-text">ขนาดลาย</span>
+              ต้องการคำปรึกษา หรือราคาพิเศษ?
             </h3>
             <p className="text-slate-600 mb-6">
-              เพื่อให้ได้ราคาที่แม่นยำและยุติธรรมที่สุดสำหรับงานของคุณ 
-              กรุณาส่งไฟล์ Artwork พร้อมแจ้งขนาดและจำนวนที่ต้องการมาให้เราประเมินราคา
+              ติดต่อเราเพื่อขอคำปรึกษาและรับใบเสนอราคาที่เหมาะสมกับงานของคุณ
             </p>
             <a href="/contact" className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-ci-blue to-ci-blueDark text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
-              <Phone className="w-5 h-5" />
-              ประเมินราคาเฉพาะลายของคุณ
+              <MessageCircle className="w-5 h-5" />
+              สอบถามราคาพิเศษ
             </a>
           </div>
         </div>
@@ -1287,6 +1378,32 @@ export default function DTFPage() {
           </div>
         </div>
       </section>
+
+      {/* Related Pages */}
+      <RelatedPagesSection
+        title="ขั้นตอนต่อไปคืออะไร?"
+        description="พร้อมสกรีนเสื้อแล้ว หรือต้องการสำรวจเพิ่มเติม?"
+        pages={[
+          {
+            title: 'เลือกเสื้อเปล่า',
+            description: 'ดูเสื้อคุณภาพหลากหลายรุ่นให้เลือก',
+            href: '/products',
+            icon: Shirt,
+          },
+          {
+            title: 'คำนวณราคา',
+            description: 'ประมาณการราคาเบื้องต้นได้ด้วยตัวเอง',
+            href: '/calculator',
+            icon: Calculator,
+          },
+          {
+            title: 'ผลงานของเรา',
+            description: 'ชมตัวอย่างผลงาน DTF คุณภาพจากโปรเจกต์จริง',
+            href: '/portfolio',
+            icon: Sparkles,
+          },
+        ]}
+      />
 
       <FinalCTASection />
     </PageLayout>

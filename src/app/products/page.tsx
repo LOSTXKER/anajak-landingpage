@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
-import { FinalCTASection } from '@/components/sections';
+import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import FAQ from '@/components/FAQ';
 import Breadcrumb from '@/components/Breadcrumb';
 import { 
@@ -23,6 +23,9 @@ import {
   Weight,
   Target,
   Table2,
+  Printer,
+  Calculator,
+  MessageCircle,
 } from 'lucide-react';
 import { useState } from 'react';
 
@@ -489,6 +492,32 @@ export default function ProductsPage() {
             question: "ราคารวมสกรีนแล้วหรือยัง?",
             answer: "ราคาที่แสดงเป็นราคาเสื้อเปล่า ยังไม่รวมค่าสกรีน สามารถใช้เครื่องมือคำนวณราคาของเราเพื่อดูราคารวมสกรีนได้เลย หรือติดต่อเราเพื่อขอใบเสนอราคา"
           }
+        ]}
+      />
+
+      {/* Related Pages */}
+      <RelatedPagesSection
+        title="พร้อมสกรีนเสื้อแล้วใช่ไหม?"
+        description="เลือกเทคนิคสกรีนที่เหมาะกับคุณ หรือคำนวณราคาได้เลย"
+        pages={[
+          {
+            title: 'เทคนิคการสกรีน',
+            description: 'เปรียบเทียบและเลือกเทคนิคที่เหมาะกับงานของคุณ',
+            href: '/services/printing',
+            icon: Printer,
+          },
+          {
+            title: 'คำนวณราคา',
+            description: 'ประมาณการราคาเบื้องต้นได้ด้วยตัวเอง',
+            href: '/calculator',
+            icon: Calculator,
+          },
+          {
+            title: 'ติดต่อเรา',
+            description: 'รับใบเสนอราคาและคำปรึกษาฟรี',
+            href: '/contact',
+            icon: MessageCircle,
+          },
         ]}
       />
 

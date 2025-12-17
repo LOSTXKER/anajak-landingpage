@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -13,7 +13,8 @@ import {
   ExternalLink,
   ChevronRight,
   Sparkles,
-  TrendingDown
+  TrendingDown,
+  ChevronDown
 } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -96,14 +97,40 @@ const dtgPrices: Record<string, number> = {
   'A2 16x21': 350,
 };
 
+// ราคา Silkscreen ตามจำนวนสีและจำนวนตัว
+const silkscreenPrices: Record<number, number[]> = {
+  1: [70, 50, 30, 25, 20], // [30-49, 50-99, 100-499, 500-999, 1000+]
+  2: [80, 60, 35, 30, 25],
+  3: [90, 60, 40, 35, 30],
+  4: [100, 70, 45, 40, 35],
+  5: [110, 70, 50, 45, 40],
+  6: [0, 80, 55, 50, 45], // 0 = ไม่รับทำ
+  7: [0, 80, 60, 55, 50],
+  8: [0, 90, 65, 60, 55], // 8-10 สี
+};
+
 export default function CalculatorPage() {
   const [selectedProduct, setSelectedProduct] = useState<string>('cotton-semi-32');
   const [quantity, setQuantity] = useState<number>(1);
-  const [printMethod, setPrintMethod] = useState<'dtf' | 'dtg'>('dtf');
+  const [printMethod, setPrintMethod] = useState<'dtf' | 'dtg' | 'silkscreen'>('dtf');
+  const [numColors, setNumColors] = useState<number>(1); // สำหรับ Silkscreen
+  const [isProductDropdownOpen, setIsProductDropdownOpen] = useState<boolean>(false);
+  const productDropdownRef = useRef<HTMLDivElement>(null);
   const [printFrontEnabled, setPrintFrontEnabled] = useState<boolean>(true);
   const [printBackEnabled, setPrintBackEnabled] = useState<boolean>(false);
   const [frontSize, setFrontSize] = useState<string>('A5 6x8');
   const [backSize, setBackSize] = useState<string>('A5 6x8');
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (productDropdownRef.current && !productDropdownRef.current.contains(event.target as Node)) {
+        setIsProductDropdownOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   // Helper functions
   const formatCurrency = (value: number): string => {
@@ -128,6 +155,16 @@ export default function CalculatorPage() {
     return basePrice * (1 - discount);
   };
 
+  const getSilkscreenPrintCost = (colors: number, qty: number): number => {
+    const priceTiers = silkscreenPrices[colors] || silkscreenPrices[1];
+    if (qty < 30) return 0; // ไม่รับทำน้อยกว่า 30 ตัว
+    if (qty >= 1000) return priceTiers[4];
+    if (qty >= 500) return priceTiers[3];
+    if (qty >= 100) return priceTiers[2];
+    if (qty >= 50) return priceTiers[1];
+    return priceTiers[0]; // 30-49
+  };
+
   const getShirtPricePerItem = (productId: string, qty: number): number => {
     const product = products.find(p => p.id === productId);
     if (!product) return 0;
@@ -143,12 +180,19 @@ export default function CalculatorPage() {
   const product = products.find(p => p.id === selectedProduct);
   const shirtPricePerItem = getShirtPricePerItem(selectedProduct, quantity);
   
+  const getPrintCost = (size: string, qty: number, method: typeof printMethod): number => {
+    if (method === 'dtf') return getDtfPrintCost(size, qty);
+    if (method === 'dtg') return getDtgPrintCost(size, qty);
+    if (method === 'silkscreen') return getSilkscreenPrintCost(numColors, qty);
+    return 0;
+  };
+
   const frontPrintCostPerItem = printFrontEnabled 
-    ? (printMethod === 'dtf' ? getDtfPrintCost(frontSize, quantity) : getDtgPrintCost(frontSize, quantity))
+    ? getPrintCost(frontSize, quantity, printMethod)
     : 0;
   
   const backPrintCostPerItem = printBackEnabled 
-    ? (printMethod === 'dtf' ? getDtfPrintCost(backSize, quantity) : getDtgPrintCost(backSize, quantity))
+    ? getPrintCost(backSize, quantity, printMethod)
     : 0;
 
   const totalShirtCost = shirtPricePerItem * quantity;
@@ -159,16 +203,16 @@ export default function CalculatorPage() {
   // Calculate savings
   const baseShirtPrice = product ? product.price : 0;
   const baseFrontPrintCost = printFrontEnabled 
-    ? (printMethod === 'dtf' ? getDtfPrintCost(frontSize, 1) : getDtgPrintCost(frontSize, 1))
+    ? getPrintCost(frontSize, 1, printMethod)
     : 0;
   const baseBackPrintCost = printBackEnabled 
-    ? (printMethod === 'dtf' ? getDtfPrintCost(backSize, 1) : getDtgPrintCost(backSize, 1))
+    ? getPrintCost(backSize, 1, printMethod)
     : 0;
   const totalBasePrice = (baseShirtPrice + baseFrontPrintCost + baseBackPrintCost) * quantity;
   const savings = totalBasePrice - totalPrice;
 
-  // Size buttons
-  const printSizes = printMethod === 'dtf' ? Object.keys(dtfPrices) : Object.keys(dtgPrices);
+  // Size buttons (ไม่ใช้สำหรับ Silkscreen)
+  const printSizes = printMethod === 'silkscreen' ? [] : (printMethod === 'dtf' ? Object.keys(dtfPrices) : Object.keys(dtgPrices));
 
   return (
     <PageLayout>
@@ -227,19 +271,56 @@ export default function CalculatorPage() {
                 </div>
 
                 <div className="grid md:grid-cols-2 gap-6">
-                  <div>
+                  <div className="relative" ref={productDropdownRef}>
                     <label className="block text-sm font-semibold text-slate-700 mb-3">ประเภทเสื้อ</label>
-                    <select 
-                      value={selectedProduct}
-                      onChange={(e) => setSelectedProduct(e.target.value)}
-                      className="w-full px-4 py-3 text-lg border-2 border-slate-200 rounded-xl focus:border-ci-blue focus:ring-2 focus:ring-ci-blue/20 transition-all outline-none"
+                    
+                    {/* Custom Dropdown Button */}
+                    <button
+                      type="button"
+                      onClick={() => setIsProductDropdownOpen(!isProductDropdownOpen)}
+                      className="w-full px-4 py-3 text-lg border-2 border-slate-200 rounded-xl focus:border-ci-blue focus:ring-2 focus:ring-ci-blue/20 transition-all outline-none bg-white hover:border-ci-blue/50 flex items-center justify-between"
                     >
-                      {products.map(product => (
-                        <option key={product.id} value={product.id}>
-                          {product.name} ({product.price}฿)
-                        </option>
-                      ))}
-                    </select>
+                      <span className="text-slate-900">
+                        {products.find(p => p.id === selectedProduct)?.name} ({products.find(p => p.id === selectedProduct)?.price}฿)
+                      </span>
+                      <ChevronDown className={`w-5 h-5 text-slate-500 transition-transform ${isProductDropdownOpen ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {/* Dropdown Menu */}
+                    {isProductDropdownOpen && (
+                      <div className="absolute z-50 w-full mt-2 bg-white border-2 border-slate-200 rounded-xl shadow-xl max-h-80 overflow-y-auto">
+                        {products.map((product) => (
+                          <button
+                            key={product.id}
+                            type="button"
+                            onClick={() => {
+                              setSelectedProduct(product.id);
+                              setIsProductDropdownOpen(false);
+                            }}
+                            className={`w-full px-4 py-3 text-left hover:bg-ci-blue/5 transition-colors border-b border-slate-100 last:border-b-0 flex items-center gap-3 ${
+                              selectedProduct === product.id ? 'bg-ci-blue/10' : ''
+                            }`}
+                          >
+                            <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-slate-100 flex-shrink-0">
+                              <Image
+                                src={product.image}
+                                alt={product.name}
+                                fill
+                                className="object-cover"
+                              />
+                            </div>
+                            <div className="flex-1">
+                              <div className="font-semibold text-slate-900">{product.name}</div>
+                              <div className="text-sm text-slate-600">{product.specs}</div>
+                            </div>
+                            <div className="font-bold text-ci-blue">{product.price}฿</div>
+                            {selectedProduct === product.id && (
+                              <Check className="w-5 h-5 text-ci-blue" />
+                            )}
+                          </button>
+                        ))}
+                      </div>
+                    )}
                   </div>
 
                   <div>
@@ -248,11 +329,18 @@ export default function CalculatorPage() {
                       type="number" 
                       min="1"
                       value={quantity}
-                      onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                      onChange={(e) => {
+                        const newQty = parseInt(e.target.value) || 1;
+                        setQuantity(newQty);
+                        // รีเซ็ตจำนวนสีถ้าจำนวนตัวน้อยเกินไป
+                        if (printMethod === 'silkscreen' && numColors >= 6 && newQty < 50) {
+                          setNumColors(1);
+                        }
+                      }}
                       className="w-full px-4 py-3 text-lg text-center border-2 border-slate-200 rounded-xl focus:border-ci-blue focus:ring-2 focus:ring-ci-blue/20 transition-all outline-none"
                     />
                     <div className="mt-3 flex gap-2">
-                      {[1, 50, 100].map(qty => (
+                      {(printMethod === 'silkscreen' ? [30, 50, 100] : [1, 50, 100]).map(qty => (
                         <button
                           key={qty}
                           onClick={() => setQuantity(qty)}
@@ -262,6 +350,12 @@ export default function CalculatorPage() {
                         </button>
                       ))}
                     </div>
+                    
+                    {printMethod === 'silkscreen' && quantity < 30 && (
+                      <div className="mt-3 flex items-center gap-2 text-sm font-semibold text-red-600">
+                        <span>⚠️ Silk Screen ขั้นต่ำ 30 ตัว</span>
+                      </div>
+                    )}
                     
                     {quantity >= 30 && (
                       <div className="mt-3 flex items-center gap-2 text-sm font-semibold text-green-600">
@@ -308,8 +402,8 @@ export default function CalculatorPage() {
                   </h2>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {(['dtf', 'dtg'] as const).map((method) => (
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {(['dtf', 'dtg', 'silkscreen'] as const).map((method) => (
                     <label 
                       key={method}
                       className={`relative p-6 rounded-xl border-2 cursor-pointer transition-all ${
@@ -323,18 +417,21 @@ export default function CalculatorPage() {
                         name="print-method"
                         value={method}
                         checked={printMethod === method}
-                        onChange={(e) => setPrintMethod(e.target.value as 'dtf' | 'dtg')}
+                        onChange={(e) => {
+                          const newMethod = e.target.value as 'dtf' | 'dtg' | 'silkscreen';
+                          setPrintMethod(newMethod);
+                        }}
                         className="sr-only"
                       />
                       <div className="text-center">
                         <div className="text-2xl font-bold text-slate-900 mb-1">
-                          {method.toUpperCase()}
+                          {method === 'silkscreen' ? 'Silk Screen' : method.toUpperCase()}
                         </div>
                         <div className="text-sm text-slate-600 mb-3">
-                          {method === 'dtf' ? 'สีสด คมชัด ติดทน' : 'สีจมลงเนื้อผ้า นุ่ม'}
+                          {method === 'dtf' ? 'สีสด คมชัด ติดทน' : method === 'dtg' ? 'สีจมลงเนื้อผ้า นุ่ม' : 'จำนวนมาก ราคาต่ำ'}
                         </div>
                         <Link 
-                          href={`/services/printing/${method}`}
+                          href={method === 'silkscreen' ? '/services/printing/silkscreen' : `/services/printing/${method}`}
                           className="inline-flex items-center gap-1 text-sm font-semibold text-ci-blue hover:underline"
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -352,9 +449,80 @@ export default function CalculatorPage() {
                     </label>
                   ))}
                 </div>
+
+                {/* Silkscreen: เลือกจำนวนสี */}
+                {printMethod === 'silkscreen' && (
+                  <div className="mt-6 p-6 bg-amber-50 border-2 border-amber-200 rounded-xl">
+                    <label className="block text-sm font-semibold text-slate-700 mb-3">จำนวนสี</label>
+                    <div className="grid grid-cols-4 sm:grid-cols-8 gap-3">
+                      {[1, 2, 3, 4, 5, 6, 7, 8].map((color) => {
+                        const isDisabled = color >= 6 && quantity < 50;
+                        const minQty = color >= 6 ? 50 : 30;
+                        return (
+                          <label 
+                            key={color}
+                            className={`p-3 rounded-lg border-2 cursor-pointer text-center transition-all relative ${
+                              numColors === color 
+                                ? 'border-ci-blue bg-ci-blue text-white' 
+                                : 'border-slate-300 hover:border-ci-blue/50 bg-white'
+                            } ${isDisabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+                            title={isDisabled ? `ต้องสั่งขั้นต่ำ ${minQty} ตัว` : ''}
+                          >
+                            <input
+                              type="radio"
+                              name="num-colors"
+                              value={color}
+                              checked={numColors === color}
+                              onChange={(e) => setNumColors(parseInt(e.target.value))}
+                              disabled={isDisabled}
+                              className="sr-only"
+                            />
+                            <div className="font-bold text-sm">{color}</div>
+                            <div className="text-xs">สี</div>
+                            {color >= 6 && (
+                              <div className={`text-[9px] mt-0.5 ${numColors === color ? 'text-white/80' : 'text-amber-700'}`}>
+                                {minQty}+ ตัว
+                              </div>
+                            )}
+                          </label>
+                        );
+                      })}
+                    </div>
+                    
+                    {quantity < 30 && (
+                      <div className="mt-3 p-3 bg-red-50 border border-red-200 rounded-lg">
+                        <p className="text-xs text-red-700 font-medium text-center">
+                          ⚠️ Silk Screen ขั้นต่ำ 30 ตัว (1-5 สี) หรือ 50 ตัว (6-10 สี)
+                        </p>
+                      </div>
+                    )}
+                    
+                    {quantity >= 30 && quantity < 50 && numColors >= 6 && (
+                      <div className="mt-3 p-3 bg-amber-100 border border-amber-300 rounded-lg">
+                        <p className="text-xs text-amber-800 font-medium text-center">
+                          ⚠️ 6+ สี ต้องสั่งขั้นต่ำ 50 ตัว (ปัจจุบัน {quantity} ตัว)
+                        </p>
+                      </div>
+                    )}
+                    
+                    {quantity >= 50 && numColors >= 6 && (
+                      <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+                        <p className="text-xs text-green-700 font-medium text-center flex items-center justify-center gap-1">
+                          <span>✓</span> สามารถเลือก 6-10 สี ได้แล้ว
+                        </p>
+                      </div>
+                    )}
+                    
+                    <p className="mt-3 text-xs text-slate-600">
+                      * ราคาสำหรับขนาด A4-A3 (สกรีนหน้า-หลัง) • 1-5 สี: ขั้นต่ำ 30 ตัว • 6-10 สี: ขั้นต่ำ 50 ตัว
+                    </p>
+                  </div>
+                )}
+
               </div>
 
               {/* Step 3: เลือกตำแหน่งและขนาดสกรีน */}
+              {printMethod !== 'silkscreen' && (
               <div className="bg-white rounded-2xl border-2 border-slate-100 p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-ci-blue to-ci-blueDark text-white font-bold text-lg">
@@ -455,6 +623,47 @@ export default function CalculatorPage() {
                   * ราคา DTG เป็นการประมาณการ อาจเปลี่ยนแปลงตามความซับซ้อนของลาย
                 </p>
               </div>
+              )}
+
+              {/* Silkscreen: แสดงข้อมูลแทน */}
+              {printMethod === 'silkscreen' && (
+                <div className="bg-white rounded-2xl border-2 border-slate-100 p-6 md:p-8 shadow-sm hover:shadow-md transition-shadow">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-ci-blue to-ci-blueDark text-white font-bold text-lg">
+                      3
+                    </div>
+                    <h2 className="text-2xl font-bold text-slate-900">
+                      รายละเอียด<span className="text-ci-blue">สกรีน Silk Screen</span>
+                    </h2>
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                      <div className="flex items-center gap-3 mb-3">
+                        <Check className="w-5 h-5 text-ci-blue" />
+                        <span className="font-semibold text-slate-900">สกรีนด้านหน้า ({numColors} สี)</span>
+                      </div>
+                      <p className="text-sm text-slate-600 pl-8">
+                        ขนาด A4-A3 (สกรีนหน้า-หลัง) ตามจำนวนสี {numColors} สี
+                      </p>
+                    </div>
+
+                    <div className="p-4 bg-blue-50 rounded-xl border-2 border-ci-blue">
+                      <h4 className="font-bold text-slate-900 mb-2">💡 ข้อมูลเพิ่มเติม</h4>
+                      <ul className="text-sm text-slate-700 space-y-1">
+                        <li>• ขนาด 2"×2" (โลโก้เล็ก): ตัวละ 5-10 บาท</li>
+                        <li>• ขนาด A5 สกรีนหน้า: ตัวละ 5-10 บาท</li>
+                        <li>• เพิ่มสุด (ส่วนเสริม): ตัวละ 5-10 บาท</li>
+                        <li>• ขั้นต่ำ: 30 ตัว/ลาย</li>
+                      </ul>
+                    </div>
+
+                    <p className="mt-6 text-sm text-slate-500 italic">
+                      * ราคา Silk Screen คงที่ตามตารางราคาจริง ไม่มีการเปลี่ยนแปลง
+                    </p>
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Right Column: Summary */}
@@ -479,35 +688,59 @@ export default function CalculatorPage() {
                       </div>
                     </div>
 
-                    {/* Front Print Cost */}
-                    {printFrontEnabled && (
-                      <div className="p-4 bg-white rounded-xl border border-slate-200">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="font-semibold text-slate-800">ค่าสกรีน (หน้า)</span>
-                          <span className="font-bold text-lg text-slate-900">{formatCurrency(totalFrontPrintCost)}</span>
+                    {/* Print Cost */}
+                    {printMethod === 'silkscreen' ? (
+                      quantity < 30 ? (
+                        <div className="p-4 bg-red-50 rounded-xl border-2 border-red-200">
+                          <div className="text-center">
+                            <p className="text-red-700 font-bold mb-1">⚠️ ไม่สามารถคำนวณได้</p>
+                            <p className="text-sm text-red-600">Silk Screen ขั้นต่ำ 30 ตัว</p>
+                          </div>
                         </div>
-                        <div className="text-xs text-slate-500">
-                          {formatCurrency(frontPrintCostPerItem).replace(' ฿', ' ฿/ตัว')} × {quantity} ตัว
+                      ) : (
+                        <div className="p-4 bg-white rounded-xl border border-slate-200">
+                          <div className="flex justify-between items-center mb-1">
+                            <span className="font-semibold text-slate-800">ค่าสกรีน ({numColors} สี)</span>
+                            <span className="font-bold text-lg text-slate-900">{formatCurrency(totalFrontPrintCost)}</span>
+                          </div>
+                          <div className="text-xs text-slate-500">
+                            {formatCurrency(frontPrintCostPerItem).replace(' ฿', ' ฿/ตัว')} × {quantity} ตัว
+                          </div>
                         </div>
-                      </div>
-                    )}
+                      )
+                    ) : (
+                      <>
+                        {/* Front Print Cost */}
+                        {printFrontEnabled && (
+                          <div className="p-4 bg-white rounded-xl border border-slate-200">
+                            <div className="flex justify-between items-center mb-1">
+                              <span className="font-semibold text-slate-800">ค่าสกรีน (หน้า)</span>
+                              <span className="font-bold text-lg text-slate-900">{formatCurrency(totalFrontPrintCost)}</span>
+                            </div>
+                            <div className="text-xs text-slate-500">
+                              {formatCurrency(frontPrintCostPerItem).replace(' ฿', ' ฿/ตัว')} × {quantity} ตัว
+                            </div>
+                          </div>
+                        )}
 
-                    {/* Back Print Cost */}
-                    {printBackEnabled && (
-                      <div className="p-4 bg-white rounded-xl border border-slate-200">
-                        <div className="flex justify-between items-center mb-1">
-                          <span className="font-semibold text-slate-800">ค่าสกรีน (หลัง)</span>
-                          <span className="font-bold text-lg text-slate-900">{formatCurrency(totalBackPrintCost)}</span>
-                        </div>
-                        <div className="text-xs text-slate-500">
-                          {formatCurrency(backPrintCostPerItem).replace(' ฿', ' ฿/ตัว')} × {quantity} ตัว
-                        </div>
-                      </div>
+                        {/* Back Print Cost */}
+                        {printBackEnabled && (
+                          <div className="p-4 bg-white rounded-xl border border-slate-200">
+                            <div className="flex justify-between items-center mb-1">
+                              <span className="font-semibold text-slate-800">ค่าสกรีน (หลัง)</span>
+                              <span className="font-bold text-lg text-slate-900">{formatCurrency(totalBackPrintCost)}</span>
+                            </div>
+                            <div className="text-xs text-slate-500">
+                              {formatCurrency(backPrintCostPerItem).replace(' ฿', ' ฿/ตัว')} × {quantity} ตัว
+                            </div>
+                          </div>
+                        )}
+                      </>
                     )}
                   </div>
 
                   {/* Savings */}
-                  {savings > 0.01 && (
+                  {savings > 0.01 && !(printMethod === 'silkscreen' && quantity < 30) && (
                     <div className="mb-6 p-4 bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl border-2 border-green-200">
                       <div className="flex items-center gap-2 text-green-700">
                         <Gift className="w-5 h-5" />
@@ -523,20 +756,35 @@ export default function CalculatorPage() {
                   <div className="pt-6 border-t-2 border-dashed border-slate-300 mb-6">
                     <div className="flex justify-between items-center">
                       <span className="text-lg font-semibold text-slate-700">ราคารวมโดยประมาณ</span>
-                      <span className="text-4xl font-bold bg-gradient-to-r from-ci-blue to-ci-blueDark text-transparent bg-clip-text">
-                        {formatCurrency(totalPrice)}
-                      </span>
+                      {printMethod === 'silkscreen' && quantity < 30 ? (
+                        <span className="text-2xl font-bold text-slate-400">
+                          -
+                        </span>
+                      ) : (
+                        <span className="text-4xl font-bold bg-gradient-to-r from-ci-blue to-ci-blueDark text-transparent bg-clip-text">
+                          {formatCurrency(totalPrice)}
+                        </span>
+                      )}
                     </div>
                   </div>
 
                   {/* Action Button */}
-                  <Link 
-                    href="/contact"
-                    className="group btn-primary flex items-center justify-center gap-2 w-full py-4 text-lg font-semibold"
-                  >
-                    <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                    <span>ติดต่อเพื่อสั่งทำ</span>
-                  </Link>
+                  {printMethod === 'silkscreen' && quantity < 30 ? (
+                    <button
+                      disabled
+                      className="w-full py-4 text-lg font-semibold bg-slate-300 text-slate-500 rounded-xl cursor-not-allowed"
+                    >
+                      กรุณาเลือกจำนวนขั้นต่ำ 30 ตัว
+                    </button>
+                  ) : (
+                    <Link 
+                      href="/contact"
+                      className="group btn-primary flex items-center justify-center gap-2 w-full py-4 text-lg font-semibold"
+                    >
+                      <ShoppingCart className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                      <span>ติดต่อเพื่อสั่งทำ</span>
+                    </Link>
+                  )}
 
                   <p className="mt-4 text-xs text-center text-slate-500">
                     * ราคานี้ยังไม่รวมภาษีมูลค่าเพิ่มและค่าจัดส่ง
@@ -564,13 +812,14 @@ export default function CalculatorPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <Link 
               href="/portfolio"
-              className="group p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-ci-blue hover:shadow-lg transition-all"
+              className="group p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-ci-blue hover:shadow-lg transition-all relative"
             >
               <div className="w-12 h-12 rounded-xl bg-ci-blue/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <Sparkles className="w-6 h-6 text-ci-blue" />
               </div>
-              <h3 className="font-bold text-xl mb-2 text-slate-900 group-hover:text-ci-blue transition-colors">
+              <h3 className="font-bold text-xl mb-2 text-slate-900 group-hover:text-ci-blue transition-colors flex items-center gap-2">
                 ชมผลงานของเรา
+                <ChevronRight className="w-5 h-5 text-ci-blue group-hover:translate-x-1 transition-transform" />
               </h3>
               <p className="text-sm text-slate-600">
                 ดูตัวอย่างงานสกรีนคุณภาพจากโปรเจกต์ที่ผ่านมา
@@ -579,28 +828,30 @@ export default function CalculatorPage() {
 
             <Link 
               href="/dtf-vs-dtg"
-              className="group p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-ci-blue hover:shadow-lg transition-all"
+              className="group p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-ci-blue hover:shadow-lg transition-all relative"
             >
               <div className="w-12 h-12 rounded-xl bg-ci-blue/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <FileText className="w-6 h-6 text-ci-blue" />
               </div>
-              <h3 className="font-bold text-xl mb-2 text-slate-900 group-hover:text-ci-blue transition-colors">
+              <h3 className="font-bold text-xl mb-2 text-slate-900 group-hover:text-ci-blue transition-colors flex items-center gap-2">
                 เปรียบเทียบเทคนิค
+                <ChevronRight className="w-5 h-5 text-ci-blue group-hover:translate-x-1 transition-transform" />
               </h3>
               <p className="text-sm text-slate-600">
-                เรียนรู้ความแตกต่างระหว่าง DTF และ DTG
+                เรียนรู้ความแตกต่างระหว่าง DTF, DTG และ Silk Screen
               </p>
             </Link>
 
             <Link 
               href="/contact"
-              className="group p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-ci-blue hover:shadow-lg transition-all"
+              className="group p-8 bg-white rounded-2xl border-2 border-slate-100 hover:border-ci-blue hover:shadow-lg transition-all relative"
             >
               <div className="w-12 h-12 rounded-xl bg-ci-blue/10 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <ExternalLink className="w-6 h-6 text-ci-blue" />
               </div>
-              <h3 className="font-bold text-xl mb-2 text-slate-900 group-hover:text-ci-blue transition-colors">
+              <h3 className="font-bold text-xl mb-2 text-slate-900 group-hover:text-ci-blue transition-colors flex items-center gap-2">
                 ติดต่อเรา
+                <ChevronRight className="w-5 h-5 text-ci-blue group-hover:translate-x-1 transition-transform" />
               </h3>
               <p className="text-sm text-slate-600">
                 พร้อมที่จะสั่งทำ? พูดคุยกับทีมงานของเราได้เลย
@@ -627,16 +878,16 @@ export default function CalculatorPage() {
             answer: "ได้ครับ! ยิ่งสั่งจำนวนมากยิ่งได้ราคาดี ระบบคำนวณได้คำนึงถึงส่วนลดตามจำนวนแล้ว แต่หากสั่ง 500 ตัวขึ้นไป เราสามารถให้ราคาพิเศษเพิ่มได้ ติดต่อเราเพื่อสอบถามเพิ่มเติม"
           },
           {
-            question: "DTF กับ DTG ราคาต่างกันมากไหม?",
-            answer: "ราคาขึ้นอยู่กับขนาดและจำนวน โดยทั่วไป DTF เหมาะกับงานสีสดคมชัดและสั่งจำนวนมาก ส่วน DTG เหมาะกับลายละเอียดและงานสั่งน้อย แนะนำให้ลองคำนวณทั้งสองวิธีเพื่อเปรียบเทียบ"
+            question: "เลือกเทคนิคไหนดีสำหรับงานของฉัน?",
+            answer: "ถ้าสั่งน้อย (1-10 ตัว) แนะนำ DTF หรือ DTG / ถ้าสั่งเยอะ (30+ ตัว) แนะนำ Silk Screen ประหยัดกว่า / DTF เหมาะกับงานสีสดคมชัด / DTG เหมาะกับลายละเอียด / Silk Screen เหมาะกับจำนวนมากที่มีสี 1-10 สี"
           },
           {
             question: "ใช้เวลาผลิตนานแค่ไหน?",
-            answer: "โดยปกติใช้เวลา 7-14 วันทำการ ขึ้นอยู่กับจำนวนและความซับซ้อนของงาน หากต้องการงานด่วนสามารถขอบริการ Rush Order ได้ (มีค่าใช้จ่ายเพิ่มเติม)"
+            answer: "DTG: 7-14 วันทำการ / DTF: 2-3 วันทำการ (งานด่วน 1 วัน) / Silk Screen: 7-14 วันทำการ (ต้องทำฟิล์มก่อน) / ขึ้นอยู่กับจำนวนและความซับซ้อนของงาน หากต้องการงานด่วนสามารถขอบริการ Rush Order ได้"
           },
           {
             question: "ต้องสั่งขั้นต่ำกี่ตัว?",
-            answer: "เราไม่มีขั้นต่ำ! สามารถสั่งได้ตั้งแต่ 1 ตัวขึ้นไป แต่หากสั่งจำนวนมาก (30 ตัวขึ้นไป) จะได้ส่วนลดที่ดีกว่า ระบบจะคำนวณส่วนลดให้อัตโนมัติ"
+            answer: "DTF และ DTG: ไม่มีขั้นต่ำ สั่ง 1 ตัวก็ได้ / Silk Screen: ขั้นต่ำ 30 ตัว (เพราะต้องทำฟิล์มก่อน) / หากสั่งจำนวนมาก (30+ ตัว) จะได้ส่วนลดที่ดีกว่า ระบบจะคำนวณส่วนลดให้อัตโนมัติ"
           }
         ]}
       />

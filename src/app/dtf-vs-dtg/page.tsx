@@ -212,19 +212,19 @@ export default function DTFvsDTGPage() {
             {/* Row: Ideal For */}
             <div className="p-4 md:p-6 bg-white font-bold text-slate-900 flex items-center">
               <Star className="w-4 h-4 md:w-5 md:h-5 mr-2 md:mr-4 text-purple-500 flex-shrink-0" />
-              <span className="text-sm md:text-base">เหมาะสำหรับ</span>
+              <span className="text-sm md:text-base">เหมาะกับงานประเภท</span>
             </div>
             <div className="p-4 md:p-6 bg-white text-center">
-              <p className="font-semibold text-base md:text-lg text-slate-900">เสื้อทีม, เสื้อบริษัท, สินค้าโปรโมชั่น</p>
-              <p className="text-xs md:text-sm text-slate-600 mt-1">คุ้มค่าเมื่อผลิตจำนวนมาก</p>
+              <p className="font-semibold text-base md:text-lg text-slate-900">โลโก้ ตัวอักษร ลายกราฟิก</p>
+              <p className="text-xs md:text-sm text-slate-600 mt-1">สีคมชัด ลายเส้นชัดเจน เหมาะกับเสื้อทีม เสื้อบริษัท</p>
             </div>
             <div className="p-4 md:p-6 bg-slate-800 text-center text-white">
-              <p className="font-semibold text-base md:text-lg">แบรนด์แฟชั่น, ของขวัญ, งานพรีเมียม</p>
-              <p className="text-xs md:text-sm text-slate-400 mt-1">เหมาะกับงานจำนวนน้อย, ไม่มีขั้นต่ำ</p>
+              <p className="font-semibold text-base md:text-lg">ภาพถ่าย งานศิลปะ ไล่เฉดสี</p>
+              <p className="text-xs md:text-sm text-slate-400 mt-1">สีละเอียด นุ่มนวล เหมาะกับแบรนด์แฟชั่น งานพรีเมียม</p>
             </div>
             <div className="p-4 md:p-6 bg-slate-700 text-center text-white">
-              <p className="font-semibold text-base md:text-lg">ยูนิฟอร์มโรงงาน, อีเว้นท์ขนาดใหญ่</p>
-              <p className="text-xs md:text-sm text-slate-300 mt-1">จำนวนมาก 50+ ตัว ยิ่งสั่งเยอะยิ่งถูก</p>
+              <p className="font-semibold text-base md:text-lg">โลโก้ 1-4 สี งานจำนวนมาก</p>
+              <p className="text-xs md:text-sm text-slate-300 mt-1">สีทึบ ทนทาน เหมาะกับยูนิฟอร์ม อีเว้นท์ 50+ ตัว</p>
             </div>
             </div>
             </div>

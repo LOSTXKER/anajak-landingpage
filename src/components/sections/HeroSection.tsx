@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Phone, Package, Zap, ImageIcon, Factory, BadgeCheck, CheckCircle, Palette } from 'lucide-react';
+import { MessageCircle, Package, Zap, ImageIcon, Factory, BadgeCheck, CheckCircle, Palette } from 'lucide-react';
 
 interface HeroSectionProps {
   className?: string;
@@ -120,8 +120,8 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
                 <span className="relative flex items-center justify-center gap-2">
-                  <Phone className="w-5 h-5" />
-                  ขอใบเสนอราคา
+                  <MessageCircle className="w-5 h-5" />
+                  ติดต่อเรา
                   <span className="px-2 py-0.5 bg-white/20 rounded-full text-xs">ฟรี!</span>
                 </span>
               </a>

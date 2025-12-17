@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
-import { FinalCTASection } from '@/components/sections';
+import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import FAQ from '@/components/FAQ';
 import Breadcrumb from '@/components/Breadcrumb';
 import { 
@@ -12,7 +12,10 @@ import {
   Factory,
   Users,
   Award,
-  TrendingUp
+  TrendingUp,
+  Printer,
+  Sparkles,
+  MessageCircle
 } from 'lucide-react';
 import Image from 'next/image';
 
@@ -336,6 +339,32 @@ export default function AboutPage() {
             question: "มีใบรับรองหรือมาตรฐานอะไรบ้าง?",
             answer: "เราผ่านการรับรองคุณภาพและใช้วัตถุดิบที่ได้มาตรฐาน รวมถึงมีนโยบายการควบคุมคุณภาพที่เข้มงวดในทุกขั้นตอนการผลิต"
           }
+        ]}
+      />
+
+      {/* Related Pages */}
+      <RelatedPagesSection
+        title="สนใจบริการของเราหรือไม่?"
+        description="เรามีบริการครบวงจรและผลงานคุณภาพมากมายให้คุณได้เลือก"
+        pages={[
+          {
+            title: 'บริการของเรา',
+            description: 'ดูบริการสกรีนและผลิตเสื้อยืดครบวงจร',
+            href: '/services',
+            icon: Printer,
+          },
+          {
+            title: 'ผลงานของเรา',
+            description: 'ชมผลงานสกรีนคุณภาพจากโปรเจกต์จริง',
+            href: '/portfolio',
+            icon: Sparkles,
+          },
+          {
+            title: 'ติดต่อเรา',
+            description: 'พร้อมรับคำปรึกษาและใบเสนอราคาฟรี',
+            href: '/contact',
+            icon: MessageCircle,
+          },
         ]}
       />
 

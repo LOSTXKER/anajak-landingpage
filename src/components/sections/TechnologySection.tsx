@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { 
-  Cpu, CheckCircle2, ArrowRight, Shield, Trophy, Sparkles, Printer, Palette, Scissors
+  Cpu, CheckCircle2, ArrowRight, Shield, Trophy, Sparkles, Printer, Palette
 } from 'lucide-react';
 
 interface TechnologySectionProps {
@@ -37,15 +37,6 @@ const technologies = [
     features: ['ราคาดีเมื่อสั่งเยอะ', 'สีทึบสวยคมชัด', 'ทนทานมาก'],
     image: '/images/tech/silkscreen.jpg',
     Icon: Palette,
-  },
-  {
-    id: 'embroidery',
-    name: 'Embroidery',
-    tagline: 'ปักคอมพิวเตอร์',
-    description: 'งานปักคุณภาพสูงด้วยเครื่องปักคอมพิวเตอร์ ดูหรูหรา',
-    features: ['ความคมชัดสูง', 'ดูพรีเมียม หรูหรา', 'ไม่ลอก ไม่ซีด ตลอดอายุใช้งาน'],
-    image: '/images/tech/embroidery.jpg',
-    Icon: Scissors,
   },
 ];
 
@@ -108,7 +99,7 @@ export default function TechnologySection({ className = '' }: TechnologySectionP
         </div>
 
         {/* Technology Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {technologies.map((tech) => (
             <div
               key={tech.id}
