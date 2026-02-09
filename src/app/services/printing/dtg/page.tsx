@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useImages, getUrl } from '@/hooks/useImages';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import { 
   Printer,
   ArrowRight,
@@ -56,7 +58,12 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+const DTG_SECTIONS = ['printing-dtg', 'gallery-dtg', 'customers'];
+
 export default function DTGPage() {
+  const imageMap = useImages(DTG_SECTIONS);
+  const img = (section: string, slot: string, fallback: string) => getUrl(imageMap, section, slot, fallback);
+  
   return (
     <PageLayout>
       {/* Hero Section - DTG Character: Creative, Colorful, Artistic */}
@@ -199,9 +206,11 @@ export default function DTGPage() {
                 หรือ<strong>สกรีนเสื้อ 1 ตัว สั่งจำนวนน้อย ไม่มีขั้นต่ำ</strong> เพราะไม่มีค่าใช้จ่ายเริ่มต้น (ไม่ต้องทำฟิล์ม)
               </p>
             </div>
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
-              <ServiceImage src="/images/printing/dtg-process.jpg" alt="DTG Process" />
-            </div>
+            <ImageSlotOverlay sectionId="printing-dtg" slotId="dtg-process">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
+                <ServiceImage src={img('printing-dtg', 'dtg-process', '/images/printing/dtg-process.jpg')} alt="DTG Process" />
+              </div>
+            </ImageSlotOverlay>
           </div>
         </div>
       </section>
@@ -212,9 +221,11 @@ export default function DTGPage() {
         
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group order-2 lg:order-1">
-              <ServiceImage src="/images/printing/brother-gtx.jpg" alt="Brother GTX PRO BULK" />
-            </div>
+            <ImageSlotOverlay sectionId="printing-dtg" slotId="dtg-brother-gtx">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group order-2 lg:order-1">
+                <ServiceImage src={img('printing-dtg', 'dtg-brother-gtx', '/images/printing/brother-gtx.jpg')} alt="Brother GTX PRO BULK" />
+              </div>
+            </ImageSlotOverlay>
             
             <div className="order-1 lg:order-2">
               <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50 text-ci-blue text-sm font-bold mb-6">
@@ -449,9 +460,11 @@ export default function DTGPage() {
           <div className="space-y-16">
             {/* Step 1 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/printing/dtg-pretreatment.jpg" alt="Pre-treatment" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtg" slotId="dtg-pretreatment">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-dtg', 'dtg-pretreatment', '/images/printing/dtg-pretreatment.jpg')} alt="Pre-treatment" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">01</span>
@@ -467,9 +480,11 @@ export default function DTGPage() {
 
             {/* Step 2 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
-                <ServiceImage src="/images/printing/dtg-printing.jpg" alt="Printing" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtg" slotId="dtg-printing">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
+                  <ServiceImage src={img('printing-dtg', 'dtg-printing', '/images/printing/dtg-printing.jpg')} alt="Printing" />
+                </div>
+              </ImageSlotOverlay>
               <div className="md:order-1">
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">02</span>
@@ -485,9 +500,11 @@ export default function DTGPage() {
 
             {/* Step 3 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/printing/dtg-curing.jpg" alt="Curing" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtg" slotId="dtg-curing">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-dtg', 'dtg-curing', '/images/printing/dtg-curing.jpg')} alt="Curing" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">03</span>
@@ -503,9 +520,11 @@ export default function DTGPage() {
 
             {/* Step 4 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
-                <ServiceImage src="/images/printing/dtg-qc.jpg" alt="Quality Control" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtg" slotId="dtg-qc">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
+                  <ServiceImage src={img('printing-dtg', 'dtg-qc', '/images/printing/dtg-qc.jpg')} alt="Quality Control" />
+                </div>
+              </ImageSlotOverlay>
               <div className="md:order-1">
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">04</span>
@@ -708,9 +727,11 @@ export default function DTGPage() {
           <div className="max-w-6xl mx-auto space-y-16">
             {/* Case Study 1 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group order-2 md:order-1">
-                <ServiceImage src="/images/case-study/dtg-artist-brand.jpg" alt="Artist Brand Case" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtg" slotId="dtg-case-artist">
+                <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group order-2 md:order-1">
+                  <ServiceImage src={img('printing-dtg', 'dtg-case-artist', '/images/case-study/dtg-artist-brand.jpg')} alt="Artist Brand Case" />
+                </div>
+              </ImageSlotOverlay>
               <div className="order-1 md:order-2">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-50 rounded-full text-sm font-bold text-purple-700 mb-4">
                   <Palette className="w-4 h-4" /> Artist Brand
@@ -742,9 +763,11 @@ export default function DTGPage() {
 
             {/* Case Study 2 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/case-study/dtg-wedding-gift.jpg" alt="Wedding Gift Case" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtg" slotId="dtg-case-wedding">
+                <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-dtg', 'dtg-case-wedding', '/images/case-study/dtg-wedding-gift.jpg')} alt="Wedding Gift Case" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-50 rounded-full text-sm font-bold text-pink-700 mb-4">
                   <Gift className="w-4 h-4" /> Personal Gift
@@ -810,106 +833,126 @@ export default function DTGPage() {
             
             <div className="flex gap-6 animate-scroll-images">
               {/* First set */}
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-1.jpg" alt="DTG Work 1" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ภาพวาดดิจิทัล</h3>
-                    <p className="text-white/90 text-sm">ความละเอียดสูง สีสันสดใส</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-1">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-1', '/images/gallery/dtg-work-1.jpg')} alt="DTG Work 1" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ภาพวาดดิจิทัล</h3>
+                      <p className="text-white/90 text-sm">ความละเอียดสูง สีสันสดใส</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-2.jpg" alt="DTG Work 2" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ภาพถ่าย HD</h3>
-                    <p className="text-white/90 text-sm">คมชัด ได้ทุกรายละเอียด</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-2">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-2', '/images/gallery/dtg-work-2.jpg')} alt="DTG Work 2" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ภาพถ่าย HD</h3>
+                      <p className="text-white/90 text-sm">คมชัด ได้ทุกรายละเอียด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-3.jpg" alt="DTG Work 3" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ลายกราฟิก</h3>
-                    <p className="text-white/90 text-sm">สีไล่เฉดสวยงาม</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-3">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-3', '/images/gallery/dtg-work-3.jpg')} alt="DTG Work 3" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ลายกราฟิก</h3>
+                      <p className="text-white/90 text-sm">สีไล่เฉดสวยงาม</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-4.jpg" alt="DTG Work 4" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ดีไซน์แบรนด์</h3>
-                    <p className="text-white/90 text-sm">งานสร้างสรรค์เฉพาะตัว</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-4">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-4', '/images/gallery/dtg-work-4.jpg')} alt="DTG Work 4" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ดีไซน์แบรนด์</h3>
+                      <p className="text-white/90 text-sm">งานสร้างสรรค์เฉพาะตัว</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-5.jpg" alt="DTG Work 5" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ลายอาร์ต</h3>
-                    <p className="text-white/90 text-sm">ละเอียดทุกเส้นสาย</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-5">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-5', '/images/gallery/dtg-work-5.jpg')} alt="DTG Work 5" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ลายอาร์ต</h3>
+                      <p className="text-white/90 text-sm">ละเอียดทุกเส้นสาย</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
               {/* Duplicate set for seamless loop */}
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-1.jpg" alt="DTG Work 1" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ภาพวาดดิจิทัล</h3>
-                    <p className="text-white/90 text-sm">ความละเอียดสูง สีสันสดใส</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-1">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-1', '/images/gallery/dtg-work-1.jpg')} alt="DTG Work 1" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ภาพวาดดิจิทัล</h3>
+                      <p className="text-white/90 text-sm">ความละเอียดสูง สีสันสดใส</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-2.jpg" alt="DTG Work 2" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ภาพถ่าย HD</h3>
-                    <p className="text-white/90 text-sm">คมชัด ได้ทุกรายละเอียด</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-2">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-2', '/images/gallery/dtg-work-2.jpg')} alt="DTG Work 2" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ภาพถ่าย HD</h3>
+                      <p className="text-white/90 text-sm">คมชัด ได้ทุกรายละเอียด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-3.jpg" alt="DTG Work 3" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ลายกราฟิก</h3>
-                    <p className="text-white/90 text-sm">สีไล่เฉดสวยงาม</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-3">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-3', '/images/gallery/dtg-work-3.jpg')} alt="DTG Work 3" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ลายกราฟิก</h3>
+                      <p className="text-white/90 text-sm">สีไล่เฉดสวยงาม</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-4.jpg" alt="DTG Work 4" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ดีไซน์แบรนด์</h3>
-                    <p className="text-white/90 text-sm">งานสร้างสรรค์เฉพาะตัว</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-4">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-4', '/images/gallery/dtg-work-4.jpg')} alt="DTG Work 4" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ดีไซน์แบรนด์</h3>
+                      <p className="text-white/90 text-sm">งานสร้างสรรค์เฉพาะตัว</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtg-work-5.jpg" alt="DTG Work 5" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ลายอาร์ต</h3>
-                    <p className="text-white/90 text-sm">ละเอียดทุกเส้นสาย</p>
+              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-5">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtg', 'dtg-work-5', '/images/gallery/dtg-work-5.jpg')} alt="DTG Work 5" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ลายอาร์ต</h3>
+                      <p className="text-white/90 text-sm">ละเอียดทุกเส้นสาย</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
             </div>
           </div>
         </div>
@@ -959,9 +1002,11 @@ export default function DTGPage() {
                   ทีมงานให้คำแนะนำดีมาก แนะนำให้ปรับไฟล์เพื่อผลลัพธ์ดีที่สุด"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-art.jpg" alt="คุณ อาร์ท" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-art">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-art', '/images/customers/customer-art.jpg')} alt="คุณ อาร์ท" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ อาร์ท</div>
                     <div className="text-sm text-slate-500">Art Shirt, 1 ตัว</div>
@@ -980,9 +1025,11 @@ export default function DTGPage() {
                   ไม่มีขั้นต่ำก็ดี สั่งได้ทีละน้อย คุณภาพดีจริง"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-mint.jpg" alt="คุณ มิ้นท์" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-mint">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-mint', '/images/customers/customer-mint.jpg')} alt="คุณ มิ้นท์" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ มิ้นท์</div>
                     <div className="text-sm text-slate-500">Fan Shirt, 3 ตัว</div>
@@ -1001,9 +1048,11 @@ export default function DTGPage() {
                   ได้เสื้อคู่ที่มีความหมาย ประทับใจมากครับ"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-tom.jpg" alt="คุณ ต้อม" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-tom">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-tom', '/images/customers/customer-tom.jpg')} alt="คุณ ต้อม" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ ต้อม</div>
                     <div className="text-sm text-slate-500">Couple Shirt, 2 ตัว</div>
@@ -1022,9 +1071,11 @@ export default function DTGPage() {
                   สีออกมาสวยตามที่ต้องการ ลูกค้าชอบกันทุกคน"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-jane.jpg" alt="คุณ เจน" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-jane">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-jane', '/images/customers/customer-jane.jpg')} alt="คุณ เจน" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ เจน</div>
                     <div className="text-sm text-slate-500">Brand Owner, 20 ตัว</div>
@@ -1044,9 +1095,11 @@ export default function DTGPage() {
                   ทีมงานให้คำแนะนำดีมาก แนะนำให้ปรับไฟล์เพื่อผลลัพธ์ดีที่สุด"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-art.jpg" alt="คุณ อาร์ท" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-art">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-art', '/images/customers/customer-art.jpg')} alt="คุณ อาร์ท" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ อาร์ท</div>
                     <div className="text-sm text-slate-500">Art Shirt, 1 ตัว</div>
@@ -1065,9 +1118,11 @@ export default function DTGPage() {
                   ไม่มีขั้นต่ำก็ดี สั่งได้ทีละน้อย คุณภาพดีจริง"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-mint.jpg" alt="คุณ มิ้นท์" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-mint">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-mint', '/images/customers/customer-mint.jpg')} alt="คุณ มิ้นท์" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ มิ้นท์</div>
                     <div className="text-sm text-slate-500">Fan Shirt, 3 ตัว</div>
@@ -1086,9 +1141,11 @@ export default function DTGPage() {
                   ได้เสื้อคู่ที่มีความหมาย ประทับใจมากครับ"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-tom.jpg" alt="คุณ ต้อม" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-tom">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-tom', '/images/customers/customer-tom.jpg')} alt="คุณ ต้อม" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ ต้อม</div>
                     <div className="text-sm text-slate-500">Couple Shirt, 2 ตัว</div>
@@ -1107,9 +1164,11 @@ export default function DTGPage() {
                   สีออกมาสวยตามที่ต้องการ ลูกค้าชอบกันทุกคน"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-jane.jpg" alt="คุณ เจน" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-jane">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-jane', '/images/customers/customer-jane.jpg')} alt="คุณ เจน" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ เจน</div>
                     <div className="text-sm text-slate-500">Brand Owner, 20 ตัว</div>

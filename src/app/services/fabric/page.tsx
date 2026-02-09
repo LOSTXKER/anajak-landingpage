@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useImages, getUrl } from '@/hooks/useImages';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -34,7 +36,7 @@ const fabricCategories = [
     name: 'ผ้าฝ้าย',
     fullName: 'Cotton',
     description: 'ผ้าฝ้ายคุณภาพสูง นุ่มสบาย ระบายอากาศดี เหมาะสำหรับเสื้อยืดทั่วไป',
-    image: '/images/fabric/cotton.jpg',
+    image: '', // Will be set dynamically
     types: ['Cotton 100%', 'Cotton Carded', 'Cotton Combed', 'Organic Cotton'],
     features: [
       { icon: Droplets, text: 'ซับเหงื่อดี' },
@@ -48,7 +50,7 @@ const fabricCategories = [
     name: 'โพลีเอสเตอร์',
     fullName: 'Polyester',
     description: 'ผ้าที่มีความทนทานสูง ไม่ยับง่าย แห้งเร็ว เหมาะสำหรับชุดกีฬา',
-    image: '/images/fabric/polyester.jpg',
+    image: '', // Will be set dynamically
     types: ['Polyester 100%', 'TC (65/35)', 'CVC (60/40)', 'Microfiber'],
     features: [
       { icon: Trophy, text: 'ทนทานมาก' },
@@ -62,7 +64,7 @@ const fabricCategories = [
     name: 'ดรายฟิต',
     fullName: 'Dri-FIT',
     description: 'ผ้าเทคโนโลยีสูง ระบายเหงื่อและความชื้นได้ดี เหมาะสำหรับชุดกีฬา',
-    image: '/images/fabric/dryfit.jpg',
+    image: '', // Will be set dynamically
     types: ['Coolmax', 'Drifit', 'Coolplus', 'Sports Mesh'],
     features: [
       { icon: Droplets, text: 'ระบายเหงื่อ' },
@@ -117,7 +119,11 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+const FABRIC_SECTIONS = ['fabric-page'];
+
 export default function FabricServicePage() {
+  const imageMap = useImages(FABRIC_SECTIONS);
+  const img = (slot: string, fallback: string) => getUrl(imageMap, 'fabric-page', slot, fallback);
   const [activeCategory, setActiveCategory] = useState(0);
   const activeFabric = fabricCategories[activeCategory];
 
@@ -258,12 +264,18 @@ export default function FabricServicePage() {
           {/* Tab Content */}
           <div className="bg-white rounded-2xl border border-slate-100 shadow-lg overflow-hidden">
             <div className="grid lg:grid-cols-2 gap-0">
-              <div className="relative h-72 lg:h-auto min-h-[350px] group">
-                <ServiceImage 
-                  src={activeFabric.image} 
-                  alt={activeFabric.name}
-                />
-              </div>
+              <ImageSlotOverlay sectionId="fabric-page" slotId={`fabric-${activeFabric.id === 'dryfit' ? 'dryfit' : activeFabric.id}`}>
+                <div className="relative h-72 lg:h-auto min-h-[350px] group">
+                  <ServiceImage 
+                    src={
+                      activeFabric.id === 'cotton' ? img('fabric-cotton', '/images/fabric/cotton.jpg') :
+                      activeFabric.id === 'polyester' ? img('fabric-polyester', '/images/fabric/polyester.jpg') :
+                      img('fabric-dryfit', '/images/fabric/dryfit.jpg')
+                    } 
+                    alt={activeFabric.name}
+                  />
+                </div>
+              </ImageSlotOverlay>
 
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">

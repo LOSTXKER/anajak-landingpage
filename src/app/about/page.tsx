@@ -18,6 +18,8 @@ import {
   MessageCircle
 } from 'lucide-react';
 import Image from 'next/image';
+import { useImages, getUrl } from '@/hooks/useImages';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 
 const stats = [
   { value: '5+', label: 'ปีประสบการณ์', icon: Factory, color: 'from-ci-blue to-blue-600' },
@@ -44,7 +46,11 @@ const values = [
   },
 ];
 
+const ABOUT_SECTIONS = ['about'];
+
 export default function AboutPage() {
+  const imageMap = useImages(ABOUT_SECTIONS);
+  const img = (slot: string, fallback: string) => getUrl(imageMap, 'about', slot, fallback);
 
   return (
     <PageLayout>
@@ -86,14 +92,16 @@ export default function AboutPage() {
 
             <div className="relative opacity-0 animate-fade-in-up delay-300">
               <div className="absolute -inset-4 bg-gradient-to-r from-ci-blue/20 to-ci-yellow/20 rounded-3xl blur-2xl animate-pulse" />
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                <Image
-                  src="https://images.unsplash.com/photo-1618642359024-5c7931469b62?q=80&w=1974"
-                  alt="ทีมงาน Anajak T-Shirt กำลังปรึกษาเรื่องดีไซน์เสื้อยืด"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-700"
-                />
-              </div>
+              <ImageSlotOverlay sectionId="about" slotId="about-hero">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                  <Image
+                    src={img('about-hero', 'https://images.unsplash.com/photo-1618642359024-5c7931469b62?q=80&w=1974')}
+                    alt="ทีมงาน Anajak T-Shirt กำลังปรึกษาเรื่องดีไซน์เสื้อยืด"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+              </ImageSlotOverlay>
             </div>
           </div>
         </div>
@@ -137,82 +145,98 @@ export default function AboutPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {/* Column 1 */}
             <div className="grid gap-4">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md group">
-                <Image
-                  src="https://images.unsplash.com/photo-1629905799462-56c9a5a5b51a?q=80&w=2070"
-                  alt="เครื่องพิมพ์ DTG ขนาดใหญ่กำลังทำงานในโรงงาน"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-md group">
-                <Image
-                  src="https://images.unsplash.com/photo-1557825001-93d619258a28?q=80&w=2070"
-                  alt="พนักงานกำลังตรวจสอบคุณภาพเสื้อยืด"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <ImageSlotOverlay sectionId="about" slotId="about-dtg-printer">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md group">
+                  <Image
+                    src={img('about-dtg-printer', 'https://images.unsplash.com/photo-1629905799462-56c9a5a5b51a?q=80&w=2070')}
+                    alt="เครื่องพิมพ์ DTG ขนาดใหญ่กำลังทำงานในโรงงาน"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </ImageSlotOverlay>
+              <ImageSlotOverlay sectionId="about" slotId="about-quality-check">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-md group">
+                  <Image
+                    src={img('about-quality-check', 'https://images.unsplash.com/photo-1557825001-93d619258a28?q=80&w=2070')}
+                    alt="พนักงานกำลังตรวจสอบคุณภาพเสื้อยืด"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </ImageSlotOverlay>
             </div>
 
             {/* Column 2 */}
             <div className="grid gap-4">
-              <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-md group">
-                <Image
-                  src="https://images.unsplash.com/photo-1620799140159-483072a2c534?q=80&w=1972"
-                  alt="ม้วนฟิล์ม DTF ที่พิมพ์ลายสำหรับสกรีนเสื้อ"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md group">
-                <Image
-                  src="https://images.unsplash.com/photo-1615494125866-865b54247563?q=80&w=1974"
-                  alt="ทีมงานกราฟิกดีไซเนอร์กำลังออกแบบลาย"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <ImageSlotOverlay sectionId="about" slotId="about-dtf-film">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-md group">
+                  <Image
+                    src={img('about-dtf-film', 'https://images.unsplash.com/photo-1620799140159-483072a2c534?q=80&w=1972')}
+                    alt="ม้วนฟิล์ม DTF ที่พิมพ์ลายสำหรับสกรีนเสื้อ"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </ImageSlotOverlay>
+              <ImageSlotOverlay sectionId="about" slotId="about-designer">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md group">
+                  <Image
+                    src={img('about-designer', 'https://images.unsplash.com/photo-1615494125866-865b54247563?q=80&w=1974')}
+                    alt="ทีมงานกราฟิกดีไซเนอร์กำลังออกแบบลาย"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </ImageSlotOverlay>
             </div>
 
             {/* Column 3 */}
             <div className="grid gap-4">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md group">
-                <Image
-                  src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1974"
-                  alt="ทีมงาน Anajak T-Shirt กำลังประชุมงาน"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-md group">
-                <Image
-                  src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=1974"
-                  alt="ช่างเทคนิคกำลังควบคุมเครื่องจักร"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <ImageSlotOverlay sectionId="about" slotId="about-team-meeting">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md group">
+                  <Image
+                    src={img('about-team-meeting', 'https://images.unsplash.com/photo-1521737711867-e3b97375f902?q=80&w=1974')}
+                    alt="ทีมงาน Anajak T-Shirt กำลังประชุมงาน"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </ImageSlotOverlay>
+              <ImageSlotOverlay sectionId="about" slotId="about-technician">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-md group">
+                  <Image
+                    src={img('about-technician', 'https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?q=80&w=1974')}
+                    alt="ช่างเทคนิคกำลังควบคุมเครื่องจักร"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </ImageSlotOverlay>
             </div>
 
             {/* Column 4 */}
             <div className="grid gap-4">
-              <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-md group">
-                <Image
-                  src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945"
-                  alt="ผลงานเสื้อยืดลายอาร์ตเวิร์ค"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md group">
-                <Image
-                  src="https://images.unsplash.com/photo-1622737133809-d95047b9e673?q=80&w=1932"
-                  alt="เสื้อยืดที่พับเรียบร้อยพร้อมจัดส่ง"
-                  fill
-                  className="object-cover hover:scale-105 transition-transform duration-300"
-                />
-              </div>
+              <ImageSlotOverlay sectionId="about" slotId="about-artwork">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-lg shadow-md group">
+                  <Image
+                    src={img('about-artwork', 'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945')}
+                    alt="ผลงานเสื้อยืดลายอาร์ตเวิร์ค"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </ImageSlotOverlay>
+              <ImageSlotOverlay sectionId="about" slotId="about-shirts">
+                <div className="relative aspect-[3/4] overflow-hidden rounded-lg shadow-md group">
+                  <Image
+                    src={img('about-shirts', 'https://images.unsplash.com/photo-1622737133809-d95047b9e673?q=80&w=1932')}
+                    alt="เสื้อยืดที่พับเรียบร้อยพร้อมจัดส่ง"
+                    fill
+                    className="object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              </ImageSlotOverlay>
             </div>
           </div>
         </div>
@@ -259,14 +283,16 @@ export default function AboutPage() {
               <div className="relative">
                 {/* Gradient Glow */}
                 <div className="absolute -inset-4 bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-full blur-2xl opacity-30 animate-pulse" />
-                <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-2xl border-4 border-white ring-4 ring-ci-blue/20">
-                  <Image
-                    src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1974"
-                    alt="เจ้าของ Anajak T-Shirt"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                <ImageSlotOverlay sectionId="about" slotId="about-founder">
+                  <div className="relative w-48 h-48 rounded-full overflow-hidden shadow-2xl border-4 border-white ring-4 ring-ci-blue/20">
+                    <Image
+                      src={img('about-founder', 'https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?q=80&w=1974')}
+                      alt="เจ้าของ Anajak T-Shirt"
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </ImageSlotOverlay>
               </div>
             </div>
 

@@ -3,21 +3,24 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { Award, ImageIcon, Star } from 'lucide-react';
+import { ImagesBySection } from '@/types/admin';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 
 interface PortfolioSectionProps {
   className?: string;
+  images?: ImagesBySection;
 }
 
-// Portfolio images - duplicated for infinite scroll effect
-const portfolioImages = [
-  { id: 1, src: '/images/portfolio/1.jpg', alt: 'ผลงานเสื้อบริษัท', category: 'บริษัท' },
-  { id: 2, src: '/images/portfolio/2.jpg', alt: 'ผลงานเสื้อโรงเรียน', category: 'โรงเรียน' },
-  { id: 3, src: '/images/portfolio/3.jpg', alt: 'ผลงานเสื้อทีมกีฬา', category: 'ทีมกีฬา' },
-  { id: 4, src: '/images/portfolio/4.jpg', alt: 'ผลงานเสื้อแบรนด์', category: 'แบรนด์' },
-  { id: 5, src: '/images/portfolio/5.jpg', alt: 'ผลงานเสื้ออีเวนต์', category: 'อีเวนต์' },
-  { id: 6, src: '/images/portfolio/6.jpg', alt: 'ผลงานเสื้อ FC', category: 'แฟนคลับ' },
-  { id: 7, src: '/images/portfolio/7.jpg', alt: 'ผลงานเสื้อ Hoodie', category: 'Hoodie' },
-  { id: 8, src: '/images/portfolio/8.jpg', alt: 'ผลงานเสื้อโปโล', category: 'โปโล' },
+// Default portfolio images
+const defaultPortfolioImages = [
+  { id: 1, src: '/images/portfolio/1.jpg', alt: 'ผลงานเสื้อบริษัท', category: 'บริษัท', slot: 'portfolio-1' },
+  { id: 2, src: '/images/portfolio/2.jpg', alt: 'ผลงานเสื้อโรงเรียน', category: 'โรงเรียน', slot: 'portfolio-2' },
+  { id: 3, src: '/images/portfolio/3.jpg', alt: 'ผลงานเสื้อทีมกีฬา', category: 'ทีมกีฬา', slot: 'portfolio-3' },
+  { id: 4, src: '/images/portfolio/4.jpg', alt: 'ผลงานเสื้อแบรนด์', category: 'แบรนด์', slot: 'portfolio-4' },
+  { id: 5, src: '/images/portfolio/5.jpg', alt: 'ผลงานเสื้ออีเวนต์', category: 'อีเวนต์', slot: 'portfolio-5' },
+  { id: 6, src: '/images/portfolio/6.jpg', alt: 'ผลงานเสื้อ FC', category: 'แฟนคลับ', slot: 'portfolio-6' },
+  { id: 7, src: '/images/portfolio/7.jpg', alt: 'ผลงานเสื้อ Hoodie', category: 'Hoodie', slot: 'portfolio-7' },
+  { id: 8, src: '/images/portfolio/8.jpg', alt: 'ผลงานเสื้อโปโล', category: 'โปโล', slot: 'portfolio-8' },
 ];
 
 // Image with fallback
@@ -45,7 +48,13 @@ function PortfolioImage({ src, alt, category }: { src: string; alt: string; cate
   );
 }
 
-export default function PortfolioSection({ className = '' }: PortfolioSectionProps) {
+export default function PortfolioSection({ className = '', images = {} }: PortfolioSectionProps) {
+  // Merge with Supabase images
+  const portfolioImages = defaultPortfolioImages.map(img => ({
+    ...img,
+    src: images[img.slot]?.url || img.src,
+    alt: images[img.slot]?.alt || img.alt,
+  }));
   const scrollRef1 = useRef<HTMLDivElement>(null);
   const scrollRef2 = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -159,18 +168,17 @@ export default function PortfolioSection({ className = '' }: PortfolioSectionPro
         >
           {/* First set */}
           {portfolioImages.map((img) => (
-            <div 
-              key={`1-${img.id}`}
-              className="relative w-72 h-48 md:w-80 md:h-56 rounded-2xl overflow-hidden shrink-0 group"
-            >
-              <PortfolioImage src={img.src} alt={img.alt} category={img.category} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                <span className="px-3 py-1 bg-white/90 rounded-full text-sm font-medium text-slate-900">
-                  {img.category}
-                </span>
+            <ImageSlotOverlay key={`1-${img.id}`} sectionId="portfolio" slotId={img.slot} className="shrink-0">
+              <div className="relative w-72 h-48 md:w-80 md:h-56 rounded-2xl overflow-hidden group">
+                <PortfolioImage src={img.src} alt={img.alt} category={img.category} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="px-3 py-1 bg-white/90 rounded-full text-sm font-medium text-slate-900">
+                    {img.category}
+                  </span>
+                </div>
               </div>
-            </div>
+            </ImageSlotOverlay>
           ))}
           {/* Second set (duplicate for seamless loop) */}
           {portfolioImages.map((img) => (

@@ -6,12 +6,15 @@ import {
   Building2, GraduationCap, Trophy, ShoppingBag, 
   Heart, Calendar, Star, ImageIcon, ArrowRight, ChevronRight
 } from 'lucide-react';
+import { ImagesBySection } from '@/types/admin';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 
 interface UseCaseSectionProps {
   className?: string;
+  images?: ImagesBySection;
 }
 
-const useCases = [
+const defaultUseCases = [
   {
     id: 'corporate',
     icon: Building2,
@@ -21,6 +24,7 @@ const useCases = [
     examples: ['เสื้อโปโลพนักงาน', 'เสื้อ Outing ประจำปี', 'เสื้อทีม HR, IT, Sales', 'เสื้อต้อนรับพนักงานใหม่'],
     stats: '100+ องค์กรไว้วางใจ',
     images: ['/images/usecases/corporate-1.jpg', '/images/usecases/corporate-2.jpg', '/images/usecases/corporate-3.jpg'],
+    slots: ['corporate-1', 'corporate-2', 'corporate-3'],
   },
   {
     id: 'school',
@@ -31,6 +35,7 @@ const useCases = [
     examples: ['เสื้อรุ่นจบการศึกษา', 'เสื้อกีฬาสี', 'เสื้อชมรม/ชุมนุม', 'เสื้อค่ายอาสา'],
     stats: '80+ โรงเรียนเลือกใช้',
     images: ['/images/usecases/school-1.jpg', '/images/usecases/school-2.jpg', '/images/usecases/school-3.jpg'],
+    slots: ['school-1', 'school-2', 'school-3'],
   },
   {
     id: 'sports',
@@ -41,6 +46,7 @@ const useCases = [
     examples: ['เสื้อฟุตบอล/ฟุตซอล', 'เสื้อบาสเก็ตบอล', 'เสื้อวิ่งมาราธอน', 'เสื้อทีม E-Sports'],
     stats: '1,000+ ทีมสั่งผลิต',
     images: ['/images/usecases/sports-1.jpg', '/images/usecases/sports-2.jpg', '/images/usecases/sports-3.jpg'],
+    slots: ['sports-1', 'sports-2', 'sports-3'],
   },
   {
     id: 'brand',
@@ -51,6 +57,7 @@ const useCases = [
     examples: ['เสื้อแบรนด์ตัวเอง', 'Merchandise ขายออนไลน์', 'Limited Edition', 'Dropshipping'],
     stats: '300+ แบรนด์เติบโตกับเรา',
     images: ['/images/usecases/brand-1.jpg', '/images/usecases/brand-2.jpg', '/images/usecases/brand-3.jpg'],
+    slots: ['brand-1', 'brand-2', 'brand-3'],
   },
   {
     id: 'event',
@@ -61,6 +68,7 @@ const useCases = [
     examples: ['เสื้อ Staff งาน', 'เสื้อคอนเสิร์ต', 'เสื้อ Workshop/Seminar', 'เสื้อ Hackathon'],
     stats: '200+ อีเวนต์ที่ร่วมงาน',
     images: ['/images/usecases/event-1.jpg', '/images/usecases/event-2.jpg', '/images/usecases/event-3.jpg'],
+    slots: ['event-1', 'event-2', 'event-3'],
   },
   {
     id: 'fanclub',
@@ -71,6 +79,7 @@ const useCases = [
     examples: ['เสื้อ FC ศิลปิน', 'เสื้อ Cosplay Group', 'เสื้อชมรมรถยนต์', 'เสื้อกลุ่มเพื่อน'],
     stats: '400+ กลุ่มที่สั่งผลิต',
     images: ['/images/usecases/fanclub-1.jpg', '/images/usecases/fanclub-2.jpg', '/images/usecases/fanclub-3.jpg'],
+    slots: ['fanclub-1', 'fanclub-2', 'fanclub-3'],
   },
 ];
 
@@ -99,7 +108,12 @@ function UseCaseImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-export default function UseCaseSection({ className = '' }: UseCaseSectionProps) {
+export default function UseCaseSection({ className = '', images = {} }: UseCaseSectionProps) {
+  // Merge Supabase images with defaults
+  const useCases = defaultUseCases.map(uc => ({
+    ...uc,
+    images: uc.slots.map((slot, i) => images[slot]?.url || uc.images[i]),
+  }));
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const activeCase = useCases[activeIndex];
@@ -188,23 +202,29 @@ export default function UseCaseSection({ className = '' }: UseCaseSectionProps) 
                 <div className="p-3 bg-slate-50">
                   <div className="flex gap-2 h-48 md:h-64">
                     {/* Main Image */}
-                    <div className="flex-[2] relative rounded-2xl overflow-hidden">
-                      <UseCaseImage src={activeCase.images[0]} alt={activeCase.title} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-                      <div className="absolute bottom-3 left-3">
-                        <span className="px-3 py-1 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full">
-                          {activeCase.stats}
-                        </span>
+                    <ImageSlotOverlay sectionId="usecases" slotId={activeCase.slots[0]} className="flex-[2]">
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                        <UseCaseImage src={activeCase.images[0]} alt={activeCase.title} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                        <div className="absolute bottom-3 left-3">
+                          <span className="px-3 py-1 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full">
+                            {activeCase.stats}
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    </ImageSlotOverlay>
                     {/* Side Images */}
                     <div className="flex-1 flex flex-col gap-2">
-                      <div className="flex-1 relative rounded-xl overflow-hidden">
-                        <UseCaseImage src={activeCase.images[1]} alt={`${activeCase.title} 2`} />
-                      </div>
-                      <div className="flex-1 relative rounded-xl overflow-hidden">
-                        <UseCaseImage src={activeCase.images[2]} alt={`${activeCase.title} 3`} />
-                      </div>
+                      <ImageSlotOverlay sectionId="usecases" slotId={activeCase.slots[1]} className="flex-1">
+                        <div className="relative w-full h-full rounded-xl overflow-hidden">
+                          <UseCaseImage src={activeCase.images[1]} alt={`${activeCase.title} 2`} />
+                        </div>
+                      </ImageSlotOverlay>
+                      <ImageSlotOverlay sectionId="usecases" slotId={activeCase.slots[2]} className="flex-1">
+                        <div className="relative w-full h-full rounded-xl overflow-hidden">
+                          <UseCaseImage src={activeCase.images[2]} alt={`${activeCase.title} 3`} />
+                        </div>
+                      </ImageSlotOverlay>
                     </div>
                   </div>
                 </div>

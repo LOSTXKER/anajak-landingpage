@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_Thai } from "next/font/google";
+import PhotoBriefProvider from "@/components/PhotoBriefProvider";
 import "./globals.css";
 
 const notoSansThai = Noto_Sans_Thai({ 
@@ -200,11 +201,14 @@ export default function RootLayout({
         />
       </head>
       <body className={`${notoSansThai.className} antialiased`}>
-        {children}
+        <PhotoBriefProvider>
+          {children}
+        </PhotoBriefProvider>
       </body>
     </html>
   );
 }
+
 
 
 

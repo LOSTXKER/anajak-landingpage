@@ -4,6 +4,8 @@ import { useState, useRef, useEffect } from 'react';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
+import { useImages, getUrl } from '@/hooks/useImages';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import { 
   Calculator,
   ShoppingCart,
@@ -31,7 +33,7 @@ interface Product {
   link?: string;
 }
 
-const products: Product[] = [
+const productsBase: Product[] = [
   { 
     id: 'cotton-comb-32',
     name: "Cotton Comb No.32", 
@@ -109,7 +111,21 @@ const silkscreenPrices: Record<number, number[]> = {
   8: [0, 90, 65, 60, 55], // 8-10 สี
 };
 
+const CALC_SECTIONS = ['calculator'];
+
 export default function CalculatorPage() {
+  const imageMap = useImages(CALC_SECTIONS);
+  const calcImg = (slot: string, fallback: string) => getUrl(imageMap, 'calculator', slot, fallback);
+
+  // Map product images
+  const products: Product[] = productsBase.map((p, index) => {
+    const imageSlots = ['calc-cotton-comb', 'calc-cotton-semi', 'calc-dry-tech', 'calc-polo-pique', 'calc-fleece-hoodie'];
+    return {
+      ...p,
+      image: calcImg(imageSlots[index] || `calc-${p.id}`, p.image),
+    };
+  });
+
   const [selectedProduct, setSelectedProduct] = useState<string>('cotton-semi-32');
   const [quantity, setQuantity] = useState<number>(1);
   const [printMethod, setPrintMethod] = useState<'dtf' | 'dtg' | 'silkscreen'>('dtf');
@@ -370,14 +386,16 @@ export default function CalculatorPage() {
                 {product && (
                   <div className="mt-6 pt-6 border-t-2 border-dashed border-slate-200">
                     <div className="grid md:grid-cols-3 gap-6 items-start">
-                      <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-100">
-                        <Image
-                          src={product.image}
-                          alt={product.name}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
+                      <ImageSlotOverlay sectionId="calculator" slotId={({'cotton-comb-32':'calc-cotton-comb','cotton-semi-32':'calc-cotton-semi','dry-tech':'calc-dry-tech','polo-pique':'calc-polo-pique','fleece-hoodie':'calc-fleece-hoodie'} as Record<string,string>)[product.id] || `calc-${product.id}`}>
+                        <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-100">
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </ImageSlotOverlay>
                       <div className="md:col-span-2">
                         <h4 className="text-xl font-bold text-slate-900 mb-2">{product.name}</h4>
                         <p className="text-slate-600 mb-3">{product.description}</p>

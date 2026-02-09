@@ -4,29 +4,34 @@ import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Star, ImageIcon } from 'lucide-react';
+import { ImagesBySection } from '@/types/admin';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 
 interface ServicesSectionProps {
   className?: string;
   showCTA?: boolean;
+  images?: ImagesBySection;
 }
 
 // Featured service (large card on left)
-const featuredService = {
+const defaultFeaturedService = {
   id: 'printing',
   title: 'บริการสกรีน',
   description: 'DTG, DTF, Silk Screen',
   image: '/images/services/printing.jpg',
+  slot: 'service-printing',
   badge: 'บริการยอดนิยม',
   link: '/services/printing',
 };
 
 // Right side services (2x2 grid)
-const rightServices = [
+const defaultRightServices = [
   {
     id: 'blank',
     title: 'เสื้อเปล่า',
     description: 'พร้อมส่ง หลากหลายแบบ',
     image: '/images/services/blank.jpg',
+    slot: 'service-blank',
     badge: 'พร้อมส่ง',
     link: '/products',
   },
@@ -35,6 +40,7 @@ const rightServices = [
     title: 'ถ่ายภาพสินค้า',
     description: 'Studio ในโรงงาน',
     image: '/images/services/photography.jpg',
+    slot: 'service-photography',
     link: '/services#additional-services',
   },
   {
@@ -42,6 +48,7 @@ const rightServices = [
     title: 'ออกแบบกราฟิก',
     description: 'ทีมดีไซน์มืออาชีพ',
     image: '/images/services/design.jpg',
+    slot: 'service-design',
     badge: 'ฟรี!',
     link: '/services#additional-services',
   },
@@ -50,17 +57,19 @@ const rightServices = [
     title: 'ทำแพทเทิร์น',
     description: 'ตัดเย็บตามแบบ',
     image: '/images/services/pattern.jpg',
+    slot: 'service-pattern',
     link: '/services/pattern',
   },
 ];
 
 // Bottom services
-const bottomServices = [
+const defaultBottomServices = [
   {
     id: 'fabric',
     title: 'เนื้อผ้าหลากหลาย',
     description: '20+ ชนิดผ้า',
     image: '/images/services/fabric.jpg',
+    slot: 'service-fabric',
     link: '/services/fabric',
   },
   {
@@ -68,6 +77,7 @@ const bottomServices = [
     title: 'QC & แพ็ค',
     description: 'ตรวจสอบทุกตัว',
     image: '/images/services/qc.jpg',
+    slot: 'service-qc',
     link: '/services#additional-services',
   },
 ];
@@ -96,7 +106,10 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
-export default function ServicesSection({ className = '', showCTA = true }: ServicesSectionProps) {
+export default function ServicesSection({ className = '', showCTA = true, images = {} }: ServicesSectionProps) {
+  const featuredService = { ...defaultFeaturedService, image: images[defaultFeaturedService.slot]?.url || defaultFeaturedService.image };
+  const rightServices = defaultRightServices.map(s => ({ ...s, image: images[s.slot]?.url || s.image }));
+  const bottomServices = defaultBottomServices.map(s => ({ ...s, image: images[s.slot]?.url || s.image }));
   return (
     <section id="services" className={`py-24 bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden ${className}`}>
       {/* Background */}
@@ -122,84 +135,88 @@ export default function ServicesSection({ className = '', showCTA = true }: Serv
         {/* Main Grid: Featured + 4 small */}
         <div className="grid lg:grid-cols-3 gap-4 mb-4">
           {/* Featured Card (spans 1 col, full height) */}
-          <a
-            href={featuredService.link}
-            className="group relative h-80 lg:h-auto lg:row-span-2 rounded-2xl overflow-hidden cursor-pointer"
-          >
-            <ServiceImage src={featuredService.image} alt={featuredService.title} />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-            
-            {/* Badge */}
-            <div className="absolute top-4 left-4">
-              <span className="px-3 py-1 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full">
-                ⭐ {featuredService.badge}
-              </span>
-            </div>
-            
-            {/* Content */}
-            <div className="absolute inset-x-0 bottom-0 p-6">
-              <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-ci-yellow transition-colors">
-                {featuredService.title}
-              </h3>
-              <p className="text-white/70">
-                {featuredService.description}
-              </p>
-            </div>
-          </a>
-
-          {/* Right 4 Cards (2x2) */}
-          {rightServices.map((service) => (
+          <ImageSlotOverlay sectionId="services" slotId={featuredService.slot}>
             <a
-              key={service.id}
-              href={service.link}
-              className="group relative h-44 rounded-2xl overflow-hidden cursor-pointer"
+              href={featuredService.link}
+              className="group relative h-80 lg:h-auto lg:row-span-2 rounded-2xl overflow-hidden cursor-pointer block"
             >
-              <ServiceImage src={service.image} alt={service.title} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+              <ServiceImage src={featuredService.image} alt={featuredService.title} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
               
               {/* Badge */}
-              {service.badge && (
-                <div className="absolute top-3 right-3">
-                  <span className="px-2 py-0.5 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full">
-                    {service.badge}
-                  </span>
-                </div>
-              )}
+              <div className="absolute top-10 left-4">
+                <span className="px-3 py-1 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full">
+                  ⭐ {featuredService.badge}
+                </span>
+              </div>
               
               {/* Content */}
-              <div className="absolute inset-x-0 bottom-0 p-4">
-                <h3 className="text-lg font-bold text-white group-hover:text-ci-yellow transition-colors">
-                  {service.title}
+              <div className="absolute inset-x-0 bottom-0 p-6">
+                <h3 className="text-2xl font-bold text-white mb-1 group-hover:text-ci-yellow transition-colors">
+                  {featuredService.title}
                 </h3>
-                <p className="text-white/70 text-sm">
-                  {service.description}
+                <p className="text-white/70">
+                  {featuredService.description}
                 </p>
               </div>
             </a>
+          </ImageSlotOverlay>
+
+          {/* Right 4 Cards (2x2) */}
+          {rightServices.map((service) => (
+            <ImageSlotOverlay key={service.id} sectionId="services" slotId={service.slot}>
+              <a
+                href={service.link}
+                className="group relative h-44 rounded-2xl overflow-hidden cursor-pointer block"
+              >
+                <ServiceImage src={service.image} alt={service.title} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                
+                {/* Badge */}
+                {service.badge && (
+                  <div className="absolute top-10 right-3">
+                    <span className="px-2 py-0.5 bg-ci-yellow text-slate-900 text-xs font-bold rounded-full">
+                      {service.badge}
+                    </span>
+                  </div>
+                )}
+                
+                {/* Content */}
+                <div className="absolute inset-x-0 bottom-0 p-4">
+                  <h3 className="text-lg font-bold text-white group-hover:text-ci-yellow transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-white/70 text-sm">
+                    {service.description}
+                  </p>
+                </div>
+              </a>
+            </ImageSlotOverlay>
           ))}
         </div>
 
         {/* Bottom Row - 2 Cards */}
         <div className="grid md:grid-cols-2 gap-4">
           {bottomServices.map((service) => (
-            <a
-              key={service.id}
-              href={service.link}
-              className="group relative h-48 rounded-2xl overflow-hidden cursor-pointer"
-            >
-              <ServiceImage src={service.image} alt={service.title} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-              
-              {/* Content */}
-              <div className="absolute inset-x-0 bottom-0 p-5">
-                <h3 className="text-xl font-bold text-white group-hover:text-ci-yellow transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-white/70">
-                  {service.description}
-                </p>
-              </div>
-            </a>
+            <ImageSlotOverlay key={service.id} sectionId="services" slotId={service.slot}>
+              <a
+                href={service.link}
+                className="group relative h-48 rounded-2xl overflow-hidden cursor-pointer block"
+              >
+                <ServiceImage src={service.image} alt={service.title} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                
+                {/* Content */}
+                <div className="absolute inset-x-0 bottom-0 p-5">
+                  <h3 className="text-xl font-bold text-white group-hover:text-ci-yellow transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-white/70">
+                    {service.description}
+                  </p>
+                </div>
+              </a>
+            </ImageSlotOverlay>
           ))}
         </div>
 

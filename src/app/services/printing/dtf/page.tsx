@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useImages, getUrl } from '@/hooks/useImages';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import { 
   Printer,
   ArrowRight,
@@ -55,7 +57,12 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+const DTF_SECTIONS = ['printing-dtf', 'gallery-dtf', 'customers'];
+
 export default function DTFPage() {
+  const imageMap = useImages(DTF_SECTIONS);
+  const img = (section: string, slot: string, fallback: string) => getUrl(imageMap, section, slot, fallback);
+
   return (
     <PageLayout>
       {/* Hero Section - DTF Character: Strong, Durable, Flexible */}
@@ -198,9 +205,11 @@ export default function DTFPage() {
                 ทั้งฝ้าย โพลี และผ้ายืด จึงเป็นที่นิยมมากสำหรับเสื้อกีฬาและยูนิฟอร์ม <strong>สกรีนเสื้อไม่มีขั้นต่ำ 1 ตัวก็รับทำได้</strong>
               </p>
             </div>
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
-              <ServiceImage src="/images/printing/dtf-process.jpg" alt="DTF Process" />
-            </div>
+            <ImageSlotOverlay sectionId="printing-dtf" slotId="dtf-process">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
+                <ServiceImage src={img('printing-dtf', 'dtf-process', '/images/printing/dtf-process.jpg')} alt="DTF Process" />
+              </div>
+            </ImageSlotOverlay>
           </div>
         </div>
       </section>
@@ -211,9 +220,11 @@ export default function DTFPage() {
         
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group order-2 lg:order-1">
-              <ServiceImage src="/images/printing/epson-i3200.jpg" alt="Epson PrecisionCore i3200" />
-            </div>
+            <ImageSlotOverlay sectionId="printing-dtf" slotId="dtf-epson-i3200">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group order-2 lg:order-1">
+                <ServiceImage src={img('printing-dtf', 'dtf-epson-i3200', '/images/printing/epson-i3200.jpg')} alt="Epson PrecisionCore i3200" />
+              </div>
+            </ImageSlotOverlay>
             
             <div className="order-1 lg:order-2">
               <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-blue-50 text-ci-blue text-sm font-bold mb-6">
@@ -447,9 +458,11 @@ export default function DTFPage() {
 
           <div className="space-y-16">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/printing/dtf-printing.jpg" alt="DTF Printing" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtf" slotId="dtf-printing">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-dtf', 'dtf-printing', '/images/printing/dtf-printing.jpg')} alt="DTF Printing" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">01</span>
@@ -464,9 +477,11 @@ export default function DTFPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
-                <ServiceImage src="/images/printing/dtf-powder.jpg" alt="DTF Powder" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtf" slotId="dtf-powder">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
+                  <ServiceImage src={img('printing-dtf', 'dtf-powder', '/images/printing/dtf-powder.jpg')} alt="DTF Powder" />
+                </div>
+              </ImageSlotOverlay>
               <div className="md:order-1">
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">02</span>
@@ -481,9 +496,11 @@ export default function DTFPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/printing/dtf-curing.jpg" alt="DTF Curing" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtf" slotId="dtf-curing">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-dtf', 'dtf-curing', '/images/printing/dtf-curing.jpg')} alt="DTF Curing" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">03</span>
@@ -498,9 +515,11 @@ export default function DTFPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
-                <ServiceImage src="/images/printing/dtf-transfer.jpg" alt="DTF Transfer" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtf" slotId="dtf-transfer">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
+                  <ServiceImage src={img('printing-dtf', 'dtf-transfer', '/images/printing/dtf-transfer.jpg')} alt="DTF Transfer" />
+                </div>
+              </ImageSlotOverlay>
               <div className="md:order-1">
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">04</span>
@@ -667,9 +686,11 @@ export default function DTFPage() {
           <div className="max-w-6xl mx-auto space-y-16">
             {/* Case Study 1 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group order-2 md:order-1">
-                <ServiceImage src="/images/case-study/dtf-gym-brand.jpg" alt="Gym Brand Case" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtf" slotId="dtf-case-gym">
+                <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group order-2 md:order-1">
+                  <ServiceImage src={img('printing-dtf', 'dtf-case-gym', '/images/case-study/dtf-gym-brand.jpg')} alt="Gym Brand Case" />
+                </div>
+              </ImageSlotOverlay>
               <div className="order-1 md:order-2">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 rounded-full text-sm font-bold text-emerald-700 mb-4">
                   <Shield className="w-4 h-4" /> Fitness Brand
@@ -701,9 +722,11 @@ export default function DTFPage() {
 
             {/* Case Study 2 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/case-study/dtf-uniform.jpg" alt="Uniform Case" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-dtf" slotId="dtf-case-uniform">
+                <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-dtf', 'dtf-case-uniform', '/images/case-study/dtf-uniform.jpg')} alt="Uniform Case" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-teal-50 rounded-full text-sm font-bold text-teal-700 mb-4">
                   <Building2 className="w-4 h-4" /> Corporate Uniform
@@ -769,106 +792,126 @@ export default function DTFPage() {
             
             <div className="flex gap-6 animate-scroll-images">
               {/* First set */}
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-1.jpg" alt="DTF Work 1" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">เสื้อกีฬา</h3>
-                    <p className="text-white/90 text-sm">ผ้ายืด ทนทาน ซักได้บ่อย</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-1">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-1', '/images/gallery/dtf-work-1.jpg')} alt="DTF Work 1" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">เสื้อกีฬา</h3>
+                      <p className="text-white/90 text-sm">ผ้ายืด ทนทาน ซักได้บ่อย</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-2.jpg" alt="DTF Work 2" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ผ้าโพลี</h3>
-                    <p className="text-white/90 text-sm">ติดได้ดี สีสดชัด</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-2">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-2', '/images/gallery/dtf-work-2.jpg')} alt="DTF Work 2" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ผ้าโพลี</h3>
+                      <p className="text-white/90 text-sm">ติดได้ดี สีสดชัด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-3.jpg" alt="DTF Work 3" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ผ้าสีเข้ม</h3>
-                    <p className="text-white/90 text-sm">สีโดดเด่น คมชัด</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-3">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-3', '/images/gallery/dtf-work-3.jpg')} alt="DTF Work 3" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ผ้าสีเข้ม</h3>
+                      <p className="text-white/90 text-sm">สีโดดเด่น คมชัด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-4.jpg" alt="DTF Work 4" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">งานยูนิฟอร์ม</h3>
-                    <p className="text-white/90 text-sm">ทนทาน คุณภาพสูง</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-4">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-4', '/images/gallery/dtf-work-4.jpg')} alt="DTF Work 4" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">งานยูนิฟอร์ม</h3>
+                      <p className="text-white/90 text-sm">ทนทาน คุณภาพสูง</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-5.jpg" alt="DTF Work 5" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ลายละเอียด</h3>
-                    <p className="text-white/90 text-sm">สีเยอะ ความคมชัด</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-5">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-5', '/images/gallery/dtf-work-5.jpg')} alt="DTF Work 5" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ลายละเอียด</h3>
+                      <p className="text-white/90 text-sm">สีเยอะ ความคมชัด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
               {/* Duplicate set for seamless loop */}
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-1.jpg" alt="DTF Work 1" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">เสื้อกีฬา</h3>
-                    <p className="text-white/90 text-sm">ผ้ายืด ทนทาน ซักได้บ่อย</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-1">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-1', '/images/gallery/dtf-work-1.jpg')} alt="DTF Work 1" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">เสื้อกีฬา</h3>
+                      <p className="text-white/90 text-sm">ผ้ายืด ทนทาน ซักได้บ่อย</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-2.jpg" alt="DTF Work 2" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ผ้าโพลี</h3>
-                    <p className="text-white/90 text-sm">ติดได้ดี สีสดชัด</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-2">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-2', '/images/gallery/dtf-work-2.jpg')} alt="DTF Work 2" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ผ้าโพลี</h3>
+                      <p className="text-white/90 text-sm">ติดได้ดี สีสดชัด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-3.jpg" alt="DTF Work 3" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ผ้าสีเข้ม</h3>
-                    <p className="text-white/90 text-sm">สีโดดเด่น คมชัด</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-3">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-3', '/images/gallery/dtf-work-3.jpg')} alt="DTF Work 3" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ผ้าสีเข้ม</h3>
+                      <p className="text-white/90 text-sm">สีโดดเด่น คมชัด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-4.jpg" alt="DTF Work 4" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">งานยูนิฟอร์ม</h3>
-                    <p className="text-white/90 text-sm">ทนทาน คุณภาพสูง</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-4">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-4', '/images/gallery/dtf-work-4.jpg')} alt="DTF Work 4" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">งานยูนิฟอร์ม</h3>
+                      <p className="text-white/90 text-sm">ทนทาน คุณภาพสูง</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/dtf-work-5.jpg" alt="DTF Work 5" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ลายละเอียด</h3>
-                    <p className="text-white/90 text-sm">สีเยอะ ความคมชัด</p>
+              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-5">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-dtf', 'dtf-work-5', '/images/gallery/dtf-work-5.jpg')} alt="DTF Work 5" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ลายละเอียด</h3>
+                      <p className="text-white/90 text-sm">สีเยอะ ความคมชัด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
             </div>
           </div>
         </div>
@@ -918,9 +961,11 @@ export default function DTFPage() {
                   ยังสวยเหมือนเดิม ไม่จางไม่แตก ทนทานจริงๆ คุ้มค่าสุด!"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-coach.jpg" alt="คุณ โค้ชเก่ง" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-coach">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-coach', '/images/customers/customer-coach.jpg')} alt="คุณ โค้ชเก่ง" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ โค้ชเก่ง</div>
                     <div className="text-sm text-slate-500">ทีมฟุตบอล, 25 ตัว</div>
@@ -939,9 +984,11 @@ export default function DTFPage() {
                   สีติดดี สวยงาม ลูกค้าพอใจมาก สั่งซ้ำแล้ว 3 รอบ"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-p.jpg" alt="คุณ พี" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-p">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-p', '/images/customers/customer-p.jpg')} alt="คุณ พี" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ พี</div>
                     <div className="text-sm text-slate-500">ร้านขายเสื้อ, 200+ ตัว</div>
@@ -960,9 +1007,11 @@ export default function DTFPage() {
                   ซักมา 6 เดือนยังไม่หลุด สียังสวย คุ้มค่าจริงๆ"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-som.jpg" alt="คุณ ส้ม" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-som">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-som', '/images/customers/customer-som.jpg')} alt="คุณ ส้ม" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ ส้ม</div>
                     <div className="text-sm text-slate-500">HR Manager, 100 ตัว</div>
@@ -981,9 +1030,11 @@ export default function DTFPage() {
                   ยืดหยุ่นตามตัว ไม่แตกร้าว ใส่สบาย ซักบ่อยไม่เป็นไร"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-gym.jpg" alt="คุณ เบิ้ล" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-gym">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-gym', '/images/customers/customer-gym.jpg')} alt="คุณ เบิ้ล" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ เบิ้ล</div>
                     <div className="text-sm text-slate-500">Gym Owner, 50 ตัว</div>
@@ -1003,9 +1054,11 @@ export default function DTFPage() {
                   ยังสวยเหมือนเดิม ไม่จางไม่แตก ทนทานจริงๆ คุ้มค่าสุด!"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-coach.jpg" alt="คุณ โค้ชเก่ง" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-coach">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-coach', '/images/customers/customer-coach.jpg')} alt="คุณ โค้ชเก่ง" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ โค้ชเก่ง</div>
                     <div className="text-sm text-slate-500">ทีมฟุตบอล, 25 ตัว</div>
@@ -1024,9 +1077,11 @@ export default function DTFPage() {
                   สีติดดี สวยงาม ลูกค้าพอใจมาก สั่งซ้ำแล้ว 3 รอบ"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-p.jpg" alt="คุณ พี" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-p">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-p', '/images/customers/customer-p.jpg')} alt="คุณ พี" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ พี</div>
                     <div className="text-sm text-slate-500">ร้านขายเสื้อ, 200+ ตัว</div>
@@ -1045,9 +1100,11 @@ export default function DTFPage() {
                   ซักมา 6 เดือนยังไม่หลุด สียังสวย คุ้มค่าจริงๆ"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-som.jpg" alt="คุณ ส้ม" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-som">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-som', '/images/customers/customer-som.jpg')} alt="คุณ ส้ม" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ ส้ม</div>
                     <div className="text-sm text-slate-500">HR Manager, 100 ตัว</div>
@@ -1066,9 +1123,11 @@ export default function DTFPage() {
                   ยืดหยุ่นตามตัว ไม่แตกร้าว ใส่สบาย ซักบ่อยไม่เป็นไร"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-gym.jpg" alt="คุณ เบิ้ล" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-gym">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-gym', '/images/customers/customer-gym.jpg')} alt="คุณ เบิ้ล" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ เบิ้ล</div>
                     <div className="text-sm text-slate-500">Gym Owner, 50 ตัว</div>

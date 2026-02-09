@@ -3,13 +3,16 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { ImageIcon } from 'lucide-react';
+import { ImagesBySection } from '@/types/admin';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 
 interface ClientLogosSectionProps {
   className?: string;
+  images?: ImagesBySection;
 }
 
-// Client logos - duplicate for seamless scroll
-const clientLogos = [
+// Default client logos (fallback)
+const defaultClientLogos = [
   { id: 1, name: 'Client 1', src: '/images/clients/logo-1.png' },
   { id: 2, name: 'Client 2', src: '/images/clients/logo-2.png' },
   { id: 3, name: 'Client 3', src: '/images/clients/logo-3.png' },
@@ -44,7 +47,13 @@ function ClientLogo({ src, name }: { src: string; name: string }) {
   );
 }
 
-export default function ClientLogosSection({ className = '' }: ClientLogosSectionProps) {
+export default function ClientLogosSection({ className = '', images = {} }: ClientLogosSectionProps) {
+  // Merge Supabase images with defaults
+  const clientLogos = defaultClientLogos.map(logo => ({
+    ...logo,
+    src: images[`logo-${logo.id}`]?.url || logo.src,
+    name: images[`logo-${logo.id}`]?.alt || logo.name,
+  }));
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -146,9 +155,9 @@ export default function ClientLogosSection({ className = '' }: ClientLogosSectio
         >
           {/* First set */}
           {clientLogos.map((logo) => (
-            <div key={`1-${logo.id}`} className="shrink-0">
+            <ImageSlotOverlay key={`1-${logo.id}`} sectionId="clients" slotId={`logo-${logo.id}`} className="shrink-0">
               <ClientLogo src={logo.src} name={logo.name} />
-            </div>
+            </ImageSlotOverlay>
           ))}
           {/* Second set (duplicate for seamless loop) */}
           {clientLogos.map((logo) => (

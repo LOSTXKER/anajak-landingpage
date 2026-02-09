@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useImages, getUrl } from '@/hooks/useImages';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -32,7 +34,7 @@ const printingMethods = [
     name: 'DTG',
     fullName: 'Direct to Garment',
     description: 'พิมพ์ลงบนผ้าโดยตรง เหมาะสำหรับงานที่ต้องการรายละเอียดสูง สีสันหลากหลาย',
-    image: '/images/printing/dtg.jpg',
+    image: '', // Will be set dynamically
     features: ['รายละเอียดสูง', 'สีไม่จำกัด', 'ไม่มีขั้นต่ำ', 'ผ้าฝ้ายได้ดี'],
     minOrder: '1 ตัว',
     priceRange: 'เริ่มต้น 150 บาท/ตัว',
@@ -49,7 +51,7 @@ const printingMethods = [
     name: 'DTF',
     fullName: 'Direct to Film',
     description: 'พิมพ์ลงบนฟิล์มแล้วรีดลงผ้า สีสดทนทาน ใช้ได้กับผ้าหลายชนิด',
-    image: '/images/printing/dtf.jpg',
+    image: '', // Will be set dynamically
     features: ['สีสด ทนทาน', 'ผ้าได้หลายชนิด', 'ยืดหยุ่น', 'ซักไม่หลุด'],
     minOrder: '1 ตัว',
     priceRange: '30-250฿/ตัว (ตามขนาด)',
@@ -66,7 +68,7 @@ const printingMethods = [
     name: 'Silk Screen',
     fullName: 'สกรีนซิลค์',
     description: 'การสกรีนแบบดั้งเดิมที่ให้สีสดและทนทานที่สุด เหมาะสำหรับงานจำนวนมาก',
-    image: '/images/printing/silkscreen.jpg',
+    image: '', // Will be set dynamically
     features: ['ต้นทุนต่ำ', 'สีสด ทน', 'งานจำนวนมาก', 'คุณภาพสูง'],
     minOrder: '30 ตัว',
     priceRange: '20-70฿/ตัว (จำนวนมาก)',
@@ -154,7 +156,12 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+const PRINTING_SECTIONS = ['printing-main'];
+
 export default function PrintingServicePage() {
+  const imageMap = useImages(PRINTING_SECTIONS);
+  const img = (slot: string, fallback: string) => getUrl(imageMap, 'printing-main', slot, fallback);
+
   return (
     <PageLayout>
       {/* Hero Section */}
@@ -294,17 +301,23 @@ export default function PrintingServicePage() {
                 >
                   {/* Image */}
                   <div className="w-full lg:w-1/2">
-                    <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl group">
-                      <ServiceImage src={method.image} alt={method.name} />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                      
-                      {/* Badge on Image */}
-                      <div className="absolute top-6 left-6">
-                        <div className="px-4 py-2 bg-ci-yellow rounded-xl shadow-lg">
-                          <div className="text-sm font-bold text-slate-900">{method.bestFor}</div>
+                    <ImageSlotOverlay sectionId="printing-main" slotId={`print-${method.id === 'silkscreen' ? 'silkscreen' : method.id}`}>
+                      <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl group">
+                        <ServiceImage src={
+                          method.id === 'dtg' ? img('print-dtg', '/images/printing/dtg.jpg') :
+                          method.id === 'dtf' ? img('print-dtf', '/images/printing/dtf.jpg') :
+                          img('print-silkscreen', '/images/printing/silkscreen.jpg')
+                        } alt={method.name} />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                        
+                        {/* Badge on Image */}
+                        <div className="absolute top-6 left-6">
+                          <div className="px-4 py-2 bg-ci-yellow rounded-xl shadow-lg">
+                            <div className="text-sm font-bold text-slate-900">{method.bestFor}</div>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </ImageSlotOverlay>
                   </div>
                   
                   {/* Content */}

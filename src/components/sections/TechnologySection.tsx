@@ -5,12 +5,15 @@ import Image from 'next/image';
 import { 
   Cpu, CheckCircle2, ArrowRight, Shield, Trophy, Sparkles, Printer, Palette
 } from 'lucide-react';
+import { ImagesBySection } from '@/types/admin';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 
 interface TechnologySectionProps {
   className?: string;
+  images?: ImagesBySection;
 }
 
-const technologies = [
+const defaultTechnologies = [
   {
     id: 'dtg',
     name: 'DTG Printing',
@@ -18,6 +21,7 @@ const technologies = [
     description: 'เทคโนโลยีพิมพ์ดิจิตอลโดยตรงบนผ้า ความละเอียดสูง สีสันสดใส',
     features: ['ความละเอียด 1440 DPI', 'พิมพ์ได้ทุกสี ไม่จำกัด', 'เหมาะกับงานน้อย-กลาง'],
     image: '/images/tech/dtg.jpg',
+    slot: 'tech-dtg',
     Icon: Printer,
   },
   {
@@ -27,6 +31,7 @@ const technologies = [
     description: 'พิมพ์ลงฟิล์มแล้วรีดติดผ้า ทนทานสูง ใช้ได้กับผ้าทุกชนิด',
     features: ['ซักได้ 100+ ครั้ง', 'ใช้ได้ทุกเนื้อผ้า', 'สีไม่ซีด ไม่แตก'],
     image: '/images/tech/dtf.jpg',
+    slot: 'tech-dtf',
     Icon: Sparkles,
   },
   {
@@ -36,6 +41,7 @@ const technologies = [
     description: 'เทคนิคสกรีนดั้งเดิม เหมาะกับงานจำนวนมาก สีทึบสวย',
     features: ['ราคาดีเมื่อสั่งเยอะ', 'สีทึบสวยคมชัด', 'ทนทานมาก'],
     image: '/images/tech/silkscreen.jpg',
+    slot: 'tech-silkscreen',
     Icon: Palette,
   },
 ];
@@ -70,7 +76,11 @@ function TechImage({ src, alt, IconComponent }: { src: string; alt: string; Icon
   );
 }
 
-export default function TechnologySection({ className = '' }: TechnologySectionProps) {
+export default function TechnologySection({ className = '', images = {} }: TechnologySectionProps) {
+  const technologies = defaultTechnologies.map(tech => ({
+    ...tech,
+    image: images[tech.slot]?.url || tech.image,
+  }));
   return (
     <section id="technology" className={`py-24 bg-slate-900 relative overflow-hidden ${className}`}>
       {/* Background decoration */}
@@ -106,21 +116,23 @@ export default function TechnologySection({ className = '' }: TechnologySectionP
               className="group bg-slate-800/50 backdrop-blur rounded-2xl border border-slate-700/50 overflow-hidden hover:border-ci-blue/50 hover:bg-slate-800 transition-all duration-300"
             >
               {/* Image */}
-              <div className="relative h-40 overflow-hidden">
-                <TechImage src={tech.image} alt={tech.name} IconComponent={tech.Icon} />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
-                
-                {/* Name overlay */}
-                <div className="absolute bottom-3 left-3 right-3">
-                  <h3 className="font-bold text-white text-lg">{tech.name}</h3>
-                  <p className="text-white/70 text-sm">{tech.tagline}</p>
-                </div>
+              <ImageSlotOverlay sectionId="technology" slotId={tech.slot}>
+                <div className="relative h-40 overflow-hidden">
+                  <TechImage src={tech.image} alt={tech.name} IconComponent={tech.Icon} />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
+                  
+                  {/* Name overlay */}
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <h3 className="font-bold text-white text-lg">{tech.name}</h3>
+                    <p className="text-white/70 text-sm">{tech.tagline}</p>
+                  </div>
 
-                {/* Icon */}
-                <div className="absolute top-3 right-3 w-10 h-10 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center">
-                  <tech.Icon className="w-6 h-6 text-white" />
+                  {/* Icon */}
+                  <div className="absolute top-10 right-3 w-10 h-10 rounded-xl bg-white/10 backdrop-blur flex items-center justify-center">
+                    <tech.Icon className="w-6 h-6 text-white" />
+                  </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
               {/* Content */}
               <div className="p-4">

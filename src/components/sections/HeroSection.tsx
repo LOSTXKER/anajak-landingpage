@@ -3,16 +3,19 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { MessageCircle, Package, Zap, ImageIcon, Factory, BadgeCheck, CheckCircle, Palette } from 'lucide-react';
+import { ImagesBySection } from '@/types/admin';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 
 interface HeroSectionProps {
   className?: string;
+  images?: ImagesBySection;
 }
 
 // Hero image with fallback
-function HeroImage() {
+function HeroImage({ src, alt }: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
   
-  if (hasError) {
+  if (hasError || !src) {
     return (
       <div className="absolute inset-0 bg-gradient-to-br from-ci-blue to-ci-blueDark flex items-center justify-center rounded-3xl">
         <div className="text-center text-white/60">
@@ -25,8 +28,8 @@ function HeroImage() {
 
   return (
     <Image
-      src="/images/hero/hero-main.jpg"
-      alt="ผลงานเสื้อยืดคุณภาพ"
+      src={src}
+      alt={alt}
       fill
       className="object-cover rounded-3xl"
       onError={() => setHasError(true)}
@@ -36,7 +39,9 @@ function HeroImage() {
   );
 }
 
-export default function HeroSection({ className = '' }: HeroSectionProps) {
+export default function HeroSection({ className = '', images = {} }: HeroSectionProps) {
+  const heroSrc = images['hero-main']?.url || '/images/hero/hero-main.jpg';
+  const heroAlt = images['hero-main']?.alt || 'ผลงานเสื้อยืดคุณภาพ อาณาจักร์ ที-เชิ้ด โรงงานสกรีนเสื้อเชียงใหม่';
   return (
     <section id="home" className={`relative min-h-screen pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden ${className}`}>
       {/* Animated gradient background */}
@@ -158,10 +163,12 @@ export default function HeroSection({ className = '' }: HeroSectionProps) {
           {/* Right - Image */}
           <div className="relative opacity-0 animate-fade-in-up delay-300">
             {/* Main Image */}
-            <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
-              <HeroImage />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent rounded-3xl" />
-            </div>
+            <ImageSlotOverlay sectionId="hero" slotId="hero-main">
+              <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+                <HeroImage src={heroSrc} alt={heroAlt} />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent rounded-3xl" />
+              </div>
+            </ImageSlotOverlay>
 
             {/* Floating badges on image */}
             <div className="absolute -top-4 -left-4 px-4 py-2 bg-white rounded-xl shadow-lg border border-slate-100 animate-float-slow">

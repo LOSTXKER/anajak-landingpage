@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useImages, getUrl } from '@/hooks/useImages';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -42,7 +44,7 @@ const patternServices = [
     name: 'ปรับจากแบบเดิม',
     description: 'มีแบบเสื้อที่ชอบอยู่แล้ว? เราปรับแต่งให้ตรงใจคุณได้ ไม่ว่าจะเปลี่ยนทรง ปรับไซส์',
     icon: Scissors,
-    image: '/images/pattern/modify-pattern.jpg',
+    image: '', // Will be set dynamically
     features: ['ปรับจากต้นแบบ', 'เพิ่มรายละเอียด', 'เปลี่ยนทรง', 'ปรับไซส์'],
   },
   {
@@ -50,7 +52,7 @@ const patternServices = [
     name: 'Grading ไซส์',
     description: 'บริการ Grading ไซส์จาก S-3XL หรือมากกว่า พร้อมตารางไซส์มาตรฐานหรือปรับตามความต้องการ',
     icon: Ruler,
-    image: '/images/pattern/grading.jpg',
+    image: '', // Will be set dynamically
     features: ['S-3XL ขึ้นไป', 'ตารางไซส์มาตรฐาน', 'ปรับตามต้องการ', 'ไซส์พิเศษได้'],
   },
 ];
@@ -95,7 +97,11 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+const PATTERN_SECTIONS = ['pattern-page'];
+
 export default function PatternServicePage() {
+  const imageMap = useImages(PATTERN_SECTIONS);
+  const img = (slot: string, fallback: string) => getUrl(imageMap, 'pattern-page', slot, fallback);
   const [activeService, setActiveService] = useState(0);
 
   return (
@@ -239,12 +245,18 @@ export default function PatternServicePage() {
           {/* Tab Content */}
           <div className="bg-white rounded-2xl border border-slate-100 shadow-lg overflow-hidden">
             <div className="grid lg:grid-cols-2 gap-0">
-              <div className="relative h-72 lg:h-auto min-h-[350px] group">
-                <ServiceImage 
-                  src={patternServices[activeService].image} 
-                  alt={patternServices[activeService].name}
-                />
-              </div>
+              <ImageSlotOverlay sectionId="pattern-page" slotId={`pattern-${patternServices[activeService].id}`}>
+                <div className="relative h-72 lg:h-auto min-h-[350px] group">
+                  <ServiceImage 
+                    src={
+                      patternServices[activeService].id === 'new' ? img('pattern-new', '/images/pattern/new-pattern.jpg') :
+                      patternServices[activeService].id === 'modify' ? img('pattern-modify', '/images/pattern/modify-pattern.jpg') :
+                      img('pattern-grading', '/images/pattern/grading.jpg')
+                    } 
+                    alt={patternServices[activeService].name}
+                  />
+                </div>
+              </ImageSlotOverlay>
 
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-4">

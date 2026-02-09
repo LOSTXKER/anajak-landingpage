@@ -13,27 +13,38 @@ import {
   FAQSection,
   FinalCTASection,
 } from '@/components/sections';
+import { getImagesBySections } from '@/lib/images';
 
-export default function HomePage() {
+export default async function HomePage() {
+  // Fetch all homepage images from Supabase in one query
+  const allImages = await getImagesBySections([
+    'hero',
+    'clients',
+    'usecases',
+    'services',
+    'technology',
+    'portfolio',
+  ]);
+
   return (
     <PageLayout navMode="hash">
       {/* Hero Section */}
-      <HeroSection />
+      <HeroSection images={allImages['hero']} />
 
       {/* Client Logos Marquee */}
-      <ClientLogosSection />
+      <ClientLogosSection images={allImages['clients']} />
 
       {/* Value Proposition Strip */}
       <ValuePropositionStrip />
 
       {/* Use Cases - ให้ลูกค้าเห็นว่าเราทำได้ทุกแบบ */}
-      <UseCaseSection />
+      <UseCaseSection images={allImages['usecases']} />
 
       {/* Services Section */}
-      <ServicesSection />
+      <ServicesSection images={allImages['services']} />
 
       {/* Technology Section */}
-      <TechnologySection />
+      <TechnologySection images={allImages['technology']} />
 
       {/* Why Choose Us Section */}
       <WhyChooseUsSection />
@@ -42,7 +53,7 @@ export default function HomePage() {
       <CalculatorCTASection />
 
       {/* Portfolio Section */}
-      <PortfolioSection />
+      <PortfolioSection images={allImages['portfolio']} />
 
       {/* Testimonials Section */}
       <TestimonialsSection />
@@ -55,4 +66,3 @@ export default function HomePage() {
     </PageLayout>
   );
 }
-

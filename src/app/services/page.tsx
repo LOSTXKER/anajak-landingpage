@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState, useRef, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
@@ -9,6 +9,8 @@ import FAQ from '@/components/FAQ';
 import Breadcrumb from '@/components/Breadcrumb';
 import { ProductCard } from '@/components/services';
 import { blankShirts } from '@/data/products';
+import { useImages, getUrl } from '@/hooks/useImages';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import { 
   Star, 
   ArrowRight, 
@@ -28,8 +30,10 @@ import {
   MessageCircle,
 } from 'lucide-react';
 
+const SERVICE_SECTIONS = ['services-main'];
+
 // บริการหลัก (มีหน้าแยก)
-const mainServices = [
+const defaultMainServices = [
   {
     id: 'printing',
     title: 'รับสกรีนเสื้อ',
@@ -37,6 +41,7 @@ const mainServices = [
     description: 'รับสกรีนเสื้อครบวงจร เทคโนโลยีการพิมพ์หลากหลายรูปแบบ สกรีนเสื้อไม่มีขั้นต่ำ 1 ตัวก็ทำได้ ไม่ว่าจะงานละเอียดหรืองานจำนวนมาก งานด่วนรับได้',
     icon: Printer,
     image: '/images/services/printing.jpg',
+    slot: 'svc-printing',
     features: ['สกรีน DTG ความละเอียดสูง', 'สกรีน DTF ทนทาน', 'Silk Screen ราคาถูก', 'ไม่มีขั้นต่ำ 1 ตัวก็รับ'],
     link: '/services/printing',
   },
@@ -47,6 +52,7 @@ const mainServices = [
     description: 'รับทำแพทเทิร์นและตัดเย็บเสื้อตามแบบที่คุณต้องการ ทั้งแบบมาตรฐานและแบบ Custom สำหรับแบรนด์ของคุณ',
     icon: Scissors,
     image: '/images/services/pattern.jpg',
+    slot: 'svc-pattern',
     features: ['ทำแพทเทิร์นใหม่', 'ปรับจากแบบเดิม', 'ตัดเย็บคุณภาพสูง', 'งานทุกขนาด'],
     link: '/services/pattern',
   },
@@ -57,6 +63,7 @@ const mainServices = [
     description: 'เลือกเนื้อผ้าได้ตามความต้องการ มีทั้งผ้าฝ้าย ผ้าโพลี ผ้าดรายฟิต และอื่นๆ อีกมากมาย นำเข้าคุณภาพ',
     icon: Layers,
     image: '/images/services/fabric.jpg',
+    slot: 'svc-fabric',
     features: ['20+ ชนิดผ้า', 'ผ้านำเข้าคุณภาพ', 'ทดสอบก่อนผลิต', 'ราคาโรงงาน'],
     link: '/services/fabric',
   },
@@ -124,6 +131,12 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
 }
 
 export default function ServicesPage() {
+  const imageMap = useImages(SERVICE_SECTIONS);
+  const mainServices = useMemo(() => defaultMainServices.map(s => ({
+    ...s,
+    image: getUrl(imageMap, 'services-main', s.slot, s.image),
+  })), [imageMap]);
+
   // Carousel state for products
   const carouselRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -340,19 +353,21 @@ export default function ServicesPage() {
                 >
                   {/* Image */}
                   <div className="w-full lg:w-1/2">
-                    <Link href={service.link} className="block group">
-                      <div className="relative h-72 md:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-lg">
-                        <ServiceImage src={service.image} alt={service.title} />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                        
-                        {/* Icon Badge */}
-                        <div className="absolute bottom-6 left-6">
-                          <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-                            <Icon className="w-7 h-7 text-ci-blue" />
+                    <ImageSlotOverlay sectionId="services-main" slotId={service.slot}>
+                      <Link href={service.link} className="block group">
+                        <div className="relative h-72 md:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-lg">
+                          <ServiceImage src={service.image} alt={service.title} />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                          
+                          {/* Icon Badge */}
+                          <div className="absolute bottom-6 left-6">
+                            <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-lg">
+                              <Icon className="w-7 h-7 text-ci-blue" />
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    </Link>
+                      </Link>
+                    </ImageSlotOverlay>
                   </div>
                   
                   {/* Content */}

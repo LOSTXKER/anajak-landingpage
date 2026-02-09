@@ -5,6 +5,8 @@ import PageLayout from '@/components/PageLayout';
 import { FinalCTASection } from '@/components/sections';
 import FAQ from '@/components/FAQ';
 import Breadcrumb from '@/components/Breadcrumb';
+import { useImages, getUrl } from '@/hooks/useImages';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import { 
   Briefcase,
   Users,
@@ -79,7 +81,26 @@ const caseStudies = [
   }
 ];
 
+const PORTFOLIO_SECTIONS = ['portfolio-cases'];
+
 export default function PortfolioPage() {
+  const imageMap = useImages(PORTFOLIO_SECTIONS);
+  const img = (slot: string, fallback: string) => getUrl(imageMap, 'portfolio-cases', slot, fallback);
+
+  // Map images to case studies
+  const caseStudiesWithImages = caseStudies.map((study, index) => {
+    const imageSlots = ['case-error404-brand', 'case-green-bean-cafe', 'case-chiang-mai-run', 'case-lanna-artist'];
+    const fallbacks = [
+      'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?q=80&w=2070',
+      'https://images.unsplash.com/photo-1556742517-88c21c97a4a5?q=80&w=2070',
+      'https://images.unsplash.com/photo-1579626343200-547854375b6a?q=80&w=1974',
+      'https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?q=80&w=1945',
+    ];
+    return {
+      ...study,
+      image: img(imageSlots[index] || `case-${index}`, fallbacks[index] || study.image),
+    };
+  });
 
   return (
     <PageLayout>
@@ -150,7 +171,7 @@ export default function PortfolioPage() {
       <section className="py-16 md:py-20 bg-gradient-to-b from-white to-slate-50">
         <div className="container mx-auto px-4 md:px-6">
           <div className="space-y-16 lg:space-y-24">
-            {caseStudies.map((study) => {
+            {caseStudiesWithImages.map((study) => {
               const Icon = study.icon;
               return (
                 <div
@@ -195,14 +216,16 @@ export default function PortfolioPage() {
                   {/* Image */}
                   <div className={`relative ${study.imagePosition === 'left' ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
                     <div className={`absolute -inset-4 bg-gradient-to-br ${study.color} opacity-20 rounded-3xl blur-2xl`} />
-                    <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
-                      <Image
-                        src={study.image}
-                        alt={study.title}
-                        fill
-                        className="object-cover hover:scale-105 transition-transform duration-700"
-                      />
-                    </div>
+                    <ImageSlotOverlay sectionId="portfolio-cases" slotId={['case-error404-brand', 'case-green-bean-cafe', 'case-chiang-mai-run', 'case-lanna-artist'][study.id - 1]}>
+                      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                        <Image
+                          src={study.image}
+                          alt={study.title}
+                          fill
+                          className="object-cover hover:scale-105 transition-transform duration-700"
+                        />
+                      </div>
+                    </ImageSlotOverlay>
                   </div>
                 </div>
               );

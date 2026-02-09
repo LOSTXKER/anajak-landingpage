@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useImages, getUrl } from '@/hooks/useImages';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import Breadcrumb from '@/components/Breadcrumb';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import { 
   Printer,
   ArrowRight,
@@ -56,7 +58,12 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
   );
 }
 
+const SILK_SECTIONS = ['printing-silkscreen', 'gallery-silk', 'customers'];
+
 export default function SilkScreenPage() {
+  const imageMap = useImages(SILK_SECTIONS);
+  const img = (section: string, slot: string, fallback: string) => getUrl(imageMap, section, slot, fallback);
+
   return (
     <PageLayout>
       {/* Hero Section - Silkscreen Character: Industrial, Mass Production, Value */}
@@ -200,9 +207,11 @@ export default function SilkScreenPage() {
                 <strong>ราคาต่อตัวยิ่งถูก</strong> สีสดชัดและทนทานที่สุดในบรรดาเทคนิคทั้งหมด
               </p>
             </div>
-            <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
-              <ServiceImage src="/images/printing/silkscreen-process.jpg" alt="Silk Screen Process" />
-            </div>
+            <ImageSlotOverlay sectionId="printing-silkscreen" slotId="silk-process">
+              <div className="relative h-96 rounded-2xl overflow-hidden shadow-xl group">
+                <ServiceImage src={img('printing-silkscreen', 'silk-process', '/images/printing/silkscreen-process.jpg')} alt="Silk Screen Process" />
+              </div>
+            </ImageSlotOverlay>
           </div>
         </div>
       </section>
@@ -403,9 +412,11 @@ export default function SilkScreenPage() {
 
           <div className="space-y-16">
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/printing/silk-film.jpg" alt="Making Film" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-silkscreen" slotId="silk-film">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-silkscreen', 'silk-film', '/images/printing/silk-film.jpg')} alt="Making Film" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">01</span>
@@ -420,9 +431,11 @@ export default function SilkScreenPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
-                <ServiceImage src="/images/printing/silk-screen.jpg" alt="Screen Making" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-silkscreen" slotId="silk-screen">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
+                  <ServiceImage src={img('printing-silkscreen', 'silk-screen', '/images/printing/silk-screen.jpg')} alt="Screen Making" />
+                </div>
+              </ImageSlotOverlay>
               <div className="md:order-1">
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">02</span>
@@ -437,9 +450,11 @@ export default function SilkScreenPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/printing/silk-printing.jpg" alt="Screen Printing" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-silkscreen" slotId="silk-printing">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-silkscreen', 'silk-printing', '/images/printing/silk-printing.jpg')} alt="Screen Printing" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">03</span>
@@ -454,9 +469,11 @@ export default function SilkScreenPage() {
             </div>
 
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
-                <ServiceImage src="/images/printing/silk-curing.jpg" alt="Curing" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-silkscreen" slotId="silk-curing">
+                <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden shadow-xl group md:order-2">
+                  <ServiceImage src={img('printing-silkscreen', 'silk-curing', '/images/printing/silk-curing.jpg')} alt="Curing" />
+                </div>
+              </ImageSlotOverlay>
               <div className="md:order-1">
                 <h3 className="text-2xl font-bold text-white mb-3">
                   <span className="text-ci-yellow mr-2">04</span>
@@ -612,9 +629,11 @@ export default function SilkScreenPage() {
           <div className="max-w-6xl mx-auto space-y-16">
             {/* Case Study 1 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group order-2 md:order-1">
-                <ServiceImage src="/images/case-study/silk-marathon.jpg" alt="Marathon Case" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-silkscreen" slotId="silk-case-marathon">
+                <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group order-2 md:order-1">
+                  <ServiceImage src={img('printing-silkscreen', 'silk-case-marathon', '/images/case-study/silk-marathon.jpg')} alt="Marathon Case" />
+                </div>
+              </ImageSlotOverlay>
               <div className="order-1 md:order-2">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 rounded-full text-sm font-bold text-amber-700 mb-4">
                   <Trophy className="w-4 h-4" /> Marathon Event
@@ -646,9 +665,11 @@ export default function SilkScreenPage() {
 
             {/* Case Study 2 */}
             <div className="grid md:grid-cols-2 gap-8 items-center">
-              <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/case-study/silk-factory-uniform.jpg" alt="Factory Uniform Case" />
-              </div>
+              <ImageSlotOverlay sectionId="printing-silkscreen" slotId="silk-case-factory">
+                <div className="relative h-80 rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('printing-silkscreen', 'silk-case-factory', '/images/case-study/silk-factory-uniform.jpg')} alt="Factory Uniform Case" />
+                </div>
+              </ImageSlotOverlay>
               <div>
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-50 rounded-full text-sm font-bold text-orange-700 mb-4">
                   <Factory className="w-4 h-4" /> Factory Uniform
@@ -714,106 +735,126 @@ export default function SilkScreenPage() {
             
             <div className="flex gap-6 animate-scroll-images">
               {/* First set */}
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-1.jpg" alt="Silk Work 1" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ยูนิฟอร์มองค์กร</h3>
-                    <p className="text-white/90 text-sm">500 ตัว สีสดคมชัด</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-1">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-1', '/images/gallery/silk-work-1.jpg')} alt="Silk Work 1" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ยูนิฟอร์มองค์กร</h3>
+                      <p className="text-white/90 text-sm">500 ตัว สีสดคมชัด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-2.jpg" alt="Silk Work 2" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">งานอีเว้นท์</h3>
-                    <p className="text-white/90 text-sm">1,000 ตัว ราคาถูก</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-2">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-2', '/images/gallery/silk-work-2.jpg')} alt="Silk Work 2" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">งานอีเว้นท์</h3>
+                      <p className="text-white/90 text-sm">1,000 ตัว ราคาถูก</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-3.jpg" alt="Silk Work 3" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">เสื้อทีม</h3>
-                    <p className="text-white/90 text-sm">ทนทาน ซักไม่จาง</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-3">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-3', '/images/gallery/silk-work-3.jpg')} alt="Silk Work 3" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">เสื้อทีม</h3>
+                      <p className="text-white/90 text-sm">ทนทาน ซักไม่จาง</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-4.jpg" alt="Silk Work 4" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">เสื้อรุ่น</h3>
-                    <p className="text-white/90 text-sm">200 ตัว ทนทานสูง</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-4">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-4', '/images/gallery/silk-work-4.jpg')} alt="Silk Work 4" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">เสื้อรุ่น</h3>
+                      <p className="text-white/90 text-sm">200 ตัว ทนทานสูง</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-5.jpg" alt="Silk Work 5" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">งานโรงงาน</h3>
-                    <p className="text-white/90 text-sm">คุณภาพมาตรฐาน</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-5">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-5', '/images/gallery/silk-work-5.jpg')} alt="Silk Work 5" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">งานโรงงาน</h3>
+                      <p className="text-white/90 text-sm">คุณภาพมาตรฐาน</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
               {/* Duplicate set for seamless loop */}
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-1.jpg" alt="Silk Work 1" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">ยูนิฟอร์มองค์กร</h3>
-                    <p className="text-white/90 text-sm">500 ตัว สีสดคมชัด</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-1">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-1', '/images/gallery/silk-work-1.jpg')} alt="Silk Work 1" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">ยูนิฟอร์มองค์กร</h3>
+                      <p className="text-white/90 text-sm">500 ตัว สีสดคมชัด</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-2.jpg" alt="Silk Work 2" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">งานอีเว้นท์</h3>
-                    <p className="text-white/90 text-sm">1,000 ตัว ราคาถูก</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-2">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-2', '/images/gallery/silk-work-2.jpg')} alt="Silk Work 2" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">งานอีเว้นท์</h3>
+                      <p className="text-white/90 text-sm">1,000 ตัว ราคาถูก</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-3.jpg" alt="Silk Work 3" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">เสื้อทีม</h3>
-                    <p className="text-white/90 text-sm">ทนทาน ซักไม่จาง</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-3">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-3', '/images/gallery/silk-work-3.jpg')} alt="Silk Work 3" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">เสื้อทีม</h3>
+                      <p className="text-white/90 text-sm">ทนทาน ซักไม่จาง</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-4.jpg" alt="Silk Work 4" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">เสื้อรุ่น</h3>
-                    <p className="text-white/90 text-sm">200 ตัว ทนทานสูง</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-4">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-4', '/images/gallery/silk-work-4.jpg')} alt="Silk Work 4" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">เสื้อรุ่น</h3>
+                      <p className="text-white/90 text-sm">200 ตัว ทนทานสูง</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
 
-              <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                <ServiceImage src="/images/gallery/silk-work-5.jpg" alt="Silk Work 5" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-0 left-0 right-0 p-6">
-                    <h3 className="text-white font-bold text-lg mb-1">งานโรงงาน</h3>
-                    <p className="text-white/90 text-sm">คุณภาพมาตรฐาน</p>
+              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-5">
+                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                  <ServiceImage src={img('gallery-silk', 'silk-work-5', '/images/gallery/silk-work-5.jpg')} alt="Silk Work 5" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="text-white font-bold text-lg mb-1">งานโรงงาน</h3>
+                      <p className="text-white/90 text-sm">คุณภาพมาตรฐาน</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </ImageSlotOverlay>
             </div>
           </div>
         </div>
@@ -863,9 +904,11 @@ export default function SilkScreenPage() {
                   สีสดชัด ซักมา 1 ปีแล้วยังสวยเหมือนเดิม สั่งซ้ำทุกปี!"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-somchai.jpg" alt="คุณ สมชาย" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-somchai">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-somchai', '/images/customers/customer-somchai.jpg')} alt="คุณ สมชาย" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ สมชาย</div>
                     <div className="text-sm text-slate-500">บริษัทเอกชน, 500 ตัว</div>
@@ -884,9 +927,11 @@ export default function SilkScreenPage() {
                   Silk Screen ตอบโจทย์สุด ผู้เข้าร่วมชอบใจทุกคน"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-noi.jpg" alt="คุณ น้อย" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-noi">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-noi', '/images/customers/customer-noi.jpg')} alt="คุณ น้อย" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ น้อย</div>
                     <div className="text-sm text-slate-500">Event Organizer, 1,000 ตัว</div>
@@ -905,9 +950,11 @@ export default function SilkScreenPage() {
                   ใช้ได้ตลอดปีการศึกษา น้องๆ พอใจทุกคน"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-teacher.jpg" alt="คุณครูอ้อม" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-teacher">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-teacher', '/images/customers/customer-teacher.jpg')} alt="คุณครูอ้อม" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณครู อ้อม</div>
                     <div className="text-sm text-slate-500">โรงเรียน, 200 ตัว</div>
@@ -926,9 +973,11 @@ export default function SilkScreenPage() {
                   ทนทานจริงๆ ซักมาแล้วหลายเดือนยังสดใหม่"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-captain.jpg" alt="คุณ กัปตัน" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-captain">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-captain', '/images/customers/customer-captain.jpg')} alt="คุณ กัปตัน" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ กัปตัน</div>
                     <div className="text-sm text-slate-500">ทีมฟุตซอล, 100 ตัว</div>
@@ -948,9 +997,11 @@ export default function SilkScreenPage() {
                   สีสดชัด ซักมา 1 ปีแล้วยังสวยเหมือนเดิม สั่งซ้ำทุกปี!"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-somchai.jpg" alt="คุณ สมชาย" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-somchai">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-somchai', '/images/customers/customer-somchai.jpg')} alt="คุณ สมชาย" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ สมชาย</div>
                     <div className="text-sm text-slate-500">บริษัทเอกชน, 500 ตัว</div>
@@ -969,9 +1020,11 @@ export default function SilkScreenPage() {
                   Silk Screen ตอบโจทย์สุด ผู้เข้าร่วมชอบใจทุกคน"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-noi.jpg" alt="คุณ น้อย" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-noi">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-noi', '/images/customers/customer-noi.jpg')} alt="คุณ น้อย" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ น้อย</div>
                     <div className="text-sm text-slate-500">Event Organizer, 1,000 ตัว</div>
@@ -990,9 +1043,11 @@ export default function SilkScreenPage() {
                   ใช้ได้ตลอดปีการศึกษา น้องๆ พอใจทุกคน"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-teacher.jpg" alt="คุณครูอ้อม" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-teacher">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-teacher', '/images/customers/customer-teacher.jpg')} alt="คุณครูอ้อม" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณครู อ้อม</div>
                     <div className="text-sm text-slate-500">โรงเรียน, 200 ตัว</div>
@@ -1011,9 +1066,11 @@ export default function SilkScreenPage() {
                   ทนทานจริงๆ ซักมาแล้วหลายเดือนยังสดใหม่"
                 </p>
                 <div className="flex items-center gap-4">
-                  <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
-                    <ServiceImage src="/images/customers/customer-captain.jpg" alt="คุณ กัปตัน" />
-                  </div>
+                  <ImageSlotOverlay sectionId="customers" slotId="customer-captain">
+                    <div className="relative w-14 h-14 rounded-full overflow-hidden flex-shrink-0">
+                      <ServiceImage src={img('customers', 'customer-captain', '/images/customers/customer-captain.jpg')} alt="คุณ กัปตัน" />
+                    </div>
+                  </ImageSlotOverlay>
                   <div>
                     <div className="font-bold text-slate-900">คุณ กัปตัน</div>
                     <div className="text-sm text-slate-500">ทีมฟุตซอล, 100 ตัว</div>

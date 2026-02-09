@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useImages, getUrl } from '@/hooks/useImages';
+import ImageSlotOverlay from '@/components/ImageSlotOverlay';
 import PageLayout from '@/components/PageLayout';
 import { FinalCTASection, RelatedPagesSection } from '@/components/sections';
 import FAQ from '@/components/FAQ';
@@ -27,7 +29,6 @@ import {
   Calculator,
   MessageCircle,
 } from 'lucide-react';
-import { useState } from 'react';
 
 // ประเภทสินค้า
 type ProductCategory = 'tshirt' | 'fabric';
@@ -228,16 +229,24 @@ const shirtStyles = [
   { id: 'long-sleeve', name: 'แขนยาว' },
 ];
 
+const PRODUCT_SECTIONS = ['products'];
+
 export default function ProductsPage() {
+  const imageMap = useImages(PRODUCT_SECTIONS);
+  const productsWithImages = useMemo(() => products.map(p => ({
+    ...p,
+    image: getUrl(imageMap, 'products', `product-${p.id}`, p.image || ''),
+  })), [imageMap]);
+
   const [selectedCategory, setSelectedCategory] = useState<'all' | ProductCategory>('all');
   const [selectedStyle, setSelectedStyle] = useState<ShirtStyle>('all');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const filteredProducts = products.filter((product) => {
+  const filteredProducts = productsWithImages.filter((product) => {
     const matchesCategory = selectedCategory === 'all' || product.category === selectedCategory;
     const matchesStyle = selectedStyle === 'all' || !product.style || product.style === selectedStyle;
     const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         product.material.toLowerCase().includes(searchQuery.toLowerCase());
+                         (product.material && product.material.toLowerCase().includes(searchQuery.toLowerCase()));
     return matchesCategory && matchesStyle && matchesSearch;
   });
 
@@ -542,23 +551,24 @@ function ProductCard({ product }: { product: Product }) {
         onMouseLeave={() => setIsHovered(false)}
       >
       {/* Product Image */}
-      <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden flex-shrink-0">
-        {product.image ? (
-          <Image
-            src={product.image}
-            alt={product.name}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            {product.category === 'tshirt' ? (
-              <Shirt className="w-20 h-20 text-slate-400" />
-            ) : (
-              <Layers className="w-20 h-20 text-slate-400" />
-            )}
-          </div>
-        )}
+      <ImageSlotOverlay sectionId="products" slotId={`product-${product.id}`}>
+        <div className="relative aspect-square bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden flex-shrink-0">
+          {product.image ? (
+            <Image
+              src={product.image}
+              alt={product.name}
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              {product.category === 'tshirt' ? (
+                <Shirt className="w-20 h-20 text-slate-400" />
+              ) : (
+                <Layers className="w-20 h-20 text-slate-400" />
+              )}
+            </div>
+          )}
         {/* Minimum Order Badge */}
         <div className="absolute top-3 left-3">
           {product.hasMinimumOrder === false ? (
@@ -578,7 +588,8 @@ function ProductCard({ product }: { product: Product }) {
             </span>
           </div>
         )}
-      </div>
+        </div>
+      </ImageSlotOverlay>
 
       {/* Product Info */}
       <div className="p-4 flex flex-col flex-grow">
