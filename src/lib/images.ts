@@ -1,14 +1,14 @@
-import { supabase, isSupabaseConfigured } from './supabase';
+import { supabaseAdmin, isSupabaseConfigured } from './supabase';
 import { SiteImage, ImagesBySection } from '@/types/admin';
 
 /**
  * Fetch all images for a given section from Supabase
- * Returns a map of slot -> SiteImage for easy lookup
+ * Uses supabaseAdmin (service role) to bypass RLS
  */
 export async function getImagesBySection(section: string): Promise<ImagesBySection> {
   if (!isSupabaseConfigured) return {};
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('site_images')
       .select('*')
       .eq('section', section)
@@ -36,7 +36,7 @@ export async function getImagesBySection(section: string): Promise<ImagesBySecti
 export async function getImage(section: string, slot: string): Promise<SiteImage | null> {
   if (!isSupabaseConfigured) return null;
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('site_images')
       .select('*')
       .eq('section', section)
@@ -55,11 +55,12 @@ export async function getImage(section: string, slot: string): Promise<SiteImage
 
 /**
  * Fetch all images across multiple sections
+ * Uses supabaseAdmin (service role) to bypass RLS
  */
 export async function getImagesBySections(sections: string[]): Promise<Record<string, ImagesBySection>> {
   if (!isSupabaseConfigured) return {};
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseAdmin
       .from('site_images')
       .select('*')
       .in('section', sections)

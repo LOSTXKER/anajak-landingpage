@@ -1,12 +1,11 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { supabase, isSupabaseConfigured } from '@/lib/supabase';
 import { SiteImage, ImagesBySection } from '@/types/admin';
 
 /**
- * Client-side hook to fetch images for given sections
- * Falls back gracefully if Supabase is not configured
+ * Client-side hook to fetch images via API route (uses supabaseAdmin server-side)
+ * Falls back gracefully on error
  */
 export function useImages(sections: string[]): Record<string, ImagesBySection> {
   const [imageMap, setImageMap] = useState<Record<string, ImagesBySection>>({});
@@ -14,28 +13,33 @@ export function useImages(sections: string[]): Record<string, ImagesBySection> {
   useEffect(() => {
     async function fetchImages() {
       try {
-        const { data, error } = await supabase
-          .from('site_images')
-          .select('*')
-          .in('section', sections)
-          .order('sort_order', { ascending: true });
+        const results: Record<string, ImagesBySection> = {};
 
-        if (error || !data) return;
+        const responses = await Promise.all(
+          sections.map(section =>
+            fetch(`/api/admin/images?section=${encodeURIComponent(section)}`)
+              .then(res => res.json())
+          )
+        );
 
-        const result: Record<string, ImagesBySection> = {};
-        for (const image of data as SiteImage[]) {
-          if (!result[image.section]) {
-            result[image.section] = {};
+        for (const response of responses) {
+          if (response.images) {
+            for (const image of response.images as SiteImage[]) {
+              if (!results[image.section]) {
+                results[image.section] = {};
+              }
+              results[image.section][image.slot] = image;
+            }
           }
-          result[image.section][image.slot] = image;
         }
-        setImageMap(result);
+
+        setImageMap(results);
       } catch {
         // Silently fail - fallback images will be used
       }
     }
 
-    if (sections.length > 0 && isSupabaseConfigured) {
+    if (sections.length > 0) {
       fetchImages();
     }
   }, [sections.join(',')]); // eslint-disable-line react-hooks/exhaustive-deps

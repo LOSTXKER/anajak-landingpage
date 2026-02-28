@@ -2,13 +2,18 @@ import type { Metadata } from 'next';
 import PageLayout from '@/components/PageLayout';
 import Breadcrumb from '@/components/Breadcrumb';
 import { TechnologySection, FinalCTASection } from '@/components/sections';
+import { getImagesBySection } from '@/lib/images';
+
+export const revalidate = 60;
 
 export const metadata: Metadata = {
   title: 'เทคโนโลยี',
   description: 'เทคโนโลยีการผลิตทันสมัย DTG, DTF พร้อมระบบควบคุมคุณภาพ',
 };
 
-export default function TechnologyPage() {
+export default async function TechnologyPage() {
+  const techImages = await getImagesBySection('technology');
+
   return (
     <PageLayout>
       {/* Page Header */}
@@ -28,7 +33,7 @@ export default function TechnologyPage() {
       </section>
 
       {/* Technology Section */}
-      <TechnologySection className="pt-8" />
+      <TechnologySection className="pt-8" images={techImages} />
 
       {/* CTA */}
       <FinalCTASection />
