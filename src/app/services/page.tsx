@@ -70,7 +70,7 @@ const defaultMainServices = [
 ];
 
 // บริการเสริม (ไม่มีหน้าแยก)
-const additionalServices = [
+const defaultAdditionalServices = [
   {
     id: 'design',
     title: 'ออกแบบกราฟิก',
@@ -78,6 +78,7 @@ const additionalServices = [
     fullDescription: 'ทีมดีไซน์เนอร์พร้อมช่วยออกแบบลายเสื้อ ตั้งแต่ไอเดียจนถึงไฟล์พร้อมพิมพ์ ค่าบริการ 100-1,600฿',
     icon: Palette,
     image: '/images/services/design.jpg',
+    slot: 'svc-design',
     badge: '100-1,600฿',
     features: [
       'แก้ไขฟรี 2 ครั้ง (หากเกิน +100฿/ครั้ง)', 
@@ -93,6 +94,7 @@ const additionalServices = [
     fullDescription: 'บริการถ่ายภาพเสื้อจริงในโรงงาน เพื่อให้ลูกค้าเห็นผลงานจริงก่อนส่ง',
     icon: Camera,
     image: '/images/services/photography.jpg',
+    slot: 'svc-photography',
     features: ['ถ่ายเสื้อจริง', 'ให้ลูกค้าเห็นผลงาน', 'ไม่มีค่าใช้จ่ายเพิ่ม'],
   },
   {
@@ -102,6 +104,7 @@ const additionalServices = [
     fullDescription: 'ระบบ QC ตรวจสอบคุณภาพ 100% ทุกตัวก่อนส่ง พร้อมบริการแพ็คส่ง',
     icon: PackageCheck,
     image: '/images/services/qc.jpg',
+    slot: 'svc-qc',
     features: ['QC 100%', 'แพ็คอย่างดี', 'ส่งถึงลูกค้า'],
   },
 ];
@@ -133,6 +136,10 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
 export default function ServicesPage() {
   const imageMap = useImages(SERVICE_SECTIONS);
   const mainServices = useMemo(() => defaultMainServices.map(s => ({
+    ...s,
+    image: getUrl(imageMap, 'services-main', s.slot, s.image),
+  })), [imageMap]);
+  const additionalServices = useMemo(() => defaultAdditionalServices.map(s => ({
     ...s,
     image: getUrl(imageMap, 'services-main', s.slot, s.image),
   })), [imageMap]);
