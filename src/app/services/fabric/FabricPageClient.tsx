@@ -109,6 +109,7 @@ function ServiceImage({ src, alt }: { src: string; alt: string }) {
 
   return (
     <Image
+      key={src}
       src={src}
       alt={alt}
       fill

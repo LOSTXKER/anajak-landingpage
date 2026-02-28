@@ -83,11 +83,17 @@ const defaultUseCases = [
   },
 ];
 
-// Image with fallback
+// Image with fallback — key on src resets error state when image changes (tab switch)
 function UseCaseImage({ src, alt }: { src: string; alt: string }) {
   const [hasError, setHasError] = useState(false);
-  
-  if (hasError) {
+  const [prevSrc, setPrevSrc] = useState(src);
+
+  if (src !== prevSrc) {
+    setPrevSrc(src);
+    setHasError(false);
+  }
+
+  if (hasError || !src) {
     return (
       <div className="absolute inset-0 bg-gradient-to-br from-ci-blue to-ci-blueDark flex flex-col items-center justify-center">
         <ImageIcon className="w-8 h-8 text-white/40 mb-2" />
@@ -98,6 +104,7 @@ function UseCaseImage({ src, alt }: { src: string; alt: string }) {
 
   return (
     <Image
+      key={src}
       src={src}
       alt={alt}
       fill

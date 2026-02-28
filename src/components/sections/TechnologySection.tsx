@@ -66,6 +66,7 @@ function TechImage({ src, alt, IconComponent }: { src: string; alt: string; Icon
 
   return (
     <Image
+      key={src}
       src={src}
       alt={alt}
       fill
