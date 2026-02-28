@@ -1,3 +1,5 @@
+export const revalidate = 60;
+
 import PageLayout from '@/components/PageLayout';
 import {
   HeroSection,
