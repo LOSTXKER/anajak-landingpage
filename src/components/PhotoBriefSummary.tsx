@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { usePathname } from 'next/navigation';
 import {
   X,
   Check,
@@ -9,6 +10,7 @@ import {
   ImageOff,
   ChevronDown,
   ChevronRight,
+  ExternalLink,
 } from 'lucide-react';
 import { usePhotoBrief, reviewKey } from './PhotoBriefProvider';
 import { imageSlotConfig } from '@/config/image-slots';
@@ -23,6 +25,31 @@ interface FlatSlot {
   slotId: string;
   slotLabel: string;
 }
+
+const SECTION_TO_PATH: Record<string, string> = {
+  hero: '/',
+  clients: '/',
+  usecases: '/',
+  services: '/',
+  technology: '/',
+  portfolio: '/',
+  'services-main': '/services',
+  'printing-main': '/services/printing',
+  'printing-dtf': '/services/printing/dtf',
+  'printing-dtg': '/services/printing/dtg',
+  'printing-silkscreen': '/services/printing/silkscreen',
+  'gallery-dtf': '/services/printing/dtf',
+  'gallery-dtg': '/services/printing/dtg',
+  'gallery-silk': '/services/printing/silkscreen',
+  'customers': '/services/printing/dtf',
+  'fabric-page': '/services/fabric',
+  'pattern-page': '/services/pattern',
+  products: '/products',
+  about: '/about',
+  'portfolio-cases': '/portfolio',
+  calculator: '/calculator',
+  blog: '/blog/dtf-printing-guide-2024',
+};
 
 function getAllFlatSlots(): FlatSlot[] {
   const result: FlatSlot[] = [];
@@ -62,6 +89,7 @@ const STATUS_BG: Record<ReviewStatus, string> = {
 
 export default function PhotoBriefSummary() {
   const { isSummaryOpen, setIsSummaryOpen, reviewMap, uploadedSlots } = usePhotoBrief();
+  const pathname = usePathname();
   const [filter, setFilter] = useState<FilterTab>('all');
   const [collapsedSections, setCollapsedSections] = useState<Set<string>>(new Set());
 
@@ -135,12 +163,23 @@ export default function PhotoBriefSummary() {
     });
   };
 
-  const scrollToSlot = (sectionId: string, slotId: string) => {
-    const el = document.querySelector(`[data-slot-id="${sectionId}:${slotId}"]`);
+  const navigateToSlot = (sectionId: string, slotId: string) => {
+    const selector = `[data-slot-id="${sectionId}:${slotId}"]`;
+    const el = document.querySelector(selector);
+
     if (el) {
       el.scrollIntoView({ behavior: 'smooth', block: 'center' });
       el.classList.add('ring-4', 'ring-sky-400/50');
       setTimeout(() => el.classList.remove('ring-4', 'ring-sky-400/50'), 2000);
+      return;
+    }
+
+    const targetPath = SECTION_TO_PATH[sectionId];
+    if (targetPath && targetPath !== pathname) {
+      const url = new URL(targetPath, window.location.origin);
+      url.searchParams.set('photo-brief', 'true');
+      url.searchParams.set('scroll-to', `${sectionId}:${slotId}`);
+      window.location.href = url.toString();
     }
   };
 
@@ -225,6 +264,9 @@ export default function PhotoBriefSummary() {
         ) : (
           Object.entries(grouped).map(([sectionId, group]) => {
             const isCollapsed = collapsedSections.has(sectionId);
+            const sectionPath = SECTION_TO_PATH[sectionId] ?? '/';
+            const isOnThisPage = pathname === sectionPath;
+
             return (
               <div key={sectionId} className="border-b border-slate-800">
                 <button
@@ -239,6 +281,9 @@ export default function PhotoBriefSummary() {
                   <span className="text-xs font-semibold text-slate-300 truncate">
                     {group.pageLabel} &rsaquo; {group.sectionLabel}
                   </span>
+                  {!isOnThisPage && (
+                    <ExternalLink className="w-3 h-3 text-slate-600 shrink-0" />
+                  )}
                   <span className="text-[10px] text-slate-500 ml-auto shrink-0">{group.slots.length}</span>
                 </button>
 
@@ -250,24 +295,29 @@ export default function PhotoBriefSummary() {
                       const status: ReviewStatus = review?.status ?? 'pending';
                       const hasImage = uploadedSlots.has(key);
                       const Icon = STATUS_ICON[status];
+                      const slotOnThisPage = isOnThisPage;
 
                       return (
                         <button
                           key={key}
-                          onClick={() => scrollToSlot(slot.sectionId, slot.slotId)}
+                          onClick={() => navigateToSlot(slot.sectionId, slot.slotId)}
                           className="w-full flex items-start gap-2.5 px-5 pl-10 py-2 hover:bg-slate-800/40 transition-colors text-left group"
+                          title={slotOnThisPage ? 'คลิกเพื่อเลื่อนไปยังภาพ' : `คลิกเพื่อไปหน้า ${sectionPath}`}
                         >
                           <div className={`mt-0.5 shrink-0 ${STATUS_COLORS[status]}`}>
                             <Icon className="w-3.5 h-3.5" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-center gap-2">
-                              <span className="text-xs text-white font-medium truncate">{slot.slotLabel}</span>
+                              <span className="text-xs text-white font-medium truncate group-hover:underline">{slot.slotLabel}</span>
                               {!hasImage && (
                                 <span className="flex items-center gap-0.5 text-[9px] text-orange-400 bg-orange-500/10 px-1.5 py-0.5 rounded-full shrink-0">
                                   <ImageOff className="w-2.5 h-2.5" />
                                   ไม่มีรูป
                                 </span>
+                              )}
+                              {!slotOnThisPage && (
+                                <ExternalLink className="w-2.5 h-2.5 text-slate-600 shrink-0" />
                               )}
                             </div>
                             {review?.note && (

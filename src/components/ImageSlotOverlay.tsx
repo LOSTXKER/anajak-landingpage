@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Camera, X, Maximize2, Check, AlertTriangle, Clock, Save, Loader2 } from 'lucide-react';
 import { usePhotoBrief, reviewKey } from './PhotoBriefProvider';
 import { findSlotConfig } from '@/config/image-slots';
@@ -13,13 +13,14 @@ interface ImageSlotOverlayProps {
   className?: string;
 }
 
-const STATUS_CONFIG: Record<ReviewStatus, { border: string; badge: string; badgeBg: string; icon: typeof Check; label: string }> = {
+const STATUS_CONFIG: Record<ReviewStatus, { border: string; badge: string; badgeBg: string; icon: typeof Check; label: string; statusChip: string }> = {
   pending: {
     border: 'border-amber-400/70',
     badge: 'bg-amber-500 hover:bg-amber-600',
     badgeBg: 'bg-amber-500',
     icon: Clock,
     label: 'รอดำเนินการ',
+    statusChip: 'bg-amber-500/90 text-white',
   },
   needs_revision: {
     border: 'border-red-500/80',
@@ -27,6 +28,7 @@ const STATUS_CONFIG: Record<ReviewStatus, { border: string; badge: string; badge
     badgeBg: 'bg-red-500',
     icon: AlertTriangle,
     label: 'ต้องแก้ไข',
+    statusChip: 'bg-red-500/90 text-white',
   },
   approved: {
     border: 'border-emerald-400/70',
@@ -34,6 +36,7 @@ const STATUS_CONFIG: Record<ReviewStatus, { border: string; badge: string; badge
     badgeBg: 'bg-emerald-500',
     icon: Check,
     label: 'อนุมัติแล้ว',
+    statusChip: 'bg-emerald-500/90 text-white',
   },
 };
 
@@ -48,6 +51,7 @@ export default function ImageSlotOverlay({
   const [editNote, setEditNote] = useState('');
   const [editStatus, setEditStatus] = useState<ReviewStatus>('pending');
   const [isSaving, setIsSaving] = useState(false);
+  const [saveSuccess, setSaveSuccess] = useState(false);
 
   const review = reviewMap[reviewKey(sectionId, slotId)];
   const currentStatus: ReviewStatus = review?.status ?? 'pending';
@@ -57,8 +61,28 @@ export default function ImageSlotOverlay({
     if (isExpanded) {
       setEditNote(review?.note ?? '');
       setEditStatus(review?.status ?? 'pending');
+      setSaveSuccess(false);
     }
   }, [isExpanded, review?.note, review?.status]);
+
+  const handleStatusClick = useCallback(async (newStatus: ReviewStatus) => {
+    setEditStatus(newStatus);
+    setIsSaving(true);
+    setSaveSuccess(false);
+    await updateReview(sectionId, slotId, editNote, newStatus);
+    setIsSaving(false);
+    setSaveSuccess(true);
+    setTimeout(() => setSaveSuccess(false), 2000);
+  }, [sectionId, slotId, editNote, updateReview]);
+
+  const handleSaveNote = useCallback(async () => {
+    setIsSaving(true);
+    setSaveSuccess(false);
+    await updateReview(sectionId, slotId, editNote, editStatus);
+    setIsSaving(false);
+    setSaveSuccess(true);
+    setTimeout(() => setSaveSuccess(false), 2000);
+  }, [sectionId, slotId, editNote, editStatus, updateReview]);
 
   if (!isPhotoBriefMode) {
     return <>{children}</>;
@@ -73,19 +97,13 @@ export default function ImageSlotOverlay({
 
   const StatusIcon = config.icon;
 
-  const handleSave = async () => {
-    setIsSaving(true);
-    await updateReview(sectionId, slotId, editNote, editStatus);
-    setIsSaving(false);
-  };
-
-  const hasChanges = editNote !== (review?.note ?? '') || editStatus !== (review?.status ?? 'pending');
+  const noteHasChanges = editNote !== (review?.note ?? '');
 
   return (
     <div className={`relative group/slot ${className}`} data-slot-id={`${sectionId}:${slotId}`}>
       <div className={`absolute inset-0 border-2 border-dashed ${config.border} rounded-lg z-40 pointer-events-none`} />
 
-      {/* Badge with status indicator */}
+      {/* Badge with label */}
       <button
         onClick={(e) => {
           e.preventDefault();
@@ -105,15 +123,25 @@ export default function ImageSlotOverlay({
         {ratio && <span className="text-amber-300 ml-1">({ratio})</span>}
       </div>
 
-      {/* Needs revision ribbon */}
-      {currentStatus === 'needs_revision' && (
-        <div className="absolute bottom-0 left-0 right-0 z-50 bg-red-500/90 text-white text-[11px] font-bold text-center py-1 pointer-events-none">
-          <span className="flex items-center justify-center gap-1">
-            <AlertTriangle className="w-3 h-3" />
-            ต้องแก้ไข
-            {review?.note && <span className="font-normal opacity-80 ml-1 truncate max-w-[160px]">— {review.note}</span>}
+      {/* Always-visible status chip (bottom-left) */}
+      <div className={`absolute bottom-2 left-2 z-50 flex items-center gap-1 px-2 py-0.5 ${config.statusChip} text-[10px] font-bold rounded-full shadow pointer-events-none`}>
+        <StatusIcon className="w-2.5 h-2.5" />
+        {config.label}
+      </div>
+
+      {/* Needs revision ribbon with note */}
+      {currentStatus === 'needs_revision' && review?.note && (
+        <div className="absolute bottom-8 left-0 right-0 z-50 bg-red-500/90 text-white text-[11px] font-bold text-center py-1 pointer-events-none">
+          <span className="flex items-center justify-center gap-1 px-3">
+            <AlertTriangle className="w-3 h-3 shrink-0" />
+            <span className="truncate">{review.note}</span>
           </span>
         </div>
+      )}
+
+      {/* Approved checkmark overlay */}
+      {currentStatus === 'approved' && (
+        <div className="absolute inset-0 z-[39] bg-emerald-500/10 rounded-lg pointer-events-none" />
       )}
 
       {/* Expanded popup */}
@@ -187,26 +215,40 @@ export default function ImageSlotOverlay({
             <div className="border-t border-slate-700 pt-3 space-y-3">
               <div className="text-[10px] uppercase tracking-wider text-sky-400 mb-1">สถานะ & หมายเหตุ</div>
 
-              {/* Status Buttons */}
+              {/* Save success feedback */}
+              {saveSuccess && (
+                <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-emerald-500/20 text-emerald-400 rounded-lg text-xs font-semibold">
+                  <Check className="w-3.5 h-3.5" />
+                  บันทึกเรียบร้อยแล้ว
+                </div>
+              )}
+
+              {/* Status Buttons — auto-save on click */}
               {isAdmin ? (
                 <div className="flex gap-1.5">
                   {(Object.entries(STATUS_CONFIG) as [ReviewStatus, typeof config][]).map(([key, cfg]) => {
                     const Icon = cfg.icon;
+                    const isActive = editStatus === key;
                     return (
                       <button
                         key={key}
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
-                          setEditStatus(key);
+                          handleStatusClick(key);
                         }}
+                        disabled={isSaving}
                         className={`flex-1 flex items-center justify-center gap-1 py-1.5 rounded-lg text-[11px] font-semibold transition-all ${
-                          editStatus === key
+                          isActive
                             ? `${cfg.badgeBg} text-white ring-2 ring-white/30`
-                            : 'bg-slate-800 text-slate-400 hover:text-white'
-                        }`}
+                            : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
+                        } ${isSaving ? 'opacity-60 cursor-wait' : ''}`}
                       >
-                        <Icon className="w-3 h-3" />
+                        {isSaving && isActive ? (
+                          <Loader2 className="w-3 h-3 animate-spin" />
+                        ) : (
+                          <Icon className="w-3 h-3" />
+                        )}
                         {cfg.label}
                       </button>
                     );
@@ -230,12 +272,12 @@ export default function ImageSlotOverlay({
                     rows={3}
                     onClick={(e) => e.stopPropagation()}
                   />
-                  {hasChanges && (
+                  {noteHasChanges && (
                     <button
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        handleSave();
+                        handleSaveNote();
                       }}
                       disabled={isSaving}
                       className="mt-2 w-full flex items-center justify-center gap-1.5 py-2 rounded-lg bg-sky-500 hover:bg-sky-600 disabled:opacity-50 text-white text-xs font-bold transition-colors"
@@ -245,7 +287,7 @@ export default function ImageSlotOverlay({
                       ) : (
                         <Save className="w-3.5 h-3.5" />
                       )}
-                      {isSaving ? 'กำลังบันทึก...' : 'บันทึก'}
+                      {isSaving ? 'กำลังบันทึก...' : 'บันทึกหมายเหตุ'}
                     </button>
                   )}
                 </div>

@@ -109,6 +109,7 @@ function PhotoBriefToggle({
 function PhotoBriefInner({ children }: { children: React.ReactNode }) {
   const searchParams = useSearchParams();
   const urlParam = searchParams.get('photo-brief') === 'true';
+  const scrollToParam = searchParams.get('scroll-to');
 
   const [isManuallyToggled, setIsManuallyToggled] = useState<boolean | null>(null);
   const [reviewMap, setReviewMap] = useState<ReviewMap>({});
@@ -116,6 +117,7 @@ function PhotoBriefInner({ children }: { children: React.ReactNode }) {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isSummaryOpen, setIsSummaryOpen] = useState(false);
   const hasFetched = useRef(false);
+  const hasScrolled = useRef(false);
 
   useEffect(() => {
     const stored = localStorage.getItem('photo-brief-mode');
@@ -125,6 +127,25 @@ function PhotoBriefInner({ children }: { children: React.ReactNode }) {
       setIsManuallyToggled(true);
     }
   }, [urlParam]);
+
+  // Auto-scroll to slot when arriving from summary navigation
+  useEffect(() => {
+    if (!scrollToParam || hasScrolled.current) return;
+    hasScrolled.current = true;
+
+    const tryScroll = (attempts: number) => {
+      const el = document.querySelector(`[data-slot-id="${scrollToParam}"]`);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        el.classList.add('ring-4', 'ring-sky-400/50');
+        setTimeout(() => el.classList.remove('ring-4', 'ring-sky-400/50'), 3000);
+      } else if (attempts > 0) {
+        setTimeout(() => tryScroll(attempts - 1), 500);
+      }
+    };
+    // Delay first attempt to let the page hydrate
+    setTimeout(() => tryScroll(6), 800);
+  }, [scrollToParam]);
 
   const isPhotoBriefMode = isManuallyToggled ?? urlParam;
 
