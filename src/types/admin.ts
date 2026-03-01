@@ -36,6 +36,19 @@ export interface PageGroupConfig {
   sections: SectionConfig[];
 }
 
+// ===== Photo Brief Review Types =====
+
+export type ReviewStatus = 'pending' | 'approved' | 'needs_revision';
+
+export interface PhotoBriefReview {
+  id: string;
+  section: string;
+  slot: string;
+  note: string;
+  status: ReviewStatus;
+  updated_at: string;
+}
+
 // ===== API Types =====
 
 export interface UploadImageRequest {

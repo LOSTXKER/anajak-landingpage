@@ -97,3 +97,40 @@ DO $$ BEGIN
     CREATE POLICY "Service role delete" ON storage.objects FOR DELETE USING (bucket_id = 'site-images' AND auth.role() = 'service_role');
   END IF;
 END $$;
+
+-- ============================================================
+-- Photo Brief Reviews (review notes & status per image slot)
+-- ============================================================
+
+CREATE TABLE IF NOT EXISTS photo_brief_reviews (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  section TEXT NOT NULL,
+  slot TEXT NOT NULL,
+  note TEXT DEFAULT '',
+  status TEXT DEFAULT 'pending'
+    CHECK (status IN ('pending', 'approved', 'needs_revision')),
+  updated_at TIMESTAMPTZ DEFAULT NOW(),
+  UNIQUE(section, slot)
+);
+
+CREATE INDEX IF NOT EXISTS idx_photo_brief_reviews_section_slot
+  ON photo_brief_reviews(section, slot);
+
+ALTER TABLE photo_brief_reviews ENABLE ROW LEVEL SECURITY;
+
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE tablename = 'photo_brief_reviews' AND policyname = 'Allow public read') THEN
+    CREATE POLICY "Allow public read" ON photo_brief_reviews FOR SELECT USING (true);
+  END IF;
+END $$;
+
+DO $$ BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE tablename = 'photo_brief_reviews' AND policyname = 'Allow service role full access') THEN
+    CREATE POLICY "Allow service role full access" ON photo_brief_reviews FOR ALL USING (auth.role() = 'service_role');
+  END IF;
+END $$;
+
+CREATE TRIGGER trigger_update_photo_brief_reviews_updated_at
+  BEFORE UPDATE ON photo_brief_reviews
+  FOR EACH ROW
+  EXECUTE FUNCTION update_updated_at();
