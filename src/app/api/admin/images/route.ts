@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { supabaseAdmin, STORAGE_BUCKET } from '@/lib/supabase';
 
 const COOKIE_NAME = 'admin_token';
@@ -101,6 +102,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    revalidatePath('/', 'layout');
+
     return NextResponse.json({ image: data });
   } catch (err) {
     console.error('Upload error:', err);
@@ -160,6 +163,8 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
+    revalidatePath('/', 'layout');
+
     return NextResponse.json({ success: true });
   } catch (err) {
     console.error('Delete error:', err);
@@ -201,6 +206,8 @@ export async function PATCH(request: NextRequest) {
         { status: 500 }
       );
     }
+
+    revalidatePath('/', 'layout');
 
     return NextResponse.json({ image: data });
   } catch (err) {

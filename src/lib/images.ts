@@ -1,6 +1,13 @@
 import { supabaseAdmin, isSupabaseConfigured } from './supabase';
 import { SiteImage, ImagesBySection } from '@/types/admin';
 
+function cacheBustUrl(image: SiteImage): SiteImage {
+  if (!image.url) return image;
+  const v = new Date(image.updated_at).getTime() || Date.now();
+  const sep = image.url.includes('?') ? '&' : '?';
+  return { ...image, url: `${image.url}${sep}v=${v}` };
+}
+
 /**
  * Fetch all images for a given section from Supabase
  * Uses supabaseAdmin (service role) to bypass RLS
@@ -21,7 +28,7 @@ export async function getImagesBySection(section: string): Promise<ImagesBySecti
 
     const result: ImagesBySection = {};
     for (const image of (data as SiteImage[]) || []) {
-      result[image.slot] = image;
+      result[image.slot] = cacheBustUrl(image);
     }
     return result;
   } catch (err) {
@@ -47,7 +54,7 @@ export async function getImage(section: string, slot: string): Promise<SiteImage
       return null;
     }
 
-    return data as SiteImage;
+    return cacheBustUrl(data as SiteImage);
   } catch {
     return null;
   }
@@ -76,7 +83,7 @@ export async function getImagesBySections(sections: string[]): Promise<Record<st
       if (!result[image.section]) {
         result[image.section] = {};
       }
-      result[image.section][image.slot] = image;
+      result[image.section][image.slot] = cacheBustUrl(image);
     }
     return result;
   } catch (err) {
