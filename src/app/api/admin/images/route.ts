@@ -49,11 +49,28 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate unique file path
     const ext = file.name.split('.').pop() || 'jpg';
-    const filePath = `${section}/${slot}.${ext}`;
 
-    // Upload to Supabase Storage (overwrite if exists)
+    // Delete old file from storage if it exists (path may differ from new one)
+    const { data: existing } = await supabaseAdmin
+      .from('site_images')
+      .select('url')
+      .eq('section', section)
+      .eq('slot', slot)
+      .single();
+
+    if (existing?.url) {
+      const urlParts = existing.url.split(`${STORAGE_BUCKET}/`);
+      if (urlParts[1]) {
+        const oldPath = urlParts[1].split('?')[0];
+        await supabaseAdmin.storage.from(STORAGE_BUCKET).remove([oldPath]);
+      }
+    }
+
+    // Use timestamp in path so URL changes on every upload, bypassing CDN cache
+    const timestamp = Date.now();
+    const filePath = `${section}/${slot}_${timestamp}.${ext}`;
+
     const arrayBuffer = await file.arrayBuffer();
     const buffer = new Uint8Array(arrayBuffer);
 
@@ -61,6 +78,7 @@ export async function POST(request: NextRequest) {
       .from(STORAGE_BUCKET)
       .upload(filePath, buffer, {
         contentType: file.type,
+        cacheControl: '0',
         upsert: true,
       });
 
