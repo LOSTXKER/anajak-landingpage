@@ -719,141 +719,51 @@ export default function SilkscreenPageClient({ images }: { images: Record<string
           {/* Image Carousel */}
           <div className="relative">
             <style dangerouslySetInnerHTML={{__html: `
-              @keyframes scroll-images {
+              @keyframes scroll-images-silk {
                 0% { transform: translateX(0); }
                 100% { transform: translateX(-50%); }
               }
-              .animate-scroll-images {
-                animation: scroll-images 40s linear infinite;
+              .animate-scroll-images-silk {
+                animation: scroll-images-silk 60s linear infinite;
               }
-              .animate-scroll-images:hover {
+              .animate-scroll-images-silk:hover {
                 animation-play-state: paused;
               }
             `}} />
             
-            <div className="flex gap-6 animate-scroll-images">
-              {/* First set */}
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-1">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-1', '/images/gallery/silk-work-1.jpg')} alt="Silk Work 1" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ยูนิฟอร์มองค์กร</h3>
-                      <p className="text-white/90 text-sm">500 ตัว สีสดคมชัด</p>
+            {(() => {
+              const galleryItems = [
+                { slot: 'silk-work-1', fallback: '/images/gallery/silk-work-1.jpg', title: 'ยูนิฟอร์มองค์กร', desc: '500 ตัว สีสดคมชัด' },
+                { slot: 'silk-work-2', fallback: '/images/gallery/silk-work-2.jpg', title: 'งานอีเว้นท์', desc: '1,000 ตัว ราคาถูก' },
+                { slot: 'silk-work-3', fallback: '/images/gallery/silk-work-3.jpg', title: 'เสื้อทีม', desc: 'ทนทาน ซักไม่จาง' },
+                { slot: 'silk-work-4', fallback: '/images/gallery/silk-work-4.jpg', title: 'เสื้อรุ่น', desc: '200 ตัว ทนทานสูง' },
+                { slot: 'silk-work-5', fallback: '/images/gallery/silk-work-5.jpg', title: 'งานโรงงาน', desc: 'คุณภาพมาตรฐาน' },
+                { slot: 'silk-work-6', fallback: '/images/gallery/silk-work-6.jpg', title: 'เสื้อมาราธอน', desc: '2,000 ตัว งานด่วน' },
+                { slot: 'silk-work-7', fallback: '/images/gallery/silk-work-7.jpg', title: 'เสื้อ Camp', desc: 'งานค่าย สีสันสดใส' },
+                { slot: 'silk-work-8', fallback: '/images/gallery/silk-work-8.jpg', title: 'เสื้อสัมมนา', desc: 'ราคาประหยัด จำนวนมาก' },
+                { slot: 'silk-work-9', fallback: '/images/gallery/silk-work-9.jpg', title: 'เสื้อคอนเสิร์ต', desc: 'สีเด่น ทนทานสูง' },
+                { slot: 'silk-work-10', fallback: '/images/gallery/silk-work-10.jpg', title: 'เสื้อ Charity Run', desc: 'งานวิ่งการกุศล สวยงาม' },
+              ];
+              const renderItem = (item: typeof galleryItems[0], idx: number, prefix: string) => (
+                <ImageSlotOverlay key={`${prefix}-${idx}`} sectionId="gallery-silk" slotId={item.slot}>
+                  <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                    <ServiceImage src={img('gallery-silk', item.slot, item.fallback)} alt={item.title} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 className="text-white font-bold text-lg mb-1">{item.title}</h3>
+                        <p className="text-white/90 text-sm">{item.desc}</p>
+                      </div>
                     </div>
                   </div>
+                </ImageSlotOverlay>
+              );
+              return (
+                <div className="flex gap-6 animate-scroll-images-silk">
+                  {galleryItems.map((item, idx) => renderItem(item, idx, 'a'))}
+                  {galleryItems.map((item, idx) => renderItem(item, idx, 'b'))}
                 </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-2">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-2', '/images/gallery/silk-work-2.jpg')} alt="Silk Work 2" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">งานอีเว้นท์</h3>
-                      <p className="text-white/90 text-sm">1,000 ตัว ราคาถูก</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-3">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-3', '/images/gallery/silk-work-3.jpg')} alt="Silk Work 3" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">เสื้อทีม</h3>
-                      <p className="text-white/90 text-sm">ทนทาน ซักไม่จาง</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-4">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-4', '/images/gallery/silk-work-4.jpg')} alt="Silk Work 4" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">เสื้อรุ่น</h3>
-                      <p className="text-white/90 text-sm">200 ตัว ทนทานสูง</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-5">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-5', '/images/gallery/silk-work-5.jpg')} alt="Silk Work 5" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">งานโรงงาน</h3>
-                      <p className="text-white/90 text-sm">คุณภาพมาตรฐาน</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              {/* Duplicate set for seamless loop */}
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-1">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-1', '/images/gallery/silk-work-1.jpg')} alt="Silk Work 1" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ยูนิฟอร์มองค์กร</h3>
-                      <p className="text-white/90 text-sm">500 ตัว สีสดคมชัด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-2">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-2', '/images/gallery/silk-work-2.jpg')} alt="Silk Work 2" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">งานอีเว้นท์</h3>
-                      <p className="text-white/90 text-sm">1,000 ตัว ราคาถูก</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-3">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-3', '/images/gallery/silk-work-3.jpg')} alt="Silk Work 3" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">เสื้อทีม</h3>
-                      <p className="text-white/90 text-sm">ทนทาน ซักไม่จาง</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-4">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-4', '/images/gallery/silk-work-4.jpg')} alt="Silk Work 4" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">เสื้อรุ่น</h3>
-                      <p className="text-white/90 text-sm">200 ตัว ทนทานสูง</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-silk" slotId="silk-work-5">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-silk', 'silk-work-5', '/images/gallery/silk-work-5.jpg')} alt="Silk Work 5" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">งานโรงงาน</h3>
-                      <p className="text-white/90 text-sm">คุณภาพมาตรฐาน</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-            </div>
+              );
+            })()}
           </div>
         </div>
       </section>

@@ -21,6 +21,14 @@ const defaultPortfolioImages = [
   { id: 6, src: '/images/portfolio/6.jpg', alt: 'ผลงานเสื้อ FC', category: 'แฟนคลับ', slot: 'portfolio-6' },
   { id: 7, src: '/images/portfolio/7.jpg', alt: 'ผลงานเสื้อ Hoodie', category: 'Hoodie', slot: 'portfolio-7' },
   { id: 8, src: '/images/portfolio/8.jpg', alt: 'ผลงานเสื้อโปโล', category: 'โปโล', slot: 'portfolio-8' },
+  { id: 9, src: '/images/portfolio/9.jpg', alt: 'ผลงานเสื้อ Oversize', category: 'Oversize', slot: 'portfolio-9' },
+  { id: 10, src: '/images/portfolio/10.jpg', alt: 'ผลงานเสื้อทีมวิ่ง', category: 'วิ่ง', slot: 'portfolio-10' },
+  { id: 11, src: '/images/portfolio/11.jpg', alt: 'ผลงานเสื้อคอกลม', category: 'คอกลม', slot: 'portfolio-11' },
+  { id: 12, src: '/images/portfolio/12.jpg', alt: 'ผลงานเสื้อแขนยาว', category: 'แขนยาว', slot: 'portfolio-12' },
+  { id: 13, src: '/images/portfolio/13.jpg', alt: 'ผลงานเสื้อคอปก', category: 'คอปก', slot: 'portfolio-13' },
+  { id: 14, src: '/images/portfolio/14.jpg', alt: 'ผลงานเสื้อ Crop Top', category: 'Crop Top', slot: 'portfolio-14' },
+  { id: 15, src: '/images/portfolio/15.jpg', alt: 'ผลงานเสื้อสกรีนหลัง', category: 'สกรีนหลัง', slot: 'portfolio-15' },
+  { id: 16, src: '/images/portfolio/16.jpg', alt: 'ผลงานเสื้อทีมบาส', category: 'ทีมบาส', slot: 'portfolio-16' },
 ];
 
 // Image with fallback
@@ -288,10 +296,10 @@ export default function PortfolioSection({ className = '', images = {} }: Portfo
           100% { transform: translateX(0); }
         }
         .animate-marquee-left {
-          animation: marquee-left 30s linear infinite;
+          animation: marquee-left 60s linear infinite;
         }
         .animate-marquee-right {
-          animation: marquee-right 30s linear infinite;
+          animation: marquee-right 60s linear infinite;
         }
         .animate-marquee-left:hover,
         .animate-marquee-right:hover {

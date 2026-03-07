@@ -817,141 +817,51 @@ export default function DTGPageClient({ images }: { images: Record<string, Image
           {/* Image Carousel */}
           <div className="relative">
             <style dangerouslySetInnerHTML={{__html: `
-              @keyframes scroll-images {
+              @keyframes scroll-images-dtg {
                 0% { transform: translateX(0); }
                 100% { transform: translateX(-50%); }
               }
-              .animate-scroll-images {
-                animation: scroll-images 40s linear infinite;
+              .animate-scroll-images-dtg {
+                animation: scroll-images-dtg 60s linear infinite;
               }
-              .animate-scroll-images:hover {
+              .animate-scroll-images-dtg:hover {
                 animation-play-state: paused;
               }
             `}} />
             
-            <div className="flex gap-6 animate-scroll-images">
-              {/* First set */}
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-1">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-1', '/images/gallery/dtg-work-1.jpg')} alt="DTG Work 1" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ภาพวาดดิจิทัล</h3>
-                      <p className="text-white/90 text-sm">ความละเอียดสูง สีสันสดใส</p>
+            {(() => {
+              const galleryItems = [
+                { slot: 'dtg-work-1', fallback: '/images/gallery/dtg-work-1.jpg', title: 'ภาพวาดดิจิทัล', desc: 'ความละเอียดสูง สีสันสดใส' },
+                { slot: 'dtg-work-2', fallback: '/images/gallery/dtg-work-2.jpg', title: 'ภาพถ่าย HD', desc: 'คมชัด ได้ทุกรายละเอียด' },
+                { slot: 'dtg-work-3', fallback: '/images/gallery/dtg-work-3.jpg', title: 'ลายกราฟิก', desc: 'สีไล่เฉดสวยงาม' },
+                { slot: 'dtg-work-4', fallback: '/images/gallery/dtg-work-4.jpg', title: 'ดีไซน์แบรนด์', desc: 'งานสร้างสรรค์เฉพาะตัว' },
+                { slot: 'dtg-work-5', fallback: '/images/gallery/dtg-work-5.jpg', title: 'ลายอาร์ต', desc: 'ละเอียดทุกเส้นสาย' },
+                { slot: 'dtg-work-6', fallback: '/images/gallery/dtg-work-6.jpg', title: 'Full Color Print', desc: 'พิมพ์สีเต็มพื้นที่ สดใส' },
+                { slot: 'dtg-work-7', fallback: '/images/gallery/dtg-work-7.jpg', title: 'Portrait Art', desc: 'ภาพบุคคล สมจริงทุกเฉดสี' },
+                { slot: 'dtg-work-8', fallback: '/images/gallery/dtg-work-8.jpg', title: 'ลายวินเทจ', desc: 'ดีไซน์ย้อนยุค สวยคลาสสิก' },
+                { slot: 'dtg-work-9', fallback: '/images/gallery/dtg-work-9.jpg', title: 'งาน Custom', desc: 'สั่งทำตามแบบที่ต้องการ' },
+                { slot: 'dtg-work-10', fallback: '/images/gallery/dtg-work-10.jpg', title: 'Limited Edition', desc: 'คอลเลคชั่นพิเศษ จำนวนจำกัด' },
+              ];
+              const renderItem = (item: typeof galleryItems[0], idx: number, prefix: string) => (
+                <ImageSlotOverlay key={`${prefix}-${idx}`} sectionId="gallery-dtg" slotId={item.slot}>
+                  <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                    <ServiceImage src={img('gallery-dtg', item.slot, item.fallback)} alt={item.title} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 className="text-white font-bold text-lg mb-1">{item.title}</h3>
+                        <p className="text-white/90 text-sm">{item.desc}</p>
+                      </div>
                     </div>
                   </div>
+                </ImageSlotOverlay>
+              );
+              return (
+                <div className="flex gap-6 animate-scroll-images-dtg">
+                  {galleryItems.map((item, idx) => renderItem(item, idx, 'a'))}
+                  {galleryItems.map((item, idx) => renderItem(item, idx, 'b'))}
                 </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-2">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-2', '/images/gallery/dtg-work-2.jpg')} alt="DTG Work 2" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ภาพถ่าย HD</h3>
-                      <p className="text-white/90 text-sm">คมชัด ได้ทุกรายละเอียด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-3">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-3', '/images/gallery/dtg-work-3.jpg')} alt="DTG Work 3" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ลายกราฟิก</h3>
-                      <p className="text-white/90 text-sm">สีไล่เฉดสวยงาม</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-4">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-4', '/images/gallery/dtg-work-4.jpg')} alt="DTG Work 4" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ดีไซน์แบรนด์</h3>
-                      <p className="text-white/90 text-sm">งานสร้างสรรค์เฉพาะตัว</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-5">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-5', '/images/gallery/dtg-work-5.jpg')} alt="DTG Work 5" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ลายอาร์ต</h3>
-                      <p className="text-white/90 text-sm">ละเอียดทุกเส้นสาย</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              {/* Duplicate set for seamless loop */}
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-1">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-1', '/images/gallery/dtg-work-1.jpg')} alt="DTG Work 1" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ภาพวาดดิจิทัล</h3>
-                      <p className="text-white/90 text-sm">ความละเอียดสูง สีสันสดใส</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-2">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-2', '/images/gallery/dtg-work-2.jpg')} alt="DTG Work 2" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ภาพถ่าย HD</h3>
-                      <p className="text-white/90 text-sm">คมชัด ได้ทุกรายละเอียด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-3">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-3', '/images/gallery/dtg-work-3.jpg')} alt="DTG Work 3" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ลายกราฟิก</h3>
-                      <p className="text-white/90 text-sm">สีไล่เฉดสวยงาม</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-4">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-4', '/images/gallery/dtg-work-4.jpg')} alt="DTG Work 4" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ดีไซน์แบรนด์</h3>
-                      <p className="text-white/90 text-sm">งานสร้างสรรค์เฉพาะตัว</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtg" slotId="dtg-work-5">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtg', 'dtg-work-5', '/images/gallery/dtg-work-5.jpg')} alt="DTG Work 5" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ลายอาร์ต</h3>
-                      <p className="text-white/90 text-sm">ละเอียดทุกเส้นสาย</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-            </div>
+              );
+            })()}
           </div>
         </div>
       </section>

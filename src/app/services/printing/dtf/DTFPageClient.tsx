@@ -776,141 +776,51 @@ export default function DTFPageClient({ images }: { images: Record<string, Image
           {/* Image Carousel */}
           <div className="relative">
             <style dangerouslySetInnerHTML={{__html: `
-              @keyframes scroll-images {
+              @keyframes scroll-images-dtf {
                 0% { transform: translateX(0); }
                 100% { transform: translateX(-50%); }
               }
-              .animate-scroll-images {
-                animation: scroll-images 40s linear infinite;
+              .animate-scroll-images-dtf {
+                animation: scroll-images-dtf 60s linear infinite;
               }
-              .animate-scroll-images:hover {
+              .animate-scroll-images-dtf:hover {
                 animation-play-state: paused;
               }
             `}} />
             
-            <div className="flex gap-6 animate-scroll-images">
-              {/* First set */}
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-1">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-1', '/images/gallery/dtf-work-1.jpg')} alt="DTF Work 1" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">เสื้อกีฬา</h3>
-                      <p className="text-white/90 text-sm">ผ้ายืด ทนทาน ซักได้บ่อย</p>
+            {(() => {
+              const galleryItems = [
+                { slot: 'dtf-work-1', fallback: '/images/gallery/dtf-work-1.jpg', title: 'เสื้อกีฬา', desc: 'ผ้ายืด ทนทาน ซักได้บ่อย' },
+                { slot: 'dtf-work-2', fallback: '/images/gallery/dtf-work-2.jpg', title: 'ผ้าโพลี', desc: 'ติดได้ดี สีสดชัด' },
+                { slot: 'dtf-work-3', fallback: '/images/gallery/dtf-work-3.jpg', title: 'ผ้าสีเข้ม', desc: 'สีโดดเด่น คมชัด' },
+                { slot: 'dtf-work-4', fallback: '/images/gallery/dtf-work-4.jpg', title: 'งานยูนิฟอร์ม', desc: 'ทนทาน คุณภาพสูง' },
+                { slot: 'dtf-work-5', fallback: '/images/gallery/dtf-work-5.jpg', title: 'ลายละเอียด', desc: 'สีเยอะ ความคมชัด' },
+                { slot: 'dtf-work-6', fallback: '/images/gallery/dtf-work-6.jpg', title: 'เสื้อวิ่ง', desc: 'ผ้า Dri-FIT ทนทาน' },
+                { slot: 'dtf-work-7', fallback: '/images/gallery/dtf-work-7.jpg', title: 'เสื้อ Oversize', desc: 'ลายเต็มตัว สีสด' },
+                { slot: 'dtf-work-8', fallback: '/images/gallery/dtf-work-8.jpg', title: 'เสื้อโปโล', desc: 'โลโก้คมชัด ทนซัก' },
+                { slot: 'dtf-work-9', fallback: '/images/gallery/dtf-work-9.jpg', title: 'เสื้อแขนยาว', desc: 'สกรีนรอบแขน สวยงาม' },
+                { slot: 'dtf-work-10', fallback: '/images/gallery/dtf-work-10.jpg', title: 'เสื้อทีม', desc: 'สีสด ยืดหยุ่นตามผ้า' },
+              ];
+              const renderItem = (item: typeof galleryItems[0], idx: number, prefix: string) => (
+                <ImageSlotOverlay key={`${prefix}-${idx}`} sectionId="gallery-dtf" slotId={item.slot}>
+                  <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
+                    <ServiceImage src={img('gallery-dtf', item.slot, item.fallback)} alt={item.title} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 className="text-white font-bold text-lg mb-1">{item.title}</h3>
+                        <p className="text-white/90 text-sm">{item.desc}</p>
+                      </div>
                     </div>
                   </div>
+                </ImageSlotOverlay>
+              );
+              return (
+                <div className="flex gap-6 animate-scroll-images-dtf">
+                  {galleryItems.map((item, idx) => renderItem(item, idx, 'a'))}
+                  {galleryItems.map((item, idx) => renderItem(item, idx, 'b'))}
                 </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-2">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-2', '/images/gallery/dtf-work-2.jpg')} alt="DTF Work 2" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ผ้าโพลี</h3>
-                      <p className="text-white/90 text-sm">ติดได้ดี สีสดชัด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-3">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-3', '/images/gallery/dtf-work-3.jpg')} alt="DTF Work 3" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ผ้าสีเข้ม</h3>
-                      <p className="text-white/90 text-sm">สีโดดเด่น คมชัด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-4">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-4', '/images/gallery/dtf-work-4.jpg')} alt="DTF Work 4" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">งานยูนิฟอร์ม</h3>
-                      <p className="text-white/90 text-sm">ทนทาน คุณภาพสูง</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-5">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-5', '/images/gallery/dtf-work-5.jpg')} alt="DTF Work 5" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ลายละเอียด</h3>
-                      <p className="text-white/90 text-sm">สีเยอะ ความคมชัด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              {/* Duplicate set for seamless loop */}
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-1">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-1', '/images/gallery/dtf-work-1.jpg')} alt="DTF Work 1" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">เสื้อกีฬา</h3>
-                      <p className="text-white/90 text-sm">ผ้ายืด ทนทาน ซักได้บ่อย</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-2">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-2', '/images/gallery/dtf-work-2.jpg')} alt="DTF Work 2" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ผ้าโพลี</h3>
-                      <p className="text-white/90 text-sm">ติดได้ดี สีสดชัด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-3">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-3', '/images/gallery/dtf-work-3.jpg')} alt="DTF Work 3" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ผ้าสีเข้ม</h3>
-                      <p className="text-white/90 text-sm">สีโดดเด่น คมชัด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-4">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-4', '/images/gallery/dtf-work-4.jpg')} alt="DTF Work 4" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">งานยูนิฟอร์ม</h3>
-                      <p className="text-white/90 text-sm">ทนทาน คุณภาพสูง</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-
-              <ImageSlotOverlay sectionId="gallery-dtf" slotId="dtf-work-5">
-                <div className="flex-shrink-0 w-80 h-80 relative rounded-2xl overflow-hidden shadow-xl group">
-                  <ServiceImage src={img('gallery-dtf', 'dtf-work-5', '/images/gallery/dtf-work-5.jpg')} alt="DTF Work 5" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-white font-bold text-lg mb-1">ลายละเอียด</h3>
-                      <p className="text-white/90 text-sm">สีเยอะ ความคมชัด</p>
-                    </div>
-                  </div>
-                </div>
-              </ImageSlotOverlay>
-            </div>
+              );
+            })()}
           </div>
         </div>
       </section>
