@@ -827,8 +827,8 @@ export default function DTFPageClient({ images }: { images: Record<string, Image
 
       {/* Customer Reviews */}
       <section className="py-24 bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
+        <div className="container mx-auto px-4 md:px-6 mb-16">
+          <div className="text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-200 text-sm font-bold mb-6">
               <Star className="w-4 h-4 text-emerald-600 fill-current" />
               <span className="text-emerald-700">รีวิวจากลูกค้า</span>
@@ -840,9 +840,10 @@ export default function DTFPageClient({ images }: { images: Record<string, Image
               ความประทับใจจากลูกค้าที่ใช้บริการ DTF จริง
             </p>
           </div>
+        </div>
 
           {/* Reviews Carousel */}
-          <div className="relative mb-16">
+          <div className="relative">
             <style dangerouslySetInnerHTML={{__html: `
               @keyframes scroll-left {
                 0% { transform: translateX(0); }
@@ -1044,7 +1045,6 @@ export default function DTFPageClient({ images }: { images: Record<string, Image
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* FAQ */}

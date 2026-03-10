@@ -770,8 +770,8 @@ export default function SilkscreenPageClient({ images }: { images: Record<string
 
       {/* Customer Reviews */}
       <section className="py-24 bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
+        <div className="container mx-auto px-4 md:px-6 mb-16">
+          <div className="text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-200 text-sm font-bold mb-6">
               <Star className="w-4 h-4 text-amber-600 fill-current" />
               <span className="text-amber-700">รีวิวจากลูกค้า</span>
@@ -783,9 +783,10 @@ export default function SilkscreenPageClient({ images }: { images: Record<string
               ความประทับใจจากลูกค้าที่ใช้บริการ Silk Screen จริง
             </p>
           </div>
+        </div>
 
           {/* Reviews Carousel */}
-          <div className="relative mb-16">
+          <div className="relative">
             <style dangerouslySetInnerHTML={{__html: `
               @keyframes scroll-left {
                 0% { transform: translateX(0); }
@@ -987,7 +988,6 @@ export default function SilkscreenPageClient({ images }: { images: Record<string
               </div>
             </div>
           </div>
-        </div>
       </section>
 
       {/* FAQ */}
