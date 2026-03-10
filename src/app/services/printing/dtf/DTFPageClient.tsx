@@ -759,8 +759,8 @@ export default function DTFPageClient({ images }: { images: Record<string, Image
 
       {/* Portfolio Gallery - Real Work Examples */}
       <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
+        <div className="container mx-auto px-4 md:px-6 mb-16">
+          <div className="text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-emerald-500/10 to-teal-500/10 border border-emerald-200 text-sm font-bold mb-6">
               <ImageIcon className="w-4 h-4 text-emerald-600" />
               <span className="text-emerald-700">ผลงานจริง</span>
@@ -772,6 +772,7 @@ export default function DTFPageClient({ images }: { images: Record<string, Image
               ผลงานจริงจากโรงงานของเรา ทนทาน ยืดหยุ่น ใช้ได้กับทุกผ้า
             </p>
           </div>
+        </div>
 
           {/* Image Carousel */}
           <div className="relative">
@@ -822,7 +823,6 @@ export default function DTFPageClient({ images }: { images: Record<string, Image
               );
             })()}
           </div>
-        </div>
       </section>
 
       {/* Customer Reviews */}

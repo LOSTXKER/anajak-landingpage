@@ -702,8 +702,8 @@ export default function SilkscreenPageClient({ images }: { images: Record<string
 
       {/* Portfolio Gallery - Real Work Examples */}
       <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
+        <div className="container mx-auto px-4 md:px-6 mb-16">
+          <div className="text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-200 text-sm font-bold mb-6">
               <ImageIcon className="w-4 h-4 text-amber-600" />
               <span className="text-amber-700">ผลงานจริง</span>
@@ -715,6 +715,7 @@ export default function SilkscreenPageClient({ images }: { images: Record<string
               ผลงานจริงจากโรงงานของเรา งานจำนวนมาก สีสดทนทาน
             </p>
           </div>
+        </div>
 
           {/* Image Carousel */}
           <div className="relative">
@@ -765,7 +766,6 @@ export default function SilkscreenPageClient({ images }: { images: Record<string
               );
             })()}
           </div>
-        </div>
       </section>
 
       {/* Customer Reviews */}

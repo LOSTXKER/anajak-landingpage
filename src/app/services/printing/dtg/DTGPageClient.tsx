@@ -800,8 +800,8 @@ export default function DTGPageClient({ images }: { images: Record<string, Image
 
       {/* Portfolio Gallery - Real Work Examples */}
       <section className="py-24 bg-white overflow-hidden">
-        <div className="container mx-auto px-4 md:px-6">
-          <div className="text-center mb-16">
+        <div className="container mx-auto px-4 md:px-6 mb-16">
+          <div className="text-center">
             <div className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 border border-purple-200 text-sm font-bold mb-6">
               <ImageIcon className="w-4 h-4 text-purple-600" />
               <span className="text-purple-700">ผลงานจริง</span>
@@ -813,6 +813,7 @@ export default function DTGPageClient({ images }: { images: Record<string, Image
               ผลงานจริงจากโรงงานของเรา ความละเอียดสูง สีสันสดใส
             </p>
           </div>
+        </div>
 
           {/* Image Carousel */}
           <div className="relative">
@@ -863,7 +864,6 @@ export default function DTGPageClient({ images }: { images: Record<string, Image
               );
             })()}
           </div>
-        </div>
       </section>
 
       {/* Customer Reviews */}
