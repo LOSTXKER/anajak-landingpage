@@ -293,7 +293,7 @@ export default function PrintingPageClient({ images }: { images: Record<string, 
                   {/* Image */}
                   <div className="w-full lg:w-1/2">
                     <ImageSlotOverlay sectionId="printing-main" slotId={`print-${method.id === 'silkscreen' ? 'silkscreen' : method.id}`}>
-                      <div className="relative h-80 md:h-96 rounded-2xl overflow-hidden shadow-xl group">
+                      <div className="relative h-80 md:h-96 overflow-hidden group">
                         <ServiceImage src={
                           method.id === 'dtg' ? img('print-dtg', '/images/printing/dtg.jpg') :
                           method.id === 'dtf' ? img('print-dtf', '/images/printing/dtf.jpg') :

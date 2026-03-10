@@ -55,14 +55,14 @@ export default function AboutPageClient({ images }: { images: Record<string, Ima
         <div className="container mx-auto px-4 md:px-6">
           <Breadcrumb currentPage="เกี่ยวกับเรา" />
           
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16 items-center">
+            <div className="lg:col-span-2">
               {/* Title */}
               <div className="mb-8 opacity-0 animate-fade-in-up">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-ci-blue/10 rounded-full mb-4">
                   <span className="text-sm font-semibold text-ci-blue">Our Story</span>
                 </div>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold mb-4">
                   <span className="bg-gradient-to-r from-ci-blue to-ci-blueDark text-transparent bg-clip-text">
                     เรื่องราวของเรา
                   </span>
@@ -70,7 +70,7 @@ export default function AboutPageClient({ images }: { images: Record<string, Ima
                 <div className="w-16 h-1 bg-gradient-to-r from-ci-blue to-ci-blueDark rounded-full" />
               </div>
 
-              <div className="space-y-6 text-lg text-slate-600 leading-relaxed opacity-0 animate-fade-in-up delay-200">
+              <div className="space-y-5 text-base text-slate-600 leading-relaxed opacity-0 animate-fade-in-up delay-200">
                 <p>
                   Anajak T-Shirt ไม่ได้เริ่มต้นจากการเป็นแค่ "โรงงาน" แต่เกิดจาก{' '}
                   <strong className="font-semibold text-slate-900">"แพชชั่น"</strong>{' '}
@@ -86,10 +86,10 @@ export default function AboutPageClient({ images }: { images: Record<string, Ima
               </div>
             </div>
 
-            <div className="relative opacity-0 animate-fade-in-up delay-300">
+            <div className="lg:col-span-3 relative opacity-0 animate-fade-in-up delay-300">
               <div className="absolute -inset-4 bg-gradient-to-r from-ci-blue/20 to-ci-yellow/20 rounded-3xl blur-2xl animate-pulse" />
               <ImageSlotOverlay sectionId="about" slotId="about-hero">
-                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl">
+                <div className="relative aspect-[16/10] rounded-2xl overflow-hidden shadow-2xl">
                   <Image
                     src={img('about-hero', 'https://images.unsplash.com/photo-1618642359024-5c7931469b62?q=80&w=1974')}
                     alt="ทีมงาน Anajak T-Shirt กำลังปรึกษาเรื่องดีไซน์เสื้อยืด"

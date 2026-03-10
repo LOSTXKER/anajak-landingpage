@@ -17,7 +17,7 @@ function HeroImage({ src, alt }: { src: string; alt: string }) {
   
   if (hasError || !src) {
     return (
-      <div className="absolute inset-0 bg-gradient-to-br from-ci-blue to-ci-blueDark flex items-center justify-center rounded-3xl">
+      <div className="absolute inset-0 bg-gradient-to-br from-ci-blue to-ci-blueDark flex items-center justify-center">
         <div className="text-center text-white/60">
           <ImageIcon className="w-16 h-16 mx-auto mb-4" />
           <p className="text-lg font-medium">รูปภาพผลงาน</p>
@@ -31,7 +31,7 @@ function HeroImage({ src, alt }: { src: string; alt: string }) {
       src={src}
       alt={alt}
       fill
-      className="object-cover rounded-3xl"
+      className="object-cover"
       onError={() => setHasError(true)}
       priority
       sizes="(max-width: 768px) 100vw, 50vw"
@@ -164,9 +164,8 @@ export default function HeroSection({ className = '', images = {} }: HeroSection
           <div className="relative opacity-0 animate-fade-in-up delay-300">
             {/* Main Image */}
             <ImageSlotOverlay sectionId="hero" slotId="hero-main">
-              <div className="relative h-[400px] md:h-[500px] lg:h-[600px] rounded-3xl overflow-hidden shadow-2xl">
+              <div className="relative h-[400px] md:h-[500px] lg:h-[600px] overflow-hidden">
                 <HeroImage src={heroSrc} alt={heroAlt} />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent rounded-3xl" />
               </div>
             </ImageSlotOverlay>
 

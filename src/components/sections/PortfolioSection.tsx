@@ -29,6 +29,16 @@ const defaultPortfolioImages = [
   { id: 14, src: '/images/portfolio/14.jpg', alt: 'ผลงานเสื้อ Crop Top', category: 'Crop Top', slot: 'portfolio-14' },
   { id: 15, src: '/images/portfolio/15.jpg', alt: 'ผลงานเสื้อสกรีนหลัง', category: 'สกรีนหลัง', slot: 'portfolio-15' },
   { id: 16, src: '/images/portfolio/16.jpg', alt: 'ผลงานเสื้อทีมบาส', category: 'ทีมบาส', slot: 'portfolio-16' },
+  { id: 17, src: '/images/portfolio/17.jpg', alt: 'ผลงานเสื้อวงดนตรี', category: 'วงดนตรี', slot: 'portfolio-17' },
+  { id: 18, src: '/images/portfolio/18.jpg', alt: 'ผลงานเสื้อคาเฟ่', category: 'คาเฟ่', slot: 'portfolio-18' },
+  { id: 19, src: '/images/portfolio/19.jpg', alt: 'ผลงานเสื้อมหาวิทยาลัย', category: 'มหาวิทยาลัย', slot: 'portfolio-19' },
+  { id: 20, src: '/images/portfolio/20.jpg', alt: 'ผลงานเสื้อร้านอาหาร', category: 'ร้านอาหาร', slot: 'portfolio-20' },
+  { id: 21, src: '/images/portfolio/21.jpg', alt: 'ผลงานเสื้อแคมป์', category: 'แคมป์', slot: 'portfolio-21' },
+  { id: 22, src: '/images/portfolio/22.jpg', alt: 'ผลงานเสื้อฟิตเนส', category: 'ฟิตเนส', slot: 'portfolio-22' },
+  { id: 23, src: '/images/portfolio/23.jpg', alt: 'ผลงานเสื้อชมรม', category: 'ชมรม', slot: 'portfolio-23' },
+  { id: 24, src: '/images/portfolio/24.jpg', alt: 'ผลงานเสื้อเทศกาล', category: 'เทศกาล', slot: 'portfolio-24' },
+  { id: 25, src: '/images/portfolio/25.jpg', alt: 'ผลงานเสื้อ Streetwear', category: 'Streetwear', slot: 'portfolio-25' },
+  { id: 26, src: '/images/portfolio/26.jpg', alt: 'ผลงานเสื้อทีมฟุตบอล', category: 'ทีมฟุตบอล', slot: 'portfolio-26' },
 ];
 
 // Image with fallback
@@ -296,10 +306,10 @@ export default function PortfolioSection({ className = '', images = {} }: Portfo
           100% { transform: translateX(0); }
         }
         .animate-marquee-left {
-          animation: marquee-left 60s linear infinite;
+          animation: marquee-left 90s linear infinite;
         }
         .animate-marquee-right {
-          animation: marquee-right 60s linear infinite;
+          animation: marquee-right 90s linear infinite;
         }
         .animate-marquee-left:hover,
         .animate-marquee-right:hover {
