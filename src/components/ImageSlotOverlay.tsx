@@ -85,7 +85,7 @@ export default function ImageSlotOverlay({
   }, [sectionId, slotId, editNote, editStatus, updateReview]);
 
   if (!isPhotoBriefMode) {
-    return <>{children}</>;
+    return className ? <div className={className}>{children}</div> : <>{children}</>;
   }
 
   const slotConfig = findSlotConfig(sectionId, slotId);

@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { 
-  Building2, GraduationCap, Trophy, ShoppingBag, 
+  Building2, GraduationCap, Users, ShoppingBag, 
   Heart, Calendar, Star, ImageIcon, ArrowRight, ChevronRight
 } from 'lucide-react';
 import { ImagesBySection } from '@/types/admin';
@@ -39,11 +39,11 @@ const defaultUseCases = [
   },
   {
     id: 'sports',
-    icon: Trophy,
-    title: 'ทีมกีฬา & สโมสร',
-    subtitle: 'เสื้อแข่งขัน เสื้อซ้อม',
-    description: 'ออกแบบเสื้อทีมที่โดดเด่น สร้างความเป็นหนึ่ง',
-    examples: ['เสื้อฟุตบอล/ฟุตซอล', 'เสื้อบาสเก็ตบอล', 'เสื้อวิ่งมาราธอน', 'เสื้อทีม E-Sports'],
+    icon: Users,
+    title: 'เสื้อทีม & เสื้อแก๊ง',
+    subtitle: 'เสื้อกลุ่มเพื่อน เสื้อทีมสุดเท่',
+    description: 'ทำเสื้อทีมหรือเสื้อแก๊งในแบบของคุณ สร้างความเป็นหนึ่งเดียว',
+    examples: ['เสื้อแก๊งเพื่อน', 'เสื้อทีมงาน', 'เสื้อกลุ่มทริป', 'เสื้อรวมรุ่น'],
     stats: '1,000+ ทีมสั่งผลิต',
     images: ['/images/usecases/sports-1.jpg', '/images/usecases/sports-2.jpg', '/images/usecases/sports-3.jpg'],
     slots: ['sports-1', 'sports-2', 'sports-3'],
